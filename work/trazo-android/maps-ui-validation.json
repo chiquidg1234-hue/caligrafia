@@ -1,0 +1,27 @@
+{
+  "version": "2.2.0",
+  "date": "2026-10-22",
+  "browser": {
+    "allFiveTemplates": true,
+    "personalProfiles": [
+      111,
+      390,
+      390
+    ],
+    "legacyMigrationSampleRetained": true,
+    "legacyDraftRetained": true,
+    "samplesAfterUpgrade": 892,
+    "samplesAfterSecondOpen": 892,
+    "profileSelectionPersists": true,
+    "mapReloadPersists": true,
+    "mapEditStyleConnectionDragUndoRedo": true,
+    "jsonBackupImport": true,
+    "pdfDownload": true,
+    "missingGlyphBlocksExport": true,
+    "invalidZeroWidthRejected": true,
+    "mobileCssWidth": 400,
+    "mobileScrollWidth": 400,
+    "zoom200Percent": true
+  },
+  "physicalAndroidTested": false
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "resumen",
+    "source": "C:\\Users\\59172\\Downloads\\WhatsApp Image 2026-10-21 at 21.21.55.jpeg",
+    "sha256": "3290a1a7abdf57ed0b630efafab455058097866eb03d1e7a2116e938442ffdd5",
+    "width": 899,
+    "height": 1599,
+    "bytes": 116483
+  },
+  {
+    "id": "texto",
+    "source": "C:\\Users\\59172\\Downloads\\WhatsApp Image 2026-10-21 at 21.21.44.jpeg",
+    "sha256": "9b20470d889ba8eeb2ea9dac50599b87f9f8bbb704d67d404d9dfaa61b86779e",
+    "width": 899,
+    "height": 1599,
+    "bytes": 154354
+  },
+  {
+    "id": "apuntes",
+    "source": "C:\\Users\\59172\\AppData\\Local\\Temp\\WhatsApp Image 2026-10-21 at 20.41.49.jpeg",
+    "sha256": "a3f980e5c92a3379e62b8eb28162e57792ae9c5f4b63c05aba3f3200fae756d6",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 167290
+  },
+  {
+    "id": "alfabeto2",
+    "source": "C:\\Users\\59172\\AppData\\Local\\Temp\\WhatsApp Image 2026-10-21 at 20.41.49 (1).jpeg",
+    "sha256": "76394282483fc0cb9100d8fac77ee8990a24b1307c4799da1c2d9a87ed137198",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 135641
+  },
+  {
+    "id": "alfabeto1",
+    "source": "C:\\Users\\59172\\AppData\\Local\\Temp\\WhatsApp Image 2026-10-21 at 20.41.50.jpeg",
+    "sha256": "99c5bb47b7f0a13a8f7f5336c48dda7a80a40e99173f8168b77dd4e5b164ac36",
+    "width": 1201,
+    "height": 1600,
+    "bytes": 169180
+  }
+]

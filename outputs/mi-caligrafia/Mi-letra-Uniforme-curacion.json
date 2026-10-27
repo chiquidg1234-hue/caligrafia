@@ -1,0 +1,5284 @@
+{
+  "name": "Mi letra Uniforme",
+  "characterCount": 111,
+  "sampleCount": 111,
+  "sourceSampleCount": 390,
+  "selectionMethod": "Revisión visual de las variantes reales; no selección automática por medoid.",
+  "baseGeometry": "La variante correspondiente de Optimizada (contorno y tinta ya normalizados).",
+  "legacyHashesUnchanged": {
+    "Mi-letra-Original.trazo": "4716ffa77fcd9c7370307d0b1fe7291906ea2062ecef0690eba88f4f836f71f1",
+    "Mi-letra-Original.ttf": "bc4f1cbef07cdd92dcb4a7447bc1877e2abceed7ee5fba92fa4a317e10df5269",
+    "Mi-letra-Original.json": "5c86d5cccb1049c0d408d140dd16bcf62b6c7c45b58420cdc7761f7561d81baf",
+    "Mi-letra-Optimizada.trazo": "16651fbbc3cc6fc50194d8ea3e643daeead10f9bd1248b58d070132aea432def",
+    "Mi-letra-Optimizada.ttf": "954dc8a042b6cf118f0cb0996bde354efece858cc9030c39089239d968ccd8eb",
+    "Mi-letra-Optimizada.json": "4747aa95d7c3d9cdbcaa4e421a4747cd6f41760fba7e39ea8c77bb2e5c4ada77"
+  },
+  "topologyRasterChanges": [],
+  "contourCountsPreserved": true,
+  "fontCmapComplete": true,
+  "safeBounds": true,
+  "contextualVariants": false,
+  "maxAbsoluteShearDegrees": 4.858,
+  "manualOverridesAfterVectorReview": [
+    "Ñ: 2 → 1; tilde separada",
+    "P: 2 → 3; lóbulo cerrado",
+    "Z: 3 → 6; barra superior completa",
+    "w: 5 → 6; entrada continua"
+  ],
+  "limitations": [
+    "La j recuperada no tiene punto; no se añade uno inventado.",
+    "Algunos contornos de R y de signos conservan aperturas del manuscrito.",
+    "La revisión es digital. No se ha impreso ni calculado un porcentaje de parecido."
+  ],
+  "metrics": {
+    "capitalHeightCV": {
+      "beforeSelectedOptimized": 0.081385,
+      "afterUniform": 0.026023,
+      "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "definition": "desviación estándar / media de la altura visible; menor = menor dispersión"
+    },
+    "lowercaseBodyHeightCV": {
+      "beforeSelectedOptimized": 0.081501,
+      "afterUniform": 0.036555,
+      "characters": "acemnorsuvwxz",
+      "definition": "desviación estándar / media de la altura visible; menor = menor dispersión"
+    },
+    "accentedBodyBaselineMeanAbsoluteUnits": {
+      "beforeSelectedOptimized": 35.429,
+      "afterUniform": 0.0,
+      "characters": "ÁÉÍÓÚÜáéíóúüñÑ",
+      "unitsPerEm": 1000
+    },
+    "variantCount": {
+      "before": 390,
+      "after": 111,
+      "characters": 111,
+      "repeatedCharacterShapeVariationAfter": 0,
+      "note": "Una sola forma por carácter elimina la alternancia, por construcción; no es una puntuación de parecido."
+    },
+    "shearAppliedCharacters": 16,
+    "verticalScaleRange": [
+      0.8,
+      1.2
+    ]
+  },
+  "selections": [
+    {
+      "char": "A",
+      "sourceOriginalId": "c5001691-1e5f-4bc6-9097-e3d921aff962",
+      "sourceOptimizedId": "4848b558-44e0-4d04-9778-bcf09db05fb0",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Arco centrado y travesaño limpio; evita la cima abultada de 6.",
+      "adjustment": {
+        "scaleY": 1.024096,
+        "scaleX": 1,
+        "baselineSourceY": -4.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.2,
+          -4.0
+        ],
+        [
+          469.2,
+          494.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          469.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "a",
+      "sourceOriginalId": "ce628af1-01d6-4c0f-8f01-a5e7641e8abd",
+      "sourceOptimizedId": "037e88d7-ca39-4ddd-9212-1bf747b66107",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo cerrado y salida contenida; menos inclinación que 6.",
+      "adjustment": {
+        "scaleY": 0.988372,
+        "scaleX": 1,
+        "baselineSourceY": -2.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          43.0,
+          -2.0
+        ],
+        [
+          597.0,
+          342.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          599.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "B",
+      "sourceOriginalId": "42c70e2c-f580-40c1-98ed-3a9a755dc155",
+      "sourceOptimizedId": "27f863b7-2a24-4752-8b98-6ed0057c2fb6",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Dos lóbulos definidos, unión continua y asta clara.",
+      "adjustment": {
+        "scaleY": 0.917266,
+        "scaleX": 1,
+        "baselineSourceY": -8.0,
+        "shearXPerY": -0.085,
+        "shearAngleDegrees": -4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          37.0,
+          -8.0
+        ],
+        [
+          583.0,
+          548.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          590.49,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "b",
+      "sourceOriginalId": "8a2ab390-c552-4bdc-b2a4-fd235251bc82",
+      "sourceOptimizedId": "9f2c3d8b-76ad-4fed-9f85-14c8e6aebb37",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo redondo, unión limpia y asta poco inclinada.",
+      "adjustment": {
+        "scaleY": 1.003937,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": -0.077922,
+        "shearAngleDegrees": -4.456,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          425.0,
+          508.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          453.83,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "C",
+      "sourceOriginalId": "b3bef643-da21-4ce1-9f16-0564c89d51e0",
+      "sourceOptimizedId": "c6f6eb64-1f09-4654-81ca-d030afdac19d",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Curva abierta continua, extremos claros y base estable.",
+      "adjustment": {
+        "scaleY": 0.962264,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          0.0
+        ],
+        [
+          525.0,
+          530.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          521.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "c",
+      "sourceOriginalId": "3ab1b10b-09c3-4ba2-a8bc-5bf40c87ce91",
+      "sourceOptimizedId": "7bcdedb3-8f4b-4610-9dc6-8a821f62e8b4",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Apertura clara y curva equilibrada; evita la compresión de 6.",
+      "adjustment": {
+        "scaleY": 1.075949,
+        "scaleX": 1,
+        "baselineSourceY": -8.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          37.0,
+          -8.0
+        ],
+        [
+          471.0,
+          308.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          479.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "D",
+      "sourceOriginalId": "3f9075ac-4ff5-44f7-86ac-63e3102038e8",
+      "sourceOptimizedId": "9ad7d9b6-27aa-4d62-9ec7-b082074dd76f",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Curva exterior redondeada; evita las variantes triangulares o abiertas.",
+      "adjustment": {
+        "scaleY": 0.944444,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          565.0,
+          540.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          565.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "d",
+      "sourceOriginalId": "274715c0-de53-4c71-85e5-71c08bfb6098",
+      "sourceOptimizedId": "4ac1a152-9fb0-48bc-9afe-b9875381d7fd",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo legible y asta casi vertical sin prolongación excesiva.",
+      "adjustment": {
+        "scaleY": 1.032389,
+        "scaleX": 1,
+        "baselineSourceY": -4.0,
+        "shearXPerY": 0.023392,
+        "shearAngleDegrees": 1.34,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          41.0,
+          -4.0
+        ],
+        [
+          429.0,
+          490.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          434.36,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "E",
+      "sourceOriginalId": "a27f276f-2cf1-4296-ac80-01e1e040dc32",
+      "sourceOptimizedId": "77abbf86-c591-48ec-aca0-6eb21c17859d",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Tres barras separadas, horizontales y con longitudes claras.",
+      "adjustment": {
+        "scaleY": 0.980769,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": -0.031746,
+        "shearAngleDegrees": -1.818,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          541.0,
+          520.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          530.08,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "e",
+      "sourceOriginalId": "4ec28cdd-b194-4064-b97a-a00a800e3811",
+      "sourceOptimizedId": "9e052847-07f2-4634-9b45-4160f38e0fb0",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Ojo visible y salida corta, sin mancha en el cruce.",
+      "adjustment": {
+        "scaleY": 0.928962,
+        "scaleX": 1,
+        "baselineSourceY": -8.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          37.0,
+          -8.0
+        ],
+        [
+          479.0,
+          358.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          487.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "F",
+      "sourceOriginalId": "94f52c84-f844-48ae-9885-aa18b2d49056",
+      "sourceOptimizedId": "9769fad9-c8f3-4ef2-a187-5a6963af4db3",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Asta vertical continua y barras bien diferenciadas.",
+      "adjustment": {
+        "scaleY": 1.02,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          48.68,
+          0.0
+        ],
+        [
+          504.68,
+          500.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          501.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "f",
+      "sourceOriginalId": "39b413cf-2c82-4cc2-abba-3da009754a61",
+      "sourceOptimizedId": "68d075d4-91e2-4316-8ce7-f34aba7a94ba",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Asta recta, gancho suave y travesaño claro.",
+      "adjustment": {
+        "scaleY": 0.944444,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          48.62,
+          0.0
+        ],
+        [
+          420.62,
+          540.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          417.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "G",
+      "sourceOriginalId": "104f13ae-bafe-4c78-bc26-6e00b69c2b33",
+      "sourceOptimizedId": "31260b48-e45f-4f98-a6ec-ab9c858d478a",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Curva circular clara y barra reconocible, sin cierre cuadrado.",
+      "adjustment": {
+        "scaleY": 1.02,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          531.0,
+          500.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          531.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "g",
+      "sourceOriginalId": "c2bda418-d908-49bb-9aa0-736e1d4db6f1",
+      "sourceOptimizedId": "932c6892-df89-4b04-9bef-8d6e1f7d4a07",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo cerrado y descendente continuo con gancho reconocible.",
+      "adjustment": {
+        "scaleY": 1.00295,
+        "scaleX": 1,
+        "baselineSourceY": 44.24,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del óvalo alineada conservando el descendente"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          43.0,
+          -186.76
+        ],
+        [
+          377.0,
+          383.24
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -231.68
+        ],
+        [
+          379.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "H",
+      "sourceOriginalId": "c104300f-0cfa-4ccc-a71e-1418e3bd7f9f",
+      "sourceOptimizedId": "4b4b13d0-a074-45bb-a2c1-766c2561a145",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Astas equilibradas y travesaño casi horizontal.",
+      "adjustment": {
+        "scaleY": 0.894737,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          575.0,
+          570.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          538.11,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "h",
+      "sourceOriginalId": "5231dfcb-dd33-4967-a74b-3e0464a2f94f",
+      "sourceOptimizedId": "0f04aef3-49b1-4771-a32f-20a44570c1c0",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Arco redondo, asta continua y salida contenida.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          445.0,
+          510.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          413.04,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "I",
+      "sourceOriginalId": "3f7f1fc6-c503-46ee-98b4-82dc9f8e4366",
+      "sourceOptimizedId": "a347aaa4-caaa-4e4a-957f-fb8b6ab6ae0f",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Trazo simple y estrecho con mínima inclinación.",
+      "adjustment": {
+        "scaleY": 1.015936,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          125.0,
+          502.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          125.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "i",
+      "sourceOriginalId": "2fce8d98-3bbf-4a03-8750-d648a65ea47d",
+      "sourceOptimizedId": "ccbe275f-f046-4f64-a477-ddaa6d2c66e5",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Punto separado y asta fina y continua.",
+      "adjustment": {
+        "scaleY": 1.041667,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          141.0,
+          460.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          141.0,
+          479.17
+        ]
+      ]
+    },
+    {
+      "char": "J",
+      "sourceOriginalId": "648f5340-30a6-4838-a8f5-9eebc45ff67b",
+      "sourceOptimizedId": "51a06ca1-0a70-41af-9681-cb07e7f3eeb5",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Asta recta, gancho redondeado y barra superior clara.",
+      "adjustment": {
+        "scaleY": 1.007905,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          463.0,
+          506.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          463.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "j",
+      "sourceOriginalId": "c809c613-c833-41ef-a293-c1289702b737",
+      "sourceOptimizedId": "ed7f426f-7a15-4287-968c-0c4fa948fc4d",
+      "selectedVariantOneBased": 5,
+      "availableVariants": 6,
+      "visualRationale": "Asta casi vertical y gancho redondeado; se conserva la j manuscrita sin punto recuperado.",
+      "adjustment": {
+        "scaleY": 1.076904,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "descendente preservado; altura del cuerpo ajustada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -160.28
+        ],
+        [
+          321.0,
+          315.72
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -172.61
+        ],
+        [
+          321.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "K",
+      "sourceOriginalId": "620728df-1351-47ee-a755-f1a7e5f26c99",
+      "sourceOptimizedId": "60490e79-0735-4420-995a-b034a1e52920",
+      "selectedVariantOneBased": 5,
+      "availableVariants": 6,
+      "visualRationale": "Asta clara y diagonales separadas, con cruce central limpio.",
+      "adjustment": {
+        "scaleY": 0.962264,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          505.0,
+          530.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          470.15,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "k",
+      "sourceOriginalId": "036b8983-4d30-4404-9a5c-84220a47e7d2",
+      "sourceOptimizedId": "1e1474a4-86cd-4e07-b4f0-64879343e212",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Asta continua y dos brazos legibles; evita el cruce empastado de 4.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          385.0,
+          510.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          385.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "L",
+      "sourceOriginalId": "13ca2a2f-f01d-4280-a7cf-1502fb4c10e7",
+      "sourceOptimizedId": "ea0fcfe5-7f30-43a4-8b07-6c52a1b43261",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Asta clara y pie horizontal de longitud contenida.",
+      "adjustment": {
+        "scaleY": 0.904255,
+        "scaleX": 1,
+        "baselineSourceY": -2.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          43.0,
+          -2.0
+        ],
+        [
+          467.0,
+          562.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          431.94,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "l",
+      "sourceOriginalId": "9ac8474d-f413-417a-8fba-4e586528bc59",
+      "sourceOptimizedId": "cbaa299c-9fc6-4121-99a1-24e16baf225f",
+      "selectedVariantOneBased": 5,
+      "availableVariants": 6,
+      "visualRationale": "Trazo alto casi vertical, sin la inclinación marcada de 1–2.",
+      "adjustment": {
+        "scaleY": 1.028226,
+        "scaleX": 1,
+        "baselineSourceY": -8.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          41.4,
+          -8.0
+        ],
+        [
+          141.4,
+          488.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          146.53,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "m",
+      "sourceOriginalId": "3e14b54a-dcc1-4bf8-ba31-225ccd4237df",
+      "sourceOptimizedId": "153f5ef1-1f50-44c4-bef4-71fb25bd2f01",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Dos arcos legibles de altura parecida y uniones continuas.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 1.75,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          43.0,
+          1.75
+        ],
+        [
+          597.0,
+          301.75
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          599.0,
+          336.0
+        ]
+      ]
+    },
+    {
+      "char": "M",
+      "sourceOriginalId": "2c8870ce-7241-4039-86f4-bb037bbc355a",
+      "sourceOptimizedId": "ff6c1d3b-9f5f-4bba-b386-ce10cef912ca",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Astas y valle central equilibrados; menos deformación que 2 o 5.",
+      "adjustment": {
+        "scaleY": 0.940959,
+        "scaleX": 1,
+        "baselineSourceY": 4.23,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          4.23
+        ],
+        [
+          605.0,
+          546.23
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          591.74,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "N",
+      "sourceOriginalId": "013009d2-2dc2-4065-bba0-451c73d6eae1",
+      "sourceOptimizedId": "6fc2ebbc-2aac-46ed-8546-034cb9f486a6",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Astas continuas y diagonal clara, sin el engrosamiento de 1.",
+      "adjustment": {
+        "scaleY": 1.049383,
+        "scaleX": 1,
+        "baselineSourceY": 3.63,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          3.63
+        ],
+        [
+          505.0,
+          489.63
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          490.95,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "n",
+      "sourceOriginalId": "99830365-9056-4a48-9402-f546065e5ae4",
+      "sourceOptimizedId": "dee66c4a-597d-4e17-9d12-14c145d19f1d",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Arco redondo y continuo con proporción compacta.",
+      "adjustment": {
+        "scaleY": 1.030303,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          415.0,
+          330.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          415.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "Ñ",
+      "sourceOriginalId": "403693ba-63ec-4682-a2c2-f809ee60d92e",
+      "sourceOptimizedId": "13ed4ff2-7fe3-49b6-896e-81298fc9c606",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Tilde realmente separada; 2 se descartó al ver que el contorno une la tilde al cuerpo.",
+      "adjustment": {
+        "scaleY": 1.2,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          475.0,
+          540.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          475.0,
+          648.0
+        ]
+      ]
+    },
+    {
+      "char": "ñ",
+      "sourceOriginalId": "99b40b62-9899-415d-92a8-294a3f82d005",
+      "sourceOptimizedId": "5fa36704-80c5-4ad3-bfb0-d466b48e5860",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Tilde separada y cuerpo claro; evita las tildes unidas de 3–4.",
+      "adjustment": {
+        "scaleY": 1.2,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          465.0,
+          470.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          465.0,
+          564.0
+        ]
+      ]
+    },
+    {
+      "char": "O",
+      "sourceOriginalId": "9ca629a9-97c1-4819-985b-532a2d953de4",
+      "sourceOptimizedId": "e5d802f1-cf08-43e6-8747-106f0f375fc2",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo cerrado, equilibrado y sin quiebre en la cima.",
+      "adjustment": {
+        "scaleY": 0.934066,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          495.0,
+          546.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          495.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "o",
+      "sourceOriginalId": "ca5aca2a-1c55-46ef-b551-bff6aa4196d7",
+      "sourceOptimizedId": "f0910802-afbf-4b56-b1aa-070070fc0712",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo claro y proporcionado, menos inclinado que 3 o 5.",
+      "adjustment": {
+        "scaleY": 1.0625,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          445.0,
+          320.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          445.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "P",
+      "sourceOriginalId": "b4d1d413-0902-45f6-a76e-0dc909391346",
+      "sourceOptimizedId": "45d20dc7-77f0-4a20-ac33-b6389a67b3cc",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Lóbulo realmente cerrado; 2 se descartó por la apertura del contorno recuperado.",
+      "adjustment": {
+        "scaleY": 0.980769,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.058333,
+        "shearAngleDegrees": 3.338,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          415.0,
+          520.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          412.9,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "Q",
+      "sourceOriginalId": "9d5789ea-4103-4be4-965d-f93317e4796a",
+      "sourceOptimizedId": "a675bc89-7587-4c1d-893a-8007b36a5a22",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo legible y cola contenida, menos invasiva que 3 o 6.",
+      "adjustment": {
+        "scaleY": 1.108696,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          533.0,
+          460.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          533.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "q",
+      "sourceOriginalId": "e091788f-3a71-4825-9e10-24c7da173766",
+      "sourceOptimizedId": "87863d56-e0ce-4183-adec-a3c29ff3f080",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Óvalo cerrado y descendente con terminación clara.",
+      "adjustment": {
+        "scaleY": 1.039755,
+        "scaleX": 1,
+        "baselineSourceY": 23.67,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del óvalo alineada conservando el descendente"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          41.0,
+          -177.33
+        ],
+        [
+          457.0,
+          350.67
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -208.99
+        ],
+        [
+          439.07,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "p",
+      "sourceOriginalId": "eb4400d7-edff-405e-89b8-9bf121d7a0f9",
+      "sourceOptimizedId": "fc261ed2-28f6-40c8-972c-395e67e0f41e",
+      "selectedVariantOneBased": 5,
+      "availableVariants": 6,
+      "visualRationale": "Lóbulo limpio y descendente continuo, sin el cruce grueso de 3.",
+      "adjustment": {
+        "scaleY": 0.997067,
+        "scaleX": 1,
+        "baselineSourceY": 81.1,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del óvalo alineada conservando el descendente"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          -207.9
+        ],
+        [
+          405.0,
+          422.1
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -288.15
+        ],
+        [
+          406.53,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "R",
+      "sourceOriginalId": "a2effbba-799a-4fb3-bf71-4d4d53afb031",
+      "sourceOptimizedId": "51ce4280-8223-4934-b698-09c5243f310b",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Lóbulo y pierna diagonal distinguibles, con menos mancha central.",
+      "adjustment": {
+        "scaleY": 1.040816,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          425.0,
+          490.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          396.44,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "r",
+      "sourceOriginalId": "ad50cbce-a977-4bf4-b27e-7a9be23b883e",
+      "sourceOptimizedId": "c39a1573-8ee8-4487-ba2f-6c7a506fe877",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Hombro reconocible y asta separable, sin el bloque de tinta de 3.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 4.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          4.0
+        ],
+        [
+          281.0,
+          296.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          277.0,
+          327.04
+        ]
+      ]
+    },
+    {
+      "char": "S",
+      "sourceOriginalId": "bed5aa55-f769-4b52-80e2-07b2570936ff",
+      "sourceOptimizedId": "8a1e2ec8-cab6-400f-9453-63689aaeae91",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Curvas superior e inferior reconocibles; menos angular que 3–5.",
+      "adjustment": {
+        "scaleY": 1.032389,
+        "scaleX": 1,
+        "baselineSourceY": -0.08,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          41.0,
+          -0.08
+        ],
+        [
+          319.0,
+          493.92
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          323.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "s",
+      "sourceOriginalId": "792fcb16-c906-4961-9524-0052e8ceba76",
+      "sourceOptimizedId": "72752ea9-e906-4565-82b6-8cb3eaeb50df",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Dos curvas legibles y distribución de tinta equilibrada.",
+      "adjustment": {
+        "scaleY": 1.0625,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          305.0,
+          320.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          305.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "T",
+      "sourceOriginalId": "fc78f961-901b-483e-adde-879c2cfdf977",
+      "sourceOptimizedId": "f3ef18b5-c75f-4aba-8787-f965d682bcdb",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Asta casi vertical y barra superior de longitud equilibrada.",
+      "adjustment": {
+        "scaleY": 1.036585,
+        "scaleX": 1,
+        "baselineSourceY": -6.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          39.0,
+          -6.0
+        ],
+        [
+          513.0,
+          486.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          519.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "t",
+      "sourceOriginalId": "1e8abd2e-98c3-4c8c-a0df-4a2a14e9cfe0",
+      "sourceOptimizedId": "d8e352b8-abb3-4085-998e-f15abf37c880",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Asta casi vertical y travesaño limpio.",
+      "adjustment": {
+        "scaleY": 0.987395,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.085,
+        "shearAngleDegrees": 4.858,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          305.0,
+          476.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          307.21,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "U",
+      "sourceOriginalId": "9c89e778-1b1d-461b-89e2-19b795de3dc5",
+      "sourceOptimizedId": "1bfa5cfe-693a-4f7e-93f7-fc8ae131a31c",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Curva inferior centrada y laterales equilibrados.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          431.0,
+          420.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          431.0,
+          470.4
+        ]
+      ]
+    },
+    {
+      "char": "u",
+      "sourceOriginalId": "087ddf4b-7d81-4323-a2e7-b35b9785cffe",
+      "sourceOptimizedId": "8c4a7bd3-90dd-4972-ac46-62568e64178e",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 6,
+      "visualRationale": "Curva limpia sin el gancho añadido de 3–4.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 2.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          47.0,
+          2.0
+        ],
+        [
+          393.0,
+          298.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          391.0,
+          331.52
+        ]
+      ]
+    },
+    {
+      "char": "V",
+      "sourceOriginalId": "2509dd4f-5404-4ee2-9a53-0d6e004289e9",
+      "sourceOptimizedId": "48108222-707f-4af5-8423-fee9ed5ff0c0",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Vértice claro y diagonales equilibradas.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          461.0,
+          420.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          461.0,
+          470.4
+        ]
+      ]
+    },
+    {
+      "char": "W",
+      "sourceOriginalId": "45b9d9db-858b-4725-89f6-1d674abb8e98",
+      "sourceOptimizedId": "504380ef-a007-4994-b114-1b77eb68f3bb",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Dos valles claros y altura equilibrada.",
+      "adjustment": {
+        "scaleY": 0.996094,
+        "scaleX": 1,
+        "baselineSourceY": 8.32,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          8.32
+        ],
+        [
+          615.0,
+          520.32
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          615.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "v",
+      "sourceOriginalId": "3854ac87-bd9b-40fa-93fa-3936d035d54b",
+      "sourceOptimizedId": "074e825e-b21b-4dd8-806c-b359d0b74cf5",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 6,
+      "visualRationale": "Vértice centrado y diagonales finas y legibles.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          381.0,
+          276.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          381.0,
+          309.12
+        ]
+      ]
+    },
+    {
+      "char": "w",
+      "sourceOriginalId": "610fdcc8-67f9-47db-b419-1708cf12b3d3",
+      "sourceOptimizedId": "672c1478-ea4f-42e3-9cd8-db26d22765b5",
+      "selectedVariantOneBased": 6,
+      "availableVariants": 6,
+      "visualRationale": "Dos curvas continuas; evita el extremo izquierdo debilitado de 5.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          565.0,
+          270.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          565.0,
+          302.4
+        ]
+      ]
+    },
+    {
+      "char": "X",
+      "sourceOriginalId": "e8341926-f197-4306-ab5b-65c2d002ceaf",
+      "sourceOptimizedId": "62d8c4e5-db7b-4ce7-b070-c72d15af24c3",
+      "selectedVariantOneBased": 3,
+      "availableVariants": 6,
+      "visualRationale": "Diagonales continuas y cruce centrado.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 4.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          4.0
+        ],
+        [
+          405.0,
+          420.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          405.0,
+          465.92
+        ]
+      ]
+    },
+    {
+      "char": "x",
+      "sourceOriginalId": "dcda21d7-265e-42b6-a101-d86bd246ba31",
+      "sourceOptimizedId": "f52ca8d3-e854-4da1-9ac1-4e23b5fdea17",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Cruce centrado, sin la prolongación superior de 1.",
+      "adjustment": {
+        "scaleY": 1.082803,
+        "scaleX": 1,
+        "baselineSourceY": -0.35,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          41.0,
+          -0.35
+        ],
+        [
+          349.0,
+          313.65
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          353.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "Y",
+      "sourceOriginalId": "5e897fa3-e54f-439a-8d93-b38148ff49a0",
+      "sourceOptimizedId": "5721809d-ca6f-4779-8a11-3b7acb307ef0",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Bifurcación abierta y descendente de mayúscula limpio.",
+      "adjustment": {
+        "scaleY": 1.071429,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          375.0,
+          476.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          375.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "y",
+      "sourceOriginalId": "6a4dcd8c-305c-4123-abf0-10072ad16c75",
+      "sourceOptimizedId": "233f7ed4-c4f3-4223-984f-8b0b3f55b1e4",
+      "selectedVariantOneBased": 5,
+      "availableVariants": 6,
+      "visualRationale": "Bifurcación clara y descendente continuo, sin mancha central.",
+      "adjustment": {
+        "scaleY": 0.885232,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "descendente preservado; altura del cuerpo ajustada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -187.92
+        ],
+        [
+          353.0,
+          384.08
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -166.35
+        ],
+        [
+          353.0,
+          340.0
+        ]
+      ]
+    },
+    {
+      "char": "Z",
+      "sourceOriginalId": "ec8cbad1-8c51-4a92-9ad9-ed6beee76e78",
+      "sourceOptimizedId": "67a65106-f0c6-4461-acb3-b6272675c4fa",
+      "selectedVariantOneBased": 6,
+      "availableVariants": 6,
+      "visualRationale": "Barras superior e inferior completas; 3 se descartó porque la extracción pierde la barra superior.",
+      "adjustment": {
+        "scaleY": 1.080508,
+        "scaleX": 1,
+        "baselineSourceY": -6.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          42.6,
+          -6.0
+        ],
+        [
+          514.6,
+          466.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          517.0,
+          510.0
+        ]
+      ]
+    },
+    {
+      "char": "z",
+      "sourceOriginalId": "31b1e2b8-3ae7-4f5f-874c-fbd2edd78500",
+      "sourceOptimizedId": "4dc0a436-176a-4374-b3c0-c7b923010811",
+      "selectedVariantOneBased": 4,
+      "availableVariants": 6,
+      "visualRationale": "Forma muy legible con base y diagonal claras.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          0.0
+        ],
+        [
+          541.0,
+          302.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          537.0,
+          338.24
+        ]
+      ]
+    },
+    {
+      "char": "Á",
+      "sourceOriginalId": "e9d934d0-8752-4c50-bd35-3a40efa8241f",
+      "sourceOptimizedId": "6cd8cd8a-9ea7-45f5-9e3c-7f7008271dc3",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.944444,
+        "scaleX": 1,
+        "baselineSourceY": -70.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          55.0,
+          -70.0
+        ],
+        [
+          495.0,
+          770.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          485.0,
+          793.33
+        ]
+      ]
+    },
+    {
+      "char": "É",
+      "sourceOriginalId": "ebcf8d38-a9c3-41af-801a-099605ffc0ba",
+      "sourceOptimizedId": "14cf4f36-d465-4e7e-89de-1122614b3845",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.917266,
+        "scaleX": 1,
+        "baselineSourceY": -80.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          -80.0
+        ],
+        [
+          521.0,
+          780.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          521.0,
+          788.85
+        ]
+      ]
+    },
+    {
+      "char": "Í",
+      "sourceOriginalId": "94ea41ac-5421-4b50-9723-5848e662c465",
+      "sourceOptimizedId": "986c2a5e-fb18-482a-97e0-24acde1b6836",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.988372,
+        "scaleX": 1,
+        "baselineSourceY": -98.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          47.0,
+          -98.0
+        ],
+        [
+          463.0,
+          738.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          461.0,
+          826.28
+        ]
+      ]
+    },
+    {
+      "char": "Ó",
+      "sourceOriginalId": "5f9267e3-8b77-4e6d-9ad2-cd68db7ea3cb",
+      "sourceOptimizedId": "a30e1648-fd04-40ad-acb5-ff2f720d240f",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.099138,
+        "scaleX": 1,
+        "baselineSourceY": -54.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 1
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          51.0,
+          -54.0
+        ],
+        [
+          559.0,
+          714.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          553.0,
+          844.14
+        ]
+      ]
+    },
+    {
+      "char": "Ú",
+      "sourceOriginalId": "927910d7-66a8-40d8-b763-5e01952116c6",
+      "sourceOptimizedId": "1cdd41c4-22eb-4eca-a539-e1d6eb558ac6",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.2,
+        "scaleX": 1,
+        "baselineSourceY": -50.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          55.0,
+          -50.0
+        ],
+        [
+          475.0,
+          630.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          465.0,
+          816.0
+        ]
+      ]
+    },
+    {
+      "char": "Ü",
+      "sourceOriginalId": "cbef2267-96ac-47f2-91c4-192058048c7b",
+      "sourceOptimizedId": "6999b706-a503-4b5f-a045-c0ccec6abb7c",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.148649,
+        "scaleX": 1,
+        "baselineSourceY": -12.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 3,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 3,
+        "holes": 0
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          53.0,
+          -12.0
+        ],
+        [
+          517.0,
+          552.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          509.0,
+          647.84
+        ]
+      ]
+    },
+    {
+      "char": "á",
+      "sourceOriginalId": "518f2ebe-408d-40ea-a3f4-d7c054071b77",
+      "sourceOptimizedId": "dada4dac-69f6-41c3-9c94-abb324caaa14",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.133333,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 1
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          525.0,
+          620.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          525.0,
+          702.67
+        ]
+      ]
+    },
+    {
+      "char": "é",
+      "sourceOriginalId": "9e28b8ef-c1cf-4e1d-925f-78bae95befa8",
+      "sourceOptimizedId": "377d0511-7c18-4c0e-82c6-f9878e4fb186",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": -60.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 1
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          -60.0
+        ],
+        [
+          485.0,
+          580.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          485.0,
+          640.0
+        ]
+      ]
+    },
+    {
+      "char": "í",
+      "sourceOriginalId": "6440982e-52c7-4b81-a35a-c692f7a1c313",
+      "sourceOptimizedId": "cfc9fcca-51ed-4658-80c8-07d5db866bcb",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.2,
+        "scaleX": 1,
+        "baselineSourceY": 10.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          55.0,
+          10.0
+        ],
+        [
+          289.0,
+          570.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          279.0,
+          672.0
+        ]
+      ]
+    },
+    {
+      "char": "ó",
+      "sourceOriginalId": "bd5231db-fd97-40d8-a7b5-691089bdc2d0",
+      "sourceOptimizedId": "9c16b0b8-fc32-4d9b-8cfe-23f364bf4214",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.944444,
+        "scaleX": 1,
+        "baselineSourceY": -40.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 1
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          -40.0
+        ],
+        [
+          485.0,
+          660.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          485.0,
+          661.11
+        ]
+      ]
+    },
+    {
+      "char": "ú",
+      "sourceOriginalId": "ee91fbca-a4a2-41ca-8f8c-8856c20b5640",
+      "sourceOptimizedId": "5f98e13e-f805-4d1b-a99c-8379849082da",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.011905,
+        "scaleX": 1,
+        "baselineSourceY": 2.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          47.0,
+          2.0
+        ],
+        [
+          483.0,
+          634.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          481.0,
+          639.52
+        ]
+      ]
+    },
+    {
+      "char": "ü",
+      "sourceOriginalId": "2102f806-de62-403a-a953-f02f24fdfa15",
+      "sourceOptimizedId": "a755dc9f-8b38-40ba-b00e-7b4bdf5abbc0",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0625,
+        "scaleX": 1,
+        "baselineSourceY": 20.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "base del cuerpo alineada; puntos y acentos conservados"
+      },
+      "topologySource": {
+        "components": 3,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 3,
+        "holes": 0
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          20.0
+        ],
+        [
+          505.0,
+          540.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          505.0,
+          552.5
+        ]
+      ]
+    },
+    {
+      "char": "0",
+      "sourceOriginalId": "b2b4fec4-f84a-4add-98f3-f67a1924cfcc",
+      "sourceOptimizedId": "4d410d22-9359-43a4-a7fa-dae607a3dae8",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 2,
+      "visualRationale": "Óvalo más redondo y menos romboidal que 2.",
+      "adjustment": {
+        "scaleY": 1.12,
+        "scaleX": 1,
+        "baselineSourceY": 24.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          49.0,
+          24.0
+        ],
+        [
+          451.0,
+          436.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          447.0,
+          461.44
+        ]
+      ]
+    },
+    {
+      "char": "1",
+      "sourceOriginalId": "8b0cf015-346a-454c-ac2b-eafa93f765ee",
+      "sourceOptimizedId": "f0ae105a-6077-4786-95f7-f6d30d715c5c",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 2,
+      "visualRationale": "Bandera superior visible que lo diferencia de la l.",
+      "adjustment": {
+        "scaleY": 1.103286,
+        "scaleX": 1,
+        "baselineSourceY": 12.09,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          51.0,
+          12.09
+        ],
+        [
+          291.0,
+          438.09
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          285.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "2",
+      "sourceOriginalId": "16049f02-850b-4191-acdf-376216651b2d",
+      "sourceOptimizedId": "f9b5a53a-1240-48a2-97e2-c38f0479cbe6",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 2,
+      "visualRationale": "Curva superior y base claras, menos redondeada la diagonal que 2.",
+      "adjustment": {
+        "scaleY": 1.068182,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          365.0,
+          440.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          365.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "3",
+      "sourceOriginalId": "8a1b532b-16c7-4455-a989-2565c7491767",
+      "sourceOptimizedId": "68054036-befb-4dd5-8ae9-620b24546532",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Dos lóbulos continuos y abiertos a la izquierda.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": -19.58,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -19.58
+        ],
+        [
+          425.0,
+          450.42
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          425.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "4",
+      "sourceOriginalId": "036054fe-79b0-478c-978f-1bde21ec98ec",
+      "sourceOptimizedId": "870bc17d-a1f3-4ccc-aa3e-49761a3c847f",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Cruce claro y asta recta, con menos inclinación.",
+      "adjustment": {
+        "scaleY": 1.039823,
+        "scaleX": 1,
+        "baselineSourceY": 26.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          47.0,
+          26.0
+        ],
+        [
+          413.0,
+          478.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          411.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "5",
+      "sourceOriginalId": "5285a55b-cb88-4011-b615-7ef5a60d539a",
+      "sourceOptimizedId": "94dc6065-d9d3-4528-a7cc-0c97391f5b8b",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Barra superior y curva inferior más diferenciadas.",
+      "adjustment": {
+        "scaleY": 1.044444,
+        "scaleX": 1,
+        "baselineSourceY": -18.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          48.76,
+          -18.0
+        ],
+        [
+          364.76,
+          432.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          361.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "6",
+      "sourceOriginalId": "c3a5e4d2-2a09-4edc-ae39-0a471a137023",
+      "sourceOptimizedId": "85cde3b2-bf64-4bdf-91d6-525a4c9df743",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Óvalo cerrado y curva de entrada más limpia.",
+      "adjustment": {
+        "scaleY": 1.068182,
+        "scaleX": 1,
+        "baselineSourceY": -18.33,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          -18.33
+        ],
+        [
+          371.0,
+          421.67
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          371.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "7",
+      "sourceOriginalId": "15ca2caf-d37a-46ea-9b07-7d3acd87da66",
+      "sourceOptimizedId": "b3addd6f-0cc1-4594-97ef-a3f0c7edb3b1",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Barra y diagonal reconocibles con el rasgo personal transversal.",
+      "adjustment": {
+        "scaleY": 1.093023,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          0.0
+        ],
+        [
+          305.0,
+          430.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          301.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "9",
+      "sourceOriginalId": "8db02b59-4f4c-4e79-8e9d-0468d25f2e0f",
+      "sourceOptimizedId": "a240c38b-8943-4db4-899b-44b9962436e3",
+      "selectedVariantOneBased": 2,
+      "availableVariants": 2,
+      "visualRationale": "Óvalo cerrado y descendente más recto.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 19.58,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          19.58
+        ],
+        [
+          415.0,
+          489.58
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          415.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "8",
+      "sourceOriginalId": "ac81f6c7-206f-4a66-93bb-301c86b7b2cb",
+      "sourceOptimizedId": "54ef0e11-8ce6-41c2-bdaf-d654ab4dcfd4",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.068182,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "cifras alineadas a la base y altura común"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 2
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 2
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          345.0,
+          440.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          345.0,
+          470.0
+        ]
+      ]
+    },
+    {
+      "char": "(",
+      "sourceOriginalId": "72561afa-de2c-42de-ab21-30fba5c3ec25",
+      "sourceOptimizedId": "40cf0c13-00c8-4fc3-a9d2-4d983a2424df",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -40.0
+        ],
+        [
+          225.0,
+          580.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -40.0
+        ],
+        [
+          225.0,
+          580.0
+        ]
+      ]
+    },
+    {
+      "char": ")",
+      "sourceOriginalId": "8cfcebf1-26ef-40f5-9200-e60cd86c6a2a",
+      "sourceOptimizedId": "016d87cf-a64c-4ba2-8957-b9536e74734f",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          -20.0
+        ],
+        [
+          285.0,
+          600.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -20.0
+        ],
+        [
+          281.0,
+          600.0
+        ]
+      ]
+    },
+    {
+      "char": "[",
+      "sourceOriginalId": "9139c112-bb34-4191-9233-9d58441e718e",
+      "sourceOptimizedId": "bca96ae6-6634-4e85-85ea-6d925cc92b65",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -60.0
+        ],
+        [
+          425.0,
+          560.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -60.0
+        ],
+        [
+          425.0,
+          560.0
+        ]
+      ]
+    },
+    {
+      "char": "]",
+      "sourceOriginalId": "4aa859e9-67bd-44ad-9276-b33c0a8f4d8d",
+      "sourceOptimizedId": "d917bb1f-06b9-4362-b816-3d5d02b7fcbd",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          -40.0
+        ],
+        [
+          485.0,
+          580.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -40.0
+        ],
+        [
+          481.0,
+          580.0
+        ]
+      ]
+    },
+    {
+      "char": "{",
+      "sourceOriginalId": "26662420-da20-449d-a63f-a388ea8bcd73",
+      "sourceOptimizedId": "f5e35bdc-c32e-40bc-8994-2c1118c92c33",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -120.0
+        ],
+        [
+          225.0,
+          616.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -120.0
+        ],
+        [
+          225.0,
+          616.0
+        ]
+      ]
+    },
+    {
+      "char": "}",
+      "sourceOriginalId": "8a1dbcf7-4ca7-4cf3-9bcf-2e9946b6ce32",
+      "sourceOptimizedId": "1d6f3c38-ddd5-4523-8810-e43b9907d870",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          -100.0
+        ],
+        [
+          365.0,
+          620.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -100.0
+        ],
+        [
+          361.0,
+          620.0
+        ]
+      ]
+    },
+    {
+      "char": "¿",
+      "sourceOriginalId": "adb0c046-d25b-47d8-9c0b-154ebceb4d44",
+      "sourceOptimizedId": "9b9af5aa-0c27-485a-98ac-08b16b01926b",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.885714,
+        "scaleX": 1,
+        "baselineSourceY": -40.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "signo completo alineado; punto conservado"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          -40.0
+        ],
+        [
+          341.0,
+          660.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          341.0,
+          620.0
+        ]
+      ]
+    },
+    {
+      "char": "?",
+      "sourceOriginalId": "a539ddc6-1c59-4b22-b922-0ef06fe3850d",
+      "sourceOptimizedId": "5c345e2e-cc5b-42cc-a1db-f503247d2853",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.006494,
+        "scaleX": 1,
+        "baselineSourceY": 4.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "signo completo alineado; punto conservado"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          49.0,
+          4.0
+        ],
+        [
+          325.0,
+          620.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          321.0,
+          620.0
+        ]
+      ]
+    },
+    {
+      "char": "¡",
+      "sourceOriginalId": "4ee9d277-b66c-4729-8219-0f5c50b0512f",
+      "sourceOptimizedId": "edbd97ab-086b-4964-8ec3-57a083eec781",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.107143,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "signo completo alineado; punto conservado"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          201.0,
+          560.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          201.0,
+          620.0
+        ]
+      ]
+    },
+    {
+      "char": "!",
+      "sourceOriginalId": "06b10127-8bf8-4c91-aa9c-558a9eb95d14",
+      "sourceOptimizedId": "2a5408ec-de13-4939-aad4-0f4fbae1e2a1",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 0.8,
+        "scaleX": 1,
+        "baselineSourceY": -240.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "signo completo alineado; punto conservado"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          -240.0
+        ],
+        [
+          237.0,
+          600.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          233.0,
+          672.0
+        ]
+      ]
+    },
+    {
+      "char": ".",
+      "sourceOriginalId": "abc4199f-fe99-465b-bb4e-4b8f668ee6db",
+      "sourceOptimizedId": "91b5188b-3e65-4396-965d-56b306e0e431",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          205.0,
+          136.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          205.0,
+          136.0
+        ]
+      ]
+    },
+    {
+      "char": ",",
+      "sourceOriginalId": "2894aaed-b257-4d9c-ad09-4cda150bbad5",
+      "sourceOptimizedId": "49d4531a-fc6e-457c-be05-d29be3cccd48",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -160.0
+        ],
+        [
+          245.0,
+          120.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -160.0
+        ],
+        [
+          245.0,
+          120.0
+        ]
+      ]
+    },
+    {
+      "char": ":",
+      "sourceOriginalId": "656eb5e4-b313-4546-98d2-8e29404a5de0",
+      "sourceOptimizedId": "e2c868cf-915c-4a5f-8489-971f61b08206",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          53.0,
+          20.0
+        ],
+        [
+          225.0,
+          420.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          20.0
+        ],
+        [
+          217.0,
+          420.0
+        ]
+      ]
+    },
+    {
+      "char": ";",
+      "sourceOriginalId": "08c7b53b-cfaa-4965-a8c2-67a2087592bd",
+      "sourceOptimizedId": "87c267e0-4cec-4a6c-851e-4c73e0554e0f",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          -120.0
+        ],
+        [
+          245.0,
+          420.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -120.0
+        ],
+        [
+          245.0,
+          420.0
+        ]
+      ]
+    },
+    {
+      "char": "\"",
+      "sourceOriginalId": "17cb726d-98e9-4a35-8d88-4482d64dd5ed",
+      "sourceOptimizedId": "938d3da0-9c20-4755-812c-b5b21f83129e",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          400.0
+        ],
+        [
+          365.0,
+          700.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          400.0
+        ],
+        [
+          365.0,
+          700.0
+        ]
+      ]
+    },
+    {
+      "char": "'",
+      "sourceOriginalId": "63e0c570-2546-490c-bdbb-468d7d13b31d",
+      "sourceOptimizedId": "58f668b0-e972-4820-83be-08e1673e1314",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          460.0
+        ],
+        [
+          125.0,
+          700.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          460.0
+        ],
+        [
+          125.0,
+          700.0
+        ]
+      ]
+    },
+    {
+      "char": "/",
+      "sourceOriginalId": "f3874a0f-52b3-494d-ad70-885b2fe088cc",
+      "sourceOptimizedId": "2942bbb7-0b5f-45f5-b1b1-d1b3f3d138c0",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -110.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          120.0
+        ],
+        [
+          305.0,
+          660.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          10.0
+        ],
+        [
+          305.0,
+          550.0
+        ]
+      ]
+    },
+    {
+      "char": "\\",
+      "sourceOriginalId": "a04aacb4-b2e8-4a88-a908-019bada72efc",
+      "sourceOptimizedId": "81fa3888-b70e-4f61-8894-c06a1e6cd203",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -120.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          140.0
+        ],
+        [
+          405.0,
+          660.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          20.0
+        ],
+        [
+          405.0,
+          540.0
+        ]
+      ]
+    },
+    {
+      "char": "@",
+      "sourceOriginalId": "daaa9534-5dcf-4a07-9851-e6b09328a081",
+      "sourceOptimizedId": "03810e3c-ce6d-49ee-ae64-bc62c6b83931",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          60.0
+        ],
+        [
+          645.0,
+          720.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          60.0
+        ],
+        [
+          645.0,
+          720.0
+        ]
+      ]
+    },
+    {
+      "char": "#",
+      "sourceOriginalId": "29e5b113-fb74-4311-9825-eddebc5617c2",
+      "sourceOptimizedId": "fb3b08ed-6cd5-462a-8e8a-5dade6c3f2f0",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 1
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 1
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          805.0,
+          660.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          0.0
+        ],
+        [
+          805.0,
+          660.0
+        ]
+      ]
+    },
+    {
+      "char": "$",
+      "sourceOriginalId": "5baf758c-1a4e-434a-be37-84b6a27134fc",
+      "sourceOptimizedId": "f1d97801-d81c-464e-bfbd-2a3779a77234",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 3
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 3
+      },
+      "contoursBefore": 4,
+      "contoursAfter": 4,
+      "boundsBefore": [
+        [
+          45.0,
+          -20.0
+        ],
+        [
+          485.0,
+          840.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -20.0
+        ],
+        [
+          485.0,
+          840.0
+        ]
+      ]
+    },
+    {
+      "char": "-",
+      "sourceOriginalId": "1e9f8694-c9a6-4b25-a68b-49d7e2014ec7",
+      "sourceOptimizedId": "0962e294-cf82-4b62-99c4-686bd6cf5015",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -10.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          53.0,
+          180.0
+        ],
+        [
+          761.0,
+          320.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          170.0
+        ],
+        [
+          753.0,
+          310.0
+        ]
+      ]
+    },
+    {
+      "char": "%",
+      "sourceOriginalId": "68ad25b4-970f-4778-9f5a-b957539a07d9",
+      "sourceOptimizedId": "e0312049-49d1-454b-9cf9-11185132000e",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 3,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 3,
+        "holes": 0
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          -140.0
+        ],
+        [
+          681.0,
+          500.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -140.0
+        ],
+        [
+          681.0,
+          500.0
+        ]
+      ]
+    },
+    {
+      "char": "&",
+      "sourceOriginalId": "7d866fb9-8c56-4135-8bd4-c9d20ae444e0",
+      "sourceOptimizedId": "1c4baae3-e577-47e4-9470-f12d3c0a2626",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 3
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 3
+      },
+      "contoursBefore": 4,
+      "contoursAfter": 4,
+      "boundsBefore": [
+        [
+          45.0,
+          -100.0
+        ],
+        [
+          505.0,
+          540.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -100.0
+        ],
+        [
+          505.0,
+          540.0
+        ]
+      ]
+    },
+    {
+      "char": "*",
+      "sourceOriginalId": "2a99ff16-c1ad-49bc-8c12-e84dc5c1b10c",
+      "sourceOptimizedId": "6a7d213c-a7ff-404d-85f9-541518ba8d5a",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          184.0
+        ],
+        [
+          465.0,
+          640.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          184.0
+        ],
+        [
+          465.0,
+          640.0
+        ]
+      ]
+    },
+    {
+      "char": "+",
+      "sourceOriginalId": "0710eecd-b1bf-4e48-b0d4-d8973287f529",
+      "sourceOptimizedId": "13eedd38-a765-4e53-85eb-0ed47d92b455",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 30.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          49.0,
+          40.0
+        ],
+        [
+          465.0,
+          380.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          70.0
+        ],
+        [
+          461.0,
+          410.0
+        ]
+      ]
+    },
+    {
+      "char": "=",
+      "sourceOriginalId": "9a5efcf6-e9e6-4089-bd37-fddaa28af796",
+      "sourceOptimizedId": "32cb99ec-cfba-4060-80c6-2dcb750b7fd8",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 80.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          49.0,
+          40.0
+        ],
+        [
+          441.0,
+          280.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          120.0
+        ],
+        [
+          437.0,
+          360.0
+        ]
+      ]
+    },
+    {
+      "char": "_",
+      "sourceOriginalId": "43f498e3-19b5-4440-890b-8421a6434a53",
+      "sourceOptimizedId": "3611fa60-ba75-496e-83a3-1c7a04ef6484",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -65.0,
+        "alignment": "subrayado colocado debajo de la base"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          -60.0
+        ],
+        [
+          365.0,
+          20.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          -125.0
+        ],
+        [
+          365.0,
+          -45.0
+        ]
+      ]
+    },
+    {
+      "char": "÷",
+      "sourceOriginalId": "f5a2b543-4e94-48fc-b92e-82e12f1c68f2",
+      "sourceOptimizedId": "03028936-dfd7-4f69-872d-71ee89100fa9",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -100.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 3,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 3,
+        "holes": 0
+      },
+      "contoursBefore": 3,
+      "contoursAfter": 3,
+      "boundsBefore": [
+        [
+          45.0,
+          160.0
+        ],
+        [
+          465.0,
+          520.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          60.0
+        ],
+        [
+          465.0,
+          420.0
+        ]
+      ]
+    },
+    {
+      "char": "²",
+      "sourceOriginalId": "c8986814-f696-402b-8fb1-4597ff4b8561",
+      "sourceOptimizedId": "6156bb01-d39d-4f54-b4e2-150c41ede3e0",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          580.0
+        ],
+        [
+          265.0,
+          880.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          580.0
+        ],
+        [
+          265.0,
+          880.0
+        ]
+      ]
+    },
+    {
+      "char": "³",
+      "sourceOriginalId": "1b4766ec-1d68-4236-b0b1-37d10d302e5b",
+      "sourceOptimizedId": "6f47beff-0d90-42fa-b6a1-6fcc60f15c41",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          520.0
+        ],
+        [
+          285.0,
+          760.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          520.0
+        ],
+        [
+          285.0,
+          760.0
+        ]
+      ]
+    },
+    {
+      "char": "€",
+      "sourceOriginalId": "bbff79bf-f63e-47e0-8f5a-803c7736f360",
+      "sourceOptimizedId": "02e21541-1834-4049-863c-26ef42d31093",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": 0.0,
+        "alignment": "posición manuscrita conservada"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          100.0
+        ],
+        [
+          705.0,
+          800.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          100.0
+        ],
+        [
+          705.0,
+          800.0
+        ]
+      ]
+    },
+    {
+      "char": "~",
+      "sourceOriginalId": "c5b5476d-b16c-4d04-8fe0-67121687520e",
+      "sourceOptimizedId": "c2f7aaaf-600c-488d-9304-9a2329a6f1fa",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -370.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 1,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 1,
+        "holes": 0
+      },
+      "contoursBefore": 1,
+      "contoursAfter": 1,
+      "boundsBefore": [
+        [
+          45.0,
+          560.0
+        ],
+        [
+          481.0,
+          700.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          190.0
+        ],
+        [
+          481.0,
+          330.0
+        ]
+      ]
+    },
+    {
+      "char": "«",
+      "sourceOriginalId": "b0bbe12f-e17d-463c-8efc-8d3569127237",
+      "sourceOptimizedId": "e37e2b6c-632a-469b-b871-023fc4c31444",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -80.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          240.0
+        ],
+        [
+          565.0,
+          480.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          160.0
+        ],
+        [
+          565.0,
+          400.0
+        ]
+      ]
+    },
+    {
+      "char": "»",
+      "sourceOriginalId": "261d4eb7-e6ed-4bee-a5fe-c8d0405c6e0f",
+      "sourceOptimizedId": "eb4e64e8-c9c5-4547-89d7-b0e750b7dcac",
+      "selectedVariantOneBased": 1,
+      "availableVariants": 1,
+      "visualRationale": "Única muestra recuperada; se conserva la forma real y se revisan sus signos separados.",
+      "adjustment": {
+        "scaleY": 1.0,
+        "scaleX": 1,
+        "baselineSourceY": 0.0,
+        "shearXPerY": 0.0,
+        "shearAngleDegrees": 0.0,
+        "opticalShiftY": -180.0,
+        "alignment": "signo centrado en el eje de escritura"
+      },
+      "topologySource": {
+        "components": 2,
+        "holes": 0
+      },
+      "topologyFinal": {
+        "components": 2,
+        "holes": 0
+      },
+      "contoursBefore": 2,
+      "contoursAfter": 2,
+      "boundsBefore": [
+        [
+          45.0,
+          300.0
+        ],
+        [
+          505.0,
+          620.0
+        ]
+      ],
+      "boundsAfter": [
+        [
+          45.0,
+          120.0
+        ],
+        [
+          505.0,
+          440.0
+        ]
+      ]
+    }
+  ]
+}

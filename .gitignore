@@ -1,0 +1,37 @@
+# Private signing material and credentials
+**/signing/
+*.keystore
+*.jks
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+**/.openai/
+
+# User data, source photographs and generated local sessions
+outputs/trazo/data/
+work/caligrafia-2026-10-21/originales/
+work/caligrafia-2026-10-21/*-rect.png
+work/caligrafia-2026-10-21/*-mask.png
+*.jpeg
+*.jpg
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.pid
+
+# Downloaded toolchains, dependencies and temporary output
+work/trazo-android/toolchain/
+outputs/trazo/vendor/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.playwright-mcp/
+.playwright-cli/
+output/
+native/build/
+.DS_Store
+Thumbs.db

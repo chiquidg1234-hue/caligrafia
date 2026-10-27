@@ -1,0 +1,72 @@
+[
+  {
+    "type": "concept",
+    "sampleLibrary": "Mi letra Optimizada",
+    "samples": 390,
+    "nodes": 5,
+    "edges": 4,
+    "glyphs": 101,
+    "missing": [],
+    "pdfBytes": 20067,
+    "pageMm": [
+      297,
+      210
+    ]
+  },
+  {
+    "type": "mind",
+    "sampleLibrary": "Mi letra Optimizada",
+    "samples": 390,
+    "nodes": 5,
+    "edges": 4,
+    "glyphs": 51,
+    "missing": [],
+    "pdfBytes": 13248,
+    "pageMm": [
+      297,
+      210
+    ]
+  },
+  {
+    "type": "flow",
+    "sampleLibrary": "Mi letra Optimizada",
+    "samples": 390,
+    "nodes": 5,
+    "edges": 4,
+    "glyphs": 55,
+    "missing": [],
+    "pdfBytes": 14039,
+    "pageMm": [
+      297,
+      210
+    ]
+  },
+  {
+    "type": "tree",
+    "sampleLibrary": "Mi letra Optimizada",
+    "samples": 390,
+    "nodes": 5,
+    "edges": 4,
+    "glyphs": 44,
+    "missing": [],
+    "pdfBytes": 10166,
+    "pageMm": [
+      297,
+      210
+    ]
+  },
+  {
+    "type": "timeline",
+    "sampleLibrary": "Mi letra Optimizada",
+    "samples": 390,
+    "nodes": 4,
+    "edges": 3,
+    "glyphs": 55,
+    "missing": [],
+    "pdfBytes": 14535,
+    "pageMm": [
+      297,
+      210
+    ]
+  }
+]

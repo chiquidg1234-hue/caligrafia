@@ -1,0 +1,119 @@
+{
+  "type": "trazo-map",
+  "version": 1,
+  "map": {
+    "version": 1,
+    "title": "Diagrama de flujo",
+    "type": "flow",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Inicio",
+        "x": 121.5,
+        "y": 27,
+        "width": 54,
+        "height": 22,
+        "shape": "ellipse",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n2",
+        "text": "Preparar",
+        "x": 121.5,
+        "y": 71.33333333333333,
+        "width": 54,
+        "height": 22,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n3",
+        "text": "¿Listo?",
+        "x": 113.5,
+        "y": 115.66666666666666,
+        "width": 70,
+        "height": 38,
+        "shape": "diamond",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n4",
+        "text": "Revisar",
+        "x": 85.5,
+        "y": 176,
+        "width": 54,
+        "height": 22,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n5",
+        "text": "Terminar",
+        "x": 157.5,
+        "y": 176,
+        "width": 54,
+        "height": 22,
+        "shape": "ellipse",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2",
+        "label": ""
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3",
+        "label": ""
+      },
+      {
+        "id": "e3",
+        "from": "n3",
+        "to": "n4",
+        "label": "no"
+      },
+      {
+        "id": "e4",
+        "from": "n3",
+        "to": "n5",
+        "label": "sí"
+      }
+    ],
+    "paper": {
+      "width": 297,
+      "height": 210,
+      "margin": 12,
+      "marginLeft": 12,
+      "marginRight": 12,
+      "marginTop": 12,
+      "marginBottom": 12,
+      "size": 15,
+      "leading": 8,
+      "gridMm": 5,
+      "gridOriginX": 0,
+      "gridOriginY": 0,
+      "seed": 17,
+      "ink": "#193c66",
+      "paperColor": "#ffffff",
+      "gridColor": "#dce7ef",
+      "marginLineColor": "#dcaeb8",
+      "marginLine": false,
+      "marginLineX": 12,
+      "ruling": "none"
+    }
+  }
+}

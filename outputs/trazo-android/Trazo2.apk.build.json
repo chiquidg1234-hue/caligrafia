@@ -1,0 +1,100 @@
+{
+  "apk": "C:\\Users\\59172\\Documents\\Codex\\2026-10-18\\quiero-q-investigues-esas-soluciones-osea\\outputs\\trazo-android\\Trazo2.apk",
+  "sha256": "a856dc183f4e072b7ed680e5a8d354fa6bf8368ac70222a6747aea7d6c8a7bb9",
+  "bytes": 374481,
+  "package": "app.trazo.offline",
+  "version": "2.0.1",
+  "minSdk": 26,
+  "targetSdk": 36,
+  "buildFolder": "C:\\Users\\59172\\Documents\\Codex\\2026-10-18\\quiero-q-investigues-esas-soluciones-osea\\work\\trazo-android\\toolchain\\build\\508a7c2282634eaea3529d586ff52e33",
+  "assets": [
+    {
+      "path": "app.mjs",
+      "bytes": 39604,
+      "sha256": "ede1a03f572ccda1f01dc8addb6aa9de03eec075d192a237907b8081088f43f3"
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 18612,
+      "sha256": "66811a2136729acc3bf4a5b252cd85480b644a21ed303f8ea010c2611acd9d78"
+    },
+    {
+      "path": "db.mjs",
+      "bytes": 1129,
+      "sha256": "cdba54426095881d1ab0e17e4a5279beed993c378d6d5c3387e2edf647cefd15"
+    },
+    {
+      "path": "exports.mjs",
+      "bytes": 4144,
+      "sha256": "1f56a74bab8b29d77b165a18d14c6b136b677bafb3b6dd7b2589bcce805f35df"
+    },
+    {
+      "path": "icon-192.png",
+      "bytes": 2369,
+      "sha256": "e7d192effe3028cef2b0eaed5880bd1213609883dbcd55efc3d8077fd3eb682c"
+    },
+    {
+      "path": "icon-512.png",
+      "bytes": 6746,
+      "sha256": "7a2b64e170482acbdf67941dfbe9c836e6271821ac64d496a0f2194d7da1d2c0"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 291,
+      "sha256": "70dc8eb93b41a1e0346354c0ef77023850e570d5c4098782b087e9ca8759c226"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1708,
+      "sha256": "1cb581e1f57f4d12cad7fda095910354f8ef3fa93eef719423490d241ff11b4a"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 358,
+      "sha256": "7e6ab91b1fcb0b20d0de38806d64e2688660949ba7ce1b84ca833ee1d582e199"
+    },
+    {
+      "path": "model.mjs",
+      "bytes": 2803,
+      "sha256": "23aa5e43913d18cf5ce1712696c4d8937062912a31a9bbcd67cb0423533be3d7"
+    },
+    {
+      "path": "style.css",
+      "bytes": 11660,
+      "sha256": "09d7ff1dc23c21d92a96763337fc82d094bdc9476b390776631f9a22dfbed54c"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 848,
+      "sha256": "f5032081ff8b10c66b264f06e92bb5f0ae77269921026430346aa615f2690d9d"
+    },
+    {
+      "path": "vendor/opentype.js-LICENSE.txt",
+      "bytes": 1085,
+      "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61"
+    },
+    {
+      "path": "vendor/opentype.mjs",
+      "bytes": 464140,
+      "sha256": "8d79d17388114a29d74681dfaed84068b1d7d9b4e39a9544fb6406d25579ad8f"
+    },
+    {
+      "path": "vendor/pdf-lib-LICENSE.txt",
+      "bytes": 1070,
+      "sha256": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb"
+    },
+    {
+      "path": "vendor/pdf-lib.min.js",
+      "bytes": 525099,
+      "sha256": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f"
+    },
+    {
+      "path": "worker.mjs",
+      "bytes": 223,
+      "sha256": "4efac5fd35591f756334282d688c04533dd90ccd029c084da2a6d037e7a71c0f"
+    }
+  ],
+  "signatureVerified": true,
+  "alignmentVerified": true,
+  "androidDeviceTested": false
+}

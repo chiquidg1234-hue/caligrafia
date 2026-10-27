@@ -1,0 +1,23 @@
+{
+  "profiles": [
+    {
+      "profile": "original",
+      "samples": 390,
+      "characters": 111,
+      "pages": 10,
+      "previewEqualsPDFLayout": true,
+      "fontDownloadSha256": "bc4f1cbef07cdd92dcb4a7447bc1877e2abceed7ee5fba92fa4a317e10df5269"
+    },
+    {
+      "profile": "optimizada",
+      "samples": 390,
+      "characters": 111,
+      "pages": 10,
+      "previewEqualsPDFLayout": true,
+      "fontDownloadSha256": "954dc8a042b6cf118f0cb0996bde354efece858cc9030c39089239d968ccd8eb"
+    }
+  ],
+  "missingBlocksExport": true,
+  "physicalPaperHasNoPrintedGrid": true,
+  "existingLibraryPreserved": true
+}

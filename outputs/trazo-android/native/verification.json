@@ -1,0 +1,39 @@
+{
+  "apk": "Trazo4.apk",
+  "sha256": "0a3df47e04713a7392ce42271c848dd96d40729fecdae94bf780d55e36feb301",
+  "bytes": 653425,
+  "package": "app.trazo.offline",
+  "version": "2.2.0",
+  "versionCode": 20003,
+  "minSdk": 26,
+  "targetSdk": 36,
+  "nativePolicyChecks": 22,
+  "nodeTestsPassed": 74,
+  "mapBrowserRegressionsPassed": 3,
+  "webAssetsCompared": 23,
+  "webAssetsByteIdentical": true,
+  "signatureV2Verified": true,
+  "signatureV3Verified": true,
+  "zipAlignmentVerified": true,
+  "requestedAndroidPermissions": [],
+  "signatureCertificateSha256": "98fe61b509d19f82e5e28995f35b9105063ca9ffaa4d41c030dadbfe42e59825",
+  "signatureMatchesLegacyApk": true,
+  "bundledProfiles": {
+    "uniforme": 111,
+    "original": 390,
+    "optimizada": 390
+  },
+  "rawPhotosIncluded": false,
+  "androidRuntimeTested": false,
+  "androidRuntimeReason": "Sin dispositivo conectado ni emulador. No se afirma prueba Android física.",
+  "legacyApksPreserved": [
+    {
+      "file": "Trazo2.apk",
+      "sha256": "a856dc183f4e072b7ed680e5a8d354fa6bf8368ac70222a6747aea7d6c8a7bb9"
+    },
+    {
+      "file": "Trazo3.apk",
+      "sha256": "a32ed16acccc4f9ef86823841f2b105079d547288823a2ab0cd63ebc8159c954"
+    }
+  ]
+}

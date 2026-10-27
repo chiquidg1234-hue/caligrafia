@@ -1,0 +1,101 @@
+{
+  "type": "trazo-map",
+  "version": 1,
+  "map": {
+    "version": 1,
+    "title": "Línea de tiempo",
+    "type": "timeline",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Inicio\nDía 1",
+        "x": 24.5,
+        "y": 97.5,
+        "width": 50,
+        "height": 30,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n2",
+        "text": "Explorar\nDía 2",
+        "x": 90.5,
+        "y": 97.5,
+        "width": 50,
+        "height": 30,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n3",
+        "text": "Crear\nDía 3",
+        "x": 156.5,
+        "y": 97.5,
+        "width": 50,
+        "height": 30,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n4",
+        "text": "Revisar\nDía 4",
+        "x": 222.5,
+        "y": 97.5,
+        "width": 50,
+        "height": 30,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2",
+        "label": ""
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3",
+        "label": ""
+      },
+      {
+        "id": "e3",
+        "from": "n3",
+        "to": "n4",
+        "label": ""
+      }
+    ],
+    "paper": {
+      "width": 297,
+      "height": 210,
+      "margin": 12,
+      "marginLeft": 12,
+      "marginRight": 12,
+      "marginTop": 12,
+      "marginBottom": 12,
+      "size": 15,
+      "leading": 8,
+      "gridMm": 5,
+      "gridOriginX": 0,
+      "gridOriginY": 0,
+      "seed": 17,
+      "ink": "#193c66",
+      "paperColor": "#ffffff",
+      "gridColor": "#dce7ef",
+      "marginLineColor": "#dcaeb8",
+      "marginLine": false,
+      "marginLineX": 12,
+      "ruling": "none"
+    }
+  }
+}

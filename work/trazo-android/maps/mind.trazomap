@@ -1,0 +1,119 @@
+{
+  "type": "trazo-map",
+  "version": 1,
+  "map": {
+    "version": 1,
+    "title": "Mapa mental",
+    "type": "mind",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Idea central",
+        "x": 113.5,
+        "y": 95.5,
+        "width": 70,
+        "height": 34,
+        "shape": "ellipse",
+        "color": "#193c66",
+        "bold": true,
+        "italic": false
+      },
+      {
+        "id": "n2",
+        "text": "Ideas",
+        "x": 119.5,
+        "y": 28,
+        "width": 58,
+        "height": 32,
+        "shape": "ellipse",
+        "color": "#365f91",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n3",
+        "text": "Preguntas",
+        "x": 221,
+        "y": 96.5,
+        "width": 58,
+        "height": 32,
+        "shape": "ellipse",
+        "color": "#8b4d35",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n4",
+        "text": "Recursos",
+        "x": 119.5,
+        "y": 165,
+        "width": 58,
+        "height": 32,
+        "shape": "ellipse",
+        "color": "#41684a",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n5",
+        "text": "Acciones",
+        "x": 18,
+        "y": 96.50000000000001,
+        "width": 58,
+        "height": 32,
+        "shape": "ellipse",
+        "color": "#765095",
+        "bold": false,
+        "italic": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2",
+        "label": ""
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "label": ""
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n4",
+        "label": ""
+      },
+      {
+        "id": "e4",
+        "from": "n1",
+        "to": "n5",
+        "label": ""
+      }
+    ],
+    "paper": {
+      "width": 297,
+      "height": 210,
+      "margin": 12,
+      "marginLeft": 12,
+      "marginRight": 12,
+      "marginTop": 12,
+      "marginBottom": 12,
+      "size": 15,
+      "leading": 8,
+      "gridMm": 5,
+      "gridOriginX": 0,
+      "gridOriginY": 0,
+      "seed": 17,
+      "ink": "#193c66",
+      "paperColor": "#ffffff",
+      "gridColor": "#dce7ef",
+      "marginLineColor": "#dcaeb8",
+      "marginLine": false,
+      "marginLineX": 12,
+      "ruling": "none"
+    }
+  }
+}

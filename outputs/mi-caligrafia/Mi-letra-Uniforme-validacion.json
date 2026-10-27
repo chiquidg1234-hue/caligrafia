@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "byteIdenticalRebuild": true,
+  "all111GlyphsRenderNonblank": true,
+  "sanitizedBundleProfiles": 3,
+  "bundleSampleCounts": [
+    111,
+    390,
+    390
+  ],
+  "legacyFilesUnchanged": 6,
+  "contoursComponentsAndHolesPreserved": true,
+  "sha256": {
+    "outputs\\mi-caligrafia\\Mi-letra-Uniforme.trazo": "1f19a3d222143e509a681d6a5fd80b8c2f85c80266d4c315b7c35cd9957b5304",
+    "outputs\\mi-caligrafia\\Mi-letra-Uniforme.ttf": "f0ca4bdfbcda0e4966474a3d3c423fd7e747bbdb36ed429a8d49446f9dbc1e96",
+    "outputs\\mi-caligrafia\\Mi-letra-Uniforme.json": "66923cfcb422fa3bde45f08d4b71ef7989ab144db4586c9c682c91a983ca59c8",
+    "work\\caligrafia-2026-10-21\\bundled-letter.json": "4d7a15f091a912221282cfdf3be4a5fdb7b3056aa87815ec2784cc477d265ae2"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "apk": "C:\\Users\\59172\\Documents\\Codex\\2026-10-18\\quiero-q-investigues-esas-soluciones-osea\\outputs\\trazo-android\\Trazo4.apk",
+  "sha256": "0a3df47e04713a7392ce42271c848dd96d40729fecdae94bf780d55e36feb301",
+  "bytes": 653425,
+  "package": "app.trazo.offline",
+  "version": "2.2.0",
+  "versionCode": 20003,
+  "minSdk": 26,
+  "targetSdk": 36,
+  "buildFolder": "C:\\Users\\59172\\Documents\\Codex\\2026-10-18\\quiero-q-investigues-esas-soluciones-osea\\work\\trazo-android\\toolchain\\build\\53bed421c3264632b70d7d0add8f9deb",
+  "assets": [
+    {
+      "path": "app.mjs",
+      "bytes": 55929,
+      "sha256": "237840a5562efe40483346c78d82f4bdcaf05a74e1a0644f801a9c9348637b5b"
+    },
+    {
+      "path": "bundled.mjs",
+      "bytes": 1561,
+      "sha256": "ccbdaea3165ebbea65202f0742838758e81751d395bde9b99ed90c896a4d733d"
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 19768,
+      "sha256": "94622863af4cc3174d4b7e4dd8386ea9bbd4821fab132f1888b2445e44b044da"
+    },
+    {
+      "path": "db.mjs",
+      "bytes": 1702,
+      "sha256": "949cb1e40f29a07c866d6f677920166bc2873b6bda941b5f8ecdbec69a5d49b9"
+    },
+    {
+      "path": "exports.mjs",
+      "bytes": 4408,
+      "sha256": "26ad082f4e69e739c77cc7a8b74c1267257f0fa403ae2a2c8d933eec8eaf3509"
+    },
+    {
+      "path": "icon-192.png",
+      "bytes": 2369,
+      "sha256": "e7d192effe3028cef2b0eaed5880bd1213609883dbcd55efc3d8077fd3eb682c"
+    },
+    {
+      "path": "icon-512.png",
+      "bytes": 6746,
+      "sha256": "7a2b64e170482acbdf67941dfbe9c836e6271821ac64d496a0f2194d7da1d2c0"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 291,
+      "sha256": "70dc8eb93b41a1e0346354c0ef77023850e570d5c4098782b087e9ca8759c226"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1762,
+      "sha256": "f11a701aaf149b6519edad2006d282d4146879549f153db2b0a244664de92e30"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 358,
+      "sha256": "7e6ab91b1fcb0b20d0de38806d64e2688660949ba7ce1b84ca833ee1d582e199"
+    },
+    {
+      "path": "maps-storage.mjs",
+      "bytes": 1855,
+      "sha256": "9709848c29502a8093810bb42e56a104a17747ca23221990ebb602fa2793c90e"
+    },
+    {
+      "path": "maps-ui.mjs",
+      "bytes": 19930,
+      "sha256": "98229f0e21c8d4171ca5a7de7690ae47535c3e99633986385fab4be4b2e2f0bc"
+    },
+    {
+      "path": "maps.css",
+      "bytes": 3051,
+      "sha256": "31da3175fb88daf7d67e6d51695f264c7447123b4f289e8a5bce08b3e1620b24"
+    },
+    {
+      "path": "maps.mjs",
+      "bytes": 22930,
+      "sha256": "506b5c7fa45a0cd4a570febe1de3eb5151db85b56db2c87de670e932f6c7297c"
+    },
+    {
+      "path": "model.mjs",
+      "bytes": 9872,
+      "sha256": "600c1a07d8b74a471701c56bbef34a344cfb9cbb48896b4c48bade5a5fec33c4"
+    },
+    {
+      "path": "personal-letter.json",
+      "bytes": 1021703,
+      "sha256": "4d7a15f091a912221282cfdf3be4a5fdb7b3056aa87815ec2784cc477d265ae2"
+    },
+    {
+      "path": "style.css",
+      "bytes": 13795,
+      "sha256": "d980c751899aa14f9e1f17e252ed72742a6ec51508c71864ce3ad2d73ce504db"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 1016,
+      "sha256": "fd69653048d4bad220e17688de70f0932443752dfc1d58caf612fb6795c052e5"
+    },
+    {
+      "path": "vendor/opentype.js-LICENSE.txt",
+      "bytes": 1085,
+      "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61"
+    },
+    {
+      "path": "vendor/opentype.mjs",
+      "bytes": 464140,
+      "sha256": "8d79d17388114a29d74681dfaed84068b1d7d9b4e39a9544fb6406d25579ad8f"
+    },
+    {
+      "path": "vendor/pdf-lib-LICENSE.txt",
+      "bytes": 1070,
+      "sha256": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb"
+    },
+    {
+      "path": "vendor/pdf-lib.min.js",
+      "bytes": 525099,
+      "sha256": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f"
+    },
+    {
+      "path": "worker.mjs",
+      "bytes": 223,
+      "sha256": "4efac5fd35591f756334282d688c04533dd90ccd029c084da2a6d037e7a71c0f"
+    }
+  ],
+  "signatureVerified": true,
+  "alignmentVerified": true,
+  "androidDeviceTested": false
+}

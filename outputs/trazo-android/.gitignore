@@ -1,0 +1,7 @@
+native/build/
+*.keystore
+*.jks
+__pycache__/
+node_modules/
+.playwright-cli/
+output/

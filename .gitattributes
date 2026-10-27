@@ -1,0 +1,3 @@
+# Preserve the audited bytes of fonts, PDFs, APKs and the web assets inside APKs.
+# This also prevents platform-specific newline conversions in source archives.
+* -text

@@ -1,0 +1,119 @@
+{
+  "type": "trazo-map",
+  "version": 1,
+  "map": {
+    "version": 1,
+    "title": "Mapa conceptual",
+    "type": "concept",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Tema central",
+        "x": 116.5,
+        "y": 47.5,
+        "width": 64,
+        "height": 26,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": true,
+        "italic": false
+      },
+      {
+        "id": "n2",
+        "text": "Primera idea",
+        "x": 85.5,
+        "y": 99.5,
+        "width": 54,
+        "height": 26,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n3",
+        "text": "Segunda idea",
+        "x": 157.5,
+        "y": 99.5,
+        "width": 54,
+        "height": 26,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n4",
+        "text": "Un ejemplo",
+        "x": 85.5,
+        "y": 151.5,
+        "width": 54,
+        "height": 26,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "id": "n5",
+        "text": "Otro ejemplo",
+        "x": 157.5,
+        "y": 151.5,
+        "width": 54,
+        "height": 26,
+        "shape": "box",
+        "color": "#193c66",
+        "bold": false,
+        "italic": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2",
+        "label": "incluye"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "label": "incluye"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n4",
+        "label": "por ejemplo"
+      },
+      {
+        "id": "e4",
+        "from": "n3",
+        "to": "n5",
+        "label": "por ejemplo"
+      }
+    ],
+    "paper": {
+      "width": 297,
+      "height": 210,
+      "margin": 12,
+      "marginLeft": 12,
+      "marginRight": 12,
+      "marginTop": 12,
+      "marginBottom": 12,
+      "size": 15,
+      "leading": 8,
+      "gridMm": 5,
+      "gridOriginX": 0,
+      "gridOriginY": 0,
+      "seed": 17,
+      "ink": "#193c66",
+      "paperColor": "#ffffff",
+      "gridColor": "#dce7ef",
+      "marginLineColor": "#dcaeb8",
+      "marginLine": false,
+      "marginLineX": 12,
+      "ruling": "none"
+    }
+  }
+}
