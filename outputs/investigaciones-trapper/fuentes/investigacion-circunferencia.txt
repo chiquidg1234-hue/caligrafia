@@ -1,0 +1,89 @@
+[[hoja trapper]]
+# Investigación sobre circunferencia
+
+## Conceptos y elementos
+
+1. ¿Qué es una circunferencia y cómo se define geométricamente?
+Es una línea curva cerrada cuyos puntos están a la misma distancia de un punto fijo llamado centro.
+
+2. ¿Qué diferencia existe entre circunferencia y círculo?
+La circunferencia es el contorno; el círculo es la región interior junto con su contorno.
+
+3. ¿Qué elementos fundamentales componen una circunferencia?
+Centro, radio, diámetro, cuerda y arco. También se estudian la tangente y la secante.
+
+4. ¿Qué representa el radio en una circunferencia?
+Es el segmento que une el centro con cualquier punto de la circunferencia. Se simboliza con r.
+
+5. ¿Qué es el diámetro y cómo se relaciona con el radio?
+Es la cuerda que pasa por el centro. Mide el doble del radio:
+!! d = 2r
+
+6. ¿Qué se entiende por cuerda en una circunferencia?
+Es un segmento que une dos puntos de la circunferencia, sin necesidad de pasar por el centro.
+
+7. ¿Qué es un arco y qué partes de la circunferencia lo delimitan?
+Es una porción de circunferencia comprendida entre dos puntos llamados extremos.
+
+8. ¿Qué es una semicircunferencia y cómo se obtiene?
+Es la mitad de una circunferencia, obtenida al dividirla mediante un diámetro.
+
+9. ¿Qué es un sector circular y qué elementos lo determinan?
+Es una región del círculo limitada por dos radios y el arco comprendido entre ellos.
+
+10. ¿Qué es un segmento circular y cómo se forma dentro del círculo?
+Es la región del círculo limitada por una cuerda y su arco correspondiente.
+
+## Ecuaciones de la circunferencia
+
+11. ¿Cuál es la ecuación ordinaria de una circunferencia en el plano cartesiano?
+!! (x - h)^2 + (y - k)^2 = r^2
+
+12. ¿Qué representan los parámetros h, k y r en la ecuación (x - h)^2 + (y - k)^2 = r^2?
+h y k son las coordenadas del centro C(h, k); r es el radio.
+
+13. ¿Cómo se deduce la ecuación general de una circunferencia a partir de su ecuación ordinaria?
+Al desarrollar los cuadrados y ordenar:
+!! x^2 + y^2 + Dx + Ey + F = 0
+donde D = -2h, E = -2k y F = h^2 + k^2 - r^2.
+
+14. ¿Qué información se puede obtener al comparar las ecuaciones de dos circunferencias?
+Se pueden comparar sus centros y radios para saber su tamaño, ubicación y si son exteriores, tangentes, secantes o concéntricas.
+
+15. ¿Qué sucede con la ecuación de una circunferencia si el radio es igual a cero?
+Queda (x - h)^2 + (y - k)^2 = 0: representa únicamente el punto (h, k), no una circunferencia de radio positivo.
+
+16. ¿Cuál es la condición para que una ecuación cuadrática en x e y represente una circunferencia?
+Los coeficientes de x^2 e y^2 deben ser iguales y distintos de cero, no debe existir término xy y el radio calculado debe cumplir r^2 > 0.
+
+17. ¿Cómo se determina el centro y el radio a partir de una ecuación general?
+Para x^2 + y^2 + Dx + Ey + F = 0:
+!! C(-D/2, -E/2)   y   r = raiz((D^2 + E^2)/4 - F)
+
+18. ¿Qué representa el radio negativo en una ecuación de circunferencia?
+No tiene significado geométrico como distancia. Como aparece r^2, +r y -r producen la misma ecuación; se toma el radio no negativo.
+
+19. ¿Por qué el radio de una circunferencia siempre debe ser un número positivo?
+Porque es una distancia y, para una circunferencia verdadera, debe ser mayor que cero.
+
+20. ¿Qué ocurre con una circunferencia cuyo centro coincide con el origen del plano?
+Su centro es C(0, 0) y la ecuación se simplifica a:
+!! x^2 + y^2 = r^2
+
+## Rectas y posiciones relativas
+
+21. ¿Qué se entiende por tangente a una circunferencia?
+Es una recta que tiene un solo punto en común con la circunferencia.
+
+22. ¿Qué condición debe cumplir una recta para ser tangente a una circunferencia?
+La distancia perpendicular del centro a la recta debe ser igual al radio; además, el radio al punto de tangencia es perpendicular a la recta.
+
+23. ¿Qué diferencia hay entre una secante y una tangente?
+La secante corta la circunferencia en dos puntos; la tangente la toca en uno solo.
+
+24. ¿Qué ocurre si la distancia entre los centros de dos circunferencias es mayor que la suma de sus radios?
+Son exteriores: no se cortan ni tienen puntos en común.
+!! d > r_1 + r_2
+
+25. ¿Por qué se dice que la circunferencia es un caso particular de cónica?
+Porque se obtiene al cortar un cono circular recto con un plano perpendicular a su eje; también es una elipse especial con sus dos semiejes iguales.

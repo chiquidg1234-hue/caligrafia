@@ -282,6 +282,8 @@ export function composeDocument(source, samples, options = {}) {
       const rows = b => b.type === 'blank' ? b.rows : render(b, width, {...state}).rows;
       if (heading || block.type === 'title') {if (solid) need += chain.reduce((n, b) => n + rows(b), 1); else if (chain[0]) need += Math.min(rows(chain[0]), 4);}
       else if (solid) need += chain.reduce((n, b) => n + rows(b), 1);
+      // A question stays with the beginning of its answer.
+      else if (/\?\s*$/.test(block.text) && chain[0]) need += Math.min(rows(chain[0]), 4);
     }
     if (row > o.insetTop && clash(previous, r)) row++;
     // At most N graphs on one side of the sheet (the user's rule: three).

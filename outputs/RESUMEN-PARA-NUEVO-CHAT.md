@@ -7,7 +7,7 @@ Pega este archivo o pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del reposit
 **Trazo** es una app web/Android que escribe con letra a mano.
 - La app está en `outputs/trazo-android/web`.
 - `dist/` es una copia de `web/`: después de cada cambio se copia web → dist.
-- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (106 pasan).
+- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (107 pasan).
 
 ## Letras incluidas (`web/personal-letter.json`)
 
@@ -73,6 +73,8 @@ Antes, de cerca, la letra impresa se notaba: el borde quedaba mordido por la fot
   - corta palabras con guion por sílabas, 2 cuadritos antes del margen derecho;
   - un enunciado nunca queda solo al pie de una hoja.
 - **Enunciados:** no copiar las respuestas «R:» del enunciado.
+- **Sin negritas** (`**`): a mano no existen y delatan la impresión. Solo si ella las pide.
+- **Preguntas y respuestas:** una pregunta (renglón que termina en «?») nunca queda sola al pie de la hoja.
 - **Formato:**
   - la guía completa está en `outputs/practicos/FORMATO-TRAZO.md`;
   - las unidades en línea se escriben con doble barra (`g//mol`) y las fracciones con una (`a/b`);
@@ -91,6 +93,7 @@ Genera el PDF completo, anversos, reversos, la hoja blanca con cuadrícula y los
 - `practicos/`: Matemáticas, Física (4 ejercicios) y Práctico 5, en Oficio con Natural.
 - `practicos-trapper/`: Química (2A), Física de energía (17 ejercicios, 2Y) y Física corta (2Y), en Trapper.
 - `fuentes-2a-2y/`: las dos fuentes (.otf, .trazo, muestras y pruebas).
+- `investigaciones-trapper/`: Investigación sobre circunferencia (25 preguntas, Trapper, Natural, tinta real, sin negritas, resultados con «//»).
 - `prueba-tinta-real/`: guía «que no se note impreso», hoja de prueba antes/ahora y comparación ampliada. Los prácticos de arriba se generaron antes y tienen tinta plana; al regenerarlos salen con tinta real.
 - `mi-caligrafia/`: Natural y las versiones anteriores.
 - `hoja-prueba-oficio/`, `prueba-lapiceros/`: pruebas de impresión.

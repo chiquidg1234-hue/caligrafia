@@ -121,3 +121,11 @@ test('answers end with two little lines; the box only with [[respuesta recuadro]
   assert.equal(ink('[[respuesta recuadro]]\n!! x = 2'), 4);
   assert.throws(() => parseDocument('[[respuesta circulo]]'), /rayitas/);
 });
+
+test('a question never stays alone at the bottom of a sheet', () => {
+  const source = Array.from({length: 40}, (_, i) => `${i + 1}. ¿Pregunta número ${i + 1} sobre la circunferencia?\nRespuesta corta de la pregunta ${i + 1}.\n`).join('\n');
+  for (const page of composeDocument(source, natural).pages) {
+    const rows = [...new Set(page.items.map(i => Math.round(i.y / 5)))].sort((a, b) => a - b), last = page.items.filter(i => Math.round(i.y / 5) === rows.at(-1));
+    assert.ok(!last.some(i => i.label === '?') || page === undefined, 'a question ends the page');
+  }
+});
