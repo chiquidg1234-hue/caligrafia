@@ -3,7 +3,7 @@
 | Carpeta | Letra | Contenido | Páginas |
 | --- | --- | --- | --- |
 | [`Practico-Quimica-2A`](Practico-Quimica-2A) | **Fuente 2A** | Ley de los gases ideales, ejercicios 1 al 10 | 6 (3 hojas) |
-| [`Practico-Fisica-Energia-2Y`](Practico-Fisica-Energia-2Y) | **Fuente 2Y** | Trabajo, potencia y energía, ejercicios 1 al 17 | 7 (4 hojas) |
+| [`Practico-Fisica-Energia-2Y`](Practico-Fisica-Energia-2Y) | **Fuente 2Y** | Trabajo, potencia y energía, ejercicios 1 al 17 | 6 (3 hojas) |
 | [`Practico-Fisica-6-2Y`](Practico-Fisica-6-2Y) | **Fuente 2Y** | El práctico corto de 4 ejercicios (cubo de aluminio, pistón, prensa hidráulica, empuje) | 2 (1 hoja) |
 
 Cada carpeta tiene lo mismo que los prácticos anteriores:

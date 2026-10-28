@@ -38,7 +38,7 @@ export const PAPERS = Object.freeze({oficio: OFICIO_ESPIRAL, trapper: TRAPPER_TO
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
-  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', natural: .55, seed: 7, lineGap: 0, pen: .27,
+  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
   // Epson T50 measured on the first test: 5–6 mm to the left and 1 mm high.
   // With this correction the writing starts two squares inside the frame,
   // which the user prefers (third test print).
@@ -79,6 +79,7 @@ export function parseDocument(source) {
       else if (key === 'color') {if (!/^#[\da-f]{6}$/i.test(args)) throw Error(`Color inválido (${at}).`); push({type: 'set', key: 'text', value: args.toLowerCase()});}
       else if (key === 'pagina' || key === 'página') push({type: 'page'});
       else if (key === 'lapicero') {if (!PENS[args] && args !== 'libre') throw Error(`Lapicero desconocido «${args}» (${at}). Usa: ${Object.keys(PENS).join(', ')} o libre.`); push({type: 'set', key: 'pen', value: args === 'libre' ? '' : args});}
+      else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
       else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
       else if (key === 'graficas-por-hoja' || key === 'gráficas-por-hoja') push({type: 'set', key: 'graphsPerPage', value: Math.max(1, Number(args) || 3)});
       else throw Error(`No conozco [[${name}]] (${at}).`);
@@ -212,6 +213,14 @@ export function composeDocument(source, samples, options = {}) {
         return {...r, items: [...dot.items, ...r.items]};
       }
       case 'boxed': {
+        // The answer ends with the two little slanted lines of her school;
+        // the hand-drawn box only with [[respuesta recuadro]].
+        if (state.answer !== 'recuadro') {
+          const r = write(block.text, w - 5, state), random = rng(seed++), box = inkBox(r.items);
+          const base = Math.max(...r.items.filter(i => i.type === 'glyph').map(i => i.y)), x = box.r + 1.8 + between(random, -.3, .3);
+          const slash = dx => pen([[x + dx, base + .3 + between(random, -.2, .2)], [x + dx + .7, base - 1.4], [x + dx + 1.3 + between(random, -.2, .2), base - 3.1 + between(random, -.2, .2)]], state.text, random);
+          return {...r, items: [...r.items, slash(0), slash(1.25 + between(random, -.15, .15))]};
+        }
         const r = write(block.text, w - 2, state); for (const it of r.items) {it.x += 1; it.y += g;}
         const box = inkBox(r.items), random = rng(seed++);
         return {items: [...r.items, ...handBox(box.l - 1.6, box.t - 1.4, box.r + 1.6, box.b + 1.3, state.text, random).flat()], rows: r.rows + 2};
@@ -243,7 +252,7 @@ export function composeDocument(source, samples, options = {}) {
   }
 
   const graphs = b => b.type === 'graph' ? 1 : b.type === 'columns' ? b.columns.flat().reduce((n, c) => n + graphs(c), 0) : 0;
-  const pages = [], state = {size: o.size, text: o.text, pen: o.ink, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity};
+  const pages = [], state = {size: o.size, text: o.text, pen: o.ink, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity, answer: o.answer};
   let page = null, row = 0, previous = null;
   const newPage = () => {const side = area[(o.start + pages.length) % 2]; page = {side: side.name, items: [], graphs: 0}; pages.push(page); row = o.insetTop; previous = null;};
   const limit = () => area[(o.start + pages.length - 1) % 2].rows - o.insetBottom;

@@ -6,7 +6,7 @@ Tres prácticos listos para imprimir sobre tu cuaderno Oficio de cuadritos de 5 
 | --- | --- | --- |
 | [`Practico-Matematicas`](Practico-Matematicas) | Ejercicio 1 (a–e): teoría. Ejercicios 2, 3 y 4 (1 al 5): ecuación de la recta con su gráfica de coordenadas. Coordenadas a la izquierda, resolución a la derecha; como máximo 3 gráficas por cara. | 6 (3 hojas) |
 | [`Practico-Fisica`](Practico-Fisica) | Los 4 problemas: enunciado, datos a la izquierda y resolución a la derecha. | 2 (1 hoja) |
-| [`Practico-5`](Practico-5) | Los 17 ejercicios, sin los «Resp.» del indicador. Cada uno con enunciado, datos, resolución y respuesta encerrada. | 6 (3 hojas) |
+| [`Practico-5`](Practico-5) | Los 17 ejercicios, sin los «Resp.» del indicador. Cada uno con enunciado, datos, resolución y respuesta terminada con dos rayitas «//». | 6 (3 hojas) |
 
 Cada carpeta tiene:
 - `…-1-anversos.pdf` y `…-2-reversos.pdf`: para imprimir cada cara en una sola tanda.

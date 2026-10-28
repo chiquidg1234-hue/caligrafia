@@ -114,3 +114,10 @@ test('«//» writes units on the line instead of a fraction', () => {
   assert.ok(tall('32g//mol') < tall('32g/mol') * .75);
   assert.deepEqual(composeFormula('R = 8,314 J//(mol·K)', pick).missing, []);
 });
+
+test('answers end with two little lines; the box only with [[respuesta recuadro]]', () => {
+  const ink = src => composeDocument(src, natural).pages[0].items.filter(i => i.type === 'ink').length;
+  assert.equal(ink('!! x = 2'), 2);
+  assert.equal(ink('[[respuesta recuadro]]\n!! x = 2'), 4);
+  assert.throws(() => parseDocument('[[respuesta circulo]]'), /rayitas/);
+});

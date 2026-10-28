@@ -42,7 +42,7 @@ y - 7 = -1/4(x - 5)
 export const FORMAT_HELP = `<ul class="doc-help">
 <li><code># Título</code> centrado y en color · <code>## Subtítulo</code> · <code>### Ejercicio 1.-</code></li>
 <li>Una línea = un párrafo. Una línea vacía deja un renglón libre. <code>---</code> pasa a la otra cara.</li>
-<li><code>- texto</code> viñeta · <code>!! respuesta</code> encerrada a mano · <code>**negrita**</code></li>
+<li><code>- texto</code> viñeta · <code>!! respuesta</code> termina con dos rayitas // (con <code>[[respuesta recuadro]]</code>, encerrada) · <code>**negrita**</code></li>
 <li>Fórmulas: <code>x^2</code> <code>v_0</code> <code>P_{atm}</code> <code>a/b</code> <code>(x+1)/(x-1)</code> <code>3/2x</code> <code>raiz(x)</code> <code>raiz[3](8)</code> <code>&lt;= &gt;= != +- -&gt;</code> <code>π ρ Δ ≈ ·</code></li>
 <li>Datos a la izquierda y resolución a la derecha: <code>[[columnas 12]]</code> … <code>[[|]]</code> … <code>[[fin]]</code> (12 = cuadritos de ancho).</li>
 <li>Coordenadas: <code>[[grafica xmin xmax ymin ymax]]</code>, luego <code>recta a b c | etiqueta</code> (a·x + b·y + c = 0) y <code>punto x y | (x,y)</code>, y <code>[[fin]]</code>.</li>

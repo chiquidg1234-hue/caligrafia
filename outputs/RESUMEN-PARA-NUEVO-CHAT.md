@@ -45,7 +45,7 @@ Hay que mantener tres copias iguales: `web/`, `dist/` y `work/caligrafia-2026-10
 ## Reglas de sus tareas
 
 - **Título y encabezados:** título centrado con un renglón libre debajo; `### Ejercicio N.-` en rojo.
-- **Datos y resolución:** datos a la izquierda y resolución a la derecha (`[[columnas 12]]`); respuesta encerrada (`!!`).
+- **Datos y resolución:** datos a la izquierda y resolución a la derecha (`[[columnas 12]]`); la respuesta (`!!`) termina con dos rayitas «//». **El recuadro solo cuando ella lo pida** (`[[respuesta recuadro]]`).
 - **Gráficas:** máximo 3 por cara, a la izquierda, «bonitas pero no perfectas». Sin dibujos.
 - **Tinta:** bolígrafo azul tipo BIC (`#283a7c`, el tono varía letra por letra); títulos en rojo `#b02a33`.
 - **Renglones:**

@@ -12,7 +12,7 @@ Con este formato, cualquier tarea queda escrita con tu letra en la hoja Oficio c
 | Una línea de texto | Un párrafo. Si no cabe, sigue abajo y corta las palabras con guion por sílabas («gue-rra»). |
 | Línea vacía | Un renglón libre. |
 | `- texto` | Viñeta «·» con sangría. |
-| `!! P = 125 000 Pa` | Respuesta encerrada en un recuadro hecho a mano. |
+| `!! P = 125 000 Pa` | Respuesta final, terminada con dos rayitas «//» hechas a mano. Con `[[respuesta recuadro]]` antes, va encerrada en un recuadro; `[[respuesta rayitas]]` vuelve a las rayitas. |
 | `**Datos:**` | Negrita. |
 | `---` | Pasa a la otra cara de la hoja. |
 
@@ -82,7 +82,7 @@ punto 9 6 | (9,6)
 
 Copia esto y agrega tu tarea al final:
 
-> Escribe la resolución de esta tarea en «formato Trazo», en texto plano, sin Markdown extra ni LaTeX. Usa `# Título` una sola vez (por ejemplo «# Práctico de Física»). Para cada ejercicio, escribe `### Ejercicio N.-` y copia el enunciado tal cual en la línea siguiente. Deja una línea vacía y abre `[[columnas 12]]`. A la izquierda va `**Datos:**`, con un dato por línea (por ejemplo `m = 95 kg`, `P = ?`). Después va `[[|]]`, y a la derecha la resolución paso a paso, una igualdad por línea. Termina con la respuesta en una línea que empiece con `!! ` y cierra con `[[fin]]`. Deja una línea vacía entre ejercicios.
+> Escribe la resolución de esta tarea en «formato Trazo», en texto plano, sin Markdown extra ni LaTeX. Usa `# Título` una sola vez (por ejemplo «# Práctico de Física»). Para cada ejercicio, escribe `### Ejercicio N.-` y copia el enunciado tal cual en la línea siguiente. Deja una línea vacía y abre `[[columnas 12]]`. A la izquierda va `**Datos:**`, con un dato por línea (por ejemplo `m = 95 kg`, `P = ?`). Después va `[[|]]`, y a la derecha la resolución paso a paso, una igualdad por línea. Termina con la respuesta en una línea que empiece con `!! ` (la app le pone las dos rayitas) y cierra con `[[fin]]`. Deja una línea vacía entre ejercicios.
 >
 > Fórmulas: `x^2`, `v_0`, `P_{atm}`, fracciones `a/b` o `(a+b)/(c+d)`, unidades con doble barra (`m//s^2`, `g//mol`, `km//h`), `raiz(x)`, `raiz[3](x)`, `·` para multiplicar, comas decimales (`9,8`) y unidades como `m/s^2`. Si hay coordenadas, pon en la columna izquierda `[[grafica xmin xmax ymin ymax]]`, con líneas `recta a b c | ecuación` y `punto x y | (x,y)`, y cierra con `[[fin]]`. No uses tablas, imágenes, `$`, `\frac` ni `\boxed`.
 
