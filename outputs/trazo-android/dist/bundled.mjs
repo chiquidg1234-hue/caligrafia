@@ -17,7 +17,8 @@ export function planBundledLetters(bundle, current, installed=[]) {
     }
     done.add(entry.id);
   }
-  const uniform=bundle.profiles.find(p=>p.id.startsWith('personal-uniforme-'));
-  const firstUse=uniform&&!(Array.isArray(installed)?installed:[]).includes(uniform.id);
-  return {samples,profiles,added,installed:[...done],activeProfileId:firstUse?uniform.id:current.activeProfileId};
+  // A newly bundled Natural letter is selected once; afterwards the user's choice stays.
+  const preferred=bundle.profiles.find(p=>p.id.startsWith('personal-natural-'))||bundle.profiles.find(p=>p.id.startsWith('personal-uniforme-'));
+  const firstUse=preferred&&!(Array.isArray(installed)?installed:[]).includes(preferred.id);
+  return {samples,profiles,added,installed:[...done],activeProfileId:firstUse?preferred.id:current.activeProfileId};
 }

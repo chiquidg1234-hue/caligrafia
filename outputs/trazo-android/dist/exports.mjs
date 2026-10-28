@@ -15,12 +15,12 @@ export async function templatePDF(copies=1){
 }
 export async function pagesPDF(layout,options={}){
   if(layout.missing.length)throw Error('Faltan muestras: '+layout.missing.join(' '));if(!layout.pages.length)throw Error('Escribe un texto antes de exportar.');
-  const d=restoreDraft(options),{width,height}=d,rgb=(value,fallback='#193c66')=>PDF.rgb(...(validColor(value)?value:fallback).slice(1).match(/../g).map(x=>parseInt(x,16)/255)),doc=await PDF.PDFDocument.create();
+  const d=restoreDraft(options),{width,height}=d,dx=(Number(d.printOffsetX)||0)*MM,dy=-(Number(d.printOffsetY)||0)*MM,rgb=(value,fallback='#193c66')=>PDF.rgb(...(validColor(value)?value:fallback).slice(1).match(/../g).map(x=>parseInt(x,16)/255)),doc=await PDF.PDFDocument.create();
   for(const entries of layout.pages){const page=doc.addPage([width*MM,height*MM]);
     page.drawRectangle({x:0,y:0,width:width*MM,height:height*MM,color:rgb(d.paperColor,'#ffffff')});
-    for(const guide of paperGuides(d))page.drawLine({start:{x:guide.x1*MM,y:(height-guide.y1)*MM},end:{x:guide.x2*MM,y:(height-guide.y2)*MM},color:rgb(guide.color,'#dce7ef'),thickness:guide.margin?.5:.35});
+    for(const guide of d.screenOnlyGuides?[]:paperGuides(d))page.drawLine({start:{x:guide.x1*MM+dx,y:(height-guide.y1)*MM+dy},end:{x:guide.x2*MM+dx,y:(height-guide.y2)*MM+dy},color:rgb(guide.color,'#dce7ef'),thickness:guide.margin?.5:.35});
     page.pushOperators(PDF.setLineJoin(PDF.LineJoinStyle.Round));
-    for(const item of entries){const color=rgb(item.color||d.ink),strokeWidth=Number.isFinite(item.strokeWidth)?Math.max(0,item.strokeWidth):0;page.drawSvgPath(svgPaths(item.paths,true),{x:item.x*MM,y:(height-item.y)*MM,scale:item.scale*MM,color,...(strokeWidth?{borderColor:color,borderWidth:strokeWidth}:{})});}
+    for(const item of entries){const color=rgb(item.color||d.ink),strokeWidth=Number.isFinite(item.strokeWidth)?Math.max(0,item.strokeWidth):0;page.drawSvgPath(svgPaths(item.paths,true),{x:item.x*MM+dx,y:(height-item.y)*MM+dy,scale:item.scale*MM,color,...(strokeWidth?{borderColor:color,borderWidth:strokeWidth}:{})});}
   }return new Blob([await doc.save()],{type:'application/pdf'});
 }
 export async function drawingPDF(png,width,height,paths=null){

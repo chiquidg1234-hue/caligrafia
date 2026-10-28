@@ -1,3 +1,4 @@
+import {handStroke} from './math.mjs';
 import {layoutText} from './core.mjs';
 import {normaliseText,restoreDraft,paperGuides,validColor} from './model.mjs';
 import {svgPaths} from './exports.mjs';
@@ -36,6 +37,7 @@ function cleanPaper(input={}){
   p.ink=color(d.ink);p.paperColor=color(d.paperColor,'#ffffff');p.gridColor=color(d.gridColor,'#dce7ef');p.marginLineColor=color(d.marginLineColor,'#dcaeb8');
   p.marginLine=!!d.marginLine;p.marginLineX=finite(d.marginLineX,p.marginLeft,0,p.width,'Línea de margen');
   p.ruling=['none','lines','grid'].includes(d.ruling)?d.ruling:'none';
+  if(d.handDrawn)p.handDrawn=true;
   return p;
 }
 
@@ -207,6 +209,16 @@ function shapePath(n){
   return `M${x},${y}H${x+w}V${y+h}H${x}Z`;
 }
 const polygonPath=points=>'M'+points.map(p=>p.join(',')).join('L')+'Z';
+// Pen-like outlines: the same hand stroke as the radical and fraction bars.
+const PEN=.32;
+function outlinePoints(n){
+  const {x,y,width:w,height:h}=n;
+  if(n.shape==='ellipse')return Array.from({length:41},(_,i)=>{const a=-Math.PI/2+i/40*2*Math.PI*1.03;return [x+w/2+Math.cos(a)*w/2,y+h/2+Math.sin(a)*h/2];});
+  if(n.shape==='diamond')return [[x+w/2,y],[x+w,y+h/2],[x+w/2,y+h],[x,y+h/2],[x+w/2+.6,y-.3]];
+  return [[x-.2,y+.1],[x+w,y],[x+w+.1,y+h],[x,y+h-.1],[x+.05,y-.15]];
+}
+function inkFor(points,seed){let s=seed>>>0||1;const random=()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296;};return handStroke(points,PEN,random);}
+const inkPath=polys=>polys.map(polygonPath).join('');
 const glyphSVG=g=>`<path d="${svgPaths(g.paths,true)}" transform="translate(${g.x} ${g.y}) scale(${g.scale})" fill="${g.color}"${g.strokeWidth?` stroke="${g.color}" stroke-width="${g.strokeWidth}" stroke-linejoin="round"`:''}/>`;
 
 /** SVG and PDF share this immutable-by-convention geometry; no system-font fallback. */
@@ -226,10 +238,14 @@ export function renderMap(input,samples){
       if(!label.missing.length)labelPosition(label,points,map.nodes,occupied,box);
     }
   }
+  if(p.handDrawn){
+    nodes.forEach((n,i)=>{n.ink=inkFor(outlinePoints(n),p.seed+i*101);});
+    edges.forEach((e,i)=>{const [tip,a,b]=e.arrow;e.ink=[...inkFor(e.points,p.seed+i*37+7),...inkFor([a,tip,b],p.seed+i*37+11)];});
+  }
   const guides=paperGuides(p),geometry={nodes,edges,labels,guides},parts=[`<svg xmlns="http://www.w3.org/2000/svg" width="${p.width}mm" height="${p.height}mm" viewBox="0 0 ${p.width} ${p.height}" role="img" aria-label="${escape(map.title||'Mapa manuscrito')}"><title>${escape(map.title||'Mapa manuscrito')}</title>`,`<rect width="${p.width}" height="${p.height}" fill="${p.paperColor}"/>`];
   for(const g of guides)parts.push(`<path d="M${g.x1},${g.y1}L${g.x2},${g.y2}" fill="none" stroke="${g.color}" stroke-width="${(g.margin?.5:.35)/MM}"/>`);
-  for(const e of edges)parts.push(`<g data-edge-id="${escape(e.id)}"><path d="M${e.points.map(p=>p.join(',')).join('L')}" fill="none" stroke="${e.color}" stroke-width="0.45" stroke-linejoin="round"/><path d="${polygonPath(e.arrow)}" fill="${e.color}"/></g>`);
-  for(const n of nodes){parts.push(`<g data-node-id="${escape(n.id)}" role="group" aria-label="${escape(n.text)}"><path d="${n.path}" fill="${p.paperColor}" stroke="${n.color}" stroke-width="0.45"/>`);parts.push(...labels.find(l=>l.kind==='node'&&l.id===n.id).glyphs.map(glyphSVG));parts.push('</g>');}
+  for(const e of edges)parts.push(e.ink?`<g data-edge-id="${escape(e.id)}"><path d="${inkPath(e.ink)}" fill="${e.color}"/></g>`:`<g data-edge-id="${escape(e.id)}"><path d="M${e.points.map(p=>p.join(',')).join('L')}" fill="none" stroke="${e.color}" stroke-width="0.45" stroke-linejoin="round"/><path d="${polygonPath(e.arrow)}" fill="${e.color}"/></g>`);
+  for(const n of nodes){parts.push(`<g data-node-id="${escape(n.id)}" role="group" aria-label="${escape(n.text)}">`+(n.ink?`<path d="${n.path}" fill="${p.paperColor}"/><path d="${inkPath(n.ink)}" fill="${n.color}"/>`:`<path d="${n.path}" fill="${p.paperColor}" stroke="${n.color}" stroke-width="0.45"/>`));parts.push(...labels.find(l=>l.kind==='node'&&l.id===n.id).glyphs.map(glyphSVG));parts.push('</g>');}
   for(const l of labels.filter(l=>l.kind!=='node')){if(l.kind==='edge'&&!l.missing.length)parts.push(`<rect x="${l.box.x}" y="${l.box.y}" width="${l.box.width}" height="${l.box.height}" fill="${p.paperColor}"/>`);parts.push(...l.glyphs.map(glyphSVG));}
   parts.push('</svg>');return {svg:parts.join(''),missing:[...missing].sort(),width:p.width,height:p.height,map,geometry};
 }
@@ -242,9 +258,9 @@ export async function mapPDF(renderResult,input=renderResult?.map){
   const path=(d,options={})=>page.drawSvgPath(d,{x:0,y:p.height*MM,scale:MM,...options});
   page.drawRectangle({x:0,y:0,width:p.width*MM,height:p.height*MM,color:rgb(p.paperColor)});page.pushOperators(PDF.setLineJoin(PDF.LineJoinStyle.Round));
   for(const g of guides)page.drawLine({start:{x:g.x1*MM,y:(p.height-g.y1)*MM},end:{x:g.x2*MM,y:(p.height-g.y2)*MM},color:rgb(g.color),thickness:g.margin?.5:.35});
-  for(const e of edges){for(let i=1;i<e.points.length;i++)page.drawLine({start:{x:e.points[i-1][0]*MM,y:(p.height-e.points[i-1][1])*MM},end:{x:e.points[i][0]*MM,y:(p.height-e.points[i][1])*MM},color:rgb(e.color),thickness:.45*MM});path(polygonPath(e.arrow),{color:rgb(e.color)});}
+  for(const e of edges){if(e.ink){path(inkPath(e.ink),{color:rgb(e.color)});continue;}for(let i=1;i<e.points.length;i++)page.drawLine({start:{x:e.points[i-1][0]*MM,y:(p.height-e.points[i-1][1])*MM},end:{x:e.points[i][0]*MM,y:(p.height-e.points[i][1])*MM},color:rgb(e.color),thickness:.45*MM});path(polygonPath(e.arrow),{color:rgb(e.color)});}
   const drawGlyph=g=>{const c=rgb(g.color);page.drawSvgPath(svgPaths(g.paths,true),{x:g.x*MM,y:(p.height-g.y)*MM,scale:g.scale*MM,color:c,...(g.strokeWidth?{borderColor:c,borderWidth:g.strokeWidth}:{})});};
-  for(const n of nodes){path(n.path,{color:rgb(p.paperColor),borderColor:rgb(n.color),borderWidth:.45});for(const g of labels.find(l=>l.kind==='node'&&l.id===n.id).glyphs)drawGlyph(g);}
+  for(const n of nodes){if(n.ink){path(n.path,{color:rgb(p.paperColor)});path(inkPath(n.ink),{color:rgb(n.color)});}else path(n.path,{color:rgb(p.paperColor),borderColor:rgb(n.color),borderWidth:.45});for(const g of labels.find(l=>l.kind==='node'&&l.id===n.id).glyphs)drawGlyph(g);}
   for(const l of labels.filter(l=>l.kind!=='node')){if(l.kind==='edge')page.drawRectangle({x:l.box.x*MM,y:(p.height-l.box.y-l.box.height)*MM,width:l.box.width*MM,height:l.box.height*MM,color:rgb(p.paperColor)});for(const g of l.glyphs)drawGlyph(g);}
   doc.setTitle(map.title||'Mapa manuscrito');doc.setCreator('Trazo');return new Blob([await doc.save()],{type:'application/pdf'});
 }

@@ -2,6 +2,19 @@
 
 Abre `Trazo4.apk` en tu Android e instálalo. Si el sistema lo pide, permite a tu navegador instalar este archivo y vuelve al instalador. Trazo funciona sin computadora y sin conexión; el motor viene incluido. Necesita Android 8 o posterior y Android System WebView actualizado. `Trazo2.apk` y `Trazo3.apk` se conservan intactos. La nueva APK mantiene el identificador de la app, la firma y una versión superior (20003), para instalarse como actualización conservando el almacenamiento; no hace falta desinstalar la anterior.
 
+## Novedades de la versión web 2.3
+
+Esta versión todavía no está empaquetada en una APK: funciona en la versión web. Para crear la APK 2.3 con la misma firma hay que ejecutar `native/build.ps1` en la computadora que guarda la clave privada.
+
+- **Mi letra Natural** viene incluida y se selecciona una vez al actualizar. Alterna 2–3 formas revisadas de cada letra, tiene bordes suavizados, signos más finos y los símbolos × · < > ≤ ≥ ± ≠ → ∞ ° |, hechos con tus propios trazos.
+- **Páginas → Hoja y cuaderno → Mi cuaderno guardado** incluye **Oficio espiral · anverso** (20/16/20/17 mm) y **· reverso** (16/20/22/15 mm): hoja de 211 × 322 mm, cuadritos de 5 mm, guías solo en pantalla y renglón apoyado en la cuadrícula. Puedes cambiar algo y guardarlo con otro nombre, por ejemplo uno por materia.
+- **Renglones:** renglón seguido, renglón por medio (escribes uno y dejas uno libre) o dos renglones libres.
+- **Naturalidad:** de 0 % (líneas exactas) a 100 %. Mueve cada letra unas décimas de milímetro, la gira 1–2° y cambia un poco el espacio, sin salir de los márgenes. La vista previa y el PDF salen iguales.
+- **Fórmulas:** activa la casilla y escribe `x^2`, `x^{n+1}`, `v_0`, `log_2(8)`, `a/b`, `(x+1)/(x-1)`, `raiz(x)` o `raiz[3](27)`. `<=`, `>=`, `!=`, `+-`, `->` y `*` se convierten en ≤ ≥ ≠ ± → ·. Si una línea tiene fracciones, ocupa los renglones que necesite. Escribe `y/o` sin la casilla activada, porque con ella se convierte en fracción.
+- **Guías solo en pantalla:** ves la cuadrícula en la vista previa, pero el PDF imprime solo tu letra, para hojas que ya vienen cuadriculadas.
+- **Corregir impresora → derecha / ↓ abajo (mm):** mueve todo el PDF si tu impresora imprime corrida. Mide primero con la hoja de prueba de `outputs/hoja-prueba-oficio`.
+- **Mapas → Organizar y personalizar hoja → Cajas y flechas: Trazo a mano** dibuja bordes y flechas un poco irregulares, como con bolígrafo.
+
 ## Bibliotecas separadas
 
 En **Mi letra**, **Páginas** y **Ajustes** puedes elegir la biblioteca activa. Las muestras antiguas se conservan en **Mi biblioteca**, con sus identificadores, contornos y papelera. El nombre de fuente que ya usabas también se conserva.

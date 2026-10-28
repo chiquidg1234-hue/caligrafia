@@ -1,0 +1,1515 @@
+{
+ "profile": {
+  "id": "personal-natural-v1",
+  "name": "Mi letra Natural"
+ },
+ "generated": "work/caligrafia-2026-10-28/curar_natural.mjs",
+ "smoothingSigmaUnits": 7,
+ "signStrokeWidthTarget": 44,
+ "characters": {
+  "0": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "4d410d22-9359-43a4-a7fa-dae607a3dae8",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "5999ba05-1633-47df-9ead-ccc4b44809f2",
+    "strokeWidth": 47
+   }
+  ],
+  "1": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "f0ae105a-6077-4786-95f7-f6d30d715c5c",
+    "strokeWidth": 41
+   }
+  ],
+  "2": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "f9b5a53a-1240-48a2-97e2-c38f0479cbe6",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "dd41c0ea-33a0-4c9c-ac38-a59a20e31606",
+    "strokeWidth": 45
+   }
+  ],
+  "3": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "68054036-befb-4dd5-8ae9-620b24546532",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "58a9bd29-fa75-4cc4-9341-e64692321cfa",
+    "strokeWidth": 45
+   }
+  ],
+  "4": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "870bc17d-a1f3-4ccc-aa3e-49761a3c847f",
+    "strokeWidth": 44
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "0fbe5e2e-bbcb-4f5c-aaa9-5cbc718ef4b2",
+    "strokeWidth": 49
+   }
+  ],
+  "5": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "94dc6065-d9d3-4528-a7cc-0c97391f5b8b",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "008e5a3b-9b3b-4122-b60f-e8a7c360f123",
+    "strokeWidth": 45
+   }
+  ],
+  "6": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "85cde3b2-bf64-4bdf-91d6-525a4c9df743",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "5b58de70-79db-4fb2-8764-e10cbea32e9b",
+    "strokeWidth": 46
+   }
+  ],
+  "7": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "b3addd6f-0cc1-4594-97ef-a3f0c7edb3b1",
+    "strokeWidth": 45
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "5174e1c5-38a2-452d-828c-566c8753d20b",
+    "strokeWidth": 55
+   }
+  ],
+  "8": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "9": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "a240c38b-8943-4db4-899b-44b9962436e3",
+    "strokeWidth": 48
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "8c8e8c73-17ed-405d-ace9-b4c9d67d8620",
+    "strokeWidth": 44
+   }
+  ],
+  "A": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "4848b558-44e0-4d04-9778-bcf09db05fb0",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "b2833fe4-9b08-45ac-b41a-9005a233d375",
+    "strokeWidth": 45
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "9aac8fab-291f-4a1d-9675-75cdc4f86a59",
+    "strokeWidth": 47
+   }
+  ],
+  "a": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "037e88d7-ca39-4ddd-9212-1bf747b66107",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "c8c78fb8-b616-4129-9696-d2310bce06b4",
+    "strokeWidth": 38
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "e6a6415a-5dc0-414c-b60d-328e9dbbf709",
+    "strokeWidth": 39
+   }
+  ],
+  "B": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "27f863b7-2a24-4752-8b98-6ed0057c2fb6",
+    "strokeWidth": 46
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "1dd5088c-968e-4613-8648-3089b6fa44b4",
+    "strokeWidth": 36
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "507cfe79-e9f1-48ed-927f-0180a1ae0d77",
+    "strokeWidth": 35
+   }
+  ],
+  "b": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "9f2c3d8b-76ad-4fed-9f85-14c8e6aebb37",
+    "strokeWidth": 35
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "23aef566-0422-4eb5-8bd7-7e854017ad0c",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "9727694d-e9d1-4f20-8f66-cd34325ec41b",
+    "strokeWidth": 36
+   }
+  ],
+  "C": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "c6f6eb64-1f09-4654-81ca-d030afdac19d",
+    "strokeWidth": 35
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "18f685e3-ff2f-40ca-a4ca-baec6a3d06dc",
+    "strokeWidth": 32
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "1bd21815-50c9-463a-a1ee-7cf93f8d2efa",
+    "strokeWidth": 34
+   }
+  ],
+  "c": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "7bcdedb3-8f4b-4610-9dc6-8a821f62e8b4",
+    "strokeWidth": 48
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "c4613ae2-651a-43b2-8d80-8a51b65c575f",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "ec74209a-e333-4552-8f12-3833259e796f",
+    "strokeWidth": 44
+   }
+  ],
+  "D": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "9ad7d9b6-27aa-4d62-9ec7-b082074dd76f",
+    "strokeWidth": 38
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "9d7c138a-43f1-4257-a10f-7512aec11a49",
+    "strokeWidth": 39
+   }
+  ],
+  "d": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "4ac1a152-9fb0-48bc-9afe-b9875381d7fd",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "1d59fe14-f050-46c2-b2ac-7d30fb473342",
+    "strokeWidth": 49
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "cd488ec0-6eea-45ea-97cb-98741b4a3b95",
+    "strokeWidth": 39
+   }
+  ],
+  "E": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "77abbf86-c591-48ec-aca0-6eb21c17859d",
+    "strokeWidth": 38
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "d41f3df0-d781-4698-9935-e7b23a79329b",
+    "strokeWidth": 35
+   }
+  ],
+  "e": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "9e052847-07f2-4634-9b45-4160f38e0fb0",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "8ea42b70-65a2-43af-9ea6-74d277e24a4c",
+    "strokeWidth": 34
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "9e74abd5-1aed-477f-8797-1d5c6f6333ac",
+    "strokeWidth": 32
+   }
+  ],
+  "F": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "9769fad9-c8f3-4ef2-a187-5a6963af4db3",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "04fc2372-eb05-40b7-b448-e77061036503",
+    "strokeWidth": 36
+   }
+  ],
+  "f": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "68d075d4-91e2-4316-8ce7-f34aba7a94ba",
+    "strokeWidth": 36
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "ee34e5ba-31c5-4a45-8c72-74e2e0d79f42",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "3956a67f-d997-45b7-ae6e-52c493e78188",
+    "strokeWidth": 40
+   }
+  ],
+  "G": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "31260b48-e45f-4f98-a6ec-ab9c858d478a",
+    "strokeWidth": 34
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "e3122390-a128-4364-880a-632f7da1860a",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "0b89e132-0595-4adc-8562-319ffa145384",
+    "strokeWidth": 36
+   }
+  ],
+  "g": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "932c6892-df89-4b04-9bef-8d6e1f7d4a07",
+    "strokeWidth": 35
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "4fb2bfa4-259b-482d-bc91-43f71673aec4",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "652ae628-4ece-4067-ae9c-5433689c4007",
+    "strokeWidth": 40
+   }
+  ],
+  "H": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "4b4b13d0-a074-45bb-a2c1-766c2561a145",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "2d7be196-e489-4a69-8ed5-e3aa3760da97",
+    "strokeWidth": 34
+   }
+  ],
+  "h": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "0f04aef3-49b1-4771-a32f-20a44570c1c0",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "4f9474ce-8842-4066-bbd3-274a000f6f88",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "383f6fe0-273f-4734-a39a-5edc31f7e7e5",
+    "strokeWidth": 44
+   }
+  ],
+  "I": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "a347aaa4-caaa-4e4a-957f-fb8b6ab6ae0f",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "cb942b8a-1d5a-4057-a6a1-f4d37d92126a",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "cf79549f-623f-4e5a-8751-3f2fc8c495ef",
+    "strokeWidth": 38
+   }
+  ],
+  "i": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "ccbe275f-f046-4f64-a477-ddaa6d2c66e5",
+    "strokeWidth": 33
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "bdaf4fdd-7023-400d-a44c-e8dad97dd813",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "b8c51eda-8c3b-46ea-b550-15dbee3a09a8",
+    "strokeWidth": 38
+   }
+  ],
+  "J": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "51a06ca1-0a70-41af-9681-cb07e7f3eeb5",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "afe8d49f-c9cc-4730-8dad-4b237501a456",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "e195a674-3178-46ad-8596-57593060c578",
+    "strokeWidth": 36
+   }
+  ],
+  "j": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 5,
+    "sourceId": "ed7f426f-7a15-4287-968c-0c4fa948fc4d",
+    "strokeWidth": 36
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "3f76c7fb-5ad1-42dd-a724-52077d31e3d0",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "6a3b8882-1dee-4eba-8346-96793ea80a94",
+    "strokeWidth": 37
+   }
+  ],
+  "K": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 5,
+    "sourceId": "60490e79-0735-4420-995a-b034a1e52920",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "0cbc1cc5-422f-40b4-b073-881226b9e2b4",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "5b2e2bd6-8cba-47d7-8681-6d0a6946034a",
+    "strokeWidth": 44
+   }
+  ],
+  "k": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "1e1474a4-86cd-4e07-b4f0-64879343e212",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "e36f502e-6dd1-447f-a697-439ddf3abf18",
+    "strokeWidth": 44
+   }
+  ],
+  "L": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "ea0fcfe5-7f30-43a4-8b07-6c52a1b43261",
+    "strokeWidth": 34
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "41c4ec7e-e444-4ac2-b8b6-ede6db6a129d",
+    "strokeWidth": 31
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "5aef1e0c-e30c-4566-a73b-4d23173f2907",
+    "strokeWidth": 31
+   }
+  ],
+  "l": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 5,
+    "sourceId": "cbaa299c-9fc6-4121-99a1-24e16baf225f",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "275256c6-aa62-4339-91f2-14a67d00ce58",
+    "strokeWidth": 33
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "0aa99d83-c82d-4e9e-8026-59d342120fd9",
+    "strokeWidth": 38
+   }
+  ],
+  "m": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "153f5ef1-1f50-44c4-bef4-71fb25bd2f01",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "f30d1714-98cd-45a9-a395-1cdc6da7b56f",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "98abccc1-5f86-4382-a7e2-ff10624c7a1f",
+    "strokeWidth": 40
+   }
+  ],
+  "M": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "ff6c1d3b-9f5f-4bba-b386-ce10cef912ca",
+    "strokeWidth": 35
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "d93ba44a-773f-45e6-9179-d409f02e9eeb",
+    "strokeWidth": 30
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "afe62580-d00e-4ea7-9445-7e6b44e5d1b4",
+    "strokeWidth": 38
+   }
+  ],
+  "N": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "6fc2ebbc-2aac-46ed-8546-034cb9f486a6",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "015c8e61-cf3f-4aa2-87d9-448b06080446",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "ca37eb28-6682-45ba-baf7-13e1d9c12cb0",
+    "strokeWidth": 42
+   }
+  ],
+  "n": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "dee66c4a-597d-4e17-9d12-14c145d19f1d",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "2cda77cd-c028-4686-818f-e3120e293720",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "1d07beab-a2ed-4495-849e-53891367e335",
+    "strokeWidth": 40
+   }
+  ],
+  "Ñ": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "13ed4ff2-7fe3-49b6-896e-81298fc9c606",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "37c0cadd-19b1-45af-8ed3-0b800ccd31b6",
+    "strokeWidth": 48
+   }
+  ],
+  "ñ": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "5fa36704-80c5-4ad3-bfb0-d466b48e5860",
+    "strokeWidth": 46
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "8f9d019f-e168-430c-a66d-8c4295ea9695",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "33971461-4995-4c6b-9e9b-5575d9a467f7",
+    "strokeWidth": 41
+   }
+  ],
+  "O": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "e5d802f1-cf08-43e6-8747-106f0f375fc2",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "8fdf07ba-1f74-415b-be77-bbefcf07efa3",
+    "strokeWidth": 42
+   }
+  ],
+  "o": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "f0910802-afbf-4b56-b1aa-070070fc0712",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "69fa77b1-5bcf-420a-a309-5a56073cb7b7",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "44dcbc85-7c5f-4bae-9e6a-8d670f457c48",
+    "strokeWidth": 41
+   }
+  ],
+  "P": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "45d20dc7-77f0-4a20-ac33-b6389a67b3cc",
+    "strokeWidth": 41
+   }
+  ],
+  "Q": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "a675bc89-7587-4c1d-893a-8007b36a5a22",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "1f8048cb-c033-434e-875c-09a755532961",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "265cf347-d61e-4ac9-ad4c-97982f07b665",
+    "strokeWidth": 38
+   }
+  ],
+  "q": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "87863d56-e0ce-4183-adec-a3c29ff3f080",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "adc66a52-7feb-4b6a-9535-3bba5192cb3e",
+    "strokeWidth": 42
+   }
+  ],
+  "p": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 5,
+    "sourceId": "fc261ed2-28f6-40c8-972c-395e67e0f41e",
+    "strokeWidth": 45
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "e5bb7136-9bdb-498d-958b-1bc4a4dcf4ea",
+    "strokeWidth": 49
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "27c7e171-9376-4be1-9c27-11a65690d84c",
+    "strokeWidth": 48
+   }
+  ],
+  "R": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "51ce4280-8223-4934-b698-09c5243f310b",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "fb7cb061-e306-42b8-8ddf-1c5897929344",
+    "strokeWidth": 43
+   }
+  ],
+  "r": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "c39a1573-8ee8-4487-ba2f-6c7a506fe877",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "60951583-9794-43c2-a13b-66df16d2eb50",
+    "strokeWidth": 47
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "e5236a5a-2605-4aeb-a163-ad89ebaf8b3f",
+    "strokeWidth": 42
+   }
+  ],
+  "S": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "8a1e2ec8-cab6-400f-9453-63689aaeae91",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "129716fb-f895-4807-b8bf-d2ce8661c880",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "7a1a25b7-5798-43fe-ba25-25157caeba7d",
+    "strokeWidth": 41
+   }
+  ],
+  "s": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "72752ea9-e906-4565-82b6-8cb3eaeb50df",
+    "strokeWidth": 46
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "d5758a9a-027f-4d78-8f5b-4e977d60fe32",
+    "strokeWidth": 45
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "f4de6905-86c5-4c83-98d9-999a49e040e1",
+    "strokeWidth": 39
+   }
+  ],
+  "T": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "f3ef18b5-c75f-4aba-8787-f965d682bcdb",
+    "strokeWidth": 48
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "8c4a2bc7-542d-489b-999b-c2b6519eb6ae",
+    "strokeWidth": 40
+   }
+  ],
+  "t": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "d8e352b8-abb3-4085-998e-f15abf37c880",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "6ed73cfa-8348-47b9-8036-f1cdddae5415",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "cb9579c3-dda1-4bdc-9ab1-55d118071285",
+    "strokeWidth": 42
+   }
+  ],
+  "U": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "1bfa5cfe-693a-4f7e-93f7-fc8ae131a31c",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "d76e08b2-9e23-4a54-b478-19de00eed5fe",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "95463138-3df3-45bf-82a7-264ca0bbb9a0",
+    "strokeWidth": 41
+   }
+  ],
+  "u": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 2,
+    "sourceId": "8c4a7bd3-90dd-4972-ac46-62568e64178e",
+    "strokeWidth": 38
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "5d1d3aee-4130-4cda-b648-c1309eadbafe",
+    "strokeWidth": 38
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 6,
+    "sourceId": "6bdd6a05-aa7a-4952-b6ee-9ae40234ff80",
+    "strokeWidth": 43
+   }
+  ],
+  "V": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "48108222-707f-4af5-8423-fee9ed5ff0c0",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "42ac7e9c-0d42-4efb-b91e-bd37a09079b6",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 5,
+    "sourceId": "604233f1-8a8e-4ff1-873d-837c0a43d836",
+    "strokeWidth": 44
+   }
+  ],
+  "W": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "504380ef-a007-4994-b114-1b77eb68f3bb",
+    "strokeWidth": 44
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "93f452bd-1eaa-4919-9162-f36ab409a4c5",
+    "strokeWidth": 37
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "b19a8941-f2ce-4037-8cb1-ef93d22b8649",
+    "strokeWidth": 41
+   }
+  ],
+  "v": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 1,
+    "sourceId": "074e825e-b21b-4dd8-806c-b359d0b74cf5",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "1a84c637-2dfa-4ae0-b1ac-abeb88543269",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "e3f2ef86-689a-4ee4-a235-2f155626d44e",
+    "strokeWidth": 39
+   }
+  ],
+  "w": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 6,
+    "sourceId": "672c1478-ea4f-42e3-9cd8-db26d22765b5",
+    "strokeWidth": 42
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "80dd2cd4-0c91-476f-b6cc-7d6608640683",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "5c520458-738c-451f-a4cc-caedf5ed82e2",
+    "strokeWidth": 36
+   }
+  ],
+  "X": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 3,
+    "sourceId": "62d8c4e5-db7b-4ce7-b070-c72d15af24c3",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 4,
+    "sourceId": "a0a78819-831a-4d36-a2d1-6198c1ad126a",
+    "strokeWidth": 41
+   }
+  ],
+  "x": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "f52ca8d3-e854-4da1-9ac1-4e23b5fdea17",
+    "strokeWidth": 46
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "1d13e3d7-273a-46f2-ab22-b14bba395159",
+    "strokeWidth": 44
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "8f53355b-0a4f-4daf-ab31-63563fe31a4d",
+    "strokeWidth": 45
+   }
+  ],
+  "Y": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "5721809d-ca6f-4779-8a11-3b7acb307ef0",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "0688cc76-cbc1-429e-9def-336ce644a569",
+    "strokeWidth": 41
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "47febe06-cab7-43d9-9fa0-45910b918bee",
+    "strokeWidth": 43
+   }
+  ],
+  "y": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 5,
+    "sourceId": "233f7ed4-c4f3-4223-984f-8b0b3f55b1e4",
+    "strokeWidth": 40
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 2,
+    "sourceId": "3c2b6598-3112-4370-891e-0845ae68e296",
+    "strokeWidth": 43
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "226a7643-17c4-4310-b6df-9b7aaeadbd5e",
+    "strokeWidth": 45
+   }
+  ],
+  "Z": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 6,
+    "sourceId": "67a65106-f0c6-4461-acb3-b6272675c4fa",
+    "strokeWidth": 48
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "614a8593-8dec-47bd-8299-5b1eef0c5519",
+    "strokeWidth": 47
+   }
+  ],
+  "z": [
+   {
+    "note": "forma de Uniforme",
+    "variant": 4,
+    "sourceId": "4dc0a436-176a-4374-b3c0-c7b923010811",
+    "strokeWidth": 45
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 3,
+    "sourceId": "79a36e73-87fa-48f9-9a0b-c6241c8c6539",
+    "strokeWidth": 39
+   },
+   {
+    "note": "variante alternativa revisada",
+    "variant": 1,
+    "sourceId": "ff135971-5d79-4cab-9402-9cf3292bfef0",
+    "strokeWidth": 45
+   }
+  ],
+  "Á": [
+   {
+    "note": "forma única",
+    "strokeWidth": 36
+   }
+  ],
+  "É": [
+   {
+    "note": "forma única",
+    "strokeWidth": 47
+   }
+  ],
+  "Í": [
+   {
+    "note": "forma única",
+    "strokeWidth": 44
+   }
+  ],
+  "Ó": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "Ú": [
+   {
+    "note": "forma única",
+    "strokeWidth": 37
+   }
+  ],
+  "Ü": [
+   {
+    "note": "forma única",
+    "strokeWidth": 37
+   }
+  ],
+  "á": [
+   {
+    "note": "forma única",
+    "strokeWidth": 52
+   }
+  ],
+  "é": [
+   {
+    "note": "forma única",
+    "strokeWidth": 47
+   }
+  ],
+  "í": [
+   {
+    "note": "forma única",
+    "strokeWidth": 40
+   }
+  ],
+  "ó": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "ú": [
+   {
+    "note": "forma única",
+    "strokeWidth": 43
+   }
+  ],
+  "ü": [
+   {
+    "note": "forma única",
+    "strokeWidth": 53
+   }
+  ],
+  "(": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  ")": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "[": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "]": [
+   {
+    "note": "forma única",
+    "strokeWidth": 42
+   }
+  ],
+  "{": [
+   {
+    "note": "forma única",
+    "strokeWidth": 40
+   }
+  ],
+  "}": [
+   {
+    "note": "forma única",
+    "strokeWidth": 40
+   }
+  ],
+  "¿": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "?": [
+   {
+    "note": "forma única",
+    "strokeWidth": 45
+   }
+  ],
+  "¡": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "!": [
+   {
+    "note": "forma única",
+    "strokeWidth": 44
+   }
+  ],
+  ".": [
+   {
+    "note": "forma única",
+    "strokeWidth": 42
+   }
+  ],
+  ",": [
+   {
+    "note": "forma única",
+    "strokeWidth": 37
+   }
+  ],
+  ":": [
+   {
+    "note": "forma única",
+    "strokeWidth": 42
+   }
+  ],
+  ";": [
+   {
+    "note": "forma única",
+    "strokeWidth": 37
+   }
+  ],
+  "\"": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "'": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "/": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "\\": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "@": [
+   {
+    "note": "forma única",
+    "strokeWidth": 44
+   }
+  ],
+  "#": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "$": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "-": [
+   {
+    "note": "forma única",
+    "strokeWidth": 36
+   }
+  ],
+  "%": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "&": [
+   {
+    "note": "forma única",
+    "strokeWidth": 37
+   }
+  ],
+  "*": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "+": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "=": [
+   {
+    "note": "forma única",
+    "strokeWidth": 40
+   }
+  ],
+  "_": [
+   {
+    "note": "forma única",
+    "strokeWidth": 41
+   }
+  ],
+  "÷": [
+   {
+    "note": "forma única",
+    "strokeWidth": 36
+   }
+  ],
+  "²": [
+   {
+    "note": "forma única",
+    "strokeWidth": 33
+   }
+  ],
+  "³": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "€": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "~": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "«": [
+   {
+    "note": "forma única",
+    "strokeWidth": 39
+   }
+  ],
+  "»": [
+   {
+    "note": "forma única",
+    "strokeWidth": 38
+   }
+  ],
+  "×": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "x reducida"
+   }
+  ],
+  "·": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "punto centrado"
+   }
+  ],
+  "<": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "primer ángulo de «"
+   }
+  ],
+  ">": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "segundo ángulo de »"
+   }
+  ],
+  "≤": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "< y guion"
+   }
+  ],
+  "≥": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "> y guion"
+   }
+  ],
+  "±": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "+ y guion"
+   }
+  ],
+  "≠": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "= y /"
+   }
+  ],
+  "→": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "guion y ángulo de »"
+   }
+  ],
+  "∞": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "8 girado"
+   }
+  ],
+  "°": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "o pequeña"
+   }
+  ],
+  "|": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "trazo de l"
+   }
+  ],
+  "−": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "guion como signo menos"
+   }
+  ]
+ },
+ "derived": {
+  "×": "x reducida",
+  "·": "punto centrado",
+  "<": "primer ángulo de «",
+  ">": "segundo ángulo de »",
+  "≤": "< y guion",
+  "≥": "> y guion",
+  "±": "+ y guion",
+  "≠": "= y /",
+  "→": "guion y ángulo de »",
+  "∞": "8 girado",
+  "°": "o pequeña",
+  "|": "trazo de l",
+  "−": "guion como signo menos"
+ },
+ "limits": [
+  "Sin muestras para letras griegas (π, Δ, θ, α, β, λ, μ, ω, Ω) ni ∫: no se inventan.",
+  "La raíz cuadrada y la raya de fracción se dibujan al componer, con el grosor medido de tu trazo."
+ ],
+ "sampleCount": 226,
+ "characterCount": 124,
+ "medianLetterStrokeWidth": 41
+}

@@ -1,5 +1,6 @@
 import { Font, Glyph, Path } from './vendor/opentype.mjs';
 import {normaliseText,normaliseStyles,styleAt,validColor} from './model.mjs';
+import {composeFormula,isFormula,balanced} from './math.mjs';
 
 export const CHARS='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÜ0123456789.,;:!?¿¡()-+=\"\'/';
 const PPM=6, MAX_PIXELS=24_000_000, PT_MM=25.4/72;
@@ -146,27 +147,90 @@ export function buildFont(samples,name='Mi letra') {
  const buffer=font.toArrayBuffer();return {buffer,meta:{name:family,characters:[...groups.keys()].filter(c=>Array.from(c).length===1).length,samples:samples.length,variants}};
 }
 
+// Deterministic small-step generator for the natural mode; separate from the
+// variant choice so that turning naturalness on keeps the same text wrapping
+// decisions as close as possible.
+function wobble(seed) {let s=(seed^0x9e3779b9)>>>0||1;return ()=>{s^=s<<13;s>>>=0;s^=s>>17;s^=s<<5;s>>>=0;return s/4294967296*2-1;};}
+function transformPaths(paths,{angle=0,scale=1,cx=0}){
+ if(!angle&&scale===1)return paths;const c=Math.cos(angle)*scale,s=Math.sin(angle)*scale;
+ return paths.map(p=>p.map(([x,y])=>[cx+(x-cx)*c-y*s,(x-cx)*s+y*c]));
+}
+
 export function layoutText(text,samples,options={}) {
  const groups=validateSamples(samples);text=normaliseText(text);
  if(!text.trim())throw new Error('Escribe un texto para imprimir.');if(text.length>100000)throw new Error('El texto supera 100000 caracteres. Divídelo en partes.');
  const width=number(options.width,210,70,420,'Ancho'),height=number(options.height,297,70,594,'Alto'),margin=number(options.margin,18,0,120,'Margen'),left=number(options.marginLeft,margin,0,120,'Margen izquierdo'),right=number(options.marginRight,margin,0,120,'Margen derecho'),top=number(options.marginTop,margin,0,120,'Margen superior'),bottomMargin=number(options.marginBottom,margin,0,120,'Margen inferior'),size=number(options.size,15,6,48,'Tamaño'),leading=number(options.leading,10,3,30,'Interlineado'),scale=size*25.4/72/1000;
  if(left+right>=width-10||top+bottomMargin>=height-10)throw new Error('Los márgenes dejan muy poco espacio para imprimir.');
- number(options.gridMm,5,2,20,'Cuadrícula');number(options.gridOriginX,0,-20,20,'Origen horizontal');number(options.gridOriginY,0,-20,20,'Origen vertical');if(options.marginLine)number(options.marginLineX,left,0,width,'Línea de margen');
+ const gridMm=number(options.gridMm,5,2,20,'Cuadrícula'),gridOriginY=number(options.gridOriginY,0,-20,20,'Origen vertical');number(options.gridOriginX,0,-20,20,'Origen horizontal');if(options.marginLine)number(options.marginLineX,left,0,width,'Línea de margen');
+ const natural=number(options.natural,0,0,1,'Naturalidad'),lineGap=Math.round(number(options.lineGap,0,0,3,'Renglones libres')),snap=!!options.snapToGrid,math=!!options.math;
+ // Flexible lines: a tall formula takes as many extra rows as it needs.
+ const flexible=math||snap;
  const styles=normaliseStyles(options.styles,text.length),baseColor=validColor(options.ink)?options.ink:'#193c66',styleKey=s=>[s.bold,s.italic,s.color||baseColor].join('|');
- let seed=number(options.seed,17,-2147483648,4294967295,'Semilla')>>>0;const choose=ss=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return ss[Math.floor(seed/4294967296*ss.length)];};
+ let seed=number(options.seed,17,-2147483648,4294967295,'Semilla')>>>0;const initialSeed=seed,last=new Map();
+ const choose=(ss,label)=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;let pick=ss[Math.floor(seed/4294967296*ss.length)];
+  // Natural writing never repeats the very same shape twice in a row.
+  if(natural&&ss.length>1&&pick===last.get(label))pick=ss[(ss.indexOf(pick)+1+Math.floor(seed/4294967296*(ss.length-1)))%ss.length];last.set(label,pick);return pick;};
  const labels=[...groups.keys()].sort((a,b)=>b.length-a.length),missing=new Set(),tokens=[];
- for(const match of text.matchAll(/\n| +|[^ \n]+/gu)){const token=match[0],offset=match.index;if(token==='\n'||/^ +$/.test(token)){tokens.push(token);continue;}const units=[];for(let i=0;i<token.length;){const style=styleAt(styles,offset+i),key=styleKey(style),label=labels.find(l=>token.startsWith(l,i)&&Array.from({length:l.length},(_,k)=>k).every(k=>styleKey(styleAt(styles,offset+i+k))===key));if(label){const sample=choose(groups.get(label)),paths=style.italic?sample.paths.map(p=>p.map(([x,y])=>[x+y*.18,y])):sample.paths,strokeWidth=style.bold?48:0,pad=strokeWidth/2*scale;let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;for(const p of paths)for(const [x,y] of p){minX=Math.min(minX,x*scale-pad);maxX=Math.max(maxX,x*scale+pad);minY=Math.min(minY,y*scale-pad);maxY=Math.max(maxY,y*scale+pad);}units.push({label,sample,paths,style,strokeWidth,minX,maxX,minY,maxY,advance:sample.advance*scale});i+=label.length;}else{const char=String.fromCodePoint(token.codePointAt(i));missing.add(char);i+=char.length;}}tokens.push(units);}
+ const unitOf=(label,sample,style,paths=sample.paths)=>{if(style.italic)paths=paths.map(p=>p.map(([x,y])=>[x+y*.18,y]));const strokeWidth=style.bold?48:0,pad=strokeWidth/2*scale;let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;for(const p of paths)for(const [x,y] of p){minX=Math.min(minX,x*scale-pad);maxX=Math.max(maxX,x*scale+pad);minY=Math.min(minY,y*scale-pad);maxY=Math.max(maxY,y*scale+pad);}return {label,sample,paths,style,strokeWidth,minX,maxX,minY,maxY,advance:sample.advance*scale};};
+ const words=[];for(const match of text.matchAll(/\n| +|[^ \n]+/gu)){const previous=words.at(-1);
+  // Formulas may contain spaces inside their brackets: keep them together.
+  if(math&&previous&&previous.open&&match[0]!=='\n'){previous.token+=match[0];previous.open=!balanced(previous.token);continue;}
+  words.push({token:match[0],offset:match.index,open:math&&match[0]!=='\n'&&!/^ +$/.test(match[0])&&!balanced(match[0])});}
+ const ink=(()=>{const o=groups.get('o')?.[0]||groups.get('l')?.[0];if(!o)return 42;let a=0,p=0;for(const c of o.paths){for(let i=0;i<c.length;i++){const q=c[(i+1)%c.length];a+=c[i][0]*q[1]-q[0]*c[i][1];p+=Math.hypot(q[0]-c[i][0],q[1]-c[i][1]);}}return Math.min(70,Math.max(25,Math.abs(a)/p));})();
+ for(const {token,offset} of words){if(token==='\n'||/^ +$/.test(token)){tokens.push(token);continue;}const units=[];
+  if(math&&isFormula(token)){const style=styleAt(styles,offset),formula=composeFormula(token,label=>groups.has(label)?choose(groups.get(label),label):null,{ink,seed:(initialSeed+offset*7919)>>>0});for(const c of formula.missing)missing.add(c);if(!formula.missing.length)units.push({...unitOf(token,{paths:formula.paths,advance:formula.advance},style),formula:true});tokens.push(units);continue;}
+  for(let i=0;i<token.length;){const style=styleAt(styles,offset+i),key=styleKey(style),label=labels.find(l=>token.startsWith(l,i)&&Array.from({length:l.length},(_,k)=>k).every(k=>styleKey(styleAt(styles,offset+i+k))===key));if(label){const sample=choose(groups.get(label),label);units.push(unitOf(label,sample,style));i+=label.length;}else{const char=String.fromCodePoint(token.codePointAt(i));missing.add(char);i+=char.length;}}tokens.push(units);}
  if(missing.size)return {pages:[],missing:[...missing].sort()};
  let ascent=0,descent=0;for(const token of tokens)if(Array.isArray(token))for(const unit of token){ascent=Math.max(ascent,unit.maxY);descent=Math.max(descent,-unit.minY);}
- const lineTop=top+ascent,bottom=height-bottomMargin-descent;if(lineTop>bottom)throw new Error('El tamaño de los trazos no cabe en el alto del papel.');
- const pages=[[]],available=width-left-right;let x=left,y=lineTop;
- function newline(){if(leading+1e-8<ascent+descent)throw new Error('Aumenta el interlineado: los trazos de tus muestras se superponen entre líneas.');x=left;y+=leading;if(y>bottom+1e-8){pages.push([]);y=lineTop;}}
- for(const token of tokens){if(token==='\n'){newline();continue;}if(typeof token==='string'){const space=320*scale;for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)newline();else x+=space;}continue;}
-  const wordWidth=token.reduce((a,u)=>a+Math.max(u.advance,u.maxX)-Math.min(0,u.minX),0);if(x>left&&x+wordWidth>width-right)newline();
-  for(const {label,sample,paths,style,strokeWidth,minX,maxX,advance} of token){
+ const lineTop=top+ascent,bottom=height-bottomMargin-descent;if(!flexible&&lineTop>bottom)throw new Error('El tamaño de los trazos no cabe en el alto del papel.');
+ // 1. Break into lines. 2. Give each line its baseline and page.
+ const available=width-left-right,lines=[[]],jitter=wobble(initialSeed);let x=left;
+ const breakLine=()=>{lines.push([]);x=left;};
+ for(const token of tokens){if(token==='\n'){breakLine();continue;}if(typeof token==='string'){const space=320*scale*(1+natural*.14*jitter());for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)breakLine();else x+=space;}continue;}
+  const wordWidth=token.reduce((a,u)=>a+Math.max(u.advance,u.maxX)-Math.min(0,u.minX),0);if(x>left&&x+wordWidth>width-right)breakLine();
+  for(const unit of token){const {label,maxX,minX,advance}=unit;
    if(Math.max(advance,maxX)-Math.min(0,minX)>available+1e-8)throw new Error(`La muestra «${label}» no cabe en el ancho. Reduce el tamaño o el margen.`);
-   if(x+Math.max(advance,maxX)-Math.min(0,minX)>width-right+1e-8)newline();const drawX=x-Math.min(0,minX);pages[pages.length-1].push({...(sample.id===undefined?{}:{sampleId:sample.id}),label,paths,x:drawX,y,scale,color:style.color||baseColor,strokeWidth,bold:style.bold,italic:style.italic});x=drawX+Math.max(advance,maxX);
+   if(x+Math.max(advance,maxX)-Math.min(0,minX)>width-right+1e-8)breakLine();const drawX=x-Math.min(0,minX);lines.at(-1).push({unit,x:drawX});x=drawX+Math.max(advance,maxX);
   }
  }
+ const step=snap?Math.max(1,Math.ceil(leading/gridMm-1e-9))*gridMm:leading,pitch=step*(1+lineGap),rows=snap?gridMm:pitch;
+ const guide=y=>{if(!snap)return y;const origin=top+((gridOriginY%gridMm)+gridMm)%gridMm;return origin+Math.ceil((y-origin)/gridMm-1e-9)*gridMm;};
+ const extentOf=line=>line.reduce((e,{unit})=>[Math.max(e[0],unit.maxY),Math.max(e[1],-unit.minY)],[0,0]);
+ if(!flexible&&lines.length>1&&leading+1e-8<ascent+descent)throw new Error('Aumenta el interlineado: los trazos de tus muestras se superponen entre líneas.');
+ const pages=[[]],lineHasFormula=line=>line.some(({unit})=>unit.formula);let y=null,previousDescent=0,previousFormula=false,previousLine=[];
+ // Lines only move down when real strokes would touch: an accent above a gap
+ // between descenders stays on the next row, as on paper.
+ const collides=(a,ay,b,by,clear)=>a.some(({unit:u,x:ux})=>b.some(({unit:v,x:vx})=>ux+u.minX<vx+v.maxX&&vx+v.minX<ux+u.maxX&&ay-u.minY+clear>by-v.maxY));
+ for(const line of lines){
+  const [up,down]=flexible?extentOf(line):[ascent,descent];
+  if(flexible&&top+up>height-bottomMargin-down+1e-8)throw new Error('El tamaño de los trazos no cabe en el alto del papel.');
+  if(y===null)y=guide(top+up);else{const previous=y;y+=pitch;if(flexible){const clear=lineHasFormula(line)||previousFormula?rows*.12:-rows*.04;while(collides(previousLine,previous,line,y,clear))y+=rows;}
+   if(flexible?y+down>height-bottomMargin+1e-8:y>bottom+1e-8){pages.push([]);y=guide(top+up);}}
+  previousDescent=down;previousFormula=lineHasFormula(line);previousLine=line;
+  for(const {unit,x} of line){const {label,sample,paths,style,strokeWidth}=unit;pages.at(-1).push({...(sample.id===undefined?{}:{sampleId:sample.id}),label,paths,x,y,scale,color:style.color||baseColor,strokeWidth,bold:style.bold,italic:style.italic});}
+ }
+ if(natural)naturalise(pages,{natural,scale,seed:initialSeed,right:width-right,left});
  return {pages,missing:[]};
+}
+
+// Small, bounded imperfections of a hand: a line that drifts a little, letters
+// that sit a hair above or below the base, turn a degree or two and vary their
+// size and spacing. Preview and PDF share the result; nothing leaves the margins.
+function naturalise(pages,{natural,scale,seed,right,left}){
+ const random=wobble(seed*31+7);
+ for(const page of pages){
+  const lines=new Map();for(const g of page){if(!lines.has(g.y))lines.set(g.y,[]);lines.get(g.y).push(g);}
+  for(const line of lines.values()){
+   const slope=random()*.004*natural,lift=random()*.18*natural,start=line[0].x;let drift=Math.abs(random())*.5*natural;
+   for(const g of line){
+    drift=Math.max(-.6,Math.min(.6,drift+random()*.07*natural));
+    const minX=Math.min(...g.paths.flat().map(p=>p[0])),maxX=Math.max(...g.paths.flat().map(p=>p[0]));
+    const cx=(minX+maxX)/2,size=1+random()*.03*natural,angle=random()*.028*natural;
+    g.paths=transformPaths(g.paths,{angle,scale:size,cx});
+    const ink=Math.max(...g.paths.flat().map(p=>p[0]))*g.scale,inkLeft=Math.min(...g.paths.flat().map(p=>p[0]))*g.scale;
+    g.x=Math.max(left-inkLeft,Math.min(right-ink,g.x+drift));
+    g.y+=(g.x-start)*slope+lift+random()*.1*natural;
+   }
+  }
+ }
 }

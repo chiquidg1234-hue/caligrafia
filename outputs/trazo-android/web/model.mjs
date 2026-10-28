@@ -17,7 +17,7 @@ export function restoreProfiles(samples,savedProfiles=[],savedActiveId,legacyNam
 }
 export function restoreDraft(saved={}){
   const margin=Number.isFinite(saved?.margin)?saved.margin:18;
-  const draft={text:'',width:210,height:297,size:15,leading:10,margin:18,marginLeft:margin,marginRight:margin,marginTop:margin,marginBottom:margin,ink:'#193c66',paperColor:'#ffffff',gridColor:'#dce7ef',marginLine:false,marginLineX:margin,marginLineColor:'#dcaeb8',gridMm:5,gridOriginX:0,gridOriginY:0,ruling:'none',seed:17,styles:[],...saved};
+  const draft={text:'',width:210,height:297,size:15,leading:10,margin:18,marginLeft:margin,marginRight:margin,marginTop:margin,marginBottom:margin,ink:'#193c66',paperColor:'#ffffff',gridColor:'#dce7ef',marginLine:false,marginLineX:margin,marginLineColor:'#dcaeb8',gridMm:5,gridOriginX:0,gridOriginY:0,ruling:'none',seed:17,styles:[],lineGap:0,snapToGrid:false,printOffsetX:0,printOffsetY:0,screenOnlyGuides:false,natural:.5,math:false,...saved};
   draft.text=normaliseText(draft.text);draft.styles=normaliseStyles(draft.styles,draft.text.length);return draft;
 }
 export const validColor=value=>typeof value==='string'&&/^#[a-f\d]{6}$/i.test(value);
