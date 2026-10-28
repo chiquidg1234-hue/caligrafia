@@ -17,9 +17,20 @@ export function restoreProfiles(samples,savedProfiles=[],savedActiveId,legacyNam
 }
 export function restoreDraft(saved={}){
   const margin=Number.isFinite(saved?.margin)?saved.margin:18;
-  const draft={text:'',width:210,height:297,size:15,leading:10,margin:18,marginLeft:margin,marginRight:margin,marginTop:margin,marginBottom:margin,ink:'#193c66',paperColor:'#ffffff',gridColor:'#dce7ef',marginLine:false,marginLineX:margin,marginLineColor:'#dcaeb8',gridMm:5,gridOriginX:0,gridOriginY:0,ruling:'none',seed:17,styles:[],lineGap:0,snapToGrid:false,printOffsetX:0,printOffsetY:0,screenOnlyGuides:false,natural:.5,math:false,...saved};
+  const draft={text:'',width:210,height:297,size:15,leading:10,margin:18,marginLeft:margin,marginRight:margin,marginTop:margin,marginBottom:margin,ink:'#193c66',paperColor:'#ffffff',gridColor:'#dce7ef',marginLine:false,marginLineX:margin,marginLineColor:'#dcaeb8',gridMm:5,gridOriginX:0,gridOriginY:0,ruling:'none',seed:17,styles:[],pen:'',lineGap:0,snapToGrid:false,printOffsetX:0,printOffsetY:0,screenOnlyGuides:false,natural:.5,math:false,...saved};
   draft.text=normaliseText(draft.text);draft.styles=normaliseStyles(draft.styles,draft.text.length);return draft;
 }
+// Ink of common pens, as it looks on white notebook paper (approximate; a photo
+// of the user's own pen can replace the colour). variation: how much each letter
+// changes in tone; weight: extra stroke in font units (gel ink is fuller).
+export const PENS=Object.freeze({
+  'bic-azul':{name:'Bolígrafo azul (tipo BIC Cristal)',ink:'#283a7c',variation:.12,weight:0},
+  'bic-negro':{name:'Bolígrafo negro (tipo BIC)',ink:'#26262e',variation:.1,weight:0},
+  'bic-rojo':{name:'Bolígrafo rojo (tipo BIC)',ink:'#b02a33',variation:.12,weight:0},
+  'gel-azul':{name:'Microgel azul',ink:'#1d3aa3',variation:.05,weight:10},
+  'gel-negro':{name:'Microgel negro',ink:'#1c1c22',variation:.04,weight:10},
+  'lapiz':{name:'Lápiz HB',ink:'#5c5f66',variation:.18,weight:0},
+});
 export const validColor=value=>typeof value==='string'&&/^#[a-f\d]{6}$/i.test(value);
 export const normaliseText=value=>String(value??'').normalize('NFC').replace(/\r\n?/g,'\n').replace(/\t/g,'    ');
 export function normaliseStyles(ranges,length){

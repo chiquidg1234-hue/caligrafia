@@ -3,6 +3,7 @@
 import {composeDocument, documentSVG, documentPDF, DOCUMENT_DEFAULTS} from './document.mjs';
 import {setting, setSetting} from './db.mjs';
 import {saveFile} from './exports.mjs';
+import {PENS} from './model.mjs';
 
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 export const EXAMPLE = `# Práctico de Física
@@ -49,7 +50,7 @@ export const FORMAT_HELP = `<ul class="doc-help">
 </ul>`;
 
 export async function mountDocuments(root, {samples, toast}) {
-  const saved = await setting('documentDraft', null), d = {source: EXAMPLE, start: 0, size: DOCUMENT_DEFAULTS.size, natural: DOCUMENT_DEFAULTS.natural, text: DOCUMENT_DEFAULTS.text, title: DOCUMENT_DEFAULTS.title, offsets: structuredClone(DOCUMENT_DEFAULTS.offsets), ...(saved || {})};
+  const saved = await setting('documentDraft', null), d = {source: EXAMPLE, start: 0, pen: DOCUMENT_DEFAULTS.ink, size: DOCUMENT_DEFAULTS.size, natural: DOCUMENT_DEFAULTS.natural, text: DOCUMENT_DEFAULTS.text, title: DOCUMENT_DEFAULTS.title, offsets: structuredClone(DOCUMENT_DEFAULTS.offsets), ...(saved || {})};
   let result = null, timer, sequence = 0, worker = null;
   // Long homework takes seconds: compose in the background so the page stays responsive.
   try {worker = new Worker(new URL('./worker.mjs', import.meta.url), {type: 'module'});} catch {worker = null;}
@@ -61,6 +62,7 @@ export async function mountDocuments(root, {samples, toast}) {
   <details class="spaced"><summary>Cómo escribir el formato</summary>${FORMAT_HELP}<p class="fine">También puedes pedirle a otra IA que escriba la tarea en este formato: copia la guía «Formato Trazo» de la carpeta outputs/practicos.</p></details>
   <details class="paper-settings" open><summary>Hoja Oficio espiral · tinta · impresora</summary><div class="fields">
   <label>La primera página va en<select id="docStart"><option value="0" ${d.start ? '' : 'selected'}>Anverso</option><option value="1" ${d.start ? 'selected' : ''}>Reverso</option></select></label>
+  <label>Lapicero<select id="docPen"><option value="">Color libre (sin variación)</option>${Object.entries(PENS).map(([k, p]) => `<option value="${k}" ${d.pen === k ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></label>
   ${num('Tamaño de letra (pt)', 'docSize', d.size, 12, 24, .5)}
   <label>Naturalidad · ${Math.round(d.natural * 100)} %<input id="docNatural" type="range" min="0" max="1" step="0.05" value="${d.natural}"></label>
   <label>Color del texto<input id="docText" type="color" value="${esc(d.text)}"></label>
@@ -74,11 +76,11 @@ export async function mountDocuments(root, {samples, toast}) {
   <section><div class="section-top"><h2>Así queda</h2><span class="fine" id="docStatus"></span></div><div id="docPages" class="doc-pages"></div></section></div>`;
   const $ = s => root.querySelector(s);
   const read = () => {
-    d.source = $('#docSource').value; d.start = Number($('#docStart').value); d.size = Number($('#docSize').value) || DOCUMENT_DEFAULTS.size; d.natural = Number($('#docNatural').value); d.text = $('#docText').value; d.title = $('#docTitle').value;
+    d.pen = $('#docPen').value; d.source = $('#docSource').value; d.start = Number($('#docStart').value); d.size = Number($('#docSize').value) || DOCUMENT_DEFAULTS.size; d.natural = Number($('#docNatural').value); d.text = $('#docText').value; d.title = $('#docTitle').value;
     d.offsets = {anverso: {x: Number($('#offAX').value) || 0, y: Number($('#offAY').value) || 0}, reverso: {x: Number($('#offRX').value) || 0, y: Number($('#offRY').value) || 0}};
     setSetting('documentDraft', d).catch(() => {});
   };
-  const options = () => ({start: d.start, size: d.size, natural: d.natural, text: d.text, title: d.title, graph: d.title});
+  const options = () => ({ink: d.pen, start: d.start, size: d.size, natural: d.natural, text: d.text, title: d.title, graph: d.title});
   function compose() {
     const mine = ++sequence; $('#docStatus').textContent = 'Escribiendo con tu letra…';
     setTimeout(async () => {
@@ -93,6 +95,7 @@ export async function mountDocuments(root, {samples, toast}) {
   }
   const later = () => {read(); clearTimeout(timer); timer = setTimeout(compose, 700);};
   root.querySelectorAll('textarea,input,select').forEach(el => el.addEventListener('input', later));
+  $('#docPen').addEventListener('input', () => {const pen = PENS[$('#docPen').value]; if (pen) $('#docText').value = pen.ink; later();});
   const exportAs = (select, name, grid = false) => async () => {
     try {read(); if (!result) {toast('Espera a que termine la vista previa.'); return;} const bytes = await documentPDF(result, {offsets: grid ? {} : d.offsets, select, grid}); await saveFile(new Blob([bytes], {type: 'application/pdf'}), name); toast('PDF listo.');}
     catch (e) {toast(e.message);}

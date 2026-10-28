@@ -1,0 +1,39 @@
+# Prueba de lapiceros
+
+Compara con tus lapiceros reales y elige el que más se parezca.
+
+[[lapicero bic-azul]]
+## Bolígrafo azul (tipo BIC Cristal)
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero gel-azul]]
+## Microgel azul
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero bic-negro]]
+## Bolígrafo negro (tipo BIC)
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero gel-negro]]
+## Microgel negro
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero bic-rojo]]
+## Bolígrafo rojo (tipo BIC)
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero lapiz]]
+## Lápiz HB
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero libre]]
+[[color #1f3a93]]
+## Azul anterior (#1f3a93, sin variación)
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.

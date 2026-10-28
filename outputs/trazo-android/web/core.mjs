@@ -1,5 +1,5 @@
 import { Font, Glyph, Path } from './vendor/opentype.mjs';
-import {normaliseText,normaliseStyles,styleAt,validColor} from './model.mjs';
+import {normaliseText,normaliseStyles,styleAt,validColor,PENS} from './model.mjs';
 import {composeFormula,isFormula,balanced} from './math.mjs';
 
 export const CHARS='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÜ0123456789.,;:!?¿¡()-+=\"\'/';
@@ -238,6 +238,10 @@ export function layoutText(text,samples,options={}) {
   for(const {unit,x} of line){const {label,sample,paths,style,strokeWidth}=unit;pages.at(-1).push({...(sample.id===undefined?{}:{sampleId:sample.id}),label,paths,x,y,scale,color:style.color||baseColor,strokeWidth,bold:style.bold,italic:style.italic});}
  }
  if(natural)naturalise(pages,{natural,scale,seed:initialSeed,right:width-right,left});
+ // Pen ink: each letter a little lighter or darker, gel ink a little fuller.
+ const pen=PENS[options.pen];
+ if(pen){const random=wobble(initialSeed*7+3),tone=(hex,t)=>'#'+hex.slice(1).match(/../g).map(v=>{const c=parseInt(v,16),n=t>0?c+(255-c)*t:c*(1+t);return Math.round(Math.max(0,Math.min(255,n))).toString(16).padStart(2,'0');}).join('');
+  for(const page of pages)for(const g of page){const r=random();g.color=tone(g.color,r>0?r*pen.variation:r*pen.variation*.5);if(pen.weight)g.strokeWidth=(g.strokeWidth||0)+pen.weight;}}
  return {pages,missing:[]};
 }
 

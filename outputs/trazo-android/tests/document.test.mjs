@@ -68,7 +68,13 @@ test('at most N graphs per side and a statement never stays alone at the bottom'
   assert.deepEqual(doc.missing, []);
   assert.equal(doc.pages.length, 3);
   // Each page starts with a heading in the title colour.
-  for (const page of doc.pages) assert.equal(page.items.find(i => i.type === 'glyph').color, '#c0392b');
+  for (const page of doc.pages) {const [r, , b] = page.items.find(i => i.type === 'glyph').color.slice(1).match(/../g).map(v => parseInt(v, 16)); assert.ok(r > b * 1.5, 'heading in red ink');}
+});
+
+test('pen ink varies the tone of each letter around the pen colour', () => {
+  const plain = composeDocument('Hola hola hola', natural, {ink: ''}), pen = composeDocument('Hola hola hola', natural, {ink: 'bic-azul'});
+  assert.equal(new Set(plain.pages[0].items.map(i => i.color)).size, 1);
+  assert.ok(new Set(pen.pages[0].items.map(i => i.color)).size > 3);
 });
 
 test('PDF applies the printer correction per side and can print one side only', async () => {

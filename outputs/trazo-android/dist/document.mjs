@@ -17,10 +17,11 @@
 //     recta a b c | etiqueta     the line a·x + b·y + c = 0
 //     punto x y | etiqueta
 //   [[fin]]
-//   [[tamaño 18]]  [[renglon medio|seguido]]  [[espacio 2]]  [[color #hex]]
+//   [[tamaño 18]]  [[renglon medio|seguido]]  [[espacio 2]]  [[color #hex]]  [[lapicero bic-negro]]
 import {layoutText} from './core.mjs';
 import {handStroke} from './math.mjs';
 import {svgPaths} from './exports.mjs';
+import {PENS} from './model.mjs';
 import * as bundle from './vendor/pdf-lib.min.js';
 
 const PDF = globalThis.PDFLib || bundle.default, MM = 72 / 25.4;
@@ -31,10 +32,11 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
-  text: '#1f3a93', title: '#c0392b', graph: '#c0392b', natural: .55, seed: 7, lineGap: 0, pen: .27,
-  // Measured on the first printed test (Epson T50): content came out 5–6 mm
-  // to the left and about 1 mm too high on both sides.
-  offsets: {anverso: {x: 5, y: 1}, reverso: {x: 6, y: 1}},
+  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', natural: .55, seed: 7, lineGap: 0, pen: .27,
+  // Epson T50 with the sheet pushed against the right guide: the first test
+  // came out about 1 mm too high; with the +5 mm horizontal correction the
+  // second print landed one square too far right, so only the height stays.
+  offsets: {anverso: {x: 0, y: 1}, reverso: {x: 1, y: 1}},
 });
 
 function rng(seed) {let s = (seed >>> 0) || 1; return () => {s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296;};}
@@ -70,6 +72,7 @@ export function parseDocument(source) {
       else if (key === 'espacio') push({type: 'blank', rows: Math.max(1, Math.min(20, Math.round(Number(args) || 1)))});
       else if (key === 'color') {if (!/^#[\da-f]{6}$/i.test(args)) throw Error(`Color inválido (${at}).`); push({type: 'set', key: 'text', value: args.toLowerCase()});}
       else if (key === 'pagina' || key === 'página') push({type: 'page'});
+      else if (key === 'lapicero') {if (!PENS[args] && args !== 'libre') throw Error(`Lapicero desconocido «${args}» (${at}). Usa: ${Object.keys(PENS).join(', ')} o libre.`); push({type: 'set', key: 'pen', value: args === 'libre' ? '' : args});}
       else if (key === 'graficas-por-hoja' || key === 'gráficas-por-hoja') push({type: 'set', key: 'graphsPerPage', value: Math.max(1, Number(args) || 3)});
       else throw Error(`No conozco [[${name}]] (${at}).`);
       continue;
@@ -108,7 +111,7 @@ export function composeDocument(source, samples, options = {}) {
   // Text on the grid: baselines on lines, first line one row below the top.
   function write(text, w, state, extra = {}) {
     const {text: plain, styles} = inline(text), virtual = Math.max(70, w), color = extra.color || state.text;
-    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, seed: seed++, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
+    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, seed: seed++, pen: extra.ink === false ? '' : state.pen, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
     if (layout.missing.length) {for (const c of layout.missing) missing.add(c); return {items: [], rows: 1, baselines: []};}
     if (layout.pages.length > 1) throw Error(`Un párrafo es más alto que la hoja: «${plain.slice(0, 40)}…».`);
     const items = glyphs(layout), baselines = [...new Set(items.map(i => Math.round(i.y / g)))].sort((a, b) => a - b), last = baselines.at(-1) * g;
@@ -220,7 +223,7 @@ export function composeDocument(source, samples, options = {}) {
   function flow(list, w, state) {
     const items = []; let row = 0, previous = null;
     for (const block of list) {
-      if (block.type === 'set') {state[block.key] = block.value; continue;}
+      if (block.type === 'set') {state[block.key] = block.value; if (block.key === 'pen' && PENS[block.value]) state.text = PENS[block.value].ink; continue;}
       if (block.type === 'blank') {row += block.rows; previous = null; continue;}
       if (block.type === 'page') throw Error('No se puede cambiar de página dentro de [[columnas]].');
       if ((block.type === 'heading' || block.type === 'subheading') && row) row++;
@@ -231,14 +234,14 @@ export function composeDocument(source, samples, options = {}) {
   }
 
   const graphs = b => b.type === 'graph' ? 1 : b.type === 'columns' ? b.columns.flat().reduce((n, c) => n + graphs(c), 0) : 0;
-  const pages = [], state = {size: o.size, text: o.text, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity};
+  const pages = [], state = {size: o.size, text: o.text, pen: o.ink, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity};
   let page = null, row = 0, previous = null;
   const newPage = () => {const side = area[(o.start + pages.length) % 2]; page = {side: side.name, items: [], graphs: 0}; pages.push(page); row = o.insetTop; previous = null;};
   const limit = () => area[(o.start + pages.length - 1) % 2].rows - o.insetBottom;
   newPage();
   for (let i = 0; i < blocks.length; i++) {
     const block = blocks[i];
-    if (block.type === 'set') {state[block.key] = block.value; continue;}
+    if (block.type === 'set') {state[block.key] = block.value; if (block.key === 'pen' && PENS[block.value]) state.text = PENS[block.value].ink; continue;}
     if (block.type === 'page') {newPage(); continue;}
     if (block.type === 'blank') {if (row > o.insetTop) row += block.rows; previous = null; continue;}
     const heading = block.type === 'heading' || block.type === 'subheading';

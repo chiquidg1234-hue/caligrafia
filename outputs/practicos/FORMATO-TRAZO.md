@@ -66,11 +66,12 @@ punto 9 6 | (9,6)
 - `[[espacio 2]]`: dos renglones libres.
 - `[[graficas-por-hoja 3]]`: como máximo 3 gráficas por cara.
 - `[[color #1f3a93]]`: color del texto.
+- `[[lapicero bic-azul]]`: tinta de un lapicero. Puede ser `bic-azul`, `bic-negro`, `bic-rojo`, `gel-azul` (microgel), `gel-negro` o `lapiz`; con `libre`, el color va fijo, sin variación.
 
 ## Reglas de tu cuaderno (la app las aplica sola)
 
 - **Márgenes:** deja 1 cuadrito libre dentro del marco rosado a la izquierda y 2 a la derecha. Empieza 1 renglón debajo del borde de arriba.
-- **Colores:** el texto va en azul bolígrafo (#1f3a93); los títulos, subtítulos y rectas de respuesta en rojo (#c0392b).
+- **Colores:** el texto va con tinta de bolígrafo azul tipo BIC (#283a7c, cada letra con un tono un poco distinto); los títulos, subtítulos y rectas de respuesta en rojo (#b02a33).
 - **Gráficas:** como máximo 3 por cara en matemáticas.
 - **Hojas:** un título o enunciado nunca queda solo al final de una hoja; se pasa con su resolución a la siguiente.
 

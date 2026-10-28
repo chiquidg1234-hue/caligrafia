@@ -1,6 +1,6 @@
 # Prácticos con tu letra · Oficio con espiral
 
-Tres prácticos listos para imprimir sobre tu cuaderno Oficio de cuadritos de 5 mm. Están escritos con **Mi letra Natural**, el texto en azul y los títulos y rectas de respuesta en rojo.
+Tres prácticos listos para imprimir sobre tu cuaderno Oficio de cuadritos de 5 mm. Están escritos con **Mi letra Natural**, con tinta de **bolígrafo azul tipo BIC** (cada letra varía un poco de tono) y los títulos y rectas de respuesta en rojo.
 
 | Carpeta | Contenido | Páginas |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ Las fuentes en texto están en [`fuentes`](fuentes): las puedes abrir, corregir 
 
 ## Lo que aprendí de tu prueba impresa
 
-- **Desfase:** en las dos caras la impresión salió unos **5–6 mm a la izquierda** y **≈1 mm más arriba**. Por eso la letra no se apoyaba en los renglones. Los PDF ya traen la corrección: anverso 5 mm a la derecha y 1 mm abajo; reverso 6 mm a la derecha y 1 mm abajo. Si después de imprimir todavía se corre, cámbialo en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
+- **Desfase:** en la primera prueba la impresión salió ≈1 mm más arriba. Con la corrección horizontal de 5 mm, la segunda impresión quedó un cuadrito de más a la izquierda (2 en vez de 1), así que quité esa corrección horizontal. Los PDF ahora llevan anverso 0 mm → y 1 mm ↓, reverso 1 mm → y 1 mm ↓. Si todavía se corre, cámbialo en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
 - **Giro:** el anverso salió girado ≈0,8° porque la hoja entró chueca. El reverso, empujado contra la guía derecha, salió casi recto (0,3°). Eso se corrige al poner la hoja, no en el PDF:
   1. Quita los pedacitos que deja el espiral.
   2. Mete una sola hoja, plana, y empújala contra la **guía derecha**.
