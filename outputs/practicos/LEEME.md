@@ -18,7 +18,7 @@ Las fuentes en texto están en [`fuentes`](fuentes): las puedes abrir, corregir 
 
 ## Lo que aprendí de tu prueba impresa
 
-- **Desfase:** en la primera prueba la impresión salió ≈1 mm más arriba. Con la corrección horizontal de 5 mm, la segunda impresión quedó un cuadrito de más a la izquierda (2 en vez de 1), así que quité esa corrección horizontal. Los PDF ahora llevan anverso 0 mm → y 1 mm ↓, reverso 1 mm → y 1 mm ↓. Si todavía se corre, cámbialo en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
+- **Desfase:** en la primera prueba la impresión salió ≈1 mm más arriba. Con la corrección horizontal de 5 mm, la segunda impresión dejó dos cuadritos libres a la izquierda en vez de uno (se corrió 5 mm a la derecha), así que quité esa corrección horizontal. Los PDF ahora llevan anverso 0 mm → y 1 mm ↓, reverso 1 mm → y 1 mm ↓. Si todavía se corre, cámbialo en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
 - **Giro:** el anverso salió girado ≈0,8° porque la hoja entró chueca. El reverso, empujado contra la guía derecha, salió casi recto (0,3°). Eso se corrige al poner la hoja, no en el PDF:
   1. Quita los pedacitos que deja el espiral.
   2. Mete una sola hoja, plana, y empújala contra la **guía derecha**.
