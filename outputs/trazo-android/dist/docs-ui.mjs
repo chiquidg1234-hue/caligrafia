@@ -47,10 +47,11 @@ export const FORMAT_HELP = `<ul class="doc-help">
 <li>Datos a la izquierda y resolución a la derecha: <code>[[columnas 12]]</code> … <code>[[|]]</code> … <code>[[fin]]</code> (12 = cuadritos de ancho).</li>
 <li>Coordenadas: <code>[[grafica xmin xmax ymin ymax]]</code>, luego <code>recta a b c | etiqueta</code> (a·x + b·y + c = 0) y <code>punto x y | (x,y)</code>, y <code>[[fin]]</code>.</li>
 <li><code>[[hoja trapper]]</code> u <code>[[hoja oficio]]</code> en el primer renglón elige la hoja · <code>[[tamaño 18]]</code> · <code>[[renglon medio]]</code> / <code>[[renglon seguido]]</code> · <code>[[espacio 2]]</code> · <code>[[graficas-por-hoja 3]]</code></li>
+<li><code>[[tinta real]]</code> dibuja cada trazo como un bolígrafo; <code>[[tinta plana]]</code> vuelve al relleno parejo de antes. <code>[[titulos a mano]]</code> deja libre el lugar de los títulos para escribirlos con tu lapicero.</li>
 </ul>`;
 
 export async function mountDocuments(root, {samples, toast}) {
-  const saved = await setting('documentDraft', null), d = {source: EXAMPLE, paper: 'oficio', start: 0, pen: DOCUMENT_DEFAULTS.ink, size: DOCUMENT_DEFAULTS.size, natural: DOCUMENT_DEFAULTS.natural, text: DOCUMENT_DEFAULTS.text, title: DOCUMENT_DEFAULTS.title, offsets: structuredClone(DOCUMENT_DEFAULTS.offsets), ...(saved || {})};
+  const saved = await setting('documentDraft', null), d = {source: EXAMPLE, paper: 'oficio', start: 0, pen: DOCUMENT_DEFAULTS.ink, tinta: DOCUMENT_DEFAULTS.tinta, titulos: DOCUMENT_DEFAULTS.titulos, size: DOCUMENT_DEFAULTS.size, natural: DOCUMENT_DEFAULTS.natural, text: DOCUMENT_DEFAULTS.text, title: DOCUMENT_DEFAULTS.title, offsets: structuredClone(DOCUMENT_DEFAULTS.offsets), ...(saved || {})};
   let result = null, timer, sequence = 0, worker = null;
   // Long homework takes seconds: compose in the background so the page stays responsive.
   try {worker = new Worker(new URL('./worker.mjs', import.meta.url), {type: 'module'});} catch {worker = null;}
@@ -64,6 +65,8 @@ export async function mountDocuments(root, {samples, toast}) {
   <label>Hoja<select id="docPaper">${Object.entries(PAPERS).map(([k, p]) => `<option value="${k}" ${d.paper === k ? 'selected' : ''}>${esc(p.name)} · ${(p.width / 10).toLocaleString('es')} × ${(p.height / 10).toLocaleString('es')} cm</option>`).join('')}</select></label>
   <label>La primera página va en<select id="docStart"><option value="0" ${d.start ? '' : 'selected'}>Anverso</option><option value="1" ${d.start ? 'selected' : ''}>Reverso</option></select></label>
   <label>Lapicero<select id="docPen"><option value="">Color libre (sin variación)</option>${Object.entries(PENS).map(([k, p]) => `<option value="${k}" ${d.pen === k ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></label>
+  <label>Tinta<select id="docTinta"><option value="real" ${d.tinta === 'plana' ? '' : 'selected'}>Real: cada trazo como un bolígrafo</option><option value="plana" ${d.tinta === 'plana' ? 'selected' : ''}>Plana: relleno parejo, como antes</option></select></label>
+  <label>Títulos<select id="docTitulos"><option value="impresos" ${d.titulos === 'mano' ? '' : 'selected'}>Impresos</option><option value="mano" ${d.titulos === 'mano' ? 'selected' : ''}>A mano: el PDF deja su lugar libre</option></select></label>
   ${num('Tamaño de letra (pt)', 'docSize', d.size, 12, 24, .5)}
   <label>Naturalidad · ${Math.round(d.natural * 100)} %<input id="docNatural" type="range" min="0" max="1" step="0.05" value="${d.natural}"></label>
   <label>Color del texto<input id="docText" type="color" value="${esc(d.text)}"></label>
@@ -77,11 +80,11 @@ export async function mountDocuments(root, {samples, toast}) {
   <section><div class="section-top"><h2>Así queda</h2><span class="fine" id="docStatus"></span></div><div id="docPages" class="doc-pages"></div></section></div>`;
   const $ = s => root.querySelector(s);
   const read = () => {
-    d.paper = $('#docPaper').value; d.pen = $('#docPen').value; d.source = $('#docSource').value; d.start = Number($('#docStart').value); d.size = Number($('#docSize').value) || DOCUMENT_DEFAULTS.size; d.natural = Number($('#docNatural').value); d.text = $('#docText').value; d.title = $('#docTitle').value;
+    d.paper = $('#docPaper').value; d.pen = $('#docPen').value; d.tinta = $('#docTinta').value; d.titulos = $('#docTitulos').value; d.source = $('#docSource').value; d.start = Number($('#docStart').value); d.size = Number($('#docSize').value) || DOCUMENT_DEFAULTS.size; d.natural = Number($('#docNatural').value); d.text = $('#docText').value; d.title = $('#docTitle').value;
     d.offsets = {anverso: {x: Number($('#offAX').value) || 0, y: Number($('#offAY').value) || 0}, reverso: {x: Number($('#offRX').value) || 0, y: Number($('#offRY').value) || 0}};
     setSetting('documentDraft', d).catch(() => {});
   };
-  const options = () => ({paper: PAPERS[d.paper] || PAPERS.oficio, ink: d.pen, start: d.start, size: d.size, natural: d.natural, text: d.text, title: d.title, graph: d.title});
+  const options = () => ({paper: PAPERS[d.paper] || PAPERS.oficio, ink: d.pen, tinta: d.tinta === 'plana' ? 'plana' : 'real', titulos: d.titulos === 'mano' ? 'mano' : 'impresos', start: d.start, size: d.size, natural: d.natural, text: d.text, title: d.title, graph: d.title});
   function compose() {
     const mine = ++sequence; $('#docStatus').textContent = 'Escribiendo con tu letra…';
     setTimeout(async () => {

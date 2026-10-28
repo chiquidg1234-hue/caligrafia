@@ -24,12 +24,12 @@ export function restoreDraft(saved={}){
 // of the user's own pen can replace the colour). variation: how much each letter
 // changes in tone; weight: extra stroke in font units (gel ink is fuller).
 export const PENS=Object.freeze({
-  'bic-azul':{name:'Bolígrafo azul (tipo BIC Cristal)',ink:'#283a7c',variation:.12,weight:0},
-  'bic-negro':{name:'Bolígrafo negro (tipo BIC)',ink:'#26262e',variation:.1,weight:0},
-  'bic-rojo':{name:'Bolígrafo rojo (tipo BIC)',ink:'#b02a33',variation:.12,weight:0},
-  'gel-azul':{name:'Microgel azul',ink:'#1d3aa3',variation:.05,weight:10},
-  'gel-negro':{name:'Microgel negro',ink:'#1c1c22',variation:.04,weight:10},
-  'lapiz':{name:'Lápiz HB',ink:'#5c5f66',variation:.18,weight:0},
+  'bic-azul':{name:'Bolígrafo azul (tipo BIC Cristal)',ink:'#283a7c',variation:.12,weight:0,kind:'boligrafo'},
+  'bic-negro':{name:'Bolígrafo negro (tipo BIC)',ink:'#26262e',variation:.1,weight:0,kind:'boligrafo'},
+  'bic-rojo':{name:'Bolígrafo rojo (tipo BIC)',ink:'#b02a33',variation:.12,weight:0,kind:'boligrafo'},
+  'gel-azul':{name:'Microgel azul',ink:'#1d3aa3',variation:.05,weight:10,kind:'gel'},
+  'gel-negro':{name:'Microgel negro',ink:'#1c1c22',variation:.04,weight:10,kind:'gel'},
+  'lapiz':{name:'Lápiz HB',ink:'#5c5f66',variation:.18,weight:0,kind:'lapiz'},
 });
 export const validColor=value=>typeof value==='string'&&/^#[a-f\d]{6}$/i.test(value);
 export const normaliseText=value=>String(value??'').normalize('NFC').replace(/\r\n?/g,'\n').replace(/\t/g,'    ');

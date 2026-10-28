@@ -18,7 +18,10 @@
 //     punto x y | etiqueta
 //   [[fin]]
 //   [[tamaño 18]]  [[renglon medio|seguido]]  [[espacio 2]]  [[color #hex]]  [[lapicero bic-negro]]
+//   [[tinta real|plana]]         ballpoint ink (ink.mjs) or the flat fill of the photo
+//   [[titulos a mano|impresos]]  leave the space of titles and headings for a real pen
 import {layoutText} from './core.mjs';
+import {ballpoint, inkMode} from './ink.mjs';
 import {handStroke} from './math.mjs';
 import {svgPaths} from './exports.mjs';
 import {PENS} from './model.mjs';
@@ -38,7 +41,7 @@ export const PAPERS = Object.freeze({oficio: OFICIO_ESPIRAL, trapper: TRAPPER_TO
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
-  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
+  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', tinta: 'real', titulos: 'impresos', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
   // Epson T50 measured on the first test: 5–6 mm to the left and 1 mm high.
   // With this correction the writing starts two squares inside the frame,
   // which the user prefers (third test print).
@@ -79,6 +82,8 @@ export function parseDocument(source) {
       else if (key === 'color') {if (!/^#[\da-f]{6}$/i.test(args)) throw Error(`Color inválido (${at}).`); push({type: 'set', key: 'text', value: args.toLowerCase()});}
       else if (key === 'pagina' || key === 'página') push({type: 'page'});
       else if (key === 'lapicero') {if (!PENS[args] && args !== 'libre') throw Error(`Lapicero desconocido «${args}» (${at}). Usa: ${Object.keys(PENS).join(', ')} o libre.`); push({type: 'set', key: 'pen', value: args === 'libre' ? '' : args});}
+      else if (key === 'tinta') {const how = args.toLowerCase(); if (how !== 'real' && how !== 'plana') throw Error(`Escribe [[tinta real]] o [[tinta plana]] (${at}).`); push({type: 'set', key: 'tinta', value: how});}
+      else if (key === 'titulos' || key === 'títulos') {const how = /mano/i.test(args) ? 'mano' : /impres/i.test(args) ? 'impresos' : ''; if (!how) throw Error(`Escribe [[titulos a mano]] o [[titulos impresos]] (${at}).`); push({type: 'set', key: 'titulos', value: how});}
       else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
       else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
       else if (key === 'graficas-por-hoja' || key === 'gráficas-por-hoja') push({type: 'set', key: 'graphsPerPage', value: Math.max(1, Number(args) || 3)});
@@ -115,7 +120,7 @@ export function composeDocument(source, samples, options = {}) {
   const area = paper.sides.map(s => ({...s, x0: s.left + o.insetLeft * g, rows: Math.floor((paper.height - s.top - s.bottom) / g + 1e-9)}));
   const width = paper.width - area[0].left - area[0].right - (o.insetLeft + o.insetRight) * g;
   const missing = new Set(); let seed = o.seed;
-  const glyphs = (layout, dx = 0, dy = 0) => layout.pages[0].map(e => ({type: 'glyph', paths: e.paths, x: e.x + dx, y: e.y + dy, scale: e.scale, color: e.color, strokeWidth: e.strokeWidth}));
+  const glyphs = (layout, dx = 0, dy = 0) => layout.pages[0].map(e => ({type: 'glyph', paths: e.paths, x: e.x + dx, y: e.y + dy, scale: e.scale, color: e.color, strokeWidth: e.strokeWidth, ...(e.sampleId === undefined ? {} : {sampleId: e.sampleId})}));
   const inkBox = items => {let l = Infinity, r = -Infinity, t = Infinity, b = -Infinity; for (const it of items) {if (it.type === 'glyph') for (const p of it.paths) for (const [x, y] of p) {l = Math.min(l, it.x + x * it.scale); r = Math.max(r, it.x + x * it.scale); t = Math.min(t, it.y - y * it.scale); b = Math.max(b, it.y - y * it.scale);} else if (it.type === 'ink') for (const p of it.polys) for (const [x, y] of p) {l = Math.min(l, x); r = Math.max(r, x); t = Math.min(t, y); b = Math.max(b, y);}} return {l, r, t, b};};
 
   // Text on the grid: baselines on lines, first line one row below the top.
@@ -252,7 +257,7 @@ export function composeDocument(source, samples, options = {}) {
   }
 
   const graphs = b => b.type === 'graph' ? 1 : b.type === 'columns' ? b.columns.flat().reduce((n, c) => n + graphs(c), 0) : 0;
-  const pages = [], state = {size: o.size, text: o.text, pen: o.ink, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity, answer: o.answer};
+  const pages = [], state = {size: o.size, text: o.text, pen: o.ink, tinta: o.tinta, titulos: o.titulos, lineGap: o.lineGap, graphsPerPage: o.graphsPerPage ?? Infinity, answer: o.answer};
   let page = null, row = 0, previous = null;
   const newPage = () => {const side = area[(o.start + pages.length) % 2]; page = {side: side.name, items: [], graphs: 0}; pages.push(page); row = o.insetTop; previous = null;};
   const limit = () => area[(o.start + pages.length - 1) % 2].rows - o.insetBottom;
@@ -285,10 +290,14 @@ export function composeDocument(source, samples, options = {}) {
     if (row + need > limit() && row > o.insetTop) newPage();
     if (row + r.rows > limit() + 1e-9) throw Error(`Un bloque no cabe en una hoja entera: divídelo («${(block.text || block.type).slice(0, 30)}»).`);
     const side = area.find(s => s.name === page.side), top = side.top + row * g;
-    for (const it of r.items) {shift(it, side.x0, top); page.items.push(it);}
+    const byHand = state.titulos === 'mano' && (block.type === 'title' || heading);
+    for (const it of r.items) {shift(it, side.x0, top); it.tinta = state.tinta; it.pen = state.pen; if (byHand) it.hand = true; page.items.push(it);}
     row += r.rows; previous = r; page.graphs += graphs(block);
   }
   if (!pages.at(-1).items.length && pages.length > 1) pages.pop();
+  // Ballpoint ink, once for the preview and the PDF.
+  const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null; let n = o.seed * 7919;
+  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: o.natural, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
   return {pages, missing: [...missing].sort(), paper};
 }
 
@@ -304,8 +313,20 @@ export function documentSVG(page, paper = OFICIO_ESPIRAL, {grid = true, scale = 
     for (let x = 0; x <= w + 1e-9; x += g) parts.push(`<path d="M${side.left + x},${side.top}v${h}" stroke="#bcd3e4" stroke-width=".18"/>`);
     parts.push(`<rect x="${side.left}" y="${side.top}" width="${w}" height="${h}" fill="none" stroke="#e4a6b6" stroke-width=".35"/>`);
   }
-  for (const it of page.items) parts.push(it.type === 'glyph' ? `<path d="${svgPaths(it.paths, true)}" transform="translate(${it.x} ${it.y}) scale(${it.scale})" fill="${it.color}"${it.strokeWidth ? ` stroke="${it.color}" stroke-width="${it.strokeWidth}" stroke-linejoin="round"` : ''}/>` : `<path d="${polyPath(it.polys)}" fill="${it.color}"/>`);
+  // Titles left for the pen show faintly, only on screen.
+  for (const it of page.items) parts.push(it.hand ? `<g opacity=".25">` : '', it.layers ? it.layers.map(l => `<path d="${polyPath(l.polys)}" fill="${l.color}"${l.opacity < 1 ? ` fill-opacity="${l.opacity}"` : ''}/>`).join('') : it.type === 'glyph' ? `<path d="${svgPaths(it.paths, true)}" transform="translate(${it.x} ${it.y}) scale(${it.scale})" fill="${it.color}"${it.strokeWidth ? ` stroke="${it.color}" stroke-width="${it.strokeWidth}" stroke-linejoin="round"` : ''}/>` : `<path d="${polyPath(it.polys)}" fill="${it.color}"/>`, it.hand ? '</g>' : '');
   return parts.join('') + '</svg>';
+}
+
+/**
+ * The centre lines of one page for a pen plotter: one path per stroke, in
+ * millimetres from the top-left corner of the sheet, without the printer
+ * correction (the plotter holds the sheet itself). Only [[tinta real]].
+ */
+export function plotterSVG(page, paper = OFICIO_ESPIRAL) {
+  const lines = page.items.filter(it => !it.hand).flatMap(it => (it.lines || []).map(l => ({l, color: it.color}))).filter(({l}) => l.length);
+  const d = l => 'M' + l.map(([x, y]) => `${x.toFixed(3)},${y.toFixed(3)}`).join('L') + (l.length === 1 ? 'h0.01' : '');
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${paper.width}mm" height="${paper.height}mm" viewBox="0 0 ${paper.width} ${paper.height}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width=".3">` + lines.map(({l, color}) => `<path d="${d(l)}" stroke="${color}"/>`).join('') + '</svg>';
 }
 
 /** PDF with only the writing (the sheet already has its grid). */
@@ -325,7 +346,9 @@ export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, 
     page.pushOperators(PDF.setLineJoin(PDF.LineJoinStyle.Round));
     for (const it of p.items) {
       const color = rgb(it.color);
-      if (it.type === 'glyph') page.drawSvgPath(glyphPath(it.paths), {x: it.x * MM + dx, y: (H - it.y) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})});
+      if (it.hand) continue;
+      if (it.layers) for (const l of it.layers) page.drawSvgPath(polyPath(l.polys), {x: dx, y: H * MM + dy, scale: MM, color: rgb(l.color), ...(l.opacity < 1 ? {opacity: l.opacity} : {})});
+      else if (it.type === 'glyph') page.drawSvgPath(glyphPath(it.paths), {x: it.x * MM + dx, y: (H - it.y) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})});
       else page.drawSvgPath(polyPath(it.polys), {x: dx, y: H * MM + dy, scale: MM, color});
     }
   }

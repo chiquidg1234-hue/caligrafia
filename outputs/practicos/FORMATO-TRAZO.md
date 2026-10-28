@@ -69,6 +69,8 @@ punto 9 6 | (9,6)
 - `[[graficas-por-hoja 3]]`: como máximo 3 gráficas por cara.
 - `[[color #1f3a93]]`: color del texto.
 - `[[lapicero bic-azul]]`: tinta de un lapicero. Puede ser `bic-azul`, `bic-negro`, `bic-rojo`, `gel-azul` (microgel), `gel-negro` o `lapiz`; con `libre`, el color va fijo, sin variación.
+- `[[tinta real]]` (lo normal): cada trazo se dibuja como con un bolígrafo, con borde limpio y tinta que varía. `[[tinta plana]]` vuelve al relleno parejo de antes. Se explica en [prueba-tinta-real](../prueba-tinta-real/LEEME.md).
+- `[[titulos a mano]]`: el PDF deja libre el lugar del título y de cada «Ejercicio N.-», para que los escribas con tu lapicero. `[[titulos impresos]]` los vuelve a imprimir.
 
 ## Reglas de tu cuaderno (la app las aplica sola)
 

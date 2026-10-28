@@ -1,0 +1,22 @@
+# Prueba de tinta real
+
+Mira cada bloque de cerca, con luz de costado, junto a tu lapicero real.
+
+[[tinta plana]]
+## 1. Antes: tinta plana
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[tinta real]]
+## 2. Ahora: tinta real, bolígrafo azul
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero gel-azul]]
+## 3. Tinta real, microgel azul
+Hoy escribo mis apuntes de física: P = F/A = 931/0,2025 = 4597,53 Pa.
+El pingüino llegó al jardín y pidió café con azúcar.
+
+[[lapicero bic-azul]]
+## 4. Escribe aquí lo mismo con tu lapicero azul
+[[espacio 5]]

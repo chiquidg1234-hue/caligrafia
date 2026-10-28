@@ -1,13 +1,13 @@
 # Resumen para empezar un chat nuevo (Trazo · caligrafía)
 
-Pega este archivo o pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del repositorio `chiquidg1234-hue/caligrafia`, rama `claude/handwriting-review-improve-uj49ll`».
+Pega este archivo o pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del repositorio `chiquidg1234-hue/caligrafia`, rama `ccr-6e94865d-c20f7c`». Esa rama continúa a `claude/handwriting-review-improve-uj49ll` y es la más reciente.
 
 ## Qué es
 
 **Trazo** es una app web/Android que escribe con letra a mano.
 - La app está en `outputs/trazo-android/web`.
 - `dist/` es una copia de `web/`: después de cada cambio se copia web → dist.
-- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (99 pasan).
+- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (106 pasan).
 
 ## Letras incluidas (`web/personal-letter.json`)
 
@@ -42,6 +42,26 @@ Hay que mantener tres copias iguales: `web/`, `dist/` y `work/caligrafia-2026-10
   - el amarillo está tapado y el negro casi vacío: el azul sale bien y el rojo sale rosado;
   - la hoja se empuja contra la guía derecha.
 
+## Tinta real (`web/ink.mjs`)
+
+Antes, de cerca, la letra impresa se notaba: el borde quedaba mordido por la foto y la tinta, plana.
+- **Tinta real**, por defecto en Tareas y en los prácticos:
+  - cada letra se adelgaza a su línea central y el ancho se mide con área ÷ largo;
+  - se redibuja como bolígrafo: el tono varía por trazo, es más oscuro en los cruces, deja gotitas al empezar y alguna rayita pálida;
+  - cada letra se dobla un poco distinto;
+  - las líneas de cada muestra se guardan en caché y se trasladan con una transformación afín.
+- **Si no encaja:** cuando las líneas no reconstruyen bien la letra (sobra o falta tinta, o un ojo cerrado), se usa el contorno suavizado (desenfoque + marching squares).
+  - `inkMode(muestras)` elige `lineas` (Natural) o `contorno` (2A y 2Y, fotos con ruido).
+- **Formato:**
+  - `[[tinta real|plana]]`;
+  - `[[titulos a mano]]` deja libre el lugar de los títulos y «Ejercicio N.-», que se ven tenues solo en pantalla;
+  - `componer.mjs … --ploter` genera SVG de líneas centrales para un plóter.
+- La guía para que no se note impreso y la hoja de prueba están en `outputs/prueba-tinta-real/`.
+- **Pendiente de la usuaria:**
+  - imprimir la prueba, escribir el bloque 4 con su lapicero y mandar foto para igualar color y grosor;
+  - decir si prefiere la tinta real o la plana.
+- **Falta:** la pestaña Páginas (`exports.mjs`) sigue con tinta plana. La APK no se reconstruyó (no hay clave de firma).
+
 ## Reglas de sus tareas
 
 - **Título y encabezados:** título centrado con un renglón libre debajo; `### Ejercicio N.-` en rojo.
@@ -71,11 +91,12 @@ Genera el PDF completo, anversos, reversos, la hoja blanca con cuadrícula y los
 - `practicos/`: Matemáticas, Física (4 ejercicios) y Práctico 5, en Oficio con Natural.
 - `practicos-trapper/`: Química (2A), Física de energía (17 ejercicios, 2Y) y Física corta (2Y), en Trapper.
 - `fuentes-2a-2y/`: las dos fuentes (.otf, .trazo, muestras y pruebas).
+- `prueba-tinta-real/`: guía «que no se note impreso», hoja de prueba antes/ahora y comparación ampliada. Los prácticos de arriba se generaron antes y tienen tinta plana; al regenerarlos salen con tinta real.
 - `mi-caligrafia/`: Natural y las versiones anteriores.
 - `hoja-prueba-oficio/`, `prueba-lapiceros/`: pruebas de impresión.
 
 ## Cuidados
 
 - Nunca publicar la clave privada de `work/trazo-android/signing`.
-- Trabajar solo en la rama de arriba y no abrir PR sin que lo pida.
+- Trabajar en la rama indicada por la sesión (la última es `ccr-6e94865d-c20f7c`) y no abrir PR sin que lo pida.
 - Responder en español.
