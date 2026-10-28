@@ -30,7 +30,7 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
 ]});
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
-  size: 16, titleSize: 22, headingSize: 17, subheadingSize: 15, smallSize: 10,
+  size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
   text: '#1f3a93', title: '#c0392b', graph: '#c0392b', natural: .55, seed: 7, lineGap: 0, pen: .27,
   // Measured on the first printed test (Epson T50): content came out 5–6 mm
   // to the left and about 1 mm too high on both sides.
@@ -151,6 +151,8 @@ export function composeDocument(source, samples, options = {}) {
       const m = measure(text, color, size); if (!m) return;
       const w = m.box.r - m.box.l, h = m.box.b - m.box.t, base = m.r.baselines[0] * g - m.box.t;
       for (const [x, y, anchor] of candidates) {const l = anchor === 'right' ? x - w : anchor === 'center' ? x - w / 2 : x, b = {l: l - .4, r: l + w + .4, t: y - base - .4, b: y - base + h + .4}; if (inside(b) && !hits(b)) return place(m, x, y, anchor);}
+      // No free spot near the line: write it in a corner of the graph.
+      for (const [x, y, anchor] of [[X(xmin) + .5, Y(ymax) - 1.5, 'left'], [X(xmax), Y(ymax) - 1.5, 'right'], [X(xmin) + .5, Y(ymin) + 4, 'left'], [X(xmax), Y(ymin) + 4, 'right']]) {const l = anchor === 'right' ? x - w : x, b = {l: l - .4, r: l + w + .4, t: y - base - .4, b: y - base + h + .4}; if (!hits(b)) return place(m, x, y, anchor);}
       const [x, y, anchor] = candidates[0]; place(m, x, y, anchor);
     };
     for (let u = Math.ceil(xmin / k) * k, i = 0; u <= xmax; u += k, i++) {if (!u) continue; items.push(pen([[X(u), Y(0) - .7], [X(u) + between(random, -.1, .1), Y(0) + .7]], ink, random, o.pen * .8)); if (!(Math.round(u / k) % every)) label(String(u), X(u), Y(0) + 3.4);}
@@ -243,11 +245,12 @@ export function composeDocument(source, samples, options = {}) {
     if (heading && row > o.insetTop && !(blocks[i - 1]?.type === 'blank')) row++;
     const r = render(block, width, state);
     // A heading stays with the beginning of what follows it.
-    let need = r.rows;
+    let need = r.rows, followers = [];
     // …and a statement stays with its datos | resolución columns.
     if (heading || block.type === 'title' || block.type === 'paragraph') {
       const after = blocks.slice(i + 1).filter(b => b.type !== 'set'), chain = [];
       for (const b of after) {if (b.type === 'blank' && chain.length && chain.length < 4) {chain.push(b); continue;} if (b.type === 'blank' || b.type === 'page' || b.type === 'heading' || b.type === 'subheading' || b.type === 'title') break; chain.push(b); if (b.type !== 'paragraph' || chain.length > 3) break;}
+      followers = chain;
       const end = chain.filter(b => b.type !== 'blank').at(-1), solid = end && ['columns', 'graph', 'boxed'].includes(end.type);
       const rows = b => b.type === 'blank' ? b.rows : render(b, width, {...state}).rows;
       if (heading || block.type === 'title') {if (solid) need += chain.reduce((n, b) => n + rows(b), 1); else if (chain[0]) need += Math.min(rows(chain[0]), 4);}
@@ -255,7 +258,7 @@ export function composeDocument(source, samples, options = {}) {
     }
     if (row > o.insetTop && clash(previous, r)) row++;
     // At most N graphs on one side of the sheet (the user's rule: three).
-    const graphsHere = graphs(block) + (heading ? graphs(blocks.slice(i + 1).find(b => !['set', 'blank'].includes(b.type)) || {}) : 0);
+    const graphsHere = graphs(block) + followers.reduce((n, b) => n + graphs(b), 0);
     if (row > o.insetTop && graphsHere && page.graphs + graphsHere > state.graphsPerPage) newPage();
     if (row + need > limit() && row > o.insetTop) newPage();
     if (row + r.rows > limit() + 1e-9) throw Error(`Un bloque no cabe en una hoja entera: divídelo («${(block.text || block.type).slice(0, 30)}»).`);
@@ -267,7 +270,9 @@ export function composeDocument(source, samples, options = {}) {
   return {pages, missing: [...missing].sort(), paper};
 }
 
-const polyPath = polys => polys.map(q => 'M' + q.map(v => v.map(n => n.toFixed(3)).join(',')).join('L') + 'Z').join('');
+const polyPath = polys => polys.map(q => 'M' + q.map(v => v.map(n => n.toFixed(2)).join(',')).join('L') + 'Z').join('');
+// Font units to 0.1 (0.0006 mm at 16 pt): a third of the PDF size, same ink.
+const glyphPath = paths => paths.map(p => 'M' + p.map(([x, y]) => `${Math.round(x * 10) / 10},${Math.round(-y * 10) / 10}`).join('L') + 'Z').join('');
 /** SVG preview of one page; the grid is drawn only for the screen. */
 export function documentSVG(page, paper = OFICIO_ESPIRAL, {grid = true, scale = 4} = {}) {
   const side = paper.sides.find(s => s.name === page.side), g = paper.grid, parts = [`<svg xmlns="http://www.w3.org/2000/svg" width="${paper.width * scale}" height="${paper.height * scale}" viewBox="0 0 ${paper.width} ${paper.height}"><rect width="${paper.width}" height="${paper.height}" fill="#fffdf8"/>`];
@@ -286,7 +291,8 @@ export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, 
   if (result.missing?.length) throw Error('Faltan muestras: ' + result.missing.join(' '));
   const paper = result.paper, doc = await PDF.PDFDocument.create(), H = paper.height, rgb = hex => PDF.rgb(...hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255));
   doc.setTitle('Trazo · documento'); doc.setCreator('Trazo');
-  const chosen = result.pages.filter((_, i) => select === 'all' || (select === 'odd') === (i % 2 === 0));
+  // select: 'all', a side name ('anverso' / 'reverso') to print each side in one pass.
+  const chosen = result.pages.filter(p => select === 'all' || p.side === select);
   for (const p of chosen) {
     const page = doc.addPage([paper.width * MM, H * MM]), off = offsets?.[p.side] || {x: 0, y: 0}, dx = (Number(off.x) || 0) * MM, dy = -(Number(off.y) || 0) * MM;
     if (grid) {
@@ -297,7 +303,7 @@ export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, 
     page.pushOperators(PDF.setLineJoin(PDF.LineJoinStyle.Round));
     for (const it of p.items) {
       const color = rgb(it.color);
-      if (it.type === 'glyph') page.drawSvgPath(svgPaths(it.paths, true), {x: it.x * MM + dx, y: (H - it.y) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})});
+      if (it.type === 'glyph') page.drawSvgPath(glyphPath(it.paths), {x: it.x * MM + dx, y: (H - it.y) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})});
       else page.drawSvgPath(polyPath(it.polys), {x: dx, y: H * MM + dy, scale: MM, color});
     }
   }

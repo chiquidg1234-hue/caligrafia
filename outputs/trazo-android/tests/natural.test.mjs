@@ -100,8 +100,9 @@ test('printer correction moves only the PDF and screen-only guides are not print
 
 test('hand-drawn maps replace straight outlines in SVG and PDF geometry', () => {
   const samples = [...'abcdefghijklmnopqrstuvwxyzáéíóúñTPUSOLAIDGRE¿?'].map(c => sample(c));
-  const map = createMap('concept');map.paper = {...map.paper, handDrawn: true};
-  const straight = renderMap(createMap('concept'), samples), drawn = renderMap(map, samples);
+  const map = createMap('concept'), plain = createMap('concept');plain.paper = {...plain.paper, handDrawn: false};
+  assert.equal(map.paper.handDrawn, true, 'new maps are hand drawn by default');
+  const straight = renderMap(plain, samples), drawn = renderMap(map, samples);
   assert.ok(!straight.geometry.nodes[0].ink && drawn.geometry.nodes[0].ink.length > 10);
   assert.ok(drawn.geometry.edges.every(e => e.ink.length > 0));
   assert.ok(!/stroke-width="0.45"/.test(drawn.svg) && /stroke-width="0.45"/.test(straight.svg));

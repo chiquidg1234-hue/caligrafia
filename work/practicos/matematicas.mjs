@@ -61,17 +61,16 @@ const perpendicular = [
 
 // Range around the points, the origin and where the answer line crosses the axes.
 function range(points, [a, b, c]) {
+  // The points and the origin with some room, at least 8 × 8 units.
   const xs = [0, ...points.map(p => p[0])], ys = [0, ...points.map(p => p[1])];
-  if (a) xs.push(-c / a); if (b) ys.push(-c / b);
-  const keep = v => Math.abs(v) <= 14;
-  const lo = v => Math.floor(Math.min(...v.filter(keep)) - 2), hi = v => Math.ceil(Math.max(...v.filter(keep)) + 2);
-  return [lo(xs), hi(xs), lo(ys), hi(ys)];
+  const span = (v, min = 8) => {let lo = Math.floor(Math.min(...v) - 2), hi = Math.ceil(Math.max(...v) + 2); while (hi - lo < min) {if (hi - Math.max(...v) <= Math.min(...v) - lo) hi++; else lo--;} return [lo, hi];};
+  return [...span(xs), ...span(ys)];
 }
 function exercise(n, [statement, points, reference, answer, answerText, steps]) {
   const [xmin, xmax, ymin, ymax] = range(points, answer);
   return `
 ### ${n}. ${statement}
-[[columnas 13]]
+[[columnas 16]]
 [[grafica ${xmin} ${xmax} ${ymin} ${ymax}]]
 ${reference ? `recta ${reference.join(' ')}\n` : ''}recta ${answer.join(' ')} | ${answerText.replace(/ /g, '')}
 ${points.map(p => `punto ${p[0]} ${p[1]} | (${p[0]},${p[1]})`).join('\n')}

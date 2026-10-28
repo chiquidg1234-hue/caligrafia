@@ -37,8 +37,8 @@ m = (y_2 - y_1)/(x_2 - x_1)      y - y_1 = m(x - x_1)
 [[tamaño 16]]
 
 ### 1. Pasa por los puntos: (5, 7) y (9, 6).
-[[columnas 13]]
-[[grafica -2 11 -2 11]]
+[[columnas 16]]
+[[grafica -2 11 -2 9]]
 recta 1 4 -33 | x+4y-33=0
 punto 5 7 | (5,7)
 punto 9 6 | (9,6)
@@ -56,7 +56,7 @@ Ordenamos:
 [[fin]]
 
 ### 2. Pasa por los puntos: (-4, -6) y (0, 8).
-[[columnas 13]]
+[[columnas 16]]
 [[grafica -6 2 -8 10]]
 recta 7 -2 16 | 7x-2y+16=0
 punto -4 -6 | (-4,-6)
@@ -75,7 +75,7 @@ Ordenamos:
 [[fin]]
 
 ### 3. Pasa por los puntos: (10, 4) y (-7, -9).
-[[columnas 13]]
+[[columnas 16]]
 [[grafica -9 12 -11 6]]
 recta 13 -17 -62 | 13x-17y-62=0
 punto 10 4 | (10,4)
@@ -94,8 +94,8 @@ Ordenamos:
 [[fin]]
 
 ### 4. Pasa por los puntos: (0, 7) y (-3, 5).
-[[columnas 13]]
-[[grafica -13 2 -2 9]]
+[[columnas 16]]
+[[grafica -5 3 -2 9]]
 recta 2 -3 21 | 2x-3y+21=0
 punto 0 7 | (0,7)
 punto -3 5 | (-3,5)
@@ -113,8 +113,8 @@ Ordenamos:
 [[fin]]
 
 ### 5. Pasa por los puntos: (0, 7) y (-3, 0).
-[[columnas 13]]
-[[grafica -5 2 -2 9]]
+[[columnas 16]]
+[[grafica -5 3 -2 9]]
 recta 7 -3 21 | 7x-3y+21=0
 punto 0 7 | (0,7)
 punto -3 0 | (-3,0)
@@ -135,8 +135,8 @@ Ordenamos:
 Regla: las rectas paralelas tienen la misma pendiente.
 
 ### 1. Pasa por el punto: (3, 5) y es paralela a la recta: -x + 2y - 4 = 0.
-[[columnas 13]]
-[[grafica -9 5 -2 7]]
+[[columnas 16]]
+[[grafica -2 6 -2 7]]
 recta -1 2 -4
 recta 1 -2 7 | x-2y+7=0
 punto 3 5 | (3,5)
@@ -155,8 +155,8 @@ Ordenamos:
 [[fin]]
 
 ### 2. Pasa por el punto: (-4, 3) y es paralela a la recta: 3x - 2y + 5 = 0.
-[[columnas 13]]
-[[grafica -8 2 -2 11]]
+[[columnas 16]]
+[[grafica -6 2 -2 6]]
 recta 3 -2 5
 recta 3 -2 18 | 3x-2y+18=0
 punto -4 3 | (-4,3)
@@ -175,8 +175,8 @@ Ordenamos:
 [[fin]]
 
 ### 3. Pasa por el punto: (5, -4) y es paralela a la recta: 3x + 5y + 7 = 0.
-[[columnas 13]]
-[[grafica -4 7 -6 2]]
+[[columnas 16]]
+[[grafica -2 7 -6 2]]
 recta 3 5 7
 recta 3 5 5 | 3x+5y+5=0
 punto 5 -4 | (5,-4)
@@ -195,8 +195,8 @@ Ordenamos:
 [[fin]]
 
 ### 4. Pasa por el punto: (6, 3) y es paralela a la recta: 4x - 3y - 12 = 0.
-[[columnas 13]]
-[[grafica -2 8 -7 5]]
+[[columnas 16]]
+[[grafica -2 8 -2 6]]
 recta 4 -3 -12
 recta 4 -3 -15 | 4x-3y-15=0
 punto 6 3 | (6,3)
@@ -215,8 +215,8 @@ Ordenamos:
 [[fin]]
 
 ### 5. Pasa por el punto: (-8, -2) y es paralela a la recta: 5x + 2y + 10 = 0.
-[[columnas 13]]
-[[grafica -11 2 -4 2]]
+[[columnas 16]]
+[[grafica -10 2 -5 3]]
 recta 5 2 10
 recta 5 2 44 | 5x+2y+44=0
 punto -8 -2 | (-8,-2)
@@ -238,8 +238,8 @@ Ordenamos:
 Regla: las rectas perpendiculares tienen pendientes inversas y de signo contrario.
 
 ### 1. Pasa por el punto: (3, 5) y es perpendicular a la recta: -5x + 2y - 4 = 0.
-[[columnas 13]]
-[[grafica -2 5 -2 9]]
+[[columnas 16]]
+[[grafica -2 6 -2 7]]
 recta -5 2 -4
 recta 2 5 -31 | 2x+5y-31=0
 punto 3 5 | (3,5)
@@ -258,8 +258,8 @@ Ordenamos:
 [[fin]]
 
 ### 2. Pasa por el punto: (4, 3) y es perpendicular a la recta: 3x + y + 5 = 0.
-[[columnas 13]]
-[[grafica -7 6 -2 5]]
+[[columnas 16]]
+[[grafica -2 6 -2 6]]
 recta 3 1 5
 recta 1 -3 5 | x-3y+5=0
 punto 4 3 | (4,3)
@@ -278,8 +278,8 @@ Ordenamos:
 [[fin]]
 
 ### 3. Pasa por el punto: (7, -4) y es perpendicular a la recta: 3x + 5y + 7 = 0.
-[[columnas 13]]
-[[grafica -2 12 -6 2]]
+[[columnas 16]]
+[[grafica -2 9 -6 2]]
 recta 3 5 7
 recta 5 -3 -47 | 5x-3y-47=0
 punto 7 -4 | (7,-4)
@@ -298,8 +298,8 @@ Ordenamos:
 [[fin]]
 
 ### 4. Pasa por el punto: (4, 3) y es perpendicular a la recta: 4x + 5y - 12 = 0.
-[[columnas 13]]
-[[grafica -2 6 -4 5]]
+[[columnas 16]]
+[[grafica -2 6 -2 6]]
 recta 4 5 -12
 recta 5 -4 -8 | 5x-4y-8=0
 punto 4 3 | (4,3)
@@ -318,8 +318,8 @@ Ordenamos:
 [[fin]]
 
 ### 5. Pasa por el punto: (8, -2) y es perpendicular a la recta: -5x + 2y + 10 = 0.
-[[columnas 13]]
-[[grafica -2 10 -4 4]]
+[[columnas 16]]
+[[grafica -2 10 -5 3]]
 recta -5 2 10
 recta 2 5 -6 | 2x+5y-6=0
 punto 8 -2 | (8,-2)

@@ -2,6 +2,13 @@
 
 Abre `Trazo4.apk` en tu Android e instálalo. Si el sistema lo pide, permite a tu navegador instalar este archivo y vuelve al instalador. Trazo funciona sin computadora y sin conexión; el motor viene incluido. Necesita Android 8 o posterior y Android System WebView actualizado. `Trazo2.apk` y `Trazo3.apk` se conservan intactos. La nueva APK mantiene el identificador de la app, la firma y una versión superior (20003), para instalarse como actualización conservando el almacenamiento; no hace falta desinstalar la anterior.
 
+## Novedades de la versión web 2.4
+
+- **Tareas:** nueva sección para escribir tareas completas en el formato Trazo (explicado en `outputs/practicos/FORMATO-TRAZO.md`). Incluye título centrado, subtítulos en color, viñetas, columnas de datos y resolución, gráficas de coordenadas a mano, respuestas encerradas y como máximo 3 gráficas por cara. El PDF sale completo, solo anversos o solo reversos, con la corrección medida en tu Epson T50: anverso 5 mm a la derecha y 1 mm abajo; reverso 6 mm y 1 mm.
+- Las palabras largas se cortan con guion por sílabas.
+- Mi letra Natural suma π, ρ, Δ y ≈ (provisionales, hechos con tus trazos).
+- Los mapas nuevos tienen cajas, óvalos y flechas a mano por defecto, más irregulares.
+
 ## Novedades de la versión web 2.3
 
 Esta versión todavía no está empaquetada en una APK: funciona en la versión web. Para crear la APK 2.3 con la misma firma hay que ejecutar `native/build.ps1` en la computadora que guarda la clave privada.

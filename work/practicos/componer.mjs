@@ -16,8 +16,8 @@ fs.mkdirSync(out, {recursive: true});
 for (const file of fs.readdirSync(out)) if (file.startsWith(`${name}-pagina-`)) fs.unlinkSync(path.join(out, file));
 fs.writeFileSync(path.join(out, `${name}.pdf`), await documentPDF(result));
 if (result.pages.length > 1) {
-  fs.writeFileSync(path.join(out, `${name}-1-anversos.pdf`), await documentPDF(result, {select: 'odd'}));
-  fs.writeFileSync(path.join(out, `${name}-2-reversos.pdf`), await documentPDF(result, {select: 'even'}));
+  fs.writeFileSync(path.join(out, `${name}-1-anversos.pdf`), await documentPDF(result, {select: 'anverso'}));
+  fs.writeFileSync(path.join(out, `${name}-2-reversos.pdf`), await documentPDF(result, {select: 'reverso'}));
 }
 fs.writeFileSync(path.join(out, `${name}-hoja-blanca-con-cuadricula.pdf`), await documentPDF(result, {grid: true, offsets: {}}));
 if (!process.argv.includes('--sin-png')) {

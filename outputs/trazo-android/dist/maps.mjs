@@ -136,7 +136,7 @@ export function createMap(type='concept'){
   }else{
     const ids=['Inicio\nDía 1','Explorar\nDía 2','Crear\nDía 3','Revisar\nDía 4'].map(text=>node(text,{width:50,height:30}));for(let i=1;i<ids.length;i++)edge(ids[i-1],ids[i]);
   }
-  return arrangeMap({version:1,title:titles[type],type,nodes,edges,paper:{width:297,height:210,margin:12,size:15,leading:8}});
+  return arrangeMap({version:1,title:titles[type],type,nodes,edges,paper:{width:297,height:210,margin:12,size:15,leading:8,handDrawn:true}});
 }
 
 function nodeTextBox(n){
@@ -211,13 +211,17 @@ function shapePath(n){
 const polygonPath=points=>'M'+points.map(p=>p.join(',')).join('L')+'Z';
 // Pen-like outlines: the same hand stroke as the radical and fraction bars.
 const PEN=.32;
-function outlinePoints(n){
-  const {x,y,width:w,height:h}=n;
-  if(n.shape==='ellipse')return Array.from({length:41},(_,i)=>{const a=-Math.PI/2+i/40*2*Math.PI*1.03;return [x+w/2+Math.cos(a)*w/2,y+h/2+Math.sin(a)*h/2];});
-  if(n.shape==='diamond')return [[x+w/2,y],[x+w,y+h/2],[x+w/2,y+h],[x,y+h/2],[x+w/2+.6,y-.3]];
-  return [[x-.2,y+.1],[x+w,y],[x+w+.1,y+h],[x,y+h-.1],[x+.05,y-.15]];
+// Each outline is drawn like a pen would: separate, slightly bowed sides that
+// overshoot or stop short, and ellipses whose ends do not meet exactly.
+function outlineStrokes(n,random){
+  const {x,y,width:w,height:h}=n,j=(a=.6)=>(random()*2-1)*a,side=(p,q)=>[p,[(p[0]+q[0])/2+j(.5),(p[1]+q[1])/2+j(.5)],q];
+  if(n.shape==='ellipse'){const turn=1.04+random()*.05,tilt=j(.04),start=-Math.PI/2+j(.4),drift=j(.6),phase=random()*6;return [Array.from({length:48},(_,i)=>{const a=start+i/47*2*Math.PI*turn,r=1+Math.sin(a*2+phase)*.02;return [x+w/2+Math.cos(a+tilt)*w/2*r,y+h/2+Math.sin(a+tilt)*h/2*r+(i/47)*drift];})];}
+  if(n.shape==='diamond'){const t=[x+w/2+j(),y+j(.4)],r=[x+w+j(.4),y+h/2+j()],b=[x+w/2+j(),y+h+j(.4)],l=[x+j(.4),y+h/2+j()];return [side(t,r),side(r,b),side(b,l),side(l,[t[0]+j(.8),t[1]-.4])];}
+  return [side([x-.7+j(),y+j(.3)],[x+w+.8+j(),y+j(.4)]),side([x+w+j(.3),y-.6+j()],[x+w+j(.4),y+h+.7+j()]),side([x+w+.6+j(),y+h+j(.3)],[x-.5+j(),y+h+j(.4)]),side([x+j(.3),y+h+.6+j()],[x+j(.3),y-.8+j()])];
 }
-function inkFor(points,seed){let s=seed>>>0||1;const random=()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296;};return handStroke(points,PEN,random);}
+function rngFor(seed){let s=seed>>>0||1;return ()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296;};}
+function inkFor(points,seed){return handStroke(points,PEN,rngFor(seed));}
+function outlineInk(n,seed){const random=rngFor(seed);return outlineStrokes(n,random).flatMap(points=>handStroke(points,PEN,random));}
 const inkPath=polys=>polys.map(polygonPath).join('');
 const glyphSVG=g=>`<path d="${svgPaths(g.paths,true)}" transform="translate(${g.x} ${g.y}) scale(${g.scale})" fill="${g.color}"${g.strokeWidth?` stroke="${g.color}" stroke-width="${g.strokeWidth}" stroke-linejoin="round"`:''}/>`;
 
@@ -239,8 +243,8 @@ export function renderMap(input,samples){
     }
   }
   if(p.handDrawn){
-    nodes.forEach((n,i)=>{n.ink=inkFor(outlinePoints(n),p.seed+i*101);});
-    edges.forEach((e,i)=>{const [tip,a,b]=e.arrow;e.ink=[...inkFor(e.points,p.seed+i*37+7),...inkFor([a,tip,b],p.seed+i*37+11)];});
+    nodes.forEach((n,i)=>{n.ink=outlineInk(n,p.seed+i*101);});
+    edges.forEach((e,i)=>{const [tip,a,b]=e.arrow,r=rngFor(p.seed+i*37+3),bent=e.points.flatMap((q,k)=>k?[[(e.points[k-1][0]+q[0])/2+(r()-.5)*.8,(e.points[k-1][1]+q[1])/2+(r()-.5)*.8],q]:[q]);e.ink=[...inkFor(bent,p.seed+i*37+7),...inkFor([a,tip,b],p.seed+i*37+11)];});
   }
   const guides=paperGuides(p),geometry={nodes,edges,labels,guides},parts=[`<svg xmlns="http://www.w3.org/2000/svg" width="${p.width}mm" height="${p.height}mm" viewBox="0 0 ${p.width} ${p.height}" role="img" aria-label="${escape(map.title||'Mapa manuscrito')}"><title>${escape(map.title||'Mapa manuscrito')}</title>`,`<rect width="${p.width}" height="${p.height}" fill="${p.paperColor}"/>`];
   for(const g of guides)parts.push(`<path d="M${g.x1},${g.y1}L${g.x2},${g.y2}" fill="none" stroke="${g.color}" stroke-width="${(g.margin?.5:.35)/MM}"/>`);
