@@ -86,3 +86,12 @@ test('PDF applies the printer correction per side and can print one side only', 
   assert.match(documentSVG(doc.pages[0]), /^<svg/);
   await assert.rejects(() => documentPDF({...doc, missing: ['π']}), /Faltan/);
 });
+
+test('line starts vary like a hand (1–3 mm) but stay inside the free squares', () => {
+  const source = Array.from({length: 30}, (_, i) => `Renglón ${i + 1}: texto corto.`).join('\n');
+  const page = composeDocument(source, natural).pages[0], side = OFICIO_ESPIRAL.sides.find(s => s.name === page.side), lines = new Map();
+  for (const g of page.items.filter(i => i.type === 'glyph')) {const x = Math.min(...g.paths.flat().map(p => g.x + p[0] * g.scale)); const k = Math.round(g.y / 5); lines.set(k, Math.min(lines.get(k) ?? Infinity, x));}
+  const starts = [...lines.values()], spread = Math.max(...starts) - Math.min(...starts);
+  assert.ok(spread >= 1 && spread <= 3.5, `spread ${spread.toFixed(2)} mm`);
+  assert.ok(Math.min(...starts) >= side.left + 3, 'never closer than 3 mm to the frame');
+});

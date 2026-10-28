@@ -70,7 +70,8 @@ punto 9 6 | (9,6)
 
 ## Reglas de tu cuaderno (la app las aplica sola)
 
-- **Márgenes:** deja 1 cuadrito libre dentro del marco rosado a la izquierda y 2 a la derecha. Empieza 1 renglón debajo del borde de arriba.
+- **Márgenes:** en tu hoja impresa la letra empieza a 2 cuadritos del marco rosado a la izquierda (1 de margen y la corrección de la impresora) y termina 2 antes del de la derecha. Cada renglón empieza un poquito distinto, como a mano. Empieza 1 renglón debajo del borde de arriba.
+- **Letra:** elígela arriba, en **Biblioteca activa**: Mi letra Natural, Fuente 2A o Fuente 2Y.
 - **Colores:** el texto va con tinta de bolígrafo azul tipo BIC (#283a7c, cada letra con un tono un poco distinto); los títulos, subtítulos y rectas de respuesta en rojo (#b02a33).
 - **Gráficas:** como máximo 3 por cara en matemáticas.
 - **Hojas:** un título o enunciado nunca queda solo al final de una hoja; se pasa con su resolución a la siguiente.

@@ -5,7 +5,7 @@ export function planBundledLetters(bundle, current, installed=[]) {
   if(bundle?.version!==1||!Array.isArray(bundle.profiles)||!bundle.profiles.length)throw Error('No se encontró tu letra incluida.');
   const done=new Set(Array.isArray(installed)?installed:[]),profiles=[...current.profiles],samples=[...current.samples],added=[];
   for(const entry of bundle.profiles){
-    if(!/^personal-[a-z-]+-v\d+$/.test(entry.id))throw Error('Identificador de letra incluida inválido.');
+    if(!/^personal-[a-z0-9-]+-v\d+$/.test(entry.id))throw Error('Identificador de letra incluida inválido.');
     if(done.has(entry.id))continue;
     const library=validateBackup({type:'trazo-library',version:2,name:entry.name,samples:entry.samples});
     // Existing records with this ID belong to the user; never reset edits or trash.

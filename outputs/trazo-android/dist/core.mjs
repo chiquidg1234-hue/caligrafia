@@ -237,7 +237,7 @@ export function layoutText(text,samples,options={}) {
   previousDescent=down;previousFormula=lineHasFormula(line);previousLine=line;
   for(const {unit,x} of line){const {label,sample,paths,style,strokeWidth}=unit;pages.at(-1).push({...(sample.id===undefined?{}:{sampleId:sample.id}),label,paths,x,y,scale,color:style.color||baseColor,strokeWidth,bold:style.bold,italic:style.italic});}
  }
- if(natural)naturalise(pages,{natural,scale,seed:initialSeed,right:width-right,left});
+ if(natural)naturalise(pages,{natural,scale,seed:initialSeed,right:width-right,left,slack:number(options.startSlack,0,0,5,'Holgura del inicio')});
  // Pen ink: each letter a little lighter or darker, gel ink a little fuller.
  const pen=PENS[options.pen];
  if(pen){const random=wobble(initialSeed*7+3),tone=(hex,t)=>'#'+hex.slice(1).match(/../g).map(v=>{const c=parseInt(v,16),n=t>0?c+(255-c)*t:c*(1+t);return Math.round(Math.max(0,Math.min(255,n))).toString(16).padStart(2,'0');}).join('');
@@ -248,19 +248,25 @@ export function layoutText(text,samples,options={}) {
 // Small, bounded imperfections of a hand: a line that drifts a little, letters
 // that sit a hair above or below the base, turn a degree or two and vary their
 // size and spacing. Preview and PDF share the result; nothing leaves the margins.
-function naturalise(pages,{natural,scale,seed,right,left}){
+function naturalise(pages,{natural,scale,seed,right,left,slack=0}){
  const random=wobble(seed*31+7);
  for(const page of pages){
   const lines=new Map();for(const g of page){if(!lines.has(g.y))lines.set(g.y,[]);lines.get(g.y).push(g);}
   for(const line of lines.values()){
-   const slope=random()*.004*natural,lift=random()*.18*natural,start=line[0].x;let drift=Math.abs(random())*.5*natural;
+   const slope=random()*.004*natural,lift=random()*.18*natural,start=line[0].x;
+   // Each line begins a little further in or out (about ±1 mm at 55 %), as by
+   // hand. Lines only start left of the margin when the caller allows it
+   // (startSlack, the free squares of a notebook); otherwise they move inwards.
+   // The last letter never passes the right margin.
+   const room=Math.max(0,right-Math.max(...line.map(g=>g.x+Math.max(...g.paths.flat().map(p=>p[0]))*g.scale))),out=Math.min(slack,1.8*natural),centre=Math.max(0,1.3*natural-out);
+   let drift=Math.max(-out,Math.min(room,centre+natural*(2.4*random()+(Math.abs(random())>.8?Math.sign(random()):0))));const base=drift;
    for(const g of line){
-    drift=Math.max(-.6,Math.min(.6,drift+random()*.07*natural));
+    drift=Math.max(-out,Math.min(room,Math.max(base-.6,Math.min(base+.6,drift+random()*.07*natural))));
     const minX=Math.min(...g.paths.flat().map(p=>p[0])),maxX=Math.max(...g.paths.flat().map(p=>p[0]));
     const cx=(minX+maxX)/2,size=1+random()*.03*natural,angle=random()*.028*natural;
     g.paths=transformPaths(g.paths,{angle,scale:size,cx});
     const ink=Math.max(...g.paths.flat().map(p=>p[0]))*g.scale,inkLeft=Math.min(...g.paths.flat().map(p=>p[0]))*g.scale;
-    g.x=Math.max(left-inkLeft,Math.min(right-ink,g.x+drift));
+    g.x=Math.max(left-out-inkLeft,Math.min(right-ink,g.x+drift));
     g.y+=(g.x-start)*slope+lift+random()*.1*natural;
    }
   }

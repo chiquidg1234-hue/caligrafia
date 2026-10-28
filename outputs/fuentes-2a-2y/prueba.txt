@@ -1,0 +1,18 @@
+# Unidad 5: Valores
+
+### Ejercicio 1.-
+Jesús fundó una sola iglesia y nunca quiso que se dividiera. Su oración al Padre fue esta: «Que todos sean uno».
+
+[[columnas 12]]
+**Datos:**
+F = 50 N
+A = 4 cm^2
+P = ?
+[[|]]
+P = F/A = (50 N)/(0,0004 m^2)
+x^2 + 3x - 10 = 0
+raiz(49) = 7 ; log_2(8) = 3
+!! P = 125 000 Pa
+[[fin]]
+
+El año 1054 la iglesia se dividió. Hoy existen más de 450.000 iglesias, ¿por qué? Mañana lo explicaré con un ejemplo.

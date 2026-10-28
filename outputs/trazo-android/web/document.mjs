@@ -33,10 +33,10 @@ export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
   text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', natural: .55, seed: 7, lineGap: 0, pen: .27,
-  // Epson T50 with the sheet pushed against the right guide: the first test
-  // came out about 1 mm too high; with the +5 mm horizontal correction the
-  // second print landed one square too far right, so only the height stays.
-  offsets: {anverso: {x: 0, y: 1}, reverso: {x: 1, y: 1}},
+  // Epson T50 measured on the first test: 5–6 mm to the left and 1 mm high.
+  // With this correction the writing starts two squares inside the frame,
+  // which the user prefers (third test print).
+  offsets: {anverso: {x: 5, y: 1}, reverso: {x: 6, y: 1}},
 });
 
 function rng(seed) {let s = (seed >>> 0) || 1; return () => {s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296;};}
@@ -111,7 +111,7 @@ export function composeDocument(source, samples, options = {}) {
   // Text on the grid: baselines on lines, first line one row below the top.
   function write(text, w, state, extra = {}) {
     const {text: plain, styles} = inline(text), virtual = Math.max(70, w), color = extra.color || state.text;
-    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, seed: seed++, pen: extra.ink === false ? '' : state.pen, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
+    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, startSlack: 1, seed: seed++, pen: extra.ink === false ? '' : state.pen, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
     if (layout.missing.length) {for (const c of layout.missing) missing.add(c); return {items: [], rows: 1, baselines: []};}
     if (layout.pages.length > 1) throw Error(`Un párrafo es más alto que la hoja: «${plain.slice(0, 40)}…».`);
     const items = glyphs(layout), baselines = [...new Set(items.map(i => Math.round(i.y / g)))].sort((a, b) => a - b), last = baselines.at(-1) * g;

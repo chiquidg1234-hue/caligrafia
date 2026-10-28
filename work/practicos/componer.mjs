@@ -1,5 +1,6 @@
-// node componer.mjs fuente.txt carpeta-salida [nombre]
-// Composes a document in the Trazo format with «Mi letra Natural» and writes
+// node componer.mjs fuente.txt carpeta-salida [nombre] [--perfil personal-2a-v1] [--sin-png]
+// Composes a document in the Trazo format with «Mi letra Natural» (or the
+// bundled letter named with --perfil) and writes
 // the PDF (all pages, odd = anversos, even = reversos), a reference PDF with
 // the grid for white paper, and PNG previews of every page.
 import fs from 'fs';
@@ -8,8 +9,9 @@ import {createRequire} from 'module';
 const require = createRequire(import.meta.url);
 const WEB = new URL('../../outputs/trazo-android/web/', import.meta.url).pathname;
 const {composeDocument, documentSVG, documentPDF} = await import(WEB + 'document.mjs');
-const [source, out, name = path.basename(source, '.txt')] = process.argv.slice(2);
-const samples = JSON.parse(fs.readFileSync(WEB + 'personal-letter.json')).profiles.find(p => p.id === 'personal-natural-v1').samples;
+const args = process.argv.slice(2), flag = args.indexOf('--perfil'), profile = flag >= 0 ? args.splice(flag, 2)[1] : 'personal-natural-v1';
+const [source, out, name = path.basename(source, '.txt')] = args.filter(a => !a.startsWith('--'));
+const samples = JSON.parse(fs.readFileSync(WEB + 'personal-letter.json')).profiles.find(p => p.id === profile).samples;
 const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples);
 if (result.missing.length) {console.error('Faltan:', result.missing.join(' ')); process.exit(1);}
 fs.mkdirSync(out, {recursive: true});

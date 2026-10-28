@@ -18,7 +18,8 @@ Las fuentes en texto están en [`fuentes`](fuentes): las puedes abrir, corregir 
 
 ## Lo que aprendí de tu prueba impresa
 
-- **Desfase:** en la primera prueba la impresión salió ≈1 mm más arriba. Con la corrección horizontal de 5 mm, la segunda impresión dejó dos cuadritos libres a la izquierda en vez de uno (se corrió 5 mm a la derecha), así que quité esa corrección horizontal. Los PDF ahora llevan anverso 0 mm → y 1 mm ↓, reverso 1 mm → y 1 mm ↓. Si todavía se corre, cámbialo en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
+- **Desfase:** la impresora corre la hoja ≈5 mm a la izquierda y ≈1 mm hacia arriba. Los PDF llevan anverso 5 mm → y 1 mm ↓, reverso 6 mm → y 1 mm ↓. Así la letra empieza a **dos cuadritos** del marco, como en tu tercera prueba, que es la que más te gustó. Si algún día quieres un solo cuadrito, pon 0 y 1 en **Trazo → Tareas → Hoja Oficio espiral · tinta · impresora**.
+- **Inicio de los renglones:** cada renglón empieza un poquito más adentro o más afuera (hasta ≈1 mm, unos 2 mm entre el más adentro y el más afuera), como cuando escribes a mano. Ya no queda una línea recta a la izquierda. Depende de la **Naturalidad**: con 0 % vuelve a salir recto.
 - **Giro:** el anverso salió girado ≈0,8° porque la hoja entró chueca. El reverso, empujado contra la guía derecha, salió casi recto (0,3°). Eso se corrige al poner la hoja, no en el PDF:
   1. Quita los pedacitos que deja el espiral.
   2. Mete una sola hoja, plana, y empújala contra la **guía derecha**.
@@ -43,7 +44,11 @@ Las fuentes en texto están en [`fuentes`](fuentes): las puedes abrir, corregir 
 
 ```
 node work/practicos/matematicas.mjs
+node work/practicos/componer.mjs outputs/practicos/fuentes/practico-matematicas.txt outputs/practicos/Practico-Matematicas Practico-Matematicas
 node work/practicos/componer.mjs outputs/practicos/fuentes/practico-fisica.txt outputs/practicos/Practico-Fisica Practico-Fisica
+node work/practicos/componer.mjs outputs/practicos/fuentes/practico-5.txt outputs/practicos/Practico-5 Practico-5
 ```
+
+Para escribirlos con otra letra, agrega `--perfil personal-2a-v1` (Fuente 2A) o `--perfil personal-2y-v1` (Fuente 2Y).
 
 Usa el mismo motor que la app (`outputs/trazo-android/web/document.mjs`).
