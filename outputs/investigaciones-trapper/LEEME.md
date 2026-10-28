@@ -6,8 +6,8 @@
 
 - **Hoja:** Trapper cuadriculada, de 211 × 280 mm; es casi del tamaño de una hoja carta.
 - **Letra:** Mi letra Natural, con tinta real de bolígrafo azul. Los subtítulos van en rojo.
-- **Sin negritas.** Las fórmulas que son resultado terminan con dos rayitas «//», sin recuadro.
-- **Dibujos:** los esquemas del PDF original (radio, diámetro, tangente y secante) no están incluidos. Si los quieres, se pueden dibujar a mano en el espacio libre de la página 4.
+- **Sin negritas** y **sin «//»**: es teoría; las dos rayitas son solo para resultados de ejercicios.
+- **Dibujos:** los dos esquemas (radio y diámetro, tangente y secante) van después de la pregunta 10, dibujados a mano alzada, sin que salgan perfectos.
 
 Para imprimir:
 

@@ -61,6 +61,22 @@ punto 9 6 | (9,6)
 - `recta a b c` dibuja la recta a·x + b·y + c = 0. Con etiqueta sale en rojo (la respuesta); sin etiqueta sale en azul fino (la recta de referencia).
 - Los ejes, las marcas y los números van a mano, apoyados en la cuadrícula.
 
+**Dibujos a mano alzada** (círculos que no cierran perfecto, líneas un poco chuecas):
+
+```
+[[dibujo 14 10]]
+circulo 6 4.5 3.4
+linea 6 4.5 8.1 1.9
+punto 6 4.5
+texto 4 3.3 | radio
+[[fin]]
+```
+
+- Los dos números son el ancho y el alto en cuadritos; las medidas se cuentan en cuadritos desde la esquina de arriba a la izquierda.
+- Dos dibujos lado a lado: uno en cada parte de `[[columnas]]`.
+
+**Las dos rayitas «//»** (`!!`) son solo para el resultado de un ejercicio de verdad, no para fórmulas o definiciones.
+
 **Ajustes:**
 - `[[hoja trapper]]` o `[[hoja oficio]]`, en el primer renglón: la hoja en la que se imprime. Si no lo pones, se usa la que elegiste en la app.
 - `[[tamaño 18]]`: tamaño de la letra.

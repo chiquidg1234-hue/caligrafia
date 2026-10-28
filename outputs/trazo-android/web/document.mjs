@@ -18,6 +18,9 @@
 //     punto x y | etiqueta
 //   [[fin]]
 //   [[tamaño 18]]  [[renglon medio|seguido]]  [[espacio 2]]  [[color #hex]]  [[lapicero bic-negro]]
+//   [[dibujo ancho alto]]        a freehand sketch, in squares from its top-left:
+//     circulo x y r · linea x1 y1 x2 y2 · punto x y · texto x y | palabra
+//   [[fin]]
 //   [[tinta real|plana]]         ballpoint ink (ink.mjs) or the flat fill of the photo
 //   [[titulos a mano|impresos]]  leave the space of titles and headings for a real pen
 import {layoutText} from './core.mjs';
@@ -72,6 +75,18 @@ export function parseDocument(source) {
           if (kind === 'recta' && values.length === 3 && values.every(Number.isFinite) && (values[0] || values[1])) block.lines.push({a: values[0], b: values[1], c: values[2], label: label.trim()});
           else if (kind === 'punto' && values.length === 2 && values.every(Number.isFinite)) block.points.push({x: values[0], y: values[1], label: label.trim()});
           else throw Error(`Dentro de [[grafica]] usa «recta a b c | etiqueta» o «punto x y | etiqueta» (renglón ${n + 1}).`);
+        }
+        push(block);
+      }
+      else if (key === 'dibujo') {
+        const size = args.split(/[\s,]+/).map(Number);
+        if (size.length !== 2 || size.some(v => !(v > 0))) throw Error(`Escribe [[dibujo ancho alto]] en cuadritos (${at}).`);
+        const block = {type: 'sketch', width: size[0], height: size[1], shapes: []}, need = {circulo: 3, linea: 4, punto: 2, texto: 2};
+        for (n++; n < lines.length && !/^\[\[\s*fin\s*\]\]$/iu.test(lines[n].trim()); n++) {
+          const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase().replace('í', 'i'), values = words.slice(1).map(Number);
+          if (!spec.trim()) continue;
+          if (!need[kind] || values.length !== need[kind] || !values.every(Number.isFinite) || (kind === 'texto' && !label.trim())) throw Error(`Dentro de [[dibujo]] usa «circulo x y r», «linea x1 y1 x2 y2», «punto x y» o «texto x y | palabra» (renglón ${n + 1}).`);
+          block.shapes.push({kind, values, label: label.trim()});
         }
         push(block);
       }
@@ -204,6 +219,31 @@ export function composeDocument(source, samples, options = {}) {
     return {items, rows: Math.ceil((Y(ymin) + g) / g)};
   }
 
+  // A freehand sketch: circles that do not quite close, lines a little bowed.
+  function sketch(block, w, state) {
+    if (block.width * g > w + 1e-9) throw Error(`El dibujo mide ${block.width} cuadritos y solo caben ${Math.floor(w / g)}.`);
+    const random = rng(seed++), items = [], ink = state.text, j = a => between(random, -a, a);
+    for (const {kind, values: v, label} of block.shapes) {
+      if (kind === 'circulo') {
+        const [cx, cy, r] = v.map(x => x * g), start = between(random, 0, 2 * Math.PI), sweep = 2 * Math.PI + between(random, -.12, .3), squash = 1 + j(.03), tilt = j(.4), p1 = between(random, 0, 6.3), p2 = between(random, 0, 6.3);
+        const n = Math.max(24, Math.round(r * 5)), points = Array.from({length: n + 1}, (_, k) => {const a = start + sweep * k / n, rr = r * (1 + .025 * Math.sin(2 * a + p1) + .015 * Math.sin(3 * a + p2)), x = Math.cos(a) * rr * squash, y = Math.sin(a) * rr / squash; return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];});
+        items.push(pen(points, ink, random));
+      } else if (kind === 'linea') {
+        const a = [v[0] * g + j(.3), v[1] * g + j(.3)], b = [v[2] * g + j(.3), v[3] * g + j(.3)], mid = [(a[0] + b[0]) / 2 + j(.35), (a[1] + b[1]) / 2 + j(.35)];
+        items.push(pen([a, mid, b], ink, random));
+      } else if (kind === 'punto') {
+        const cx = v[0] * g + j(.15), cy = v[1] * g + j(.15);
+        items.push({type: 'ink', color: ink, polys: [Array.from({length: 10}, (_, i) => {const a = -i / 10 * 2 * Math.PI, r = .55 + j(.1); return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];})]});
+      } else {
+        const r = write(label, 60, state, {size: o.smallSize + 1, natural: .4, math: true, hyphenate: false, lineGap: 0});
+        if (!r.items.length) continue;
+        const box = inkBox(r.items), dx = v[0] * g - box.l + j(.3), dy = v[1] * g - r.baselines[0] * g + j(.2);
+        for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy});
+      }
+    }
+    return {items, rows: Math.ceil(block.height)};
+  }
+
   // Measure one block at width w. Coordinates are relative to the block top-left.
   function render(block, w, state) {
     switch (block.type) {
@@ -231,6 +271,7 @@ export function composeDocument(source, samples, options = {}) {
         return {items: [...r.items, ...handBox(box.l - 1.6, box.t - 1.4, box.r + 1.6, box.b + 1.3, state.text, random).flat()], rows: r.rows + 2};
       }
       case 'graph': return graph(block, w, state);
+      case 'sketch': return sketch(block, w, state);
       case 'columns': {
         const left = block.left ? block.left * g : Math.round(w / 2 / g) * g, sides = [flow(block.columns[0], left, {...state}), flow(block.columns[1], w - left - g, {...state})];
         for (const it of sides[1].items) shift(it, left + g, 0);
@@ -278,7 +319,7 @@ export function composeDocument(source, samples, options = {}) {
       const after = blocks.slice(i + 1).filter(b => b.type !== 'set'), chain = [];
       for (const b of after) {if (b.type === 'blank' && chain.length && chain.length < 4) {chain.push(b); continue;} if (b.type === 'blank' || b.type === 'page' || b.type === 'heading' || b.type === 'subheading' || b.type === 'title') break; chain.push(b); if (b.type !== 'paragraph' || chain.length > 3) break;}
       followers = chain;
-      const end = chain.filter(b => b.type !== 'blank').at(-1), solid = end && ['columns', 'graph', 'boxed'].includes(end.type);
+      const end = chain.filter(b => b.type !== 'blank').at(-1), solid = end && ['columns', 'graph', 'sketch', 'boxed'].includes(end.type);
       const rows = b => b.type === 'blank' ? b.rows : render(b, width, {...state}).rows;
       if (heading || block.type === 'title') {if (solid) need += chain.reduce((n, b) => n + rows(b), 1); else if (chain[0]) need += Math.min(rows(chain[0]), 4);}
       else if (solid) need += chain.reduce((n, b) => n + rows(b), 1);

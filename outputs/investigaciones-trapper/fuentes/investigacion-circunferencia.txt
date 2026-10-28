@@ -16,8 +16,7 @@ Centro, radio, diámetro, cuerda y arco. También se estudian la tangente y la s
 Es el segmento que une el centro con cualquier punto de la circunferencia. Se simboliza con r.
 
 5. ¿Qué es el diámetro y cómo se relaciona con el radio?
-Es la cuerda que pasa por el centro. Mide el doble del radio:
-!! d = 2r
+Es la cuerda que pasa por el centro. Mide el doble del radio: d = 2r.
 
 6. ¿Qué se entiende por cuerda en una circunferencia?
 Es un segmento que une dos puntos de la circunferencia, sin necesidad de pasar por el centro.
@@ -34,17 +33,40 @@ Es una región del círculo limitada por dos radios y el arco comprendido entre 
 10. ¿Qué es un segmento circular y cómo se forma dentro del círculo?
 Es la región del círculo limitada por una cuerda y su arco correspondiente.
 
+[[columnas 15]]
+[[dibujo 14 10]]
+circulo 6 4.5 3.4
+punto 6 4.5
+texto 5.1 4.2 | C
+linea 6 4.5 8.1 1.9
+texto 4 3.3 | radio
+linea 2.7 5.6 9.3 3.4
+texto 3.6 7 | diámetro
+texto 2.5 9.6 | Radio y diámetro
+[[fin]]
+[[|]]
+[[dibujo 15 10]]
+circulo 6.5 5 3.2
+linea 1.5 1.8 12 1.8
+texto 12.3 1.9 | tangente
+punto 6.6 1.8
+linea 1.2 8.6 13.4 2.6
+texto 10.5 5.6 | secante
+texto 2.5 9.6 | Tangente y secante
+[[fin]]
+[[fin]]
+
 ## Ecuaciones de la circunferencia
 
 11. ¿Cuál es la ecuación ordinaria de una circunferencia en el plano cartesiano?
-!! (x - h)^2 + (y - k)^2 = r^2
+(x - h)^2 + (y - k)^2 = r^2
 
 12. ¿Qué representan los parámetros h, k y r en la ecuación (x - h)^2 + (y - k)^2 = r^2?
 h y k son las coordenadas del centro C(h, k); r es el radio.
 
 13. ¿Cómo se deduce la ecuación general de una circunferencia a partir de su ecuación ordinaria?
 Al desarrollar los cuadrados y ordenar:
-!! x^2 + y^2 + Dx + Ey + F = 0
+x^2 + y^2 + Dx + Ey + F = 0
 donde D = -2h, E = -2k y F = h^2 + k^2 - r^2.
 
 14. ¿Qué información se puede obtener al comparar las ecuaciones de dos circunferencias?
@@ -58,7 +80,7 @@ Los coeficientes de x^2 e y^2 deben ser iguales y distintos de cero, no debe exi
 
 17. ¿Cómo se determina el centro y el radio a partir de una ecuación general?
 Para x^2 + y^2 + Dx + Ey + F = 0:
-!! C(-D/2, -E/2)   y   r = raiz((D^2 + E^2)/4 - F)
+C(-D/2, -E/2)   y   r = raiz((D^2 + E^2)/4 - F)
 
 18. ¿Qué representa el radio negativo en una ecuación de circunferencia?
 No tiene significado geométrico como distancia. Como aparece r^2, +r y -r producen la misma ecuación; se toma el radio no negativo.
@@ -68,7 +90,7 @@ Porque es una distancia y, para una circunferencia verdadera, debe ser mayor que
 
 20. ¿Qué ocurre con una circunferencia cuyo centro coincide con el origen del plano?
 Su centro es C(0, 0) y la ecuación se simplifica a:
-!! x^2 + y^2 = r^2
+x^2 + y^2 = r^2
 
 ## Rectas y posiciones relativas
 
@@ -82,8 +104,7 @@ La distancia perpendicular del centro a la recta debe ser igual al radio; ademá
 La secante corta la circunferencia en dos puntos; la tangente la toca en uno solo.
 
 24. ¿Qué ocurre si la distancia entre los centros de dos circunferencias es mayor que la suma de sus radios?
-Son exteriores: no se cortan ni tienen puntos en común.
-!! d > r_1 + r_2
+Son exteriores: no se cortan ni tienen puntos en común, si d > r_1 + r_2.
 
 25. ¿Por qué se dice que la circunferencia es un caso particular de cónica?
 Porque se obtiene al cortar un cono circular recto con un plano perpendicular a su eje; también es una elipse especial con sus dos semiejes iguales.

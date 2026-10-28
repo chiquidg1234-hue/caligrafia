@@ -129,3 +129,10 @@ test('a question never stays alone at the bottom of a sheet', () => {
     assert.ok(!last.some(i => i.label === '?') || page === undefined, 'a question ends the page');
   }
 });
+
+test('[[dibujo]] draws a freehand sketch that takes its rows and reports bad lines', () => {
+  const doc = composeDocument('[[dibujo 10 6]]\ncirculo 5 3 2\nlinea 1 1 9 5\npunto 5 3\ntexto 1 6 | radio\n[[fin]]\nHola', natural);
+  const ink = doc.pages[0].items.filter(i => i.type === 'ink');
+  assert.ok(ink.length >= 3);
+  assert.throws(() => composeDocument('[[dibujo 10 6]]\ncuadrado 1 1\n[[fin]]', natural), /circulo x y r/);
+});

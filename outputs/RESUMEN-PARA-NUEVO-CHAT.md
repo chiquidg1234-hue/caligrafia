@@ -7,7 +7,7 @@ Pega este archivo o pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del reposit
 **Trazo** es una app web/Android que escribe con letra a mano.
 - La app está en `outputs/trazo-android/web`.
 - `dist/` es una copia de `web/`: después de cada cambio se copia web → dist.
-- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (107 pasan).
+- Pruebas: `cd outputs/trazo-android && node --test tests/*.test.mjs` (108 pasan).
 
 ## Letras incluidas (`web/personal-letter.json`)
 
@@ -73,6 +73,8 @@ Antes, de cerca, la letra impresa se notaba: el borde quedaba mordido por la fot
   - corta palabras con guion por sílabas, 2 cuadritos antes del margen derecho;
   - un enunciado nunca queda solo al pie de una hoja.
 - **Enunciados:** no copiar las respuestas «R:» del enunciado.
+- **«//» solo en resultados de ejercicios de verdad**, no en fórmulas de teoría.
+- **Dibujos:** `[[dibujo ancho alto]]` con circulo/linea/punto/texto, a mano alzada (no perfectos). Solo cuando los pida.
 - **Sin negritas** (`**`): a mano no existen y delatan la impresión. Solo si ella las pide.
 - **Preguntas y respuestas:** una pregunta (renglón que termina en «?») nunca queda sola al pie de la hoja.
 - **Formato:**
@@ -93,7 +95,7 @@ Genera el PDF completo, anversos, reversos, la hoja blanca con cuadrícula y los
 - `practicos/`: Matemáticas, Física (4 ejercicios) y Práctico 5, en Oficio con Natural.
 - `practicos-trapper/`: Química (2A), Física de energía (17 ejercicios, 2Y) y Física corta (2Y), en Trapper.
 - `fuentes-2a-2y/`: las dos fuentes (.otf, .trazo, muestras y pruebas).
-- `investigaciones-trapper/`: Investigación sobre circunferencia (25 preguntas, Trapper, Natural, tinta real, sin negritas, resultados con «//»).
+- `investigaciones-trapper/`: Investigación sobre circunferencia (25 preguntas, Trapper, Natural, tinta real, sin negritas, con los dos esquemas a mano alzada y sin «//», porque es teoría).
 - `prueba-tinta-real/`: guía «que no se note impreso», hoja de prueba antes/ahora y comparación ampliada. Los prácticos de arriba se generaron antes y tienen tinta plana; al regenerarlos salen con tinta real.
 - `mi-caligrafia/`: Natural y las versiones anteriores.
 - `hoja-prueba-oficio/`, `prueba-lapiceros/`: pruebas de impresión.
