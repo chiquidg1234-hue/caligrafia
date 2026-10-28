@@ -190,7 +190,9 @@ derive('−', U('-'), 'guion como signo menos');
 {const legs = fit(U('l'), {height: 300, bottom: 0}), [llo, lhi] = bounds(legs), w = lhi[0] - llo[0], top = stretch(U('-'), 330, 315);
  derive('π', [...top, ...shift(legs, 55 - llo[0], 0), ...shift(map(legs, (x, y) => [x + (300 - y) * .06, y]), 245 - llo[0], 0)], 'barra del guion y dos trazos de l');}
 {const o = fit(U('o'), {height: 330, bottom: 0}), [olo] = bounds(o), stem = fit(U('l'), {height: 400, bottom: -235}), [slo, shi] = bounds(stem);
- derive('ρ', [...o, ...shift(stem, olo[0] - slo[0] - (shi[0] - slo[0]) * .2, 0)], 'o y trazo de l');}
+ // The stem leaves the bowl and curls a little to the left, so ρ never reads as p.
+ const curl = map(stem, (x, y) => [x - Math.max(0, -y) ** 2 / 900, y]);
+ derive('ρ', [...map(o, (x, y) => [x * 1.08, y]), ...shift(curl, olo[0] * 1.08 - slo[0] - (shi[0] - slo[0]) * .1, 0)], 'o y trazo curvo de l');}
 {const up = fit(U('/'), {height: 500, bottom: 20}), down = fit(U('\\'), {height: 500, bottom: 20}), [ulo, uhi] = bounds(up), [dlo, dhi] = bounds(down), width = uhi[0] - ulo[0];
  derive('Δ', [...up, ...shift(down, width - 45 - dlo[0], 0), ...shift(stretch(U('-'), width * 2 - 40, 0), 10, 30)], 'barras / \\ y guion');}
 derive('≈', [...fit(U('~'), {height: 95, centerY: 300}), ...fit(U('~'), {height: 95, centerY: 175})], 'dos ~');

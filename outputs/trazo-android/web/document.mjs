@@ -145,14 +145,14 @@ export function composeDocument(source, samples, options = {}) {
     const place = (m, x, y, anchor) => {const {r, box} = m, dx = x - (anchor === 'center' ? (box.l + box.r) / 2 : anchor === 'right' ? box.r : box.l), dy = y - r.baselines[0] * g; for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy}); const placed = {l: box.l + dx - .4, r: box.r + dx + .4, t: box.t + dy - .4, b: box.b + dy + .4}; occupied.push(placed); return placed;};
     const label = (text, x, y, color = ink, size = o.smallSize, anchor = 'center') => {const m = measure(text, color, size); if (m) place(m, x, y, anchor);};
     // Free spot for a label: away from axes, lines, points and other labels.
-    const hits = b => occupied.some(o => b.l < o.r && o.l < b.r && b.t < o.b && o.t < b.b) || segments.some(([p, q]) => {for (let t = 0; t <= 1; t += .05) {const x = p[0] + (q[0] - p[0]) * t, y = p[1] + (q[1] - p[1]) * t; if (x > b.l - .3 && x < b.r + .3 && y > b.t - .3 && y < b.b + .3) return true;} return false;});
-    const inside = b => b.l > X(xmin) - 4 && b.r < X(xmax) + 2 && b.t > Y(ymax) - 4 && b.b < Y(ymin) + 3;
-    const spot = (text, color, size, candidates) => {
+    const hits = b => occupied.some(o => b.l < o.r && o.l < b.r && b.t < o.b && o.t < b.b) || segments.some(([p, q]) => {const step = .4 / Math.max(.4, Math.hypot(q[0] - p[0], q[1] - p[1])); for (let t = 0; t <= 1; t += step) {const x = p[0] + (q[0] - p[0]) * t, y = p[1] + (q[1] - p[1]) * t; if (x > b.l - .3 && x < b.r + .3 && y > b.t - .3 && y < b.b + .3) return true;} return false;});
+    const inside = b => b.l > -1.5 && b.r < Math.min(w, X(xmax) + g) && b.t > Y(ymax) - 4 && b.b < Y(ymin) + 3;
+    const spot = (text, color, size, candidates, corners = true) => {
       const m = measure(text, color, size); if (!m) return;
       const w = m.box.r - m.box.l, h = m.box.b - m.box.t, base = m.r.baselines[0] * g - m.box.t;
       for (const [x, y, anchor] of candidates) {const l = anchor === 'right' ? x - w : anchor === 'center' ? x - w / 2 : x, b = {l: l - .4, r: l + w + .4, t: y - base - .4, b: y - base + h + .4}; if (inside(b) && !hits(b)) return place(m, x, y, anchor);}
       // No free spot near the line: write it in a corner of the graph.
-      for (const [x, y, anchor] of [[X(xmin) + .5, Y(ymax) - 1.5, 'left'], [X(xmax), Y(ymax) - 1.5, 'right'], [X(xmin) + .5, Y(ymin) + 4, 'left'], [X(xmax), Y(ymin) + 4, 'right']]) {const l = anchor === 'right' ? x - w : x, b = {l: l - .4, r: l + w + .4, t: y - base - .4, b: y - base + h + .4}; if (!hits(b)) return place(m, x, y, anchor);}
+      if (corners) for (const [x, y, anchor] of [[X(xmin) + .5, Y(ymax) - 1.5, 'left'], [X(xmax), Y(ymax) - 1.5, 'right'], [X(xmin) + .5, Y(ymin) + 4, 'left'], [X(xmax), Y(ymin) + 4, 'right']]) {const l = anchor === 'right' ? x - w : x, b = {l: l - .4, r: l + w + .4, t: y - base - .4, b: y - base + h + .4}; if (!hits(b)) return place(m, x, y, anchor);}
       const [x, y, anchor] = candidates[0]; place(m, x, y, anchor);
     };
     for (let u = Math.ceil(xmin / k) * k, i = 0; u <= xmax; u += k, i++) {if (!u) continue; items.push(pen([[X(u), Y(0) - .7], [X(u) + between(random, -.1, .1), Y(0) + .7]], ink, random, o.pen * .8)); if (!(Math.round(u / k) % every)) label(String(u), X(u), Y(0) + 3.4);}
@@ -180,7 +180,7 @@ export function composeDocument(source, samples, options = {}) {
       const cx = X(p.x), cy = Y(p.y);
       items.push({type: 'ink', color: ink, polys: [Array.from({length: 10}, (_, i) => {const a = -i / 10 * 2 * Math.PI, r = .62 + between(random, -.08, .08); return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];})]});
       occupied.push({l: cx - .9, r: cx + .9, t: cy - .9, b: cy + .9});
-      if (p.label) pending.unshift(() => spot(p.label, ink, o.smallSize, [[cx + 1.2, cy - 1.3, 'left'], [cx - 1.2, cy - 1.3, 'right'], [cx + 1.2, cy + 3.6, 'left'], [cx - 1.2, cy + 3.6, 'right']]));
+      if (p.label) pending.unshift(() => spot(p.label, ink, o.smallSize, [[cx + 1.2, cy - 1.3, 'left'], [cx - 1.2, cy - 1.3, 'right'], [cx + 1.2, cy + 3.6, 'left'], [cx - 1.2, cy + 3.6, 'right'], [cx + 2.2, cy + 1.2, 'left'], [cx - 2.2, cy + 1.2, 'right'], [cx, cy - 2.4, 'center'], [cx, cy + 4.6, 'center'], [cx + 1.5, cy - 3.2, 'left'], [cx - 1.5, cy - 3.2, 'right']], false));
     }
     for (const run of pending) run();
     return {items, rows: Math.ceil((Y(ymin) + g) / g)};

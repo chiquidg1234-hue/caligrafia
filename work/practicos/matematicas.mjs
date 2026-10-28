@@ -38,11 +38,11 @@ Diferencia principal: la mediana parte de un vértice del triángulo, mientras q
 
 // [statement, points, reference line or null, answer line [a,b,c], answer text, steps]
 const two = [
-  ['Pasa por los puntos: (5, 7) y (9, 6).', [[5, 7], [9, 6]], null, [1, 4, -33], 'x + 4y - 33 = 0', ['Datos: P_1 = (5, 7)   P_2 = (9, 6)', 'm = (6 - 7)/(9 - 5) = -1/4', 'y - 7 = -1/4(x - 5)', 'Multiplicamos por 4:', '4y - 28 = -x + 5']],
-  ['Pasa por los puntos: (-4, -6) y (0, 8).', [[-4, -6], [0, 8]], null, [7, -2, 16], '7x - 2y + 16 = 0', ['Datos: P_1 = (-4, -6)   P_2 = (0, 8)', 'm = (8 - (-6))/(0 - (-4)) = 14/4 = 7/2', 'y - 8 = 7/2(x - 0)', 'Multiplicamos por 2:', '2y - 16 = 7x']],
-  ['Pasa por los puntos: (10, 4) y (-7, -9).', [[10, 4], [-7, -9]], null, [13, -17, -62], '13x - 17y - 62 = 0', ['Datos: P_1 = (10, 4)   P_2 = (-7, -9)', 'm = (-9 - 4)/(-7 - 10) = (-13)/(-17) = 13/17', 'y - 4 = 13/17(x - 10)', 'Multiplicamos por 17:', '17y - 68 = 13x - 130']],
-  ['Pasa por los puntos: (0, 7) y (-3, 5).', [[0, 7], [-3, 5]], null, [2, -3, 21], '2x - 3y + 21 = 0', ['Datos: P_1 = (0, 7)   P_2 = (-3, 5)', 'm = (5 - 7)/(-3 - 0) = (-2)/(-3) = 2/3', 'y - 7 = 2/3(x - 0)', 'Multiplicamos por 3:', '3y - 21 = 2x']],
-  ['Pasa por los puntos: (0, 7) y (-3, 0).', [[0, 7], [-3, 0]], null, [7, -3, 21], '7x - 3y + 21 = 0', ['Datos: P_1 = (0, 7)   P_2 = (-3, 0)', 'm = (0 - 7)/(-3 - 0) = (-7)/(-3) = 7/3', 'y - 7 = 7/3(x - 0)', 'Multiplicamos por 3:', '3y - 21 = 7x']],
+  ['Pasa por los puntos: (5, 7) y (9, 6).', [[5, 7], [9, 6]], null, [1, 4, -33], 'x + 4y - 33 = 0', ['Datos: P_1 = (5,7)  P_2 = (9,6)', 'm = (6 - 7)/(9 - 5) = -1/4', 'y - 7 = -1/4(x - 5)', 'Multiplicamos por 4:', '4y - 28 = -x + 5']],
+  ['Pasa por los puntos: (-4, -6) y (0, 8).', [[-4, -6], [0, 8]], null, [7, -2, 16], '7x - 2y + 16 = 0', ['Datos: P_1 = (-4,-6)  P_2 = (0,8)', 'm = (8 - (-6))/(0 - (-4)) = 14/4 = 7/2', 'y - 8 = 7/2(x - 0)', 'Multiplicamos por 2:', '2y - 16 = 7x']],
+  ['Pasa por los puntos: (10, 4) y (-7, -9).', [[10, 4], [-7, -9]], null, [13, -17, -62], '13x - 17y - 62 = 0', ['Datos: P_1 = (10,4)  P_2 = (-7,-9)', 'm = (-9 - 4)/(-7 - 10) = (-13)/(-17) = 13/17', 'y - 4 = 13/17(x - 10)', 'Multiplicamos por 17:', '17y - 68 = 13x - 130']],
+  ['Pasa por los puntos: (0, 7) y (-3, 5).', [[0, 7], [-3, 5]], null, [2, -3, 21], '2x - 3y + 21 = 0', ['Datos: P_1 = (0,7)  P_2 = (-3,5)', 'm = (5 - 7)/(-3 - 0) = (-2)/(-3) = 2/3', 'y - 7 = 2/3(x - 0)', 'Multiplicamos por 3:', '3y - 21 = 2x']],
+  ['Pasa por los puntos: (0, 7) y (-3, 0).', [[0, 7], [-3, 0]], null, [7, -3, 21], '7x - 3y + 21 = 0', ['Datos: P_1 = (0,7)  P_2 = (-3,0)', 'm = (0 - 7)/(-3 - 0) = (-7)/(-3) = 7/3', 'y - 7 = 7/3(x - 0)', 'Multiplicamos por 3:', '3y - 21 = 7x']],
 ];
 const parallel = [
   ['Pasa por el punto: (3, 5) y es paralela a la recta: -x + 2y - 4 = 0.', [[3, 5]], [-1, 2, -4], [1, -2, 7], 'x - 2y + 7 = 0', ['Datos: P = (3, 5)', 'Despejamos y: 2y = x + 4', 'y = 1/2x + 2   m = 1/2', 'y - 5 = 1/2(x - 3)', 'Multiplicamos por 2:', '2y - 10 = x - 3']],
