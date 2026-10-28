@@ -23,6 +23,7 @@ Con este formato, cualquier tarea queda escrita con tu letra en la hoja Oficio c
 | `x^2`, `x^{n+1}`, `10^-3` | potencias |
 | `v_0`, `P_{atm}`, `m_2` | subíndices |
 | `a/b`, `(x+1)/(x-1)`, `{2x}/3` | fracciones. Los paréntesis de afuera no se dibujan. |
+| `m//s^2`, `g//mol`, `J//(mol·K)` | unidades con la barra en el mismo renglón (no como fracción) |
 | `3/2x`, `-1/4(x - 5)` | (3/2)·x y (−1/4)·(x − 5) |
 | `raiz(x)`, `raiz[3](27)` | raíz cuadrada y raíz con índice |
 | `log_2(8)` | logaritmo en base 2 |
@@ -61,6 +62,7 @@ punto 9 6 | (9,6)
 - Los ejes, las marcas y los números van a mano, apoyados en la cuadrícula.
 
 **Ajustes:**
+- `[[hoja trapper]]` o `[[hoja oficio]]`, en el primer renglón: la hoja en la que se imprime. Si no lo pones, se usa la que elegiste en la app.
 - `[[tamaño 18]]`: tamaño de la letra.
 - `[[renglon medio]]` y `[[renglon seguido]]`: dejar o no un renglón libre entre líneas.
 - `[[espacio 2]]`: dos renglones libres.
@@ -82,7 +84,7 @@ Copia esto y agrega tu tarea al final:
 
 > Escribe la resolución de esta tarea en «formato Trazo», en texto plano, sin Markdown extra ni LaTeX. Usa `# Título` una sola vez (por ejemplo «# Práctico de Física»). Para cada ejercicio, escribe `### Ejercicio N.-` y copia el enunciado tal cual en la línea siguiente. Deja una línea vacía y abre `[[columnas 12]]`. A la izquierda va `**Datos:**`, con un dato por línea (por ejemplo `m = 95 kg`, `P = ?`). Después va `[[|]]`, y a la derecha la resolución paso a paso, una igualdad por línea. Termina con la respuesta en una línea que empiece con `!! ` y cierra con `[[fin]]`. Deja una línea vacía entre ejercicios.
 >
-> Fórmulas: `x^2`, `v_0`, `P_{atm}`, fracciones `a/b` o `(a+b)/(c+d)`, `raiz(x)`, `raiz[3](x)`, `·` para multiplicar, comas decimales (`9,8`) y unidades como `m/s^2`. Si hay coordenadas, pon en la columna izquierda `[[grafica xmin xmax ymin ymax]]`, con líneas `recta a b c | ecuación` y `punto x y | (x,y)`, y cierra con `[[fin]]`. No uses tablas, imágenes, `$`, `\frac` ni `\boxed`.
+> Fórmulas: `x^2`, `v_0`, `P_{atm}`, fracciones `a/b` o `(a+b)/(c+d)`, unidades con doble barra (`m//s^2`, `g//mol`, `km//h`), `raiz(x)`, `raiz[3](x)`, `·` para multiplicar, comas decimales (`9,8`) y unidades como `m/s^2`. Si hay coordenadas, pon en la columna izquierda `[[grafica xmin xmax ymin ymax]]`, con líneas `recta a b c | ecuación` y `punto x y | (x,y)`, y cierra con `[[fin]]`. No uses tablas, imágenes, `$`, `\frac` ni `\boxed`.
 
 Si la otra IA se equivoca en algo, la app te muestra el error con el número de renglón, sin imprimir nada.
 

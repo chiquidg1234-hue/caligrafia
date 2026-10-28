@@ -29,6 +29,12 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
   {name: 'anverso', left: 20, right: 16, top: 20, bottom: 17},
   {name: 'reverso', left: 16, right: 20, top: 22, bottom: 15},
 ]});
+// Trapper «Top» sheet, 5 mm squares; the holes are on the left of the anverso.
+export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, sides: [
+  {name: 'anverso', left: 30, right: 11, top: 20, bottom: 10},
+  {name: 'reverso', left: 12, right: 29, top: 21, bottom: 10},
+]});
+export const PAPERS = Object.freeze({oficio: OFICIO_ESPIRAL, trapper: TRAPPER_TOP});
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
@@ -73,6 +79,7 @@ export function parseDocument(source) {
       else if (key === 'color') {if (!/^#[\da-f]{6}$/i.test(args)) throw Error(`Color inválido (${at}).`); push({type: 'set', key: 'text', value: args.toLowerCase()});}
       else if (key === 'pagina' || key === 'página') push({type: 'page'});
       else if (key === 'lapicero') {if (!PENS[args] && args !== 'libre') throw Error(`Lapicero desconocido «${args}» (${at}). Usa: ${Object.keys(PENS).join(', ')} o libre.`); push({type: 'set', key: 'pen', value: args === 'libre' ? '' : args});}
+      else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
       else if (key === 'graficas-por-hoja' || key === 'gráficas-por-hoja') push({type: 'set', key: 'graphsPerPage', value: Math.max(1, Number(args) || 3)});
       else throw Error(`No conozco [[${name}]] (${at}).`);
       continue;
@@ -101,8 +108,10 @@ function inline(text) {
  * coordinates are millimetres on the sheet.
  */
 export function composeDocument(source, samples, options = {}) {
-  const o = {...DOCUMENT_DEFAULTS, ...options}, paper = o.paper, g = paper.grid, blocks = typeof source === 'string' ? parseDocument(source) : source;
-  const area = paper.sides.map(s => ({...s, x0: s.left + o.insetLeft * g, rows: Math.round((paper.height - s.top - s.bottom) / g)}));
+  const o = {...DOCUMENT_DEFAULTS, ...options}, blocks = typeof source === 'string' ? parseDocument(source) : source;
+  // [[hoja trapper]] in the first line wins over the paper chosen in the app.
+  const paper = blocks[0]?.type === 'paper' ? PAPERS[blocks[0].value] : o.paper, g = paper.grid;
+  const area = paper.sides.map(s => ({...s, x0: s.left + o.insetLeft * g, rows: Math.floor((paper.height - s.top - s.bottom) / g + 1e-9)}));
   const width = paper.width - area[0].left - area[0].right - (o.insetLeft + o.insetRight) * g;
   const missing = new Set(); let seed = o.seed;
   const glyphs = (layout, dx = 0, dy = 0) => layout.pages[0].map(e => ({type: 'glyph', paths: e.paths, x: e.x + dx, y: e.y + dy, scale: e.scale, color: e.color, strokeWidth: e.strokeWidth}));
@@ -243,6 +252,7 @@ export function composeDocument(source, samples, options = {}) {
     const block = blocks[i];
     if (block.type === 'set') {state[block.key] = block.value; if (block.key === 'pen' && PENS[block.value]) state.text = PENS[block.value].ink; continue;}
     if (block.type === 'page') {newPage(); continue;}
+    if (block.type === 'paper') continue;
     if (block.type === 'blank') {if (row > o.insetTop) row += block.rows; previous = null; continue;}
     const heading = block.type === 'heading' || block.type === 'subheading';
     if (heading && row > o.insetTop && !(blocks[i - 1]?.type === 'blank')) row++;

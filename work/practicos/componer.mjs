@@ -23,7 +23,7 @@ if (result.pages.length > 1) {
 }
 fs.writeFileSync(path.join(out, `${name}-hoja-blanca-con-cuadricula.pdf`), await documentPDF(result, {grid: true, offsets: {}}));
 if (!process.argv.includes('--sin-png')) {
-  const {chromium} = require('playwright'), browser = await chromium.launch(), tab = await browser.newPage({viewport: {width: 211 * 4, height: 322 * 4}});
+  const {chromium} = require('playwright'), browser = await chromium.launch(), tab = await browser.newPage({viewport: {width: result.paper.width * 4, height: result.paper.height * 4}});
   for (const [i, page] of result.pages.entries()) {await tab.setContent(`<style>body{margin:0}</style>${documentSVG(page, result.paper)}`); await tab.screenshot({path: path.join(out, `${name}-pagina-${i + 1}-${page.side}.png`)});}
   await browser.close();
 }

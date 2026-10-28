@@ -1,5 +1,5 @@
 {
- "own": "U5ndalorescógJFuqySptm)2TbEYiH7h4xfDv",
+ "own": "U5ndalorescógFuJqySptm)2TbEYiH7h4xfDv",
  "pen": 60,
  "derived": {
   "á": "a + tilde a mano",
@@ -7,7 +7,8 @@
   "ó": "o + tilde a mano",
   "ú": "u + tilde a mano",
   "í": "i + tilde a mano",
-  "ñ": "n + virgulilla a mano"
+  "ñ": "n + virgulilla a mano",
+  "μ": "u + palito hacia abajo"
  },
  "fromOther": [
   "j",

@@ -1,0 +1,232 @@
+[[hoja trapper]]
+# Práctico de Química
+## Ley de los gases ideales
+
+### Ejercicio 1.-
+Se encierran 20 g de oxígeno (O_2) en un recipiente de 18 litros a una temperatura de 68 °F. ¿Cuál es la presión que soporta el recipiente? Expresa el resultado en pascales. M = 32 g//mol.
+
+[[columnas 12]]
+**Datos:**
+m = 20 g
+M = 32 g//mol
+V = 18 L = 0,018 m^3
+t = 68 °F
+R = 8,314 J//(mol·K)
+P = ?
+[[|]]
+[[tamaño 15.5]]
+P·V = n·R·T  ->  P = (n·R·T)/V
+n = m/M = 20/32 = 0,625 mol
+t = (68 - 32)·5/9 = 20 °C
+T = 20 + 273,15 = 293,15 K
+P = (0,625 · 8,314 · 293,15)/(0,018)
+!! P ≈ 84 631 Pa
+[[fin]]
+
+### Ejercicio 2.-
+Se introducen 20 g de nitrógeno (N_2) en un recipiente de 12 litros a una temperatura de 95 °F. ¿Cuál es la presión del gas? Expresa el resultado en pascales. M = 28 g//mol.
+
+[[columnas 12]]
+**Datos:**
+m = 20 g
+M = 28 g//mol
+V = 12 L = 0,012 m^3
+t = 95 °F
+R = 8,314 J//(mol·K)
+P = ?
+[[|]]
+[[tamaño 15.5]]
+P·V = n·R·T  ->  P = (n·R·T)/V
+n = m/M = 20/28 = 0,7143 mol
+t = (95 - 32)·5/9 = 35 °C
+T = 35 + 273,15 = 308,15 K
+P = (0,7143 · 8,314 · 308,15)/(0,012)
+!! P ≈ 152 506 Pa
+[[fin]]
+
+### Ejercicio 3.-
+Se colocan 20 g de metano (CH_4) en un recipiente de 10 litros a una temperatura de 77 °F. ¿Cuál es la presión que ejerce el gas sobre las paredes del recipiente? Expresa el resultado en pascales.
+
+[[columnas 12]]
+**Datos:**
+m = 20 g
+M = 16 g//mol
+V = 10 L = 0,010 m^3
+t = 77 °F
+R = 8,314 J//(mol·K)
+P = ?
+[[|]]
+[[tamaño 15.5]]
+P·V = n·R·T  ->  P = (n·R·T)/V
+n = m/M = 20/16 = 1,25 mol
+t = (77 - 32)·5/9 = 25 °C
+T = 25 + 273,15 = 298,15 K
+P = (1,25 · 8,314 · 298,15)/(0,010)
+!! P ≈ 309 870 Pa
+[[fin]]
+
+### Ejercicio 4.-
+Un recipiente de 8 litros contiene 20 g de helio (He) a una temperatura de 59 °F. ¿Cuál es la presión del gas dentro del recipiente? Expresa el resultado en pascales.
+
+[[columnas 12]]
+**Datos:**
+m = 20 g
+M = 4 g//mol
+V = 8 L = 0,008 m^3
+t = 59 °F
+R = 8,314 J//(mol·K)
+P = ?
+[[|]]
+[[tamaño 15.5]]
+P·V = n·R·T  ->  P = (n·R·T)/V
+n = m/M = 20/4 = 5 mol
+t = (59 - 32)·5/9 = 15 °C
+T = 15 + 273,15 = 288,15 K
+P = (5 · 8,314 · 288,15)/(0,008)
+!! P ≈ 1 497 383 Pa
+[[fin]]
+
+### Ejercicio 5.-
+Se almacenan 20 g de dióxido de carbono (CO_2) en un recipiente de 20 litros a una temperatura de 104 °F. ¿Cuál es la presión que ejerce el gas? Expresa el resultado en pascales.
+
+[[columnas 12]]
+**Datos:**
+m = 20 g
+M = 44 g//mol
+V = 20 L = 0,020 m^3
+t = 104 °F
+R = 8,314 J//(mol·K)
+P = ?
+[[|]]
+[[tamaño 15.5]]
+P·V = n·R·T  ->  P = (n·R·T)/V
+n = m/M = 20/44 = 0,4545 mol
+t = (104 - 32)·5/9 = 40 °C
+T = 40 + 273,15 = 313,15 K
+P = (0,4545 · 8,314 · 313,15)/(0,020)
+!! P ≈ 59 174 Pa
+[[fin]]
+
+### Ejercicio 6.-
+Un recipiente esférico contiene 0,30 moles de oxígeno (O_2) a 25 °C y 760 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 5 libras. M = 32 g//mol.
+
+[[columnas 12]]
+**Datos:**
+n = 0,30 mol
+M = 32 g//mol
+t = 25 °C = 298,15 K
+P = 760 mmHg = 1 atm
+m = 5 lb
+R = 0,08206 atm·L//(mol·K)
+ρ = ?
+r = ?
+[[|]]
+[[tamaño 15.5]]
+Comprobación: m = n·M = 0,30·32 = 9,6 g
+5 lb = 2268 g ≠ 9,6 g: los datos no coinciden.
+ρ = (P·M)/(R·T) = (1 · 32)/(0,08206 · 298,15)
+!! ρ ≈ 1,308 g//L
+A) Con los moles: V = (n·R·T)/P = 7,34 L
+r = raiz[3]((3V)/(4π)) = raiz[3]((3 · 7340)/(4π))
+!! A) r ≈ 12,06 cm
+B) Con las libras: n = 2268/32 = 70,87 mol
+V = 1734 L  ->  r = raiz[3]((3 · 1 734 000)/(4π))
+!! B) r ≈ 74,53 cm
+[[fin]]
+
+### Ejercicio 7.-
+Un recipiente esférico contiene 0,40 moles de nitrógeno (N_2) a 20 °C y 740 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 6 libras. M = 28 g//mol.
+
+[[columnas 12]]
+**Datos:**
+n = 0,40 mol
+M = 28 g//mol
+t = 20 °C = 293,15 K
+P = 740 mmHg = 0,9737 atm
+m = 6 lb
+R = 0,08206 atm·L//(mol·K)
+ρ = ?
+r = ?
+[[|]]
+[[tamaño 15.5]]
+Comprobación: m = n·M = 0,40·28 = 11,2 g
+6 lb = 2721,6 g ≠ 11,2 g: los datos no coinciden.
+ρ = (P·M)/(R·T) = (0,9737 · 28)/(0,08206 · 293,15)
+!! ρ ≈ 1,133 g//L
+A) Con los moles: V = (n·R·T)/P = 9,88 L
+r = raiz[3]((3V)/(4π)) = raiz[3]((3 · 9880)/(4π))
+!! A) r ≈ 13,31 cm
+B) Con las libras: n = 2721,6/28 = 97,20 mol
+V = 2401 L  ->  r = raiz[3]((3 · 2 401 000)/(4π))
+!! B) r ≈ 83,07 cm
+[[fin]]
+
+### Ejercicio 8.-
+Un recipiente esférico contiene 0,25 moles de dióxido de carbono (CO_2) a 35 °C y 720 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 4,5 libras. M = 44 g//mol.
+
+[[columnas 12]]
+**Datos:**
+n = 0,25 mol
+M = 44 g//mol
+t = 35 °C = 308,15 K
+P = 720 mmHg = 0,9474 atm
+m = 4,5 lb
+R = 0,08206 atm·L//(mol·K)
+ρ = ?
+r = ?
+[[|]]
+[[tamaño 15.5]]
+Comprobación: m = n·M = 0,25·44 = 11 g
+4,5 lb = 2041,2 g ≠ 11 g: los datos no coinciden.
+ρ = (P·M)/(R·T) = (0,9474 · 44)/(0,08206 · 308,15)
+!! ρ ≈ 1,649 g//L
+A) Con los moles: V = (n·R·T)/P = 6,67 L
+r = raiz[3]((3V)/(4π)) = raiz[3]((3 · 6670)/(4π))
+!! A) r ≈ 11,68 cm
+B) Con las libras: n = 2041,2/44 = 46,39 mol
+V = 1238 L  ->  r = raiz[3]((3 · 1 238 000)/(4π))
+!! B) r ≈ 66,61 cm
+[[fin]]
+
+### Ejercicio 9.-
+El carbonato de calcio (CaCO_3) reacciona con ácido clorhídrico (HCl), produciendo dióxido de carbono. Analiza la ecuación de reacción y calcula el volumen de CO_2 que se produce a 35 °C y 780 mmHg, por la reacción de 50 gramos de CaCO_3.
+CaCO_3 + 2 HCl -> CaCl_2 + H_2O + CO_2
+
+[[columnas 12]]
+**Datos:**
+m = 50 g de CaCO_3
+M = 100 g//mol
+t = 35 °C = 308,15 K
+P = 780 mmHg
+R = 0,08206 atm·L//(mol·K)
+V = ?
+[[|]]
+[[tamaño 15.5]]
+M(CaCO_3) = 40 + 12 + 3·16 = 100 g//mol
+1 mol de CaCO_3 da 1 mol de CO_2
+n = m/M = 50/100 = 0,5 mol de CO_2
+P = 780/760 = 1,0263 atm
+V = (n·R·T)/P = (0,5 · 0,08206 · 308,15)/(1,0263)
+!! V ≈ 12,32 L de CO_2
+[[fin]]
+
+### Ejercicio 10.-
+El zinc (Zn) reacciona con ácido clorhídrico (HCl), produciendo hidrógeno gaseoso. Analiza la ecuación de reacción y calcula el volumen de H_2 que se produce a 25 °C y 740 mmHg, cuando reaccionan 10 gramos de Zn.
+Zn + 2 HCl -> ZnCl_2 + H_2
+
+[[columnas 12]]
+**Datos:**
+m = 10 g de Zn
+M = 65,38 g//mol
+t = 25 °C = 298,15 K
+P = 740 mmHg
+R = 0,08206 atm·L//(mol·K)
+V = ?
+[[|]]
+[[tamaño 15.5]]
+1 mol de Zn da 1 mol de H_2
+n = m/M = 10/65,38 = 0,1530 mol de H_2
+P = 740/760 = 0,9737 atm
+V = (n·R·T)/P = (0,1530 · 0,08206 · 298,15)/(0,9737)
+!! V ≈ 3,84 L de H_2
+[[fin]]

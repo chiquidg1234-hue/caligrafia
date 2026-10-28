@@ -28,13 +28,14 @@ const tilde = (x0, x1, y) => {const n = 9; return stroke(Array.from({length: n},
 const round = paths => map(paths, (x, y) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]);
 // Photo lines mix sizes (big capitals, tall t and l): each character keeps its
 // shape but its height stays between 0.85 and 1.2 times the one in Natural
-// (1.1 for capitals, which the photos write very big).
+// (1.1 for capitals, which the photos write very big, and 1.05 for long tails
+// that would push the next line down).
 const height = s => {const [lo, hi] = bounds(s.paths); return hi[1] - lo[1];}, median = v => v.sort((a, b) => a - b)[v.length >> 1];
 function normalise(list) {
   return [...new Set(list.map(s => s.label))].flatMap(c => {
     const mine = byLabel(list, c), ref = byLabel(natural, c);
     if (!ref.length) return mine;
-    const top = /\p{Lu}/u.test(c) ? 1.1 : 1.2, r = median(mine.map(height)) / median(ref.map(height)), k = r > top ? top / r : r < .85 ? .85 / r : 1;
+    const top = /\p{Lu}/u.test(c) ? 1.1 : 'pqgyj'.includes(c) ? 1.05 : 1.2, r = median(mine.map(height)) / median(ref.map(height)), k = r > top ? top / r : r < .85 ? .85 / r : 1;
     if (k === 1) return mine;
     // Descenders keep their body on the x-height; brackets and signs stay centred.
     const y0 = 'pqgyj'.includes(c) ? 300 : '()[]{}|+-=±'.includes(c) ? 250 : 0;
@@ -42,7 +43,13 @@ function normalise(list) {
   });
 }
 const byLabel = (list, c) => list.filter(s => s.label === c);
-own.samples = normalise(own.samples); other.samples = normalise(other.samples);
+// Tails below the line stay as deep as Natural's (about 270 units), or the
+// next line would need a free row under it.
+const tails = list => list.map(s => {
+  const low = Math.min(...s.paths.flat().map(p => p[1]));
+  return 'pqgyj'.includes(s.label) && low < -270 ? {...s, paths: round(map(s.paths, (x, y) => [x, y < 0 ? y * 270 / -low : y]))} : s;
+});
+own.samples = tails(normalise(own.samples)); other.samples = tails(normalise(other.samples));
 const samples = own.samples.map(s => ({...s})), report = {pen: Math.round(pen), derived: {}, fromOther: [], fromNatural: [], missing: []};
 const add = (label, paths, advance) => samples.push({id: '', label, char: label, paths: round(orient(paths)), advance: Math.round(advance), baseline: .78});
 // Everything Natural writes, minus what this font already has: first from the other photo.
@@ -67,6 +74,12 @@ for (const [base, accented] of [['a', 'á'], ['e', 'é'], ['o', 'ó'], ['u', 'ú
   }
   if (list.length) report.derived[accented] = `${base} + ${base === 'n' ? 'virgulilla' : 'tilde'} a mano`;
 }
+// μ (rozamiento): its own u with a tail down on the left.
+for (const u of byLabel(samples, 'u').slice(0, 4)) {
+  const [lo, hi] = bounds(u.paths), x = lo[0] + pen * .45 + random() * 6;
+  add('μ', [...u.paths, stroke([[x, Math.min(hi[1], 330)], [x - 4 + random() * 6, 120], [x - 10 + random() * 8, -170]])], u.advance);
+}
+if (byLabel(samples, 'u').length) report.derived['μ'] = 'u + palito hacia abajo';
 for (const c of [...new Set(natural.map(s => s.label))]) {
   if (have().has(c)) continue;
   for (const s of byLabel(natural, c).slice(0, 4)) samples.push({...s});

@@ -1,0 +1,78 @@
+[[hoja trapper]]
+# Práctico de Física
+
+### Ejercicio 1.-
+Calcular la presión que ejerce un cubo macizo de aluminio de 45 cm de lado y masa 95 kg al estar apoyado sobre una de sus caras. Expresar el resultado en pascal.
+
+[[columnas 12]]
+**Datos:**
+L = 45 cm = 0,45 m
+m = 95 kg
+g = 9,8 m//s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = F/A      F = m·g      A = L^2
+Peso: F = 95 · 9,8 = 931 N
+Área: A = (0,45)^2 = 0,2025 m^2
+Presión: P = 931/0,2025
+!! P = 4597,53 Pa
+[[fin]]
+
+### Ejercicio 2.-
+Sobre el émbolo de un pistón chico se ejerce una presión de 42520 pascal. Calcular el radio del pistón grande para que soporte pesos de 6200 Newton.
+
+[[columnas 12]]
+**Datos:**
+P = 42520 Pa
+F = 6200 N
+r = ?
+[[|]]
+[[tamaño 17]]
+P = F/A   ->   A = F/P
+A = π·r^2   ->   r = raiz(A/π)
+A = 6200/42520 = 0,14581 m^2
+r = raiz(0,14581/3,1416) = raiz(0,04641)
+r = 0,2154 m = 21,54 cm
+!! r = 21,54 cm
+[[fin]]
+
+### Ejercicio 3.-
+En una estación de servicio se utiliza una prensa hidráulica para levantar autos de 550 kg de masa sobre un pistón de área 600π cm^2. ¿Qué fuerza debe aplicarse en el pistón chico cuya área es 14 veces menor que el área del mayor?
+
+[[columnas 12]]
+**Datos:**
+m = 550 kg
+A_2 = 600π cm^2
+A_2 = 14 · A_1
+g = 9,8 m//s^2
+F_1 = ?
+[[|]]
+[[tamaño 17]]
+Peso del auto:
+F_2 = m·g = 550 · 9,8 = 5390 N
+Principio de Pascal:
+F_1/A_1 = F_2/A_2   ->   F_1 = F_2/14
+F_1 = 5390/14
+!! F_1 = 385 N
+[[fin]]
+
+### Ejercicio 4.-
+¿Cuál es el empuje que recibe un cuerpo de volumen 8500 cm^3 si la tercera parte de su volumen sobresale cuando flota en el agua?
+
+[[columnas 12]]
+**Datos:**
+V = 8500 cm^3
+Sobresale: {1}/{3} V
+ρ = 1000 kg//m^3
+g = 9,8 m//s^2
+E = ?
+[[|]]
+[[tamaño 17]]
+Principio de Arquímedes:
+E = ρ·g·V_s
+V_s = 2/3 · 8500 = 5666,67 cm^3
+V_s = 0,00566667 m^3
+E = 1000 · 9,8 · 0,00566667
+!! E = 55,53 N
+[[fin]]

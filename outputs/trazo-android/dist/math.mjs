@@ -78,6 +78,8 @@ export function composeFormula(source, pick, {ink = 42, seed = 1} = {}) {
   function expr(stop) {
     const items = [];
     while (i < chars.length && !stop.includes(chars[i])) {
+      // «//» is a plain slash on the line (units: g//mol), not a fraction.
+      if (chars[i] === '/' && chars[i + 1] === '/') {i += 2; items.push(atom('/')); continue;}
       if (chars[i] === '/') {i++; items.push('/'); continue;}
       items.push(postfix(primary()));
     }

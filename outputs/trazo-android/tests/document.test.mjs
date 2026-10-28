@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {layoutText, syllableBreaks} from '../web/core.mjs';
 import {composeFormula} from '../web/math.mjs';
-import {parseDocument, composeDocument, documentPDF, documentSVG, OFICIO_ESPIRAL} from '../web/document.mjs';
+import {parseDocument, composeDocument, documentPDF, documentSVG, OFICIO_ESPIRAL, TRAPPER_TOP} from '../web/document.mjs';
 import * as pdfBundle from '../web/vendor/pdf-lib.min.js';
 
 const natural = JSON.parse(fs.readFileSync(new URL('../web/personal-letter.json', import.meta.url))).profiles.find(p => p.id === 'personal-natural-v1').samples;
@@ -94,4 +94,23 @@ test('line starts vary like a hand (1–3 mm) but stay inside the free squares',
   const starts = [...lines.values()], spread = Math.max(...starts) - Math.min(...starts);
   assert.ok(spread >= 1 && spread <= 3.5, `spread ${spread.toFixed(2)} mm`);
   assert.ok(Math.min(...starts) >= side.left + 3, 'never closer than 3 mm to the frame');
+});
+
+test('[[hoja trapper]] lays out on the Trapper sheet and the PDF has its size', async () => {
+  const doc = composeDocument('[[hoja trapper]]\n# Química\n' + Array.from({length: 60}, (_, i) => `Renglón ${i + 1}`).join('\n'), natural);
+  assert.equal(doc.paper, TRAPPER_TOP);
+  for (const page of doc.pages) {
+    const side = TRAPPER_TOP.sides.find(s => s.name === page.side);
+    for (const g of page.items.filter(i => i.type === 'glyph')) assert.ok(g.y <= TRAPPER_TOP.height - side.bottom - 5 + 1e-6 && g.x >= side.left);
+  }
+  const pdf = await pdfBundle.default.PDFDocument.load(await documentPDF(doc));
+  assert.deepEqual(pdf.getPage(0).getSize().height.toFixed(1), (280 * 72 / 25.4).toFixed(1));
+  assert.throws(() => parseDocument('hola\n[[hoja trapper]]'), /primer renglón/);
+  assert.throws(() => parseDocument('[[hoja carta]]'), /oficio, trapper/);
+});
+
+test('«//» writes units on the line instead of a fraction', () => {
+  const tall = t => {const ys = composeFormula(t, pick).paths.flat().map(p => p[1]); return Math.max(...ys) - Math.min(...ys);};
+  assert.ok(tall('32g//mol') < tall('32g/mol') * .75);
+  assert.deepEqual(composeFormula('R = 8,314 J//(mol·K)', pick).missing, []);
 });

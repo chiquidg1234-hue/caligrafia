@@ -1,6 +1,6 @@
 # Fuente 2A y Fuente 2Y
 
-Dos letras nuevas, sacadas de las dos fotos que me pasaste. Las dejé **normales, del promedio**: no las embellecí. Solo igualé el tamaño (todas las letras miden lo mismo que en Mi letra Natural) y suavicé los bordes de los píxeles de la foto.
+Dos letras nuevas, sacadas de las dos fotos que me pasaste. Las dejé **normales, del promedio**: no las embellecí. Solo igualé el tamaño (todas las letras miden lo mismo que en Mi letra Natural, y las colas de g, p, q, y no bajan más que en tu letra, para que no dejen renglones vacíos) y suavicé los bordes de los píxeles de la foto. También saqué las muestras que se leían mal (una «J» sin techo parecía «)», «T» que parecían «1»).
 
 | Letra | Sale de | Letras propias (de la foto) |
 | --- | --- | --- |
@@ -18,6 +18,7 @@ Una foto no trae todas las letras, así que completé el resto en este orden:
    - a la 2A le presté de la 2Y: `D E F f g H h J q S T U u v Y ó`
    - a la 2Y le presté de la 2A: `j L P R z 0 1 3 6 9 ( ? , - + ±`
    - El punto y los dos puntos son puntitos hechos con la misma pluma.
+   - La «μ» (rozamiento) es la «u» de cada letra con un palito hacia abajo.
 3. **De Mi letra Natural (tu letra):** lo poco que no aparece en ninguna de las dos fotos. Son mayúsculas poco usadas (`A B C G I K M N Ñ O Q V W X Z`), `k w 8` y los signos (¿ ¡ ! ; « » < > ≤ ≥ π Δ …).
 
 El detalle está en `Fuente-2A-origen.json` y `Fuente-2Y-origen.json`. Si me mandas otra foto con esas letras (por ejemplo, una hoja con el abecedario en mayúsculas y los números), las cambio por las de esa misma letra.
