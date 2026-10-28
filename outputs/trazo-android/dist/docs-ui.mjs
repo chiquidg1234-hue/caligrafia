@@ -50,7 +50,10 @@ export const FORMAT_HELP = `<ul class="doc-help">
 
 export async function mountDocuments(root, {samples, toast}) {
   const saved = await setting('documentDraft', null), d = {source: EXAMPLE, start: 0, size: DOCUMENT_DEFAULTS.size, natural: DOCUMENT_DEFAULTS.natural, text: DOCUMENT_DEFAULTS.text, title: DOCUMENT_DEFAULTS.title, offsets: structuredClone(DOCUMENT_DEFAULTS.offsets), ...(saved || {})};
-  let result = null, timer, sequence = 0;
+  let result = null, timer, sequence = 0, worker = null;
+  // Long homework takes seconds: compose in the background so the page stays responsive.
+  try {worker = new Worker(new URL('./worker.mjs', import.meta.url), {type: 'module'});} catch {worker = null;}
+  const background = (source, opts) => worker ? new Promise((resolve, reject) => {const id = 'doc-' + Date.now() + Math.random(); const listen = ({data}) => {if (data.id !== id) return; worker.removeEventListener('message', listen); data.error ? reject(Error(data.error)) : resolve(data.result);}; worker.addEventListener('message', listen); worker.postMessage({id, method: 'composeDocument', args: [source, samples, opts]});}) : Promise.resolve().then(() => composeDocument(source, samples, opts));
   const num = (label, id, value, min, max, step) => `<label>${label}<input id="${id}" type="number" min="${min}" max="${max}" step="${step}" value="${value}"></label>`;
   root.innerHTML = `<style>.doc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.doc-source{width:100%;min-height:420px;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace;padding:12px;border:1px solid #c9d6e2;border-radius:10px;resize:vertical;box-sizing:border-box}.doc-pages{display:grid;gap:18px}.doc-page{background:#fff;border:1px solid #d6e0ea;border-radius:8px;overflow:hidden}.doc-page svg{display:block;width:100%;height:auto}.doc-page p{margin:6px 10px;font-size:13px;color:#5a6b7b}.doc-help{font-size:13px;line-height:1.6;padding-left:18px}.doc-help code{background:#eef3f8;border-radius:4px;padding:0 4px}@media(max-width:860px){.doc-grid{grid-template-columns:1fr}}</style>
   <div class="doc-grid"><section class="card"><h2>Tu tarea en texto</h2>
@@ -78,24 +81,24 @@ export async function mountDocuments(root, {samples, toast}) {
   const options = () => ({start: d.start, size: d.size, natural: d.natural, text: d.text, title: d.title, graph: d.title});
   function compose() {
     const mine = ++sequence; $('#docStatus').textContent = 'Escribiendo con tu letra…';
-    setTimeout(() => {
+    setTimeout(async () => {
       if (mine !== sequence || !root.isConnected) return;
       try {
-        result = composeDocument(d.source, samples, options());
+        const composed = await background(d.source, options()); if (mine !== sequence || !root.isConnected) return; result = composed;
         $('#docError').textContent = result.missing.length ? 'Faltan muestras para: ' + result.missing.join(' ') + ' · Añádelas en Mi letra o cambia esos signos.' : '';
         $('#docPages').innerHTML = result.pages.map((p, i) => `<figure class="doc-page">${documentSVG(p, result.paper, {scale: 1})}<p>Página ${i + 1} · ${p.side}</p></figure>`).join('');
         $('#docStatus').textContent = result.pages.length + (result.pages.length === 1 ? ' página' : ' páginas') + ' · ' + Math.ceil(result.pages.length / 2) + (result.pages.length > 2 ? ' hojas' : ' hoja');
-      } catch (e) {result = null; $('#docError').textContent = e.message; $('#docStatus').textContent = '';}
+      } catch (e) {if (mine !== sequence) return; result = null; $('#docError').textContent = e.message; $('#docStatus').textContent = '';}
     }, 30);
   }
   const later = () => {read(); clearTimeout(timer); timer = setTimeout(compose, 700);};
   root.querySelectorAll('textarea,input,select').forEach(el => el.addEventListener('input', later));
   const exportAs = (select, name, grid = false) => async () => {
-    try {read(); if (!result) compose(); if (!result) return; const bytes = await documentPDF(result, {offsets: grid ? {} : d.offsets, select, grid}); await saveFile(new Blob([bytes], {type: 'application/pdf'}), name); toast('PDF listo.');}
+    try {read(); if (!result) {toast('Espera a que termine la vista previa.'); return;} const bytes = await documentPDF(result, {offsets: grid ? {} : d.offsets, select, grid}); await saveFile(new Blob([bytes], {type: 'application/pdf'}), name); toast('PDF listo.');}
     catch (e) {toast(e.message);}
   };
   $('#docAll').onclick = exportAs('all', 'Tarea.pdf'); $('#docOdd').onclick = exportAs('anverso', 'Tarea-anversos.pdf'); $('#docEven').onclick = exportAs('reverso', 'Tarea-reversos.pdf'); $('#docGrid').onclick = exportAs('all', 'Tarea-hoja-blanca.pdf', true);
   $('#docExample').onclick = () => {$('#docSource').value = EXAMPLE; later();};
   compose();
-  return () => {sequence++; clearTimeout(timer);};
+  return () => {sequence++; clearTimeout(timer); worker?.terminate();};
 }
