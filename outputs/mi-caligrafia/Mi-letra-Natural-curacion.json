@@ -1488,6 +1488,30 @@
     "note": "derivado de tus trazos",
     "parts": "guion como signo menos"
    }
+  ],
+  "π": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "barra del guion y dos trazos de l"
+   }
+  ],
+  "ρ": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "o y trazo de l"
+   }
+  ],
+  "Δ": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "barras / \\ y guion"
+   }
+  ],
+  "≈": [
+   {
+    "note": "derivado de tus trazos",
+    "parts": "dos ~"
+   }
   ]
  },
  "derived": {
@@ -1503,13 +1527,17 @@
   "∞": "8 girado",
   "°": "o pequeña",
   "|": "trazo de l",
-  "−": "guion como signo menos"
+  "−": "guion como signo menos",
+  "π": "barra del guion y dos trazos de l",
+  "ρ": "o y trazo de l",
+  "Δ": "barras / \\ y guion",
+  "≈": "dos ~"
  },
  "limits": [
-  "Sin muestras para letras griegas (π, Δ, θ, α, β, λ, μ, ω, Ω) ni ∫: no se inventan.",
+  "π, ρ y Δ son provisionales, armados con tus trazos de l, o, / y \\ y guion; θ, α, β, λ, μ, ω, Ω y ∫ siguen sin muestras.",
   "La raíz cuadrada y la raya de fracción se dibujan al componer, con el grosor medido de tu trazo."
  ],
- "sampleCount": 226,
- "characterCount": 124,
+ "sampleCount": 230,
+ "characterCount": 128,
  "medianLetterStrokeWidth": 41
 }

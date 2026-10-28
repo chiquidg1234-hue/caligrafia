@@ -147,6 +147,19 @@ export function buildFont(samples,name='Mi letra') {
  const buffer=font.toArrayBuffer();return {buffer,meta:{name:family,characters:[...groups.keys()].filter(c=>Array.from(c).length===1).length,samples:samples.length,variants}};
 }
 
+// Spanish syllable boundaries (indices where a hyphen may go), keeping at
+// least two letters on each side: «gue-rra», «sindi-ca-lismo».
+const VOWELS='aeiouáéíóúü',STRONG='aeoáéíóú',INSEPARABLE=new Set(['bl','br','cl','cr','dl','dr','fl','fr','gl','gr','kl','kr','pl','pr','tl','tr','ch','ll','rr']);
+export function syllableBreaks(word){
+ const w=Array.from(word.toLowerCase()),vowel=i=>VOWELS.includes(w[i])&&!(w[i]==='u'&&/[qg]/.test(w[i-1]||'')&&/[eéií]/.test(w[i+1]||'')),nuclei=[];
+ for(let i=0;i<w.length;i++){if(!vowel(i))continue;const last=nuclei.at(-1),hiatus=last&&last[1]===i&&(STRONG.includes(w[i])&&STRONG.includes(w[i-1])||'íú'.includes(w[i])||'íú'.includes(w[i-1]));if(last&&last[1]===i&&!hiatus)last[1]=i+1;else nuclei.push([i,i+1]);}
+ const breaks=[];
+ for(let k=1;k<nuclei.length;k++){const end=nuclei[k-1][1],start=nuclei[k][0],run=w.slice(end,start).join('');let at;
+  if(run.length<=1)at=end;else if(run.length===2)at=INSEPARABLE.has(run)?end:end+1;else if(run.length===3)at=INSEPARABLE.has(run.slice(1))?end+1:end+2;else at=end+2;
+  if(at>=2&&w.length-at>=2)breaks.push(at);}
+ return breaks;
+}
+
 // Deterministic small-step generator for the natural mode; separate from the
 // variant choice so that turning naturalness on keeps the same text wrapping
 // decisions as close as possible.
@@ -162,7 +175,7 @@ export function layoutText(text,samples,options={}) {
  const width=number(options.width,210,70,420,'Ancho'),height=number(options.height,297,70,594,'Alto'),margin=number(options.margin,18,0,120,'Margen'),left=number(options.marginLeft,margin,0,120,'Margen izquierdo'),right=number(options.marginRight,margin,0,120,'Margen derecho'),top=number(options.marginTop,margin,0,120,'Margen superior'),bottomMargin=number(options.marginBottom,margin,0,120,'Margen inferior'),size=number(options.size,15,6,48,'Tamaño'),leading=number(options.leading,10,3,30,'Interlineado'),scale=size*25.4/72/1000;
  if(left+right>=width-10||top+bottomMargin>=height-10)throw new Error('Los márgenes dejan muy poco espacio para imprimir.');
  const gridMm=number(options.gridMm,5,2,20,'Cuadrícula'),gridOriginY=number(options.gridOriginY,0,-20,20,'Origen vertical');number(options.gridOriginX,0,-20,20,'Origen horizontal');if(options.marginLine)number(options.marginLineX,left,0,width,'Línea de margen');
- const natural=number(options.natural,0,0,1,'Naturalidad'),lineGap=Math.round(number(options.lineGap,0,0,3,'Renglones libres')),snap=!!options.snapToGrid,math=!!options.math;
+ const hyphenate=!!options.hyphenate,natural=number(options.natural,0,0,1,'Naturalidad'),lineGap=Math.round(number(options.lineGap,0,0,3,'Renglones libres')),snap=!!options.snapToGrid,math=!!options.math;
  // Flexible lines: a tall formula takes as many extra rows as it needs.
  const flexible=math||snap;
  const styles=normaliseStyles(options.styles,text.length),baseColor=validColor(options.ink)?options.ink:'#193c66',styleKey=s=>[s.bold,s.italic,s.color||baseColor].join('|');
@@ -176,6 +189,8 @@ export function layoutText(text,samples,options={}) {
   // Formulas may contain spaces inside their brackets: keep them together.
   if(math&&previous&&previous.open&&match[0]!=='\n'){previous.token+=match[0];previous.open=!balanced(previous.token);continue;}
   words.push({token:match[0],offset:match.index,open:math&&match[0]!=='\n'&&!/^ +$/.test(match[0])&&!balanced(match[0])});}
+ // Bracketed groups that are not formulas, like «(5, 7)», stay ordinary words.
+ for(let i=words.length-1;i>=0;i--){const {token,offset}=words[i];if(token.includes(' ')&&!isFormula(token))words.splice(i,1,...[...token.matchAll(/ +|[^ ]+/gu)].map(m=>({token:m[0],offset:offset+m.index})));}
  const ink=(()=>{const o=groups.get('o')?.[0]||groups.get('l')?.[0];if(!o)return 42;let a=0,p=0;for(const c of o.paths){for(let i=0;i<c.length;i++){const q=c[(i+1)%c.length];a+=c[i][0]*q[1]-q[0]*c[i][1];p+=Math.hypot(q[0]-c[i][0],q[1]-c[i][1]);}}return Math.min(70,Math.max(25,Math.abs(a)/p));})();
  for(const {token,offset} of words){if(token==='\n'||/^ +$/.test(token)){tokens.push(token);continue;}const units=[];
   if(math&&isFormula(token)){const style=styleAt(styles,offset),formula=composeFormula(token,label=>groups.has(label)?choose(groups.get(label),label):null,{ink,seed:(initialSeed+offset*7919)>>>0});for(const c of formula.missing)missing.add(c);if(!formula.missing.length)units.push({...unitOf(token,{paths:formula.paths,advance:formula.advance},style),formula:true});tokens.push(units);continue;}
@@ -185,9 +200,22 @@ export function layoutText(text,samples,options={}) {
  const lineTop=top+ascent,bottom=height-bottomMargin-descent;if(!flexible&&lineTop>bottom)throw new Error('El tamaño de los trazos no cabe en el alto del papel.');
  // 1. Break into lines. 2. Give each line its baseline and page.
  const available=width-left-right,lines=[[]],jitter=wobble(initialSeed);let x=left;
+ const hyphenAt=(token,room,span)=>{
+  if(!groups.has('-')||token.some(u=>u.formula||Array.from(u.label).length!==1))return null;
+  const word=token.map(u=>u.label).join(''),letters=word.match(/^[^\p{L}]*(\p{L}+)/u);if(!letters||letters[1].length<5)return null;
+  const lead=word.indexOf(letters[1]),style=token[0].style,hyphen=unitOf('-',choose(groups.get('-'),'-'),style),cuts=syllableBreaks(letters[1]).map(k=>k+lead).reverse();
+  for(const at of cuts){const used=token.slice(0,at).reduce((a,u)=>a+span(u),0);if(used+span(hyphen)<=room+1e-8)return {at,hyphen};}
+  return null;
+ };
  const breakLine=()=>{lines.push([]);x=left;};
- for(const token of tokens){if(token==='\n'){breakLine();continue;}if(typeof token==='string'){const space=320*scale*(1+natural*.14*jitter());for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)breakLine();else x+=space;}continue;}
-  const wordWidth=token.reduce((a,u)=>a+Math.max(u.advance,u.maxX)-Math.min(0,u.minX),0);if(x>left&&x+wordWidth>width-right)breakLine();
+ for(let token of tokens){if(token==='\n'){breakLine();continue;}if(typeof token==='string'){const space=320*scale*(1+natural*.14*jitter());for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)breakLine();else x+=space;}continue;}
+  const span=u=>Math.max(u.advance,u.maxX)-Math.min(0,u.minX),wordWidth=token.reduce((a,u)=>a+span(u),0);
+  if(x>left&&x+wordWidth>width-right){
+   // Split long words at a Spanish syllable with a hyphen, as on paper.
+   const split=hyphenate&&hyphenAt(token,width-right-x,span);
+   if(split){for(const unit of token.slice(0,split.at)){const drawX=x-Math.min(0,unit.minX);lines.at(-1).push({unit,x:drawX});x=drawX+span(unit)+Math.min(0,unit.minX);}const drawX=x-Math.min(0,split.hyphen.minX);lines.at(-1).push({unit:split.hyphen,x:drawX});breakLine();token=token.slice(split.at);}
+   else breakLine();
+  }
   for(const unit of token){const {label,maxX,minX,advance}=unit;
    if(Math.max(advance,maxX)-Math.min(0,minX)>available+1e-8)throw new Error(`La muestra «${label}» no cabe en el ancho. Reduce el tamaño o el margen.`);
    if(x+Math.max(advance,maxX)-Math.min(0,minX)>width-right+1e-8)breakLine();const drawX=x-Math.min(0,minX);lines.at(-1).push({unit,x:drawX});x=drawX+Math.max(advance,maxX);
@@ -197,7 +225,7 @@ export function layoutText(text,samples,options={}) {
  const guide=y=>{if(!snap)return y;const origin=top+((gridOriginY%gridMm)+gridMm)%gridMm;return origin+Math.ceil((y-origin)/gridMm-1e-9)*gridMm;};
  const extentOf=line=>line.reduce((e,{unit})=>[Math.max(e[0],unit.maxY),Math.max(e[1],-unit.minY)],[0,0]);
  if(!flexible&&lines.length>1&&leading+1e-8<ascent+descent)throw new Error('Aumenta el interlineado: los trazos de tus muestras se superponen entre líneas.');
- const pages=[[]],lineHasFormula=line=>line.some(({unit})=>unit.formula);let y=null,previousDescent=0,previousFormula=false,previousLine=[];
+ const pages=[[]],lineHasFormula=line=>line.some(({unit})=>unit.formula&&(unit.maxY>640*scale||-unit.minY>260*scale));let y=null,previousDescent=0,previousFormula=false,previousLine=[];
  // Lines only move down when real strokes would touch: an accent above a gap
  // between descenders stays on the next row, as on paper.
  const collides=(a,ay,b,by,clear)=>a.some(({unit:u,x:ux})=>b.some(({unit:v,x:vx})=>ux+u.minX<vx+v.maxX&&vx+v.minX<ux+u.maxX&&ay-u.minY+clear>by-v.maxY));

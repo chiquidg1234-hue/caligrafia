@@ -53,7 +53,7 @@ export function handStroke(points, width, random = Math.random) {
 export function composeFormula(source, pick, {ink = 42, seed = 1} = {}) {
   let text = source; for (const [a, b] of ALIASES) text = text.split(a).join(b);
   const random = rng(seed), missing = new Set(), chars = [...text]; let i = 0;
-  const atom = c => {const s = pick(c); if (!s) {missing.add(c); return {paths: [], width: 300, ascent: 0, descent: 0};} const b = box(orient(s.paths), s.advance); b.operator = OPERATORS.has(c); b.punctuation = PUNCTUATION.has(c); return b;};
+  const atom = c => {const s = pick(c); if (!s) {missing.add(c); return {paths: [], width: 300, ascent: 0, descent: 0};} const b = box(orient(s.paths), s.advance); b.operator = OPERATORS.has(c); b.punctuation = PUNCTUATION.has(c); b.char = c; return b;};
   const stroke = points => handStroke(points, ink, random);
   const tallParen = (c, inner) => {
     const b = atom(c), need = Math.max(inner.ascent + 40, 560), low = Math.max(inner.descent + 40, 120), have = b.ascent + b.descent;
@@ -86,7 +86,10 @@ export function composeFormula(source, pick, {ink = 42, seed = 1} = {}) {
     while ((k = items.indexOf('/')) >= 0) {
       const stops = item => item === '/' || item.operator || item.punctuation;
       let a = k; while (a > 0 && !stops(items[a - 1])) a--;
-      let b = k + 1; while (b < items.length && !stops(items[b])) b++;
+      // A denominator is one term: 1/4(x-5) is a quarter times (x-5).
+      // …and 3/2x is three halves times x: a numeric denominator ends with its digits.
+      const numeric = /\d/.test(items[k + 1]?.char || '');
+      let b = k + 1; while (b < items.length && !stops(items[b]) && !(b > k + 1 && items[b].group) && !(numeric && !/[\d.,]/.test(items[b].char || ''))) b++;
       const strip = list => list.length === 1 && list[0].group ? list[0].group : row(list);
       const num = items.slice(a, k), den = items.slice(k + 1, b);
       if (!num.length || !den.length) {items.splice(k, 1, atom('/')); continue;}

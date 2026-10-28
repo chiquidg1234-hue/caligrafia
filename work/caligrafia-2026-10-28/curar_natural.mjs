@@ -185,7 +185,16 @@ derive('∞', fit(map(U('8'), (x, y) => [-y, x]), {height: 230, centerY: 210}), 
 derive('°', fit(U('o'), {height: 150, bottom: 400}), 'o pequeña');
 derive('|', fit(U('l'), {height: 640, bottom: -70}), 'trazo de l');
 derive('−', U('-'), 'guion como signo menos');
-report.limits.push('Sin muestras para letras griegas (π, Δ, θ, α, β, λ, μ, ω, Ω) ni ∫: no se inventan.', 'La raíz cuadrada y la raya de fracción se dibujan al componer, con el grosor medido de tu trazo.');
+// Greek letters used in physics, assembled from the user's own strokes until
+// real samples are captured (see the symbol boxes of the test sheet).
+{const legs = fit(U('l'), {height: 300, bottom: 0}), [llo, lhi] = bounds(legs), w = lhi[0] - llo[0], top = stretch(U('-'), 330, 315);
+ derive('π', [...top, ...shift(legs, 55 - llo[0], 0), ...shift(map(legs, (x, y) => [x + (300 - y) * .06, y]), 245 - llo[0], 0)], 'barra del guion y dos trazos de l');}
+{const o = fit(U('o'), {height: 330, bottom: 0}), [olo] = bounds(o), stem = fit(U('l'), {height: 400, bottom: -235}), [slo, shi] = bounds(stem);
+ derive('ρ', [...o, ...shift(stem, olo[0] - slo[0] - (shi[0] - slo[0]) * .2, 0)], 'o y trazo de l');}
+{const up = fit(U('/'), {height: 500, bottom: 20}), down = fit(U('\\'), {height: 500, bottom: 20}), [ulo, uhi] = bounds(up), [dlo, dhi] = bounds(down), width = uhi[0] - ulo[0];
+ derive('Δ', [...up, ...shift(down, width - 45 - dlo[0], 0), ...shift(stretch(U('-'), width * 2 - 40, 0), 10, 30)], 'barras / \\ y guion');}
+derive('≈', [...fit(U('~'), {height: 95, centerY: 300}), ...fit(U('~'), {height: 95, centerY: 175})], 'dos ~');
+report.limits.push('π, ρ y Δ son provisionales, armados con tus trazos de l, o, / y \\ y guion; θ, α, β, λ, μ, ω, Ω y ∫ siguen sin muestras.', 'La raíz cuadrada y la raya de fracción se dibujan al componer, con el grosor medido de tu trazo.');
 report.sampleCount = out.length; report.characterCount = new Set(out.map(s => s.label)).size;
 
 const strokeLetters = out.filter(s => /\p{Ll}/u.test(s.label)).map(s => strokeWidth(s.paths)).sort((a, b) => a - b);
