@@ -22,6 +22,8 @@
 //     circulo x y r · linea x1 y1 x2 y2 · punto x y · texto x y | palabra
 //   [[fin]]
 //   [[tinta real|plana]]         ballpoint ink (ink.mjs) or the flat fill of the photo
+//   [[grosor 0.14]]              line width in the PDF, mm (the printer adds ~0.2)
+//   [[desorden 0.5]]             0–1: a less careful hand
 //   [[titulos a mano|impresos]]  leave the space of titles and headings for a real pen
 import {layoutText} from './core.mjs';
 import {ballpoint, inkMode} from './ink.mjs';
@@ -44,7 +46,7 @@ export const PAPERS = Object.freeze({oficio: OFICIO_ESPIRAL, trapper: TRAPPER_TO
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
-  text: '#283a7c', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', tinta: 'real', titulos: 'impresos', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
+  text: '#34405e', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', tinta: 'real', grosor: .14, desorden: 0, titulos: 'impresos', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
   // Epson T50 measured on the first test: 5–6 mm to the left and 1 mm high.
   // With this correction the writing starts two squares inside the frame,
   // which the user prefers (third test print).
@@ -97,6 +99,7 @@ export function parseDocument(source) {
       else if (key === 'color') {if (!/^#[\da-f]{6}$/i.test(args)) throw Error(`Color inválido (${at}).`); push({type: 'set', key: 'text', value: args.toLowerCase()});}
       else if (key === 'pagina' || key === 'página') push({type: 'page'});
       else if (key === 'lapicero') {if (!PENS[args] && args !== 'libre') throw Error(`Lapicero desconocido «${args}» (${at}). Usa: ${Object.keys(PENS).join(', ')} o libre.`); push({type: 'set', key: 'pen', value: args === 'libre' ? '' : args});}
+      else if (key === 'grosor' || key === 'desorden') {const v = Number(args.replace(',', '.')); if (!(v >= 0) || (key === 'grosor' ? v > 1 : v > 1)) throw Error(`Escribe [[${key} número]] (${at}).`); push({type: 'option', key, value: v});}
       else if (key === 'tinta') {const how = args.toLowerCase(); if (how !== 'real' && how !== 'plana') throw Error(`Escribe [[tinta real]] o [[tinta plana]] (${at}).`); push({type: 'set', key: 'tinta', value: how});}
       else if (key === 'titulos' || key === 'títulos') {const how = /mano/i.test(args) ? 'mano' : /impres/i.test(args) ? 'impresos' : ''; if (!how) throw Error(`Escribe [[titulos a mano]] o [[titulos impresos]] (${at}).`); push({type: 'set', key: 'titulos', value: how});}
       else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
@@ -130,6 +133,8 @@ function inline(text) {
  */
 export function composeDocument(source, samples, options = {}) {
   const o = {...DOCUMENT_DEFAULTS, ...options}, blocks = typeof source === 'string' ? parseDocument(source) : source;
+  // [[grosor]] and [[desorden]] hold for the whole document.
+  for (const b of blocks) if (b.type === 'option') o[b.key] = b.value;
   // [[hoja trapper]] in the first line wins over the paper chosen in the app.
   const paper = blocks[0]?.type === 'paper' ? PAPERS[blocks[0].value] : o.paper, g = paper.grid;
   const area = paper.sides.map(s => ({...s, x0: s.left + o.insetLeft * g, rows: Math.floor((paper.height - s.top - s.bottom) / g + 1e-9)}));
@@ -141,13 +146,15 @@ export function composeDocument(source, samples, options = {}) {
   // Text on the grid: baselines on lines, first line one row below the top.
   function write(text, w, state, extra = {}) {
     const {text: plain, styles} = inline(text), virtual = Math.max(70, w), color = extra.color || state.text;
-    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, startSlack: 1, seed: seed++, pen: extra.ink === false ? '' : state.pen, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
+    const layout = layoutText(plain, samples, {width: virtual, height: 594, margin: 0, marginRight: virtual - w, size: extra.size || state.size, leading: g, lineGap: extra.lineGap ?? state.lineGap, natural: extra.natural ?? o.natural, messy: o.desorden, startSlack: 1, seed: seed++, pen: extra.ink === false ? '' : state.pen, snapToGrid: true, gridMm: g, ink: color, styles: [...styles.map(s => ({...s, color})), ...(extra.bold ? [{start: 0, end: plain.length, bold: true, color}] : [])], math: extra.math ?? true, hyphenate: extra.hyphenate ?? true});
     if (layout.missing.length) {for (const c of layout.missing) missing.add(c); return {items: [], rows: 1, baselines: []};}
     if (layout.pages.length > 1) throw Error(`Un párrafo es más alto que la hoja: «${plain.slice(0, 40)}…».`);
     const items = glyphs(layout), baselines = [...new Set(items.map(i => Math.round(i.y / g)))].sort((a, b) => a - b), last = baselines.at(-1) * g;
     const box = inkBox(items), hang = box.b - last;
     // rise: how far the first line climbs above its own row (tall fractions).
-    return {items, baselines, rise: baselines[0] * g - box.t, hang: hang > 1.8 ? 0 : hang, rows: baselines.at(-1) + (hang > 1.8 ? Math.ceil((hang - .8) / g) : 0) + (extra.lineGap ?? state.lineGap)};
+    // A messier hand dips a little lower: that is not a new row.
+    const deep = 1.8 + .7 * o.desorden;
+    return {items, baselines, rise: baselines[0] * g - box.t, hang: hang > deep ? 0 : hang, rows: baselines.at(-1) + (hang > deep ? Math.ceil((hang - .8 - .7 * o.desorden) / g) : 0) + (extra.lineGap ?? state.lineGap)};
   }
   const centre = (items, w) => {
     const lines = new Map(); for (const it of items) {const k = Math.round(it.y / g); if (!lines.has(k)) lines.set(k, []); lines.get(k).push(it);}
@@ -307,7 +314,7 @@ export function composeDocument(source, samples, options = {}) {
     const block = blocks[i];
     if (block.type === 'set') {state[block.key] = block.value; if (block.key === 'pen' && PENS[block.value]) state.text = PENS[block.value].ink; continue;}
     if (block.type === 'page') {newPage(); continue;}
-    if (block.type === 'paper') continue;
+    if (block.type === 'paper' || block.type === 'option') continue;
     if (block.type === 'blank') {if (row > o.insetTop) row += block.rows; previous = null; continue;}
     const heading = block.type === 'heading' || block.type === 'subheading';
     if (heading && row > o.insetTop && !(blocks[i - 1]?.type === 'blank')) row++;
@@ -316,7 +323,7 @@ export function composeDocument(source, samples, options = {}) {
     let need = r.rows, followers = [];
     // …and a statement stays with its datos | resolución columns.
     if (heading || block.type === 'title' || block.type === 'paragraph') {
-      const after = blocks.slice(i + 1).filter(b => b.type !== 'set'), chain = [];
+      const after = blocks.slice(i + 1).filter(b => b.type !== 'set' && b.type !== 'option'), chain = [];
       for (const b of after) {if (b.type === 'blank' && chain.length && chain.length < 4) {chain.push(b); continue;} if (b.type === 'blank' || b.type === 'page' || b.type === 'heading' || b.type === 'subheading' || b.type === 'title') break; chain.push(b); if (b.type !== 'paragraph' || chain.length > 3) break;}
       followers = chain;
       const end = chain.filter(b => b.type !== 'blank').at(-1), solid = end && ['columns', 'graph', 'sketch', 'boxed'].includes(end.type);
@@ -340,7 +347,7 @@ export function composeDocument(source, samples, options = {}) {
   if (!pages.at(-1).items.length && pages.length > 1) pages.pop();
   // Ballpoint ink, once for the preview and the PDF.
   const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null; let n = o.seed * 7919;
-  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: o.natural, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
+  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: o.natural, messy: o.desorden, widthMm: o.grosor, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
   return {pages, missing: [...missing].sort(), paper};
 }
 

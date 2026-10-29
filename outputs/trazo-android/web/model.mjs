@@ -24,7 +24,7 @@ export function restoreDraft(saved={}){
 // of the user's own pen can replace the colour). variation: how much each letter
 // changes in tone; weight: extra stroke in font units (gel ink is fuller).
 export const PENS=Object.freeze({
-  'bic-azul':{name:'Bolígrafo azul (tipo BIC Cristal)',ink:'#283a7c',variation:.12,weight:0,kind:'boligrafo'},
+  'bic-azul':{name:'Bolígrafo azul (tipo BIC Cristal)',ink:'#34405e',variation:.12,weight:0,kind:'boligrafo'},
   'bic-negro':{name:'Bolígrafo negro (tipo BIC)',ink:'#26262e',variation:.1,weight:0,kind:'boligrafo'},
   'bic-rojo':{name:'Bolígrafo rojo (tipo BIC)',ink:'#b02a33',variation:.12,weight:0,kind:'boligrafo'},
   'gel-azul':{name:'Microgel azul',ink:'#1d3aa3',variation:.05,weight:10,kind:'gel'},

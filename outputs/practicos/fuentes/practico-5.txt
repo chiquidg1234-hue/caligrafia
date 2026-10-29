@@ -1,10 +1,11 @@
+[[desorden 0.7]]
 # Práctico 5
 
 ### Ejercicio 1.-
 Calcular la presión que ejerce una fuerza de 50 N sobre una superficie de 4 cm^2.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 50 N
 A = 4 cm^2
 P = ?
@@ -20,7 +21,7 @@ P = (50 N)/(0,0004 m^2)
 Calcular el área que soporta una presión de 450 N/cm^2, creada por una fuerza de 900 N.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 P = 450 N/cm^2
 F = 900 N
 A = ?
@@ -36,7 +37,7 @@ A = 2/10000 = 0,0002 m^2
 Calcular la presión en pascal que genera una fuerza de 800 N sobre una superficie de 85 cm^2.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 800 N
 A = 85 cm^2
 P = ?
@@ -52,7 +53,7 @@ P = (800 N)/(0,0085 m^2)
 Calcular la presión que genera una columna de 76 cm de mercurio, si su densidad es de 13,6 × 10^3 kg/m^3.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h = 76 cm = 0,76 m
 ρ = 13600 kg/m^3
 g = 9,8 m/s^2
@@ -68,7 +69,7 @@ P = 13600 · 9,8 · 0,76
 Un cuerpo cilíndrico de masa 120 kg está en posición vertical y ejerce una presión de 540/π Pa sobre su base. Calcular el radio.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 120 kg
 P = 540/π Pa
 g = 9,8 m/s^2
@@ -87,7 +88,7 @@ r = raiz(6,84/π)
 ¿Cuál es la presión que ejerce una mujer de 56 kg sobre uno de sus zapatos, cuya superficie es de 30 cm^2?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 56 kg
 A = 30 cm^2
 g = 9,8 m/s^2
@@ -104,7 +105,7 @@ P = F/A = 548,8/0,003
 Un pez se encuentra en un acuario a 10 cm por debajo de la superficie y luego se mueve hasta el fondo. Calcular la diferencia de presión que soporta si la altura del agua es de 48 cm.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h_1 = 10 cm = 0,10 m
 h_2 = 48 cm = 0,48 m
 ρ = 1000 kg/m^3
@@ -122,7 +123,7 @@ g = 9,8 m/s^2
 ¿A qué profundidad se encuentra un buzo en el mar si soporta una presión de 9,8 × 10^4 Pa? La densidad del agua marina es de 1,035 g/cm^3.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 P = 9,8 × 10^4 Pa
 ρ = 1,035 g/cm^3
 ρ = 1035 kg/m^3
@@ -140,7 +141,7 @@ h = 98000/10143
 ¿Qué presión ejerce un cubo macizo de cobre de 30 cm de lado y masa de 85 kg? Expresar el resultado en pascal.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 L = 30 cm = 0,30 m
 m = 85 kg
 g = 9,8 m/s^2
@@ -158,7 +159,7 @@ P = 833/0,09
 Calcular la presión que soporta la base de un cono de aluminio si su densidad es de 3 800 kg/m^3.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 ρ = 3800 kg/m^3
 g = 9,8 m/s^2
 P = ?
@@ -175,7 +176,7 @@ h ≈ 0,0469 m = 4,69 cm
 Al realizar sus ejercicios, un gimnasta se apoya sobre una mano cuya superficie de contacto es de 124 cm^2. Calcular la presión que ejerce su cuerpo de 76 kg.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 A = 124 cm^2
 m = 76 kg
 g = 9,8 m/s^2
@@ -192,7 +193,7 @@ P = F/A = 744,8/0,0124
 En una estación de servicio se utiliza una prensa hidráulica para levantar un automóvil de 640 kg. El área del pistón grande es de 320π cm^2 y el área del pistón pequeño es 20 veces menor. ¿Qué fuerza debe aplicarse sobre el pistón pequeño?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 640 kg
 A_2 = 320π cm^2
 A_1 = A_2/20
@@ -211,7 +212,7 @@ F_1 = (6272 · 16π)/(320π)
 Sobre el émbolo de un pistón pequeño se ejerce una presión de 49 000 Pa. ¿Qué radio debe tener el pistón grande para que soporte un peso de 6 160 N?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 P = 49000 Pa
 F = 6160 N
 r = ?
@@ -228,7 +229,7 @@ r = raiz(0,125714/π)
 En una prensa hidráulica, el área del pistón pequeño es de 6π cm^2. El pistón grande tiene un área 8 veces mayor y sube 12 cm. Calcula el volumen de líquido desplazado en el pistón grande.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 A_1 = 6π cm^2
 A_2 = 8 · A_1
 h = 12 cm
@@ -246,7 +247,7 @@ V = 576 · 3,1416
 ¿Cuál es el empuje que recibe un cuerpo de volumen 9 000 cm^3 si una cuarta parte de su volumen sobresale cuando flota en agua? Usa g = 9,8 m/s^2.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 V = 9000 cm^3
 Sobresale: {1}/{4} V
 ρ = 1000 kg/m^3
@@ -265,7 +266,7 @@ E = 1000 · 9,8 · 0,00675
 Un cilindro de madera de 7 cm de diámetro y 14 cm de altura flota en agua. ¿Qué masa de piedra debe colocarse encima para que la cara superior del cilindro quede justo al nivel del agua? La densidad de la madera es 0,93 g/cm^3.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 d = 7 cm   r = 3,5 cm
 h = 14 cm
 ρ_m = 0,93 g/cm^3
@@ -285,7 +286,7 @@ m_p = m_a - m_m = 538,78 - 501,07
 Un gas está conectado a un manómetro de mercurio que marca una diferencia inicial de 18 cm. La presión atmosférica local es de 510 mmHg. Si, a temperatura constante, el volumen del gas se reduce a la mitad, calcula la nueva presión manométrica.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h = 18 cm = 180 mmHg
 P_{atm} = 510 mmHg
 V_2 = V_1/2

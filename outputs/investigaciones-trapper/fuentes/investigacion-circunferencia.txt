@@ -1,4 +1,5 @@
 [[hoja trapper]]
+[[desorden 0.7]]
 # Investigación sobre circunferencia
 
 ## Conceptos y elementos
@@ -30,6 +31,7 @@ Es la mitad de una circunferencia, obtenida al dividirla mediante un diámetro.
 9. ¿Qué es un sector circular y qué elementos lo determinan?
 Es una región del círculo limitada por dos radios y el arco comprendido entre ellos.
 
+---
 10. ¿Qué es un segmento circular y cómo se forma dentro del círculo?
 Es la región del círculo limitada por una cuerda y su arco correspondiente.
 
@@ -75,6 +77,7 @@ Se pueden comparar sus centros y radios para saber su tamaño, ubicación y si s
 15. ¿Qué sucede con la ecuación de una circunferencia si el radio es igual a cero?
 Queda (x - h)^2 + (y - k)^2 = 0: representa únicamente el punto (h, k), no una circunferencia de radio positivo.
 
+---
 16. ¿Cuál es la condición para que una ecuación cuadrática en x e y represente una circunferencia?
 Los coeficientes de x^2 e y^2 deben ser iguales y distintos de cero, no debe existir término xy y el radio calculado debe cumplir r^2 > 0.
 
@@ -103,6 +106,7 @@ La distancia perpendicular del centro a la recta debe ser igual al radio; ademá
 23. ¿Qué diferencia hay entre una secante y una tangente?
 La secante corta la circunferencia en dos puntos; la tangente la toca en uno solo.
 
+---
 24. ¿Qué ocurre si la distancia entre los centros de dos circunferencias es mayor que la suma de sus radios?
 Son exteriores: no se cortan ni tienen puntos en común, si d > r_1 + r_2.
 

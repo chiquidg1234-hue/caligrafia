@@ -62,6 +62,19 @@ Antes, de cerca, la letra impresa se notaba: el borde quedaba mordido por la fot
   - decir si prefiere la tinta real o la plana.
 - **Falta:** la pestaña Páginas (`exports.mjs`) sigue con tinta plana. La APK no se reconstruyó (no hay clave de firma).
 
+## Calibración con su foto (29/10)
+
+Comparó una impresión con su lapicero real:
+- **Lo impreso salía mal:** el doble de grueso (≈0,47 mm contra ≈0,25 mm) y con un azul muy saturado; además, las gotitas y los cruces salían como manchas oscuras.
+- **Ahora:**
+  - `bic-azul` es `#34405e`;
+  - grosor fijo en el PDF de 0,14 mm (`[[grosor]]`; la impresora suma ≈0,2 mm);
+  - gotitas y rayitas pálidas casi nulas;
+  - opacidad 0,94.
+- **Pidió su letra «menos chetada»:** `[[desorden 0.7]]` (en `core.mjs` → naturalise: giro, tamaño, base y espaciado).
+  - Lo usan el Práctico 5 y la investigación.
+  - Lo irá mejorando en unos 3 meses.
+
 ## Reglas de sus tareas
 
 - **Título y encabezados:** título centrado con un renglón libre debajo; `### Ejercicio N.-` en rojo.

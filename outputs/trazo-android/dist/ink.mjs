@@ -325,10 +325,13 @@ const tone = (c, t) => css(hex(c).map(v => t > 0 ? v + (255 - v) * t : v * (1 + 
 function under(c, opacity) {const rgb = hex(c), raw = rgb.map(v => (v - (1 - opacity) * 255) / opacity); return raw.every(v => v >= 0) ? {color: css(raw), opacity} : {color: c, opacity: 1};}
 
 // How each kind of pen lays ink (see PENS in model.mjs).
+// Measured on a print of the Epson T50 next to a real BIC (photo of 29/10):
+// the printed blots showed as dark knots and overlaps as dark spots, so
+// they are faint now; the width is set by widthMm (see document.mjs).
 export const INKS = Object.freeze({
-  boligrafo: {opacity: .86, blob: .3, skip: .4, wobble: 1, steady: .55},
-  gel: {opacity: .93, blob: .12, skip: .1, wobble: .6, steady: .7},
-  lapiz: {opacity: .8, blob: 0, skip: .9, wobble: 1.2, steady: .5},
+  boligrafo: {opacity: .94, blob: .08, skip: .12, wobble: 1, steady: .85},
+  gel: {opacity: .96, blob: .05, skip: .05, wobble: .6, steady: .9},
+  lapiz: {opacity: .85, blob: 0, skip: .6, wobble: 1.2, steady: .7},
 });
 
 // When the lines cannot rebuild a letter (a thick hand that nearly closes
@@ -379,14 +382,14 @@ function inside([x, y], poly) {let c = false; for (let i = 0, j = poly.length - 
  * Returns {layers: [{polys, color, opacity}], lines: [[x, y]...][]} where
  * lines are the centre lines (for a pen plotter).
  */
-export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sample = null, mode = 'lineas'} = {}) {
+export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sample = null, mode = 'lineas', widthMm = 0, messy = 0} = {}) {
   const ink = INKS[kind] || INKS.boligrafo, random = rng(seed * 2654435761 + 17), polys = item.polys || item.paths.map(p => p.map(([x, y]) => [item.x + x * item.scale, item.y - y * item.scale]));
   const extra = item.strokeWidth && item.scale ? item.strokeWidth * item.scale / 2 : 0, color = item.color;
   // A formula has no sample of its own: its shape names it.
   const shape = shapeOf(sample || (item.paths && {id: 'f' + fingerprint(item.paths), paths: item.paths}), polys), strokes = shape.strokes, contour = mode === 'contorno' || !rebuilt(shape.fit);
-  const radii = strokes.flatMap(s => s.points.length > 1 ? s.points.map(p => p[2]) : []).sort((a, b) => a - b), median = radii[radii.length >> 1] || .15, base = median + extra;
+  const radii = strokes.flatMap(s => s.points.length > 1 ? s.points.map(p => p[2]) : []).sort((a, b) => a - b), median = radii[radii.length >> 1] || .15, base = (widthMm ? widthMm / 2 : median) + extra, thin = base / (median + extra);
   // A slow, smooth bend of the whole letter: no two letters are the same.
-  const amp = .035 * natural * ink.wobble, f = Array.from({length: 4}, () => between(random, .18, .38)), ph = Array.from({length: 4}, () => between(random, 0, 6.3));
+  const amp = .035 * natural * ink.wobble * (1 + 6 * messy), f = Array.from({length: 4}, () => between(random, .18, .38)), ph = Array.from({length: 4}, () => between(random, 0, 6.3));
   const warp = ([x, y, r]) => [x + amp * Math.sin(f[0] * 2 * Math.PI * x + f[1] * 2 * Math.PI * y + ph[0]), y + amp * Math.sin(f[2] * 2 * Math.PI * x - f[3] * 2 * Math.PI * y + ph[1]), r];
   const layers = [], lines = [];
   // The outline itself, when the lines do not rebuild this letter: the ink
@@ -401,7 +404,7 @@ export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sa
     const points = s.points.map((p, i) => {
       if (i) run += Math.hypot(p[0] - s.points[i - 1][0], p[1] - s.points[i - 1][1]);
       // A dot keeps its own size; lines keep near the width of the pen.
-      const measured = Math.max(.8 * median, Math.min(1.2 * median, p[2])), r = s.points.length === 1 ? (p[2] + extra) * pressure : (base * ink.steady + (measured + extra) * (1 - ink.steady)) * pressure * (1 + .06 * Math.sin(phase + run / wave * 2 * Math.PI));
+      const measured = Math.max(.8 * median, Math.min(1.2 * median, p[2])), r = s.points.length === 1 ? Math.max(base, (p[2] + extra) * Math.sqrt(thin)) * pressure : (base * ink.steady + (measured + extra) * thin * (1 - ink.steady)) * pressure * (1 + .06 * Math.sin(phase + run / wave * 2 * Math.PI));
       return warp([p[0], p[1], r]);
     });
     lines.push(points.map(p => [p[0], p[1]]));
@@ -411,7 +414,7 @@ export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sa
     if (!s.closed && points.length > 1 && total > .5 && random() < ink.blob) {
       const [a, z] = [points[0], points.at(-1)], start = a[0] + a[1] * .7 <= z[0] + z[1] * .7 ? 0 : points.length - 1, p = points[start], q = points[start ? start - 1 : 1];
       const d = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1, along = Math.min(.35 * p[2], d * .5), cx = p[0] + (q[0] - p[0]) / d * along, cy = p[1] + (q[1] - p[1]) / d * along;
-      layers.push({polys: [circle(cx, cy, p[2] * between(random, 1.08, 1.25), 16)], ...under(tone(color, -.12), ink.opacity)});
+      layers.push({polys: [circle(cx, cy, p[2] * between(random, 1.02, 1.1), 16)], ...under(tone(color, -.04), ink.opacity)});
     }
     // A pale streak where the ball skipped, along the stroke.
     if (total > 1 && random() < ink.skip) {
@@ -422,11 +425,11 @@ export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sa
         for (let t = 0; t < seg; t += .03) {
           const u = at + t; if (u < from || u > from + span) continue;
           const k = (u - from) / span, nx = -(by - ay) / seg, ny = (bx - ax) / seg, x = ax + (bx - ax) * t / seg, y = ay + (by - ay) * t / seg;
-          streak.push([x + nx * side * ar, y + ny * side * ar, Math.max(.028, .14 * ar) * Math.sin(Math.PI * k)]);
+          streak.push([x + nx * side * ar, y + ny * side * ar, .2 * ar * Math.sin(Math.PI * k)]);
         }
         at += seg;
       }
-      if (streak.length > 3) layers.push({polys: band(streak.map(p => [p[0], p[1], p[2]]), false), color: '#ffffff', opacity: kind === 'lapiz' ? .45 : between(random, .45, .7)});
+      if (streak.length > 3) layers.push({polys: band(streak.map(p => [p[0], p[1], p[2]]), false), color: '#ffffff', opacity: kind === 'lapiz' ? .45 : between(random, .3, .45)});
     }
   }
   return {layers, lines};

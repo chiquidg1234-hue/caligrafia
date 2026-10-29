@@ -86,6 +86,8 @@ texto 4 3.3 | radio
 - `[[color #1f3a93]]`: color del texto.
 - `[[lapicero bic-azul]]`: tinta de un lapicero. Puede ser `bic-azul`, `bic-negro`, `bic-rojo`, `gel-azul` (microgel), `gel-negro` o `lapiz`; con `libre`, el color va fijo, sin variación.
 - `[[tinta real]]` (lo normal): cada trazo se dibuja como con un bolígrafo, con borde limpio y tinta que varía. `[[tinta plana]]` vuelve al relleno parejo de antes. Se explica en [prueba-tinta-real](../prueba-tinta-real/LEEME.md).
+- `[[desorden 0.7]]`: una letra menos prolija (0 = como antes, 1 = muy suelta). Las letras giran, cambian de tamaño y saltan un poco más.
+- `[[grosor 0.14]]`: grosor del trazo en el PDF, en mm. La Epson lo abre unos 0,2 mm al imprimir, así que 0,14 sale como un BIC de verdad.
 - `[[titulos a mano]]`: el PDF deja libre el lugar del título y de cada «Ejercicio N.-», para que los escribas con tu lapicero. `[[titulos impresos]]` los vuelve a imprimir.
 
 ## Reglas de tu cuaderno (la app las aplica sola)
