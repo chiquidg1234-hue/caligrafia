@@ -184,7 +184,9 @@ export function layoutText(text,samples,options={}) {
   // Natural writing never repeats the very same shape twice in a row.
   if(natural&&ss.length>1&&pick===last.get(label))pick=ss[(ss.indexOf(pick)+1+Math.floor(seed/4294967296*(ss.length-1)))%ss.length];last.set(label,pick);return pick;};
  const labels=[...groups.keys()].sort((a,b)=>b.length-a.length),missing=new Set(),tokens=[];
- const unitOf=(label,sample,style,paths=sample.paths)=>{if(style.italic)paths=paths.map(p=>p.map(([x,y])=>[x+y*.18,y]));const strokeWidth=style.bold?48:0,pad=strokeWidth/2*scale;let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;for(const p of paths)for(const [x,y] of p){minX=Math.min(minX,x*scale-pad);maxX=Math.max(maxX,x*scale+pad);minY=Math.min(minY,y*scale-pad);maxY=Math.max(maxY,y*scale+pad);}return {label,sample,paths,style,strokeWidth,minX,maxX,minY,maxY,advance:sample.advance*scale};};
+ // tracking: extra room after each letter (part of an em), uneven by trackJitter, as in a hurried hand.
+ const spread=wobble(initialSeed*13+5),tracking=Math.max(0,Math.min(.4,Number(options.tracking)||0)),trackJitter=Math.max(0,Math.min(1,Number(options.trackJitter)||0)),track=()=>tracking?tracking*1000*scale*Math.max(0,1+trackJitter*spread()):0;
+ const unitOf=(label,sample,style,paths=sample.paths)=>{if(style.italic)paths=paths.map(p=>p.map(([x,y])=>[x+y*.18,y]));const strokeWidth=style.bold?48:0,pad=strokeWidth/2*scale;let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;for(const p of paths)for(const [x,y] of p){minX=Math.min(minX,x*scale-pad);maxX=Math.max(maxX,x*scale+pad);minY=Math.min(minY,y*scale-pad);maxY=Math.max(maxY,y*scale+pad);}return {label,sample,paths,style,strokeWidth,minX,maxX,minY,maxY,advance:sample.advance*scale+track()};};
  const words=[];for(const match of text.matchAll(/\n| +|[^ \n]+/gu)){const previous=words.at(-1);
   // Formulas may contain spaces inside their brackets: keep them together.
   if(math&&previous&&previous.open&&match[0]!=='\n'){previous.token+=match[0];previous.open=!balanced(previous.token);continue;}
@@ -208,7 +210,7 @@ export function layoutText(text,samples,options={}) {
   return null;
  };
  const breakLine=()=>{lines.push([]);x=left;};
- for(let token of tokens){if(token==='\n'){breakLine();continue;}if(typeof token==='string'){const space=320*scale*(1+natural*.14*jitter());for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)breakLine();else x+=space;}continue;}
+ for(let token of tokens){if(token==='\n'){breakLine();continue;}if(typeof token==='string'){const space=320*scale*(1+natural*.14*jitter())+tracking*1500*scale;for(let i=0;i<token.length;i++){if(x===left)continue;if(x+space>width-right)breakLine();else x+=space;}continue;}
   const span=u=>Math.max(u.advance,u.maxX)-Math.min(0,u.minX),wordWidth=token.reduce((a,u)=>a+span(u),0);
   if(x>left&&x+wordWidth>width-right){
    // Split long words at a Spanish syllable with a hyphen, as on paper.
@@ -232,7 +234,7 @@ export function layoutText(text,samples,options={}) {
  for(const line of lines){
   const [up,down]=flexible?extentOf(line):[ascent,descent];
   if(flexible&&top+up>height-bottomMargin-down+1e-8)throw new Error('El tamaño de los trazos no cabe en el alto del papel.');
-  if(y===null)y=guide(top+up);else{const previous=y;y+=pitch;if(flexible){const clear=lineHasFormula(line)||previousFormula?rows*.12:-rows*.04;while(collides(previousLine,previous,line,y,clear))y+=rows;}
+  if(y===null)y=guide(top+up);else{const previous=y;y+=pitch;if(flexible){const clear=lineHasFormula(line)||previousFormula?rows*.12+.8*Math.max(0,Math.min(1,Number(options.messy)||0)):-rows*.04;while(collides(previousLine,previous,line,y,clear))y+=rows;}
    if(flexible?y+down>height-bottomMargin+1e-8:y>bottom+1e-8){pages.push([]);y=guide(top+up);}}
   previousDescent=down;previousFormula=lineHasFormula(line);previousLine=line;
   for(const {unit,x} of line){const {label,sample,paths,style,strokeWidth}=unit;pages.at(-1).push({...(sample.id===undefined?{}:{sampleId:sample.id}),label,paths,x,y,scale,color:style.color||baseColor,strokeWidth,bold:style.bold,italic:style.italic});}
