@@ -139,3 +139,10 @@ test('[[dibujo]] draws a freehand sketch that takes its rows and reports bad lin
   const drawn = more.pages[0].items.filter(i => i.type === 'ink');
   assert.ok(drawn.length >= 8 && drawn.some(i => i.color === '#b02a33') && drawn.some(i => i.widthMm > .3));
 });
+
+test('every page reports its margins and nothing crosses the Trapper frame', () => {
+  const long = '[[hoja trapper]]\n' + Array.from({length: 40}, (_, i) => `${i + 1}-¿Pregunta larga número ${i + 1} sobre la circunferencia y sus elementos principales?\n-Respuesta con varias palabras para llenar el renglón completo de la hoja.`).join('\n') + '\n[[dibujo 40 6]]\ncirculo 20 3 2.5\nlinea 0 3 40 3\ntexto 36 5 | Tangente\n[[fin]]';
+  const doc = composeDocument(long, natural);
+  assert.equal(doc.margins.length, doc.pages.length);
+  for (const m of doc.margins) {assert.deepEqual(m.problems, [], `página ${m.page}: ${m.problems}`); assert.ok(m.right >= 2.7 * 5 - 1.5 && m.left >= .5);}
+});

@@ -65,26 +65,26 @@ texto 10.6 10.4 | Circunferencia
 texto 11 11.6 | (borde)
 texto 18.2 10.4 | Círculo
 texto 17.8 11.6 | (superficie)
-rotulo 24.5 1 | Gráfica 3
-circulo 26.9 5.9 3.1
-linea 23.8 5.9 30 5.9
-texto 25.3 7 | Diámetro
-punto 26.9 5.9
-texto 25.9 5.5 | O
+rotulo 22.7 1 | Gráfica 3
+circulo 25.1 5.9 3.1
+linea 22 5.9 28.2 5.9
+texto 23.5 7 | Diámetro
+punto 25.1 5.9
+texto 24.1 5.5 | O
 color rojo
-linea 26.9 5.9 28.8 3.45
-texto 27.6 4.6 | Radio
-arco 26.9 5.9 3.1 110 170
-texto 23.6 2.7 | Arco
+linea 25.1 5.9 27 3.45
+texto 25.8 4.6 | Radio
+arco 25.1 5.9 3.1 110 170
+texto 22.4 2.4 | Arco
 color verde
-linea 24.5 7.9 29.3 7.9
-texto 25.6 7.7 | Cuerda
+linea 22.7 7.9 27.5 7.9
+texto 23.8 7.7 | Cuerda
 color morado
-linea 25.2 1.8 31 4.6
-texto 28.9 2.2 | Secante
+linea 23.4 1.8 28.6 4.4
+texto 27.1 2.2 | Secante
 color tinta
-linea 30 3.4 30 9.4
-texto 28.4 10.6 | Tangente
+linea 28.2 3.4 28.2 9.4
+texto 26.6 10.6 | Tangente
 [[fin]]
 [[dibujo 31 10]]
 rotulo 0 1 | Gráfica 4

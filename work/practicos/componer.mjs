@@ -15,6 +15,10 @@ const [source, out, name = path.basename(source, '.txt')] = args.filter(a => !a.
 const samples = JSON.parse(fs.readFileSync(WEB + 'personal-letter.json')).profiles.find(p => p.id === profile).samples;
 const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples);
 if (result.missing.length) {console.error('Faltan:', result.missing.join(' ')); process.exit(1);}
+// The ink of every page must stay inside the frame with its free squares.
+const bad = result.margins.filter(m => m.problems.length);
+for (const m of result.margins) console.log(`  página ${m.page} (${m.side}): izquierda ${m.left.toFixed(1)} · derecha ${m.right.toFixed(1)} · arriba ${m.top.toFixed(1)} · abajo ${m.bottom.toFixed(1)} mm del marco${m.problems.length ? '  ✗ ' + m.problems.join('; ') : ''}`);
+if (bad.length) {console.error('Márgenes fuera de regla: corrige el texto o el dibujo y vuelve a generar.'); process.exit(1);}
 fs.mkdirSync(out, {recursive: true});
 for (const file of fs.readdirSync(out)) if (file.startsWith(`${name}-pagina-`) || file.startsWith(`${name}-ploter-`)) fs.unlinkSync(path.join(out, file));
 if (process.argv.includes('--ploter')) for (const [i, page] of result.pages.entries()) fs.writeFileSync(path.join(out, `${name}-ploter-${i + 1}-${page.side}.svg`), plotterSVG(page, result.paper));

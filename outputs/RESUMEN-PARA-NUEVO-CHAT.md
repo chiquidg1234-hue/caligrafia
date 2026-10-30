@@ -63,7 +63,7 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 | Hoja | Directiva | Medidas | Corrección de la Epson T50 |
 | --- | --- | --- | --- |
 | Oficio espiral | `[[hoja oficio]]` | 211 × 322 mm | anverso x 5, y 1; reverso x 6, y 1 |
-| Trapper | `[[hoja trapper]]` | 211 × 280 mm, casi carta | la misma (x 5 / 6, y 1) y además `drop: 2.2` mm hacia abajo: medido en la foto del 30/10, la letra salía medio cuadrito arriba de los renglones. El reverso no se midió todavía. |
+| Trapper | `[[hoja trapper]]` | 211 × 280 mm, casi carta; marco: anverso 30/11/20/10 mm (izq/der/arr/abajo), reverso 12/29/21/10 | x 5 / 6, y 1, más `drop: 2.2` mm hacia abajo e `insetRight: 2.7` cuadritos. Medido en la foto del 30/10: la letra salía 2,2 mm arriba de los renglones, y a la derecha quedaba 1,5 cuadritos en vez de 2. |
 
 - **Para imprimir:**
   - tamaño real 100 %, Papel normal y «Alta velocidad» desmarcada;
@@ -85,6 +85,13 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 ## 2A y 2Y adelgazadas (30/10)
 
 Impresas salían casi tres veces más gruesas que un lapicero. Ahora, en modo contorno, el borde se encoge hasta `grosor` (`softOutline` con `shrink`) y cada trazo conserva al menos el ancho del lapicero a lo largo de su línea central limpia.
+
+## Verificación de márgenes (siempre)
+
+- `composeDocument` devuelve `margins`: los mm de tinta a cada lado del marco, por página, con los problemas encontrados.
+- `componer.mjs` imprime esa tabla y **se niega a generar** si algo toca el marco o invade los cuadritos libres.
+- Un `[[dibujo]]` más ancho que la columna se achica solo.
+- En pantalla el PDF se ve corrido a la derecha, y es lo correcto: la Trapper tiene el marco a 3 cm (agujeros) en el anverso y el PDF lleva la corrección de 5 mm de la impresora. Para ver cómo cae sobre la hoja, mira los PNG o el PDF «hoja-blanca-con-cuadricula».
 
 ## Lo que falta o hay que mejorar
 

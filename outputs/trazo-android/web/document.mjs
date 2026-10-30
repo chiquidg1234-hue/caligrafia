@@ -39,9 +39,10 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
   {name: 'reverso', left: 16, right: 20, top: 22, bottom: 15},
 ]});
 // Trapper «Top» sheet, 5 mm squares; the holes are on the left of the anverso.
-// drop: on this sheet the Epson T50 prints 2.2 mm higher than on the Oficio
-// (photo of 30/10: the writing sat half a square above the lines).
-export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, drop: 2.2, sides: [
+// Measured on a print of 30/10 (Epson T50): the writing sat 2.2 mm too high
+// (drop) and, with the printer correction, 2 squares from the left frame but
+// only 1.5 from the right one; insetRight 2.7 leaves 2 squares on paper too.
+export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, drop: 2.2, insetRight: 2.7, sides: [
   {name: 'anverso', left: 30, right: 11, top: 20, bottom: 10},
   {name: 'reverso', left: 12, right: 29, top: 21, bottom: 10},
 ]});
@@ -153,7 +154,7 @@ export function composeDocument(source, samples, options = {}) {
   // [[hoja trapper]] in the first line wins over the paper chosen in the app.
   const paper = blocks[0]?.type === 'paper' ? PAPERS[blocks[0].value] : o.paper, g = paper.grid;
   const area = paper.sides.map(s => ({...s, x0: s.left + o.insetLeft * g, rows: Math.floor((paper.height - s.top - s.bottom) / g + 1e-9)}));
-  const width = paper.width - area[0].left - area[0].right - (o.insetLeft + o.insetRight) * g;
+  const insetRight = paper.insetRight ?? o.insetRight, width = paper.width - area[0].left - area[0].right - (o.insetLeft + insetRight) * g;
   const missing = new Set(); let seed = o.seed;
   const glyphs = (layout, dx = 0, dy = 0) => layout.pages[0].map(e => ({type: 'glyph', paths: e.paths, x: e.x + dx, y: e.y + dy, scale: e.scale, color: e.color, strokeWidth: e.strokeWidth, ...(e.sampleId === undefined ? {} : {sampleId: e.sampleId})}));
   const inkBox = items => {let l = Infinity, r = -Infinity, t = Infinity, b = -Infinity; for (const it of items) {if (it.type === 'glyph') for (const p of it.paths) for (const [x, y] of p) {l = Math.min(l, it.x + x * it.scale); r = Math.max(r, it.x + x * it.scale); t = Math.min(t, it.y - y * it.scale); b = Math.max(b, it.y - y * it.scale);} else if (it.type === 'ink') for (const p of it.polys) for (const [x, y] of p) {l = Math.min(l, x); r = Math.max(r, x); t = Math.min(t, y); b = Math.max(b, y);}} return {l, r, t, b};};
@@ -243,8 +244,8 @@ export function composeDocument(source, samples, options = {}) {
 
   // A freehand sketch: circles that do not quite close, lines a little bowed.
   function sketch(block, w, state) {
-    if (block.width * g > w + 1e-9) throw Error(`El dibujo mide ${block.width} cuadritos y solo caben ${Math.floor(w / g)}.`);
-    const random = rng(seed++), items = [], j = a => between(random, -a, a), deg = Math.PI / 180;
+    // A sketch wider than the column shrinks to fit: it never crosses the margin.
+    const fit = Math.min(1, w / (block.width * g)), random = rng(seed++), items = [], j = a => between(random, -a, a), deg = Math.PI / 180;
     let ink = state.text, thick = 1;
     const stroke = points => {const it = pen(points, ink, random); if (thick !== 1) it.widthMm = o.grosor * thick; items.push(it);};
     // An arc or a whole circle drawn in one go: a little out of round, the end
@@ -256,7 +257,7 @@ export function composeDocument(source, samples, options = {}) {
     };
     const line = (a, b) => {const mid = [(a[0] + b[0]) / 2 + j(.3), (a[1] + b[1]) / 2 + j(.3)]; stroke([a, mid, b]);};
     for (const {kind, values = [], label, color} of block.shapes) {
-      const v = values.map(x => x * g);
+      const v = values.map(x => x * g * fit);
       if (kind === 'color') ink = color || state.text;
       else if (kind === 'grueso') thick = Math.max(.5, Math.min(6, values[0]));
       else if (kind === 'circulo') round(v[0], v[1], v[2], v[2], 0, 0, true);
@@ -283,7 +284,7 @@ export function composeDocument(source, samples, options = {}) {
         for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy});
       }
     }
-    return {items, rows: Math.ceil(block.height)};
+    return {items, rows: Math.ceil(block.height * fit - 1e-9)};
   }
 
   // Measure one block at width w. Coordinates are relative to the block top-left.
@@ -383,7 +384,31 @@ export function composeDocument(source, samples, options = {}) {
   // Ballpoint ink, once for the preview and the PDF.
   const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null; let n = o.seed * 7919;
   for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: it.type === 'glyph' ? o.natural : 0, messy: it.type === 'glyph' ? o.desorden : 0, widthMm: it.widthMm ?? o.grosor, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
-  return {pages, missing: [...missing].sort(), paper};
+  return {pages, missing: [...missing].sort(), paper, margins: margins(pages, paper, insetRight)};
+}
+
+/**
+ * Where the ink of every page sits, in mm from the frame of the sheet, and
+ * what breaks the rules: nothing on or past the frame, the free squares on
+ * the right kept (less 1.5 mm for the hand), 1 mm clear at the top and bottom.
+ */
+function margins(pages, paper, insetRight) {
+  return pages.map((p, i) => {
+    const side = paper.sides.find(s => s.name === p.side); let l = Infinity, r = -Infinity, t = Infinity, b = -Infinity;
+    const see = (x, y) => {l = Math.min(l, x); r = Math.max(r, x); t = Math.min(t, y); b = Math.max(b, y);};
+    for (const it of p.items) {
+      if (it.layers) {for (const layer of it.layers) for (const q of layer.polys) for (const [x, y] of q) see(x, y);}
+      else if (it.type === 'glyph') {for (const q of it.paths) for (const [x, y] of q) see(it.x + x * it.scale, it.y - y * it.scale);}
+      else for (const q of it.polys) for (const [x, y] of q) see(x, y);
+    }
+    const gaps = {left: l - side.left, right: paper.width - side.right - r, top: t - side.top, bottom: paper.height - side.bottom - b};
+    const problems = [];
+    if (gaps.left < .5) problems.push(`la letra toca el marco izquierdo (${gaps.left.toFixed(1)} mm)`);
+    if (gaps.right < insetRight * paper.grid - 1.5) problems.push(`a la derecha quedan ${gaps.right.toFixed(1)} mm y deben quedar ${(insetRight * paper.grid).toFixed(1)}`);
+    if (gaps.top < 1) problems.push(`arriba quedan ${gaps.top.toFixed(1)} mm`);
+    if (gaps.bottom < 1) problems.push(`abajo quedan ${gaps.bottom.toFixed(1)} mm`);
+    return {page: i + 1, side: p.side, ...gaps, problems};
+  });
 }
 
 const polyPath = polys => polys.map(q => 'M' + q.map(v => v.map(n => n.toFixed(2)).join(',')).join('L') + 'Z').join('');
