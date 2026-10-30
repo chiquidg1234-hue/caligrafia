@@ -297,12 +297,17 @@ function affine(from, to) {
 }
 function shapeOf(sample, polys) {
   const flat = polys.flat(), source = sample?.paths?.flat(), T = source && source.length === flat.length && source.length >= 3 ? affine(source, flat) : null;
-  if (!T) {const strokes = centerlines(polys); let soft = null; return {strokes, fit: strokes.fit, outline: () => soft ??= softOutline(polys)};}
+  if (!T) {const strokes = centerlines(polys), soft = new Map(); return {strokes, fit: strokes.fit, outline: (shrink = 0, keep) => soft.get(shrink) ?? soft.set(shrink, softOutline(polys, RES, .05, shrink, keep, strokes)).get(shrink)};}
   const det = T[0] * T[4] - T[1] * T[3], scale = Math.sqrt(Math.abs(det)), map = ([x, y, r = 0]) => [T[0] * x + T[1] * y + T[2], T[3] * x + T[4] * y + T[5], r * scale], inv = ([x, y, r = 0]) => {const u = x - T[2], v = y - T[5]; return [(T[4] * u - T[1] * v) / det, (-T[3] * u + T[0] * v) / det, r / scale];};
   const key = `${sample.id}|${source.length}|${source[0]}|${source.at(-1)}`;
   let entry = SEEN.get(key);
   if (!entry) {const found = centerlines(polys); entry = {strokes: found.map(s => ({...s, points: s.points.map(inv)})), fit: found.fit}; if (SEEN.size > 4000) SEEN.clear(); SEEN.set(key, entry);}
-  return {strokes: entry.strokes.map(s => ({...s, points: s.points.map(map)})), fit: entry.fit, outline: () => (entry.outline ??= softOutline(polys).map(p => p.map(inv))).map(p => p.map(q => map(q).slice(0, 2)))};
+  return {strokes: entry.strokes.map(s => ({...s, points: s.points.map(map)})), fit: entry.fit, outline: (shrink = 0, keep) => {
+    // Kept in the sample's own units, for each amount of thinning.
+    const key = Math.round(shrink / scale * 1000); entry.outlines ??= new Map();
+    if (!entry.outlines.has(key)) entry.outlines.set(key, softOutline(polys, RES, .05, shrink, keep, entry.strokes.map(st => ({...st, points: st.points.map(map)}))).map(p => p.map(inv)));
+    return entry.outlines.get(key).map(p => p.map(q => map(q).slice(0, 2)));
+  }};
 }
 function fingerprint(paths) {let h = 2166136261; for (const p of paths) for (const [x, y] of p) {h = Math.imul(h ^ Math.round(x * 10), 16777619); h = Math.imul(h ^ Math.round(y * 10), 16777619);} return (h >>> 0).toString(36) + paths.length;}
 const rebuilt = fit => fit.over <= .22 && fit.under <= .22 && !fit.loops;
@@ -337,8 +342,17 @@ export const INKS = Object.freeze({
 // When the lines cannot rebuild a letter (a thick hand that nearly closes
 // its loops), the photo shape is kept, redrawn from a softened copy so the
 // pixel steps of the photo are gone: blur, then the contour at half ink.
-export function softOutline(polys, res = RES, sigma = .05) {
-  const {data, w, h, x0, y0} = mend(rasterize(polys, res), res), reach = Math.ceil(sigma * res * 3), kernel = Array.from({length: 2 * reach + 1}, (_, k) => Math.exp(-((k - reach) ** 2) / (2 * (sigma * res) ** 2))), sum = kernel.reduce((a, b) => a + b, 0);
+export function softOutline(polys, res = RES, sigma = .05, shrink = 0, keep = .07, strokes = null) {
+  const mended = mend(rasterize(polys, res), res), {w, h, x0, y0} = mended;
+  let data = mended.data;
+  // A thick photo, thinned to the pen: the edge moves in by `shrink` mm, and
+  // every stroke keeps at least the width of the pen along its centre line.
+  if (shrink > 0) {
+    const dist = distance(mended), lines = strokes ? rasterize(strokes.flatMap(st => band(st.points.map(p => [p[0], p[1], keep]), st.closed)), res, mended).data : new Uint8Array(w * h), thinner = new Uint8Array(w * h);
+    for (let k = 0; k < w * h; k++) thinner[k] = dist[k] - .5 > shrink * res || lines[k] ? 1 : 0;
+    data = thinner; sigma = Math.max(sigma, .07);
+  }
+  const reach = Math.ceil(sigma * res * 3), kernel = Array.from({length: 2 * reach + 1}, (_, k) => Math.exp(-((k - reach) ** 2) / (2 * (sigma * res) ** 2))), sum = kernel.reduce((a, b) => a + b, 0);
   const tmp = new Float32Array(w * h), v = new Float32Array(w * h);
   for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {let a = 0; for (let k = -reach; k <= reach; k++) {const x = i + k; if (x >= 0 && x < w) a += data[j * w + x] * kernel[k + reach];} tmp[j * w + i] = a / sum;}
   for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {let a = 0; for (let k = -reach; k <= reach; k++) {const y = j + k; if (y >= 0 && y < h) a += tmp[y * w + i] * kernel[k + reach];} v[j * w + i] = a / sum;}
@@ -395,8 +409,11 @@ export function ballpoint(item, {kind = 'boligrafo', seed = 1, natural = .55, sa
   // The outline itself, when the lines do not rebuild this letter: the ink
   // texture below still follows its strokes.
   if (contour) {
-    const outline = shape.outline().map(p => p.map(q => warp([...q, 0]).slice(0, 2)));
-    layers.push({polys: extra ? [...outline, ...strokes.map(s => band(s.points.map(p => warp([p[0], p[1], p[2] + extra])), s.closed)).flat()] : outline, ...under(tone(color, between(random, -.04, .04)), ink.opacity)});
+    // Thinned to the pen when a width is asked for (the photo of 2A or 2Y
+    // is about three times as wide as a ballpoint once printed).
+    const shrink = widthMm ? Math.max(0, median - widthMm / 2) : 0;
+    const outline = shape.outline(Math.round(shrink * 100) / 100, widthMm / 2 || .07).map(p => p.map(q => warp([...q, 0]).slice(0, 2)));
+    layers.push({polys: extra ? [...outline, ...strokes.map(s => band(s.points.map(p => warp([p[0], p[1], (widthMm ? widthMm / 2 : p[2]) + extra])), s.closed)).flat()] : outline, ...under(tone(color, between(random, -.04, .04)), ink.opacity)});
   }
   for (const s of strokes) {
     const pressure = 1 + between(random, -.07, .07), phase = between(random, 0, 6.3), wave = between(random, 1.2, 2.4);

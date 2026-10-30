@@ -39,7 +39,9 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
   {name: 'reverso', left: 16, right: 20, top: 22, bottom: 15},
 ]});
 // Trapper «Top» sheet, 5 mm squares; the holes are on the left of the anverso.
-export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, sides: [
+// drop: on this sheet the Epson T50 prints 2.2 mm higher than on the Oficio
+// (photo of 30/10: the writing sat half a square above the lines).
+export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, drop: 2.2, sides: [
   {name: 'anverso', left: 30, right: 11, top: 20, bottom: 10},
   {name: 'reverso', left: 12, right: 29, top: 21, bottom: 10},
 ]});
@@ -420,7 +422,7 @@ export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, 
   // select: 'all', a side name ('anverso' / 'reverso') to print each side in one pass.
   const chosen = result.pages.filter(p => select === 'all' || p.side === select);
   for (const p of chosen) {
-    const page = doc.addPage([paper.width * MM, H * MM]), off = offsets?.[p.side] || {x: 0, y: 0}, dx = (Number(off.x) || 0) * MM, dy = -(Number(off.y) || 0) * MM;
+    const page = doc.addPage([paper.width * MM, H * MM]), off = offsets?.[p.side] || {x: 0, y: 0}, dx = (Number(off.x) || 0) * MM, dy = -((Number(off.y) || 0) + (grid ? 0 : paper.drop || 0)) * MM;
     if (grid) {
       const side = paper.sides.find(s => s.name === p.side), g = paper.grid, w = paper.width - side.left - side.right, h = H - side.top - side.bottom;
       for (let y = 0; y <= h + 1e-9; y += g) page.drawLine({start: {x: side.left * MM + dx, y: (H - side.top - y) * MM + dy}, end: {x: (side.left + w) * MM + dx, y: (H - side.top - y) * MM + dy}, thickness: .35, color: rgb('#bcd3e4')});

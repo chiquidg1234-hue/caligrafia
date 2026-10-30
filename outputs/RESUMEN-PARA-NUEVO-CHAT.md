@@ -63,7 +63,7 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 | Hoja | Directiva | Medidas | Corrección de la Epson T50 |
 | --- | --- | --- | --- |
 | Oficio espiral | `[[hoja oficio]]` | 211 × 322 mm | anverso x 5, y 1; reverso x 6, y 1 |
-| Trapper | `[[hoja trapper]]` | 211 × 280 mm, casi carta | la de `TRAPPER_TOP` |
+| Trapper | `[[hoja trapper]]` | 211 × 280 mm, casi carta | la misma (x 5 / 6, y 1) y además `drop: 2.2` mm hacia abajo: medido en la foto del 30/10, la letra salía medio cuadrito arriba de los renglones. El reverso no se midió todavía. |
 
 - **Para imprimir:**
   - tamaño real 100 %, Papel normal y «Alta velocidad» desmarcada;
@@ -81,6 +81,10 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 | `outputs/practicos/Practico-5/` | Práctico 5 con `[[desorden 0.7]]`. |
 | `outputs/investigaciones-trapper/Investigacion-Circunferencia/` | 25 preguntas en Trapper, con 2 dibujos a mano alzada. Ya imprimió las caras 1 y 3; se le dieron los reversos (páginas 2 y 4) con tinta nueva. |
 | `outputs/prueba-tinta-real/` | Guía «que no se note impreso» y hoja de prueba. |
+
+## 2A y 2Y adelgazadas (30/10)
+
+Impresas salían casi tres veces más gruesas que un lapicero. Ahora, en modo contorno, el borde se encoge hasta `grosor` (`softOutline` con `shrink`) y cada trazo conserva al menos el ancho del lapicero a lo largo de su línea central limpia.
 
 ## Lo que falta o hay que mejorar
 
