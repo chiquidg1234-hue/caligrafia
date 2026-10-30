@@ -2,6 +2,7 @@
 
 | Carpeta | Contenido | Páginas |
 | --- | --- | --- |
+| [`Investigacion-Circunferencia-Graficas`](Investigacion-Circunferencia-Graficas) | Copia de tu investigación a mano (fotos del 30/10), en tu letra normal: las 25 preguntas con tus respuestas y las 25 gráficas, dibujadas a mano alzada y con los mismos colores (rojo, verde y morado). | 5 |
 | [`Investigacion-Circunferencia`](Investigacion-Circunferencia) | Las 25 preguntas de la investigación sobre circunferencia, con su respuesta. | 4 (2 hojas) |
 
 - **Hoja:** Trapper cuadriculada, de 211 × 280 mm; es casi del tamaño de una hoja carta.

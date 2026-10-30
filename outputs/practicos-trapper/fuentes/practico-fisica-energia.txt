@@ -6,7 +6,7 @@
 Una fuerza de 90 N actúa durante 15 segundos sobre un cuerpo de 20 kg en forma paralela al desplazamiento de 15 metros. Calcular el trabajo y la potencia en el sistema internacional.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 90 N
 t = 15 s
 m = 20 kg
@@ -23,7 +23,7 @@ P = T/t = 1350/15
 A una altura de 50 metros desde el suelo, se mueve un objeto volador de 5 kg con una velocidad de 15 m//s. Determinar su energía mecánica.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h = 50 m
 m = 5 kg
 v = 15 m//s
@@ -41,7 +41,7 @@ E_m = 2450 + 562,5
 Una fuerza de 70 N actúa durante 18 segundos sobre un cuerpo de 25 kg en forma paralela al desplazamiento de 10 metros. Calcular el trabajo y la potencia en el sistema internacional.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 70 N
 t = 18 s
 m = 25 kg
@@ -58,7 +58,7 @@ P = T/t = 700/18
 A una altura de 60 metros desde el suelo, se mueve un objeto volador de 8 kg con una velocidad de 25 m//s. Determinar su energía mecánica.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h = 60 m
 m = 8 kg
 v = 25 m//s
@@ -75,7 +75,7 @@ E_m = 4704 + 2500
 Una fuerza de 65 N actúa durante 17 segundos sobre un cuerpo de 35 kg en forma paralela al desplazamiento de 25 metros. Calcular el trabajo y la potencia en el sistema internacional.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 65 N
 t = 17 s
 m = 35 kg
@@ -92,7 +92,7 @@ P = T/t = 1625/17
 A una altura de 50 metros desde el suelo, se mueve un objeto volador de 9 kg con una velocidad de 20 m//s. Determinar su energía mecánica.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 h = 50 m
 m = 9 kg
 v = 20 m//s
@@ -109,7 +109,7 @@ E_m = 4410 + 1800
 Una modelo de pasarela consume barras de chocolate que le proporcionan 6500 calorías de energía. Si la modelo tiene 45 kg de masa, ¿qué distancia debe correr para quemar la energía que consumió, si acelera a razón de 1,3 m//s^2?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 E = 6500 cal
 m = 45 kg
 a = 1,3 m//s^2
@@ -129,7 +129,7 @@ La hoja da 469,96 m porque usa 1 cal ≈ 4,23 J.
 Un automóvil pasa por el punto A con una velocidad de 45 m//s. Calcular la energía cinética en ese punto tomando en cuenta que el automóvil tiene una masa de 1200 kg.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 v = 45 m//s
 m = 1200 kg
 E_c = ?
@@ -143,7 +143,7 @@ E_c = (1200 · 45^2)/2 = (1200 · 2025)/2
 Calcular la velocidad que emplea un móvil sabiendo que la masa del móvil es de 660 kg y la energía cinética que tiene es de 6846 julios.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 660 kg
 E_c = 6846 J
 v = ?
@@ -157,7 +157,7 @@ v = raiz((2 · 6846)/660) = raiz(20,745)
 Un hombre hace una fuerza de 300 N para llevar un cuerpo a una distancia de 25 m, empleando 20 s. ¿Cuál es la potencia desarrollada?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 300 N
 d = 25 m
 t = 20 s
@@ -172,7 +172,7 @@ P = T/t = 7500/20
 Un hombre aplica una fuerza de 90 newton al empujar un carrito que carga varios paquetes y se desplaza 15 metros. Calcular el trabajo realizado.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 90 N
 d = 15 m
 T = ?
@@ -185,7 +185,7 @@ T = F·d = 90 · 15
 Un automóvil pasa por el punto A con una velocidad de 3 km//min. Calcular la energía cinética en ese punto tomando en cuenta que el automóvil tiene una masa de 2550 libras.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 v = 3 km//min
 m = 2550 lb
 E_c = ?
@@ -200,7 +200,7 @@ E_c = (m·v^2)/2 = (1156,66 · 50^2)/2
 Sobre una mesa de billar se aplica una fuerza de 80 N y en 8 segundos acelera hasta alcanzar una velocidad final de 15 m//s. Calcular el trabajo realizado.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 80 N
 t = 8 s
 v_f = 15 m//s
@@ -216,7 +216,7 @@ T = F·d = 80 · 60
 Un resorte se comprime 2 centímetros y tiene una constante de restitución igual a 80 N//m. Cuando se suelta impulsa un objeto de 0,5 libras. ¿Qué velocidad adquiere el objeto?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 x = 2 cm = 0,02 m
 k = 80 N//m
 m = 0,5 lb = 0,2268 kg
@@ -231,7 +231,7 @@ v = raiz((80 · 0,0004)/0,2268) = raiz(0,1411)
 Un soldado dispara su fusil y se comprime el resorte 8 centímetros; el resorte tiene una constante de restitución igual a 850 N//m. Si la bala es de 15 gramos, calcular la velocidad con que abandona el fusil. Entre el cañón del fusil y la bala no existe rozamiento.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 x = 8 cm = 0,08 m
 k = 850 N//m
 m = 15 g = 0,015 kg
@@ -246,7 +246,7 @@ v = raiz((850 · 0,0064)/0,015) = raiz(362,67)
 Una fuerza de 120 newton se aplica sobre un bloque de 10 kilogramos; el coeficiente de rozamiento entre las superficies de contacto es 0,15. Calcular el trabajo realizado por la fuerza, si el bloque se desplaza 8 metros.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 F = 120 N
 m = 10 kg
 μ = 0,15
@@ -264,7 +264,7 @@ Trabajo neto: 960 - 117,6 = 842,4 J
 Un automóvil viaja a 120 pies//s; el coeficiente de rozamiento entre la carretera y las llantas es 0,8. ¿Qué distancia recorre hasta detenerse? ¿Cuál es su aceleración?
 
 [[columnas 12]]
-**Datos:**
+Datos:
 v_0 = 120 ft//s
 μ = 0,8
 g = 9,8 m//s^2

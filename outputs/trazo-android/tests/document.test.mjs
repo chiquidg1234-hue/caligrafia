@@ -134,5 +134,8 @@ test('[[dibujo]] draws a freehand sketch that takes its rows and reports bad lin
   const doc = composeDocument('[[dibujo 10 6]]\ncirculo 5 3 2\nlinea 1 1 9 5\npunto 5 3\ntexto 1 6 | radio\n[[fin]]\nHola', natural);
   const ink = doc.pages[0].items.filter(i => i.type === 'ink');
   assert.ok(ink.length >= 3);
-  assert.throws(() => composeDocument('[[dibujo 10 6]]\ncuadrado 1 1\n[[fin]]', natural), /circulo x y r/);
+  assert.throws(() => composeDocument('[[dibujo 10 6]]\ncuadrado 1 1\n[[fin]]', natural), /circulo, arco/);
+  const more = composeDocument('[[dibujo 12 8]]\ncolor rojo\narco 5 4 3 20 160\nelipse 5 4 3 1\ntrazos 1 1 9 1\nsector 5 4 3 0 60\nsegmento 5 4 3 30 150\ngrueso 3\nlinea 1 7 9 7\nrotulo 1 2 | Gráfica 1\n[[fin]]', natural);
+  const drawn = more.pages[0].items.filter(i => i.type === 'ink');
+  assert.ok(drawn.length >= 8 && drawn.some(i => i.color === '#b02a33') && drawn.some(i => i.widthMm > .3));
 });

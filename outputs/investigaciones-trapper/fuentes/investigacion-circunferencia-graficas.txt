@@ -1,0 +1,280 @@
+[[hoja trapper]]
+[[letra normal]]
+Investigación sobre circunferencia para 5to de secundaria
+1-¿Qué es una circunferencia y cómo se define geométricamente?
+-Línea curva cerrada cuyos puntos están a la misma distancia del centro.
+2-¿Diferencia entre circunferencia y círculo?
+-La circunferencia es el borde y el círculo es la superficie interior.
+3-¿Cuáles son sus elementos?
+-Centro, radio, diámetro, cuerda, arco, secante y tangente.
+4-¿Qué es el radio?
+-Es el segmento que une el centro con un punto de la circunferencia.
+5-¿Qué es el diámetro?
+-Es el segmento que pasa por el centro y mide el doble del radio.
+6-¿Qué es una cuerda?
+-Es un segmento que une dos puntos de la circunferencia.
+7-¿Qué es un arco?
+-Es una parte de la circunferencia delimitada por dos puntos.
+8-¿Qué es una semicircunferencia?
+-Es la mitad de una circunferencia delimitada por un diámetro.
+9-¿Qué es un sector circular?
+-Es la región limitada por dos radios y un arco.
+10-¿Qué es un segmento circular?
+-Es la región limitada por una cuerda y un arco.
+11-¿Cuál es la ecuación ordinaria?
+-(x - h)^2 + (y - k)^2 = r^2
+12-¿Qué representan h, k y r?
+-h y k son las coordenadas del centro y r es el radio.
+13-¿Cómo se deduce la ecuación general de una circunferencia a partir de su ecuación ordinaria?
+-Desarrollando la ecuación ordinaria y ordenando sus términos.
+14-¿Qué información se puede obtener al comparar las ecuaciones de dos circunferencias?
+-Sus centros, radios y posiciones relativas.
+15-¿Qué sucede con la ecuación de una circunferencia si el radio es igual a cero?
+-Se reduce a un solo punto.
+16-¿Qué condición debe cumplir una ecuación cuadrática?
+-Los términos x^2 e y^2 deben tener iguales coeficientes y no existir término xy.
+17-¿Cómo se determina el centro y el radio a partir de una ecuación general?
+-Completando cuadrados.
+18-¿Qué representa el radio negativo en una ecuación de circunferencia?
+-No representa una circunferencia real, porque el radio no puede ser negativo.
+19-¿Por qué el radio de una circunferencia siempre debe ser un número positivo?
+-Porque representa una distancia.
+20-¿Qué ocurre con una circunferencia cuyo centro coincide con el origen del plano?
+-La ecuación es x^2 + y^2 = r^2
+21-¿Qué se entiende por tangente a una circunferencia?
+-Es una recta que toca la circunferencia en un solo punto.
+22-¿Qué condición debe cumplir una recta para ser tangente a una circunferencia?
+-Es perpendicular al radio en el punto de contacto.
+23-¿Qué diferencia hay entre una secante y una tangente?
+-La secante corta en dos puntos y la tangente toca en uno.
+24-¿Qué ocurre si la distancia entre los centros de dos circunferencias es mayor que la suma de sus radios?
+-Las circunferencias no se intersectan.
+25-¿Por qué se dice que la circunferencia es un caso particular de cónica?
+-Porque se obtiene al cortar un cono con un plano perpendicular a su eje.
+[[dibujo 31 12]]
+rotulo 0 1 | Gráfica 1
+circulo 4 5.6 3.3
+punto 3.1 6.3
+texto 2.6 7.8 | O
+linea 3.1 6.3 6.2 3.9
+texto 4.1 4.8 | r
+rotulo 10.5 1 | Gráfica 2
+circulo 13.2 5.6 3.3
+circulo 20.3 5.6 3.3
+texto 10.6 10.4 | Circunferencia
+texto 11 11.6 | (borde)
+texto 18.2 10.4 | Círculo
+texto 17.8 11.6 | (superficie)
+rotulo 24.5 1 | Gráfica 3
+circulo 26.9 5.9 3.1
+linea 23.8 5.9 30 5.9
+texto 25.3 7 | Diámetro
+punto 26.9 5.9
+texto 25.9 5.5 | O
+color rojo
+linea 26.9 5.9 28.8 3.45
+texto 27.6 4.6 | Radio
+arco 26.9 5.9 3.1 110 170
+texto 23.6 2.7 | Arco
+color verde
+linea 24.5 7.9 29.3 7.9
+texto 25.6 7.7 | Cuerda
+color morado
+linea 25.2 1.8 31 4.6
+texto 28.9 2.2 | Secante
+color tinta
+linea 30 3.4 30 9.4
+texto 28.4 10.6 | Tangente
+[[fin]]
+[[dibujo 31 10]]
+rotulo 0 1 | Gráfica 4
+circulo 3.8 5.6 3.3
+punto 3.6 6.6
+texto 3.1 8.2 | O
+linea 3.6 6.6 6.1 3.4
+texto 4.3 5 | r
+texto 6.5 2.8 | A
+rotulo 8.6 1 | Gráfica 5
+circulo 11.7 5.6 3.3
+linea 8.4 5.6 15 5.6
+punto 11.7 5.6
+texto 11.4 5.1 | d
+texto 11.4 7 | O
+texto 15.2 4.5 | d = 2r
+rotulo 17.6 1 | Gráfica 6
+circulo 20.5 5.6 3.2
+color verde
+linea 17.7 7.2 23 3.5
+texto 18.7 5.6 | Cuerda
+color tinta
+rotulo 25.2 1 | Gráfica 7
+circulo 27.6 5.9 3
+color morado
+texto 26.7 2.1 | Arco
+grueso 4
+arco 27.6 5.9 3 20 160
+grueso 1
+color tinta
+[[fin]]
+[[dibujo 31 10]]
+rotulo 0 1 | Gráfica 8
+texto 0.4 2.3 | semicircunferencia
+circulo 3.8 6.4 3.2
+linea 0.2 6.6 7.4 6.3
+punto 0.6 6.6
+punto 3.8 6.45
+punto 7 6.3
+texto 3.5 8 | O
+rotulo 9.4 1 | Gráfica 9
+texto 13.4 2 | sector
+texto 13.6 3.1 | circular
+circulo 12.3 6.3 3.2
+linea 12.3 6.3 13.4 3.3
+linea 12.3 6.3 15.4 6.9
+punto 12.3 6.3
+texto 11.5 7.8 | O
+sector 12.3 6.3 3.2 -10 70
+rotulo 18.6 1 | Gráfica 10
+texto 21.6 2 | segmento
+texto 22.1 3.1 | circular
+circulo 21.6 6.5 3.2
+color morado
+linea 18.6 5.4 24.4 4.9
+segmento 21.6 6.5 3.2 30 160
+color tinta
+[[fin]]
+[[dibujo 31 11]]
+rotulo 0 1 | Gráfica 11
+texto 1.4 2.4 | (x - h)^2 + (y - k)^2 = r^2
+linea 0.5 3 0.5 10
+linea 0.5 10 9.2 10
+texto 0 3.4 | y
+texto 9 10.9 | x
+circulo 4.6 6.5 3
+punto 4.4 6.6
+trazos 4.4 6.6 7.4 6.6
+texto 5.6 6.1 | r
+texto 3.6 8 | (h, k)
+rotulo 11 1 | Gráfica 12
+linea 11.3 2.3 11.3 10
+linea 11.3 10 19.4 10
+texto 10.7 2.7 | y
+texto 19.2 9.4 | x
+circulo 15.2 6.2 3
+punto 14.8 6.6
+linea 14.8 6.6 16.9 4
+texto 15.6 4.9 | r
+texto 15 7.6 | (h, k)
+rotulo 21 1 | Gráfica 13
+texto 20.6 3.4 | (x - h)^2 + (y - k)^2 = r^2
+linea 24.8 4.4 24.8 5.9
+linea 24.4 5.4 24.8 5.9
+linea 25.2 5.4 24.8 5.9
+texto 20.6 7.5 | x^2 + y^2 + Dx + Ey + F = 0
+[[fin]]
+[[dibujo 31 9]]
+rotulo 0 1 | Gráfica 14
+circulo 3.6 5.4 3
+punto 3.4 5.6
+texto 2.4 7.2 | O_1
+trazos 3.4 5.6 8.1 5.6
+texto 7.2 5.2 | d
+circulo 9.6 5.5 1.4
+punto 9.7 5.6
+texto 9.2 6.8 | O_2
+rotulo 12 1 | Gráfica 15
+circulo 15.6 5.4 3
+punto 15.6 5.6
+texto 15.2 7.2 | O
+texto 19 5.3 | r = 0
+rotulo 22 1 | Gráfica 16
+texto 21.3 3.6 | x^2 + y^2 + Dx + Ey + F = 0
+[[fin]]
+[[dibujo 31 9]]
+rotulo 0 1 | Gráfica 17
+texto 0.3 3 | x^2 + y^2 + Dx + Ey + F = 0
+linea 3.6 3.7 3.6 5
+linea 3.2 4.5 3.6 5
+linea 4 4.5 3.6 5
+texto 0.3 6.5 | (x - h)^2 + (y - k)^2 = r^2
+rotulo 12 1 | Gráfica 18
+circulo 15.1 5.4 3
+punto 14.7 6
+linea 14.7 6 15.3 4.8
+texto 15.4 4.6 | -r
+texto 14.3 7.4 | O
+rotulo 22 1 | Gráfica 19
+circulo 25.1 5.4 3
+punto 24.4 6
+linea 24.4 6 27 5
+texto 25.4 4.6 | r > 0
+texto 24 7.4 | O
+[[fin]]
+[[dibujo 31 9]]
+rotulo 0 1 | Gráfica 20
+circulo 3.8 5.5 3
+linea 0.2 5.6 7.5 5.6
+linea 3.8 1.9 3.8 9
+linea 3.8 5.6 5.6 3.2
+texto 4.9 4 | r
+texto 2.8 6.9 | O
+rotulo 10.8 1 | Gráfica 21
+circulo 14.6 5.7 3
+punto 16.7 3.6
+linea 14.6 5.7 16.7 3.6
+linea 15.4 2.3 18.1 4.9
+texto 16.9 3.3 | P
+texto 17.4 2 | Tangente
+rotulo 21.6 1 | Gráfica 22
+circulo 24.6 5.6 3
+punto 24.6 5.6
+texto 24 7 | O
+linea 24.6 5.6 27.6 5.6
+texto 25.8 5.1 | r
+linea 27.1 5.6 27.1 5.1
+linea 27.1 5.1 27.6 5.1
+linea 27.6 3 27.6 8.3
+punto 27.6 5.6
+texto 28 6.6 | P
+texto 27.3 2.3 | Tangente
+[[fin]]
+[[dibujo 31 11]]
+rotulo 0 1 | Gráfica 23
+circulo 3.4 5.6 3
+circulo 10.2 5.6 3
+linea 0 7.6 6.8 2.4
+punto 3.3 5.8
+texto 3 7.3 | O
+linea 7.8 2.5 12.6 2.7
+punto 10.2 2.6
+punto 10.1 5.8
+texto 9.8 7.3 | O
+texto 0.6 10.2 | Secante
+texto 7.9 10.2 | Tangente
+rotulo 14.5 1 | Gráfica 24
+circulo 17.6 5.6 2.8
+circulo 26.6 5.6 2.8
+punto 17.4 5.8
+punto 26.8 5.6
+trazos 17.4 5.8 20.4 5.8
+texto 18.3 5.2 | r_1
+trazos 20.4 5.8 23.9 5.8
+texto 21.8 5.3 | d
+trazos 23.9 5.8 26.8 5.6
+texto 25.3 5 | r_2
+texto 16.7 7.2 | O_1
+texto 26.2 7 | O_2
+texto 19.6 9.9 | d > r_1 + r_2
+[[fin]]
+[[dibujo 31 19]]
+rotulo 0 1 | Gráfica 25
+elipse 15 16.8 7 1.6
+linea 15 1.6 8 16.8
+linea 15 1.6 22 16.8
+trazos 15 1.6 15 16.8
+linea 7.2 7.3 24 7.3
+linea 24 7.3 22.2 10.2
+linea 22.2 10.2 5.4 10.2
+linea 5.4 10.2 7.2 7.3
+elipse 15 8.7 3.2 .7
+[[fin]]

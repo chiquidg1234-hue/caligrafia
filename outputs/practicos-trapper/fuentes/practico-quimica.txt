@@ -6,7 +6,7 @@
 Se encierran 20 g de oxígeno (O_2) en un recipiente de 18 litros a una temperatura de 68 °F. ¿Cuál es la presión que soporta el recipiente? Expresa el resultado en pascales. M = 32 g//mol.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 20 g
 M = 32 g//mol
 V = 18 L = 0,018 m^3
@@ -27,7 +27,7 @@ P = (0,625 · 8,314 · 293,15)/(0,018)
 Se introducen 20 g de nitrógeno (N_2) en un recipiente de 12 litros a una temperatura de 95 °F. ¿Cuál es la presión del gas? Expresa el resultado en pascales. M = 28 g//mol.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 20 g
 M = 28 g//mol
 V = 12 L = 0,012 m^3
@@ -48,7 +48,7 @@ P = (0,7143 · 8,314 · 308,15)/(0,012)
 Se colocan 20 g de metano (CH_4) en un recipiente de 10 litros a una temperatura de 77 °F. ¿Cuál es la presión que ejerce el gas sobre las paredes del recipiente? Expresa el resultado en pascales.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 20 g
 M = 16 g//mol
 V = 10 L = 0,010 m^3
@@ -69,7 +69,7 @@ P = (1,25 · 8,314 · 298,15)/(0,010)
 Un recipiente de 8 litros contiene 20 g de helio (He) a una temperatura de 59 °F. ¿Cuál es la presión del gas dentro del recipiente? Expresa el resultado en pascales.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 20 g
 M = 4 g//mol
 V = 8 L = 0,008 m^3
@@ -90,7 +90,7 @@ P = (5 · 8,314 · 288,15)/(0,008)
 Se almacenan 20 g de dióxido de carbono (CO_2) en un recipiente de 20 litros a una temperatura de 104 °F. ¿Cuál es la presión que ejerce el gas? Expresa el resultado en pascales.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 20 g
 M = 44 g//mol
 V = 20 L = 0,020 m^3
@@ -111,7 +111,7 @@ P = (0,4545 · 8,314 · 313,15)/(0,020)
 Un recipiente esférico contiene 0,30 moles de oxígeno (O_2) a 25 °C y 760 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 5 libras. M = 32 g//mol.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 n = 0,30 mol
 M = 32 g//mol
 t = 25 °C = 298,15 K
@@ -138,7 +138,7 @@ V = 1734 L  ->  r = raiz[3]((3 · 1 734 000)/(4π))
 Un recipiente esférico contiene 0,40 moles de nitrógeno (N_2) a 20 °C y 740 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 6 libras. M = 28 g//mol.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 n = 0,40 mol
 M = 28 g//mol
 t = 20 °C = 293,15 K
@@ -165,7 +165,7 @@ V = 2401 L  ->  r = raiz[3]((3 · 2 401 000)/(4π))
 Un recipiente esférico contiene 0,25 moles de dióxido de carbono (CO_2) a 35 °C y 720 mmHg de presión. Calcula la densidad y el radio del recipiente, sabiendo que la masa del gas es de 4,5 libras. M = 44 g//mol.
 
 [[columnas 12]]
-**Datos:**
+Datos:
 n = 0,25 mol
 M = 44 g//mol
 t = 35 °C = 308,15 K
@@ -193,7 +193,7 @@ El carbonato de calcio (CaCO_3) reacciona con ácido clorhídrico (HCl), produci
 CaCO_3 + 2 HCl -> CaCl_2 + H_2O + CO_2
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 50 g de CaCO_3
 M = 100 g//mol
 t = 35 °C = 308,15 K
@@ -215,7 +215,7 @@ El zinc (Zn) reacciona con ácido clorhídrico (HCl), produciendo hidrógeno gas
 Zn + 2 HCl -> ZnCl_2 + H_2
 
 [[columnas 12]]
-**Datos:**
+Datos:
 m = 10 g de Zn
 M = 65,38 g//mol
 t = 25 °C = 298,15 K

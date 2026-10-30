@@ -46,7 +46,7 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 
 **Directivas:**
 - `[[tinta real|plana]]` · `[[grosor 0.14]]` · `[[desorden 0.7]]` · `[[titulos a mano]]`
-- `[[dibujo ancho alto]]` con `circulo`, `linea`, `punto` y `texto x y | palabra`: dibujos a mano alzada, que no salen perfectos.
+- `[[dibujo ancho alto]]`: dibujos a mano alzada, que no salen perfectos. Acepta `circulo x y r`, `arco x y r desde hasta` (en grados), `elipse x y rx ry`, `linea`, `trazos` (línea cortada), `punto`, `sector`/`segmento x y r desde hasta` (rayado a mano), `texto` (chico) y `rotulo` (tamaño normal) `x y | palabra`, `color rojo|verde|morado|negro|tinta` y `grueso n`.
 
 ## Reglas de sus tareas
 
@@ -75,6 +75,8 @@ En `web/personal-letter.json`, con tres copias iguales: `web/`, `dist/` y `work/
 
 | Carpeta | Qué hay |
 | --- | --- |
+| `outputs/investigaciones-trapper/Investigacion-Circunferencia-Graficas/` | Copia de su investigación a mano (fotos del 30/10): 25 preguntas en su formato («1-¿…?» / «-respuesta») y las 25 gráficas, en Trapper con letra normal. No se copió la firma ni el sello del profesor. |
+| `outputs/practicos-trapper/` | Práctico 5 en letra normal y en 2Y; Física de energía y Física corta en 2Y; Química en 2A. Todos en Trapper, con tinta real y sin negritas. |
 | `outputs/practicos/Practico-5-tres-letras/` | Práctico 5 de física (Oficio) en letra bonita, intermedia y normal, para que elija. |
 | `outputs/practicos/Practico-5/` | Práctico 5 con `[[desorden 0.7]]`. |
 | `outputs/investigaciones-trapper/Investigacion-Circunferencia/` | 25 preguntas en Trapper, con 2 dibujos a mano alzada. Ya imprimió las caras 1 y 3; se le dieron los reversos (páginas 2 y 4) con tinta nueva. |

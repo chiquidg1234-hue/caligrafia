@@ -1,7 +1,11 @@
-# Prácticos en hoja Trapper · prueba de Fuente 2A y Fuente 2Y
+# Prácticos en hoja Trapper
+
+Todos se regeneraron el 30/10 con tinta real (calibrada con la foto de tu lapicero), sin negritas y con las rayitas «//» solo en los resultados.
 
 | Carpeta | Letra | Contenido | Páginas |
 | --- | --- | --- | --- |
+| [`Practico-5-Fisica-Normal`](Practico-5-Fisica-Normal) | **Mi letra · normal** | Práctico 5 de física (presión), 17 ejercicios | 6 (3 hojas) |
+| [`Practico-5-Fisica-2Y`](Practico-5-Fisica-2Y) | **Fuente 2Y** | El mismo Práctico 5 | 7 (4 hojas) |
 | [`Practico-Quimica-2A`](Practico-Quimica-2A) | **Fuente 2A** | Ley de los gases ideales, ejercicios 1 al 10 | 6 (3 hojas) |
 | [`Practico-Fisica-Energia-2Y`](Practico-Fisica-Energia-2Y) | **Fuente 2Y** | Trabajo, potencia y energía, ejercicios 1 al 17 | 6 (3 hojas) |
 | [`Practico-Fisica-6-2Y`](Practico-Fisica-6-2Y) | **Fuente 2Y** | El práctico corto de 4 ejercicios (cubo de aluminio, pistón, prensa hidráulica, empuje) | 2 (1 hoja) |

@@ -1,0 +1,302 @@
+[[hoja trapper]]
+# Práctico 5
+
+### Ejercicio 1.-
+Calcular la presión que ejerce una fuerza de 50 N sobre una superficie de 4 cm^2.
+
+[[columnas 12]]
+Datos:
+F = 50 N
+A = 4 cm^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = F/A
+A = 4/10000 = 0,0004 m^2
+P = (50 N)/(0,0004 m^2)
+!! P = 125 000 Pa
+[[fin]]
+
+### Ejercicio 2.-
+Calcular el área que soporta una presión de 450 N/cm^2, creada por una fuerza de 900 N.
+
+[[columnas 12]]
+Datos:
+P = 450 N/cm^2
+F = 900 N
+A = ?
+[[|]]
+[[tamaño 17]]
+P = F/A   ->   A = F/P
+A = (900 N)/(450 N/cm^2) = 2 cm^2
+A = 2/10000 = 0,0002 m^2
+!! A = 2 × 10^-4 m^2
+[[fin]]
+
+### Ejercicio 3.-
+Calcular la presión en pascal que genera una fuerza de 800 N sobre una superficie de 85 cm^2.
+
+[[columnas 12]]
+Datos:
+F = 800 N
+A = 85 cm^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = F/A
+A = 85/10000 = 0,0085 m^2
+P = (800 N)/(0,0085 m^2)
+!! P ≈ 94 117,65 Pa
+[[fin]]
+
+### Ejercicio 4.-
+Calcular la presión que genera una columna de 76 cm de mercurio, si su densidad es de 13,6 × 10^3 kg/m^3.
+
+[[columnas 12]]
+Datos:
+h = 76 cm = 0,76 m
+ρ = 13600 kg/m^3
+g = 9,8 m/s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = ρ·g·h
+P = 13600 · 9,8 · 0,76
+!! P = 101 292,8 Pa
+[[fin]]
+
+### Ejercicio 5.-
+Un cuerpo cilíndrico de masa 120 kg está en posición vertical y ejerce una presión de 540/π Pa sobre su base. Calcular el radio.
+
+[[columnas 12]]
+Datos:
+m = 120 kg
+P = 540/π Pa
+g = 9,8 m/s^2
+r = ?
+[[|]]
+[[tamaño 17]]
+F = m·g = 120 · 9,8 = 1176 N
+A = F/P = 1176/(540/π) = (1176π)/540
+A ≈ 6,84 m^2
+A = π·r^2   ->   r = raiz(A/π)
+r = raiz(6,84/π)
+!! r ≈ 1,47 m
+[[fin]]
+
+### Ejercicio 6.-
+¿Cuál es la presión que ejerce una mujer de 56 kg sobre uno de sus zapatos, cuya superficie es de 30 cm^2?
+
+[[columnas 12]]
+Datos:
+m = 56 kg
+A = 30 cm^2
+g = 9,8 m/s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+F = m·g = 56 · 9,8 = 548,8 N
+A = 30/10000 = 0,003 m^2
+P = F/A = 548,8/0,003
+!! P = 182 933,33 Pa
+[[fin]]
+
+### Ejercicio 7.-
+Un pez se encuentra en un acuario a 10 cm por debajo de la superficie y luego se mueve hasta el fondo. Calcular la diferencia de presión que soporta si la altura del agua es de 48 cm.
+
+[[columnas 12]]
+Datos:
+h_1 = 10 cm = 0,10 m
+h_2 = 48 cm = 0,48 m
+ρ = 1000 kg/m^3
+g = 9,8 m/s^2
+ΔP = ?
+[[|]]
+[[tamaño 17]]
+ΔP = ρ·g·(h_2 - h_1)
+Δh = 0,48 - 0,10 = 0,38 m
+ΔP = 1000 · 9,8 · 0,38
+!! ΔP = 3 724 Pa
+[[fin]]
+
+### Ejercicio 8.-
+¿A qué profundidad se encuentra un buzo en el mar si soporta una presión de 9,8 × 10^4 Pa? La densidad del agua marina es de 1,035 g/cm^3.
+
+[[columnas 12]]
+Datos:
+P = 9,8 × 10^4 Pa
+ρ = 1,035 g/cm^3
+ρ = 1035 kg/m^3
+g = 9,8 m/s^2
+h = ?
+[[|]]
+[[tamaño 17]]
+P = ρ·g·h   ->   h = P/(ρ·g)
+h = (9,8 × 10^4)/(1035 · 9,8)
+h = 98000/10143
+!! h ≈ 9,66 m
+[[fin]]
+
+### Ejercicio 9.-
+¿Qué presión ejerce un cubo macizo de cobre de 30 cm de lado y masa de 85 kg? Expresar el resultado en pascal.
+
+[[columnas 12]]
+Datos:
+L = 30 cm = 0,30 m
+m = 85 kg
+g = 9,8 m/s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = F/A      F = m·g      A = L^2
+F = 85 · 9,8 = 833 N
+A = (0,30)^2 = 0,09 m^2
+P = 833/0,09
+!! P ≈ 9 255,5 Pa
+[[fin]]
+
+### Ejercicio 10.-
+Calcular la presión que soporta la base de un cono de aluminio si su densidad es de 3 800 kg/m^3.
+
+[[columnas 12]]
+Datos:
+ρ = 3800 kg/m^3
+g = 9,8 m/s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+P = ρ·g·h
+El enunciado no da la altura del cono; con la respuesta de la hoja:
+h = P/(ρ·g) = 1747,30/(3800 · 9,8)
+h ≈ 0,0469 m = 4,69 cm
+!! P = 1 747,30 Pa
+[[fin]]
+
+### Ejercicio 11.-
+Al realizar sus ejercicios, un gimnasta se apoya sobre una mano cuya superficie de contacto es de 124 cm^2. Calcular la presión que ejerce su cuerpo de 76 kg.
+
+[[columnas 12]]
+Datos:
+A = 124 cm^2
+m = 76 kg
+g = 9,8 m/s^2
+P = ?
+[[|]]
+[[tamaño 17]]
+F = m·g = 76 · 9,8 = 744,8 N
+A = 124/10000 = 0,0124 m^2
+P = F/A = 744,8/0,0124
+!! P ≈ 60 064,51 Pa
+[[fin]]
+
+### Ejercicio 12.-
+En una estación de servicio se utiliza una prensa hidráulica para levantar un automóvil de 640 kg. El área del pistón grande es de 320π cm^2 y el área del pistón pequeño es 20 veces menor. ¿Qué fuerza debe aplicarse sobre el pistón pequeño?
+
+[[columnas 12]]
+Datos:
+m = 640 kg
+A_2 = 320π cm^2
+A_1 = A_2/20
+g = 9,8 m/s^2
+F_1 = ?
+[[|]]
+[[tamaño 17]]
+F_2 = m·g = 640 · 9,8 = 6272 N
+A_1 = (320π)/20 = 16π cm^2
+F_1/A_1 = F_2/A_2   ->   F_1 = (F_2·A_1)/A_2
+F_1 = (6272 · 16π)/(320π)
+!! F_1 = 313,6 N
+[[fin]]
+
+### Ejercicio 13.-
+Sobre el émbolo de un pistón pequeño se ejerce una presión de 49 000 Pa. ¿Qué radio debe tener el pistón grande para que soporte un peso de 6 160 N?
+
+[[columnas 12]]
+Datos:
+P = 49000 Pa
+F = 6160 N
+r = ?
+[[|]]
+[[tamaño 17]]
+A = F/P = 6160/49000
+A = 0,125714 m^2
+A = π·r^2   ->   r = raiz(A/π)
+r = raiz(0,125714/π)
+!! r ≈ 0,20 m
+[[fin]]
+
+### Ejercicio 14.-
+En una prensa hidráulica, el área del pistón pequeño es de 6π cm^2. El pistón grande tiene un área 8 veces mayor y sube 12 cm. Calcula el volumen de líquido desplazado en el pistón grande.
+
+[[columnas 12]]
+Datos:
+A_1 = 6π cm^2
+A_2 = 8 · A_1
+h = 12 cm
+V = ?
+[[|]]
+[[tamaño 17]]
+A_2 = 8 · 6π = 48π cm^2
+V = A_2·h = 48π · 12
+V = 576π cm^3
+V = 576 · 3,1416
+!! V = 576π cm^3 ≈ 1 809,56 cm^3
+[[fin]]
+
+### Ejercicio 15.-
+¿Cuál es el empuje que recibe un cuerpo de volumen 9 000 cm^3 si una cuarta parte de su volumen sobresale cuando flota en agua? Usa g = 9,8 m/s^2.
+
+[[columnas 12]]
+Datos:
+V = 9000 cm^3
+Sobresale: {1}/{4} V
+ρ = 1000 kg/m^3
+g = 9,8 m/s^2
+E = ?
+[[|]]
+[[tamaño 17]]
+E = ρ·g·V_s
+V_s = 3/4 · 9000 = 6750 cm^3
+V_s = 6750/1000000 = 0,00675 m^3
+E = 1000 · 9,8 · 0,00675
+!! E = 66,15 N
+[[fin]]
+
+### Ejercicio 16.-
+Un cilindro de madera de 7 cm de diámetro y 14 cm de altura flota en agua. ¿Qué masa de piedra debe colocarse encima para que la cara superior del cilindro quede justo al nivel del agua? La densidad de la madera es 0,93 g/cm^3.
+
+[[columnas 12]]
+Datos:
+d = 7 cm   r = 3,5 cm
+h = 14 cm
+ρ_m = 0,93 g/cm^3
+ρ_a = 1 g/cm^3
+m_p = ?
+[[|]]
+[[tamaño 17]]
+V = π·r^2·h = π · (3,5)^2 · 14
+V = 171,5π ≈ 538,78 cm^3
+m_m = ρ_m·V = 0,93 · 538,78 ≈ 501,07 g
+m_a = ρ_a·V = 538,78 g
+m_p = m_a - m_m = 538,78 - 501,07
+!! m_p ≈ 37,7 g
+[[fin]]
+
+### Ejercicio 17.-
+Un gas está conectado a un manómetro de mercurio que marca una diferencia inicial de 18 cm. La presión atmosférica local es de 510 mmHg. Si, a temperatura constante, el volumen del gas se reduce a la mitad, calcula la nueva presión manométrica.
+
+[[columnas 12]]
+Datos:
+h = 18 cm = 180 mmHg
+P_{atm} = 510 mmHg
+V_2 = V_1/2
+P_{m2} = ?
+[[|]]
+[[tamaño 17]]
+P_1 = P_{atm} + P_{m1} = 510 + 180
+P_1 = 690 mmHg
+Boyle: P_1·V_1 = P_2·V_2
+P_2 = 690 · 2 = 1380 mmHg
+P_{m2} = P_2 - P_{atm} = 1380 - 510
+!! P_{m2} = 870 mmHg
+[[fin]]

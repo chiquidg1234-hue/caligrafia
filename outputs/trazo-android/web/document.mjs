@@ -52,6 +52,8 @@ export const LETRAS = Object.freeze({
   intermedia: {desorden: .4, tracking: .035, trackJitter: .6, escala: .96, grosor: .135},
   normal: {desorden: .8, tracking: .075, trackJitter: 1, escala: .92, grosor: .125},
 });
+// Pens for sketches; «tinta» is the pen of the text.
+export const SKETCH_COLORS = Object.freeze({tinta: '', azul: '', rojo: '#b02a33', verde: '#2f7d46', morado: '#6b3290', negro: '#26262e'});
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
@@ -92,11 +94,12 @@ export function parseDocument(source) {
       else if (key === 'dibujo') {
         const size = args.split(/[\s,]+/).map(Number);
         if (size.length !== 2 || size.some(v => !(v > 0))) throw Error(`Escribe [[dibujo ancho alto]] en cuadritos (${at}).`);
-        const block = {type: 'sketch', width: size[0], height: size[1], shapes: []}, need = {circulo: 3, linea: 4, punto: 2, texto: 2};
+        const block = {type: 'sketch', width: size[0], height: size[1], shapes: []}, need = {circulo: 3, arco: 5, elipse: 4, linea: 4, trazos: 4, punto: 2, sector: 5, segmento: 5, texto: 2, rotulo: 2, grueso: 1};
         for (n++; n < lines.length && !/^\[\[\s*fin\s*\]\]$/iu.test(lines[n].trim()); n++) {
-          const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase().replace('í', 'i'), values = words.slice(1).map(Number);
+          const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''), values = words.slice(1).map(Number);
           if (!spec.trim()) continue;
-          if (!need[kind] || values.length !== need[kind] || !values.every(Number.isFinite) || (kind === 'texto' && !label.trim())) throw Error(`Dentro de [[dibujo]] usa «circulo x y r», «linea x1 y1 x2 y2», «punto x y» o «texto x y | palabra» (renglón ${n + 1}).`);
+          if (kind === 'color') {const name = words[1]?.toLowerCase(), c = name in SKETCH_COLORS ? SKETCH_COLORS[name] : /^#[\da-f]{6}$/i.test(name || '') ? name : null; if (c === null) throw Error(`Color de dibujo desconocido (renglón ${n + 1}). Usa: ${Object.keys(SKETCH_COLORS).join(', ')} o #hex.`); block.shapes.push({kind, color: c}); continue;}
+          if (!need[kind] || values.length !== need[kind] || !values.every(Number.isFinite) || ((kind === 'texto' || kind === 'rotulo') && !label.trim())) throw Error(`Dentro de [[dibujo]] usa circulo, arco, elipse, linea, trazos, punto, sector, segmento, texto, rotulo, color o grueso (renglón ${n + 1}).`);
           block.shapes.push({kind, values, label: label.trim()});
         }
         push(block);
@@ -239,22 +242,42 @@ export function composeDocument(source, samples, options = {}) {
   // A freehand sketch: circles that do not quite close, lines a little bowed.
   function sketch(block, w, state) {
     if (block.width * g > w + 1e-9) throw Error(`El dibujo mide ${block.width} cuadritos y solo caben ${Math.floor(w / g)}.`);
-    const random = rng(seed++), items = [], ink = state.text, j = a => between(random, -a, a);
-    for (const {kind, values: v, label} of block.shapes) {
-      if (kind === 'circulo') {
-        const [cx, cy, r] = v.map(x => x * g), start = between(random, 0, 2 * Math.PI), sweep = 2 * Math.PI + between(random, -.12, .3), squash = 1 + j(.03), tilt = j(.4), p1 = between(random, 0, 6.3), p2 = between(random, 0, 6.3);
-        const n = Math.max(24, Math.round(r * 5)), points = Array.from({length: n + 1}, (_, k) => {const a = start + sweep * k / n, rr = r * (1 + .025 * Math.sin(2 * a + p1) + .015 * Math.sin(3 * a + p2)), x = Math.cos(a) * rr * squash, y = Math.sin(a) * rr / squash; return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];});
-        items.push(pen(points, ink, random));
-      } else if (kind === 'linea') {
-        const a = [v[0] * g + j(.3), v[1] * g + j(.3)], b = [v[2] * g + j(.3), v[3] * g + j(.3)], mid = [(a[0] + b[0]) / 2 + j(.35), (a[1] + b[1]) / 2 + j(.35)];
-        items.push(pen([a, mid, b], ink, random));
+    const random = rng(seed++), items = [], j = a => between(random, -a, a), deg = Math.PI / 180;
+    let ink = state.text, thick = 1;
+    const stroke = points => {const it = pen(points, ink, random); if (thick !== 1) it.widthMm = o.grosor * thick; items.push(it);};
+    // An arc or a whole circle drawn in one go: a little out of round, the end
+    // stopping short or running past the start.
+    const round = (cx, cy, rx, ry, from, sweep, closed) => {
+      const tilt = j(Math.abs(rx - ry) > .5 ? .03 : .25), p1 = between(random, 0, 6.3), p2 = between(random, 0, 6.3), squash = 1 + j(.03), start = closed ? between(random, 0, 2 * Math.PI) : from, total = closed ? 2 * Math.PI + between(random, -.12, .3) : sweep;
+      const n = Math.max(12, Math.round(Math.max(rx, ry) * Math.abs(total) * 1.2)), points = Array.from({length: n + 1}, (_, k) => {const a = start + total * k / n, wob = 1 + .025 * Math.sin(2 * a + p1) + .015 * Math.sin(3 * a + p2), x = Math.cos(a) * rx * wob * squash, y = -Math.sin(a) * ry * wob / squash; return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];});
+      stroke(points);
+    };
+    const line = (a, b) => {const mid = [(a[0] + b[0]) / 2 + j(.3), (a[1] + b[1]) / 2 + j(.3)]; stroke([a, mid, b]);};
+    for (const {kind, values = [], label, color} of block.shapes) {
+      const v = values.map(x => x * g);
+      if (kind === 'color') ink = color || state.text;
+      else if (kind === 'grueso') thick = Math.max(.5, Math.min(6, values[0]));
+      else if (kind === 'circulo') round(v[0], v[1], v[2], v[2], 0, 0, true);
+      else if (kind === 'elipse') round(v[0], v[1], v[2], v[3], 0, 0, true);
+      else if (kind === 'arco') round(v[0], v[1], v[2], v[2], values[3] * deg, (values[4] - values[3]) * deg, false);
+      else if (kind === 'linea') line([v[0] + j(.25), v[1] + j(.25)], [v[2] + j(.25), v[3] + j(.25)]);
+      else if (kind === 'trazos') {
+        // Dashes of about 1.6 mm with gaps of 1 mm, never quite even.
+        const [x1, y1, x2, y2] = v, len = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+        for (let t = 0; t < len - .4;) {const d = Math.min(len - t, 1.6 + j(.4)); line([x1 + ux * t + j(.1), y1 + uy * t + j(.1)], [x1 + ux * (t + d), y1 + uy * (t + d)]); t += d + 1 + j(.3);}
       } else if (kind === 'punto') {
-        const cx = v[0] * g + j(.15), cy = v[1] * g + j(.15);
+        const cx = v[0] + j(.15), cy = v[1] + j(.15);
         items.push({type: 'ink', color: ink, polys: [Array.from({length: 10}, (_, i) => {const a = -i / 10 * 2 * Math.PI, r = .55 + j(.1); return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];})]});
+      } else if (kind === 'sector' || kind === 'segmento') {
+        // Shading scribbled back and forth, as with a pen.
+        const [cx, cy, r] = v, a = values[3] * deg, b = values[4] * deg, at = t => [cx + Math.cos(t) * r * .93, cy - Math.sin(t) * r * .93], zig = [];
+        const n = Math.max(6, Math.round(Math.abs(b - a) * r / 1.1));
+        for (let k = 0; k <= n; k++) {const t = a + (b - a) * k / n, edge = at(t + j(.03)); if (kind === 'sector') {const f = between(random, .05, .3); zig.push(k % 2 ? [cx + (edge[0] - cx) * f, cy + (edge[1] - cy) * f] : edge);} else {const p = at(a), q = at(b), f = k / n, chord = [p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f]; zig.push(k % 2 ? [chord[0] + j(.2), chord[1] + j(.2)] : edge);}}
+        stroke(zig);
       } else {
-        const r = write(label, 60, state, {size: o.smallSize + 1, natural: .4, math: true, hyphenate: false, lineGap: 0});
+        const r = write(label, 70, state, {size: kind === 'rotulo' ? state.size : o.smallSize + 1, color: ink, natural: .4, math: true, hyphenate: false, lineGap: 0});
         if (!r.items.length) continue;
-        const box = inkBox(r.items), dx = v[0] * g - box.l + j(.3), dy = v[1] * g - r.baselines[0] * g + j(.2);
+        const box = inkBox(r.items), dx = v[0] - box.l + j(.3), dy = v[1] - r.baselines[0] * g + j(.2);
         for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy});
       }
     }
@@ -298,7 +321,7 @@ export function composeDocument(source, samples, options = {}) {
     }
   }
   // Denominators of the block above and numerators of the next one must not touch.
-  const clash = (above, below) => above && below.rise !== undefined && (above.hang || 0) + below.rise > g + .3 - .6 * o.desorden;
+  const clash = (above, below) => above && below.rise !== undefined && (above.hang || 0) + below.rise > g + .3 - (below.rise > 4.2 || (above.hang || 0) > 2 ? .6 * o.desorden : 0);
   function shift(it, dx, dy) {if (it.type === 'glyph') {it.x += dx; it.y += dy;} else it.polys = it.polys.map(p => p.map(([x, y]) => [x + dx, y + dy]));}
   // A column: no paging, blocks stacked on rows.
   function flow(list, w, state) {
@@ -357,7 +380,7 @@ export function composeDocument(source, samples, options = {}) {
   if (!pages.at(-1).items.length && pages.length > 1) pages.pop();
   // Ballpoint ink, once for the preview and the PDF.
   const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null; let n = o.seed * 7919;
-  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: o.natural, messy: o.desorden, widthMm: o.grosor, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
+  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: it.type === 'glyph' ? o.natural : 0, messy: it.type === 'glyph' ? o.desorden : 0, widthMm: it.widthMm ?? o.grosor, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
   return {pages, missing: [...missing].sort(), paper};
 }
 
