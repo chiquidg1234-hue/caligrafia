@@ -257,7 +257,7 @@ function naturalise(pages,{natural,messy=0,scale,seed,right,left,slack=0}){
  for(const page of pages){
   const lines=new Map();for(const g of page){if(!lines.has(g.y))lines.set(g.y,[]);lines.get(g.y).push(g);}
   for(const line of lines.values()){
-   const slope=random()*.004*natural*(1+messy),lift=Math.max(-.45,Math.min(.45,random()*.18*natural*loose)),start=line[0].x;
+   const slope=random()*.004*natural*(1+messy),lift=Math.max(-.3,Math.min(.3,random()*.18*natural*loose)),start=line[0].x;
    // Each line begins a little further in or out (about ±1 mm at 55 %), as by
    // hand. Lines only start left of the margin when the caller allows it
    // (startSlack, the free squares of a notebook); otherwise they move inwards.
@@ -271,7 +271,8 @@ function naturalise(pages,{natural,messy=0,scale,seed,right,left,slack=0}){
     g.paths=transformPaths(g.paths,{angle,scale:size,cx});
     const ink=Math.max(...g.paths.flat().map(p=>p[0]))*g.scale,inkLeft=Math.min(...g.paths.flat().map(p=>p[0]))*g.scale;
     g.x=Math.max(left-out-inkLeft,Math.min(right-ink,g.x+drift));
-    g.y+=(g.x-start)*slope+lift+random()*.1*natural*loose;
+    // Letters stay on their line: a hand on squared paper wanders only a little.
+    g.y+=(g.x-start)*slope+lift+Math.max(-.25,Math.min(.25,random()*.1*natural*loose));
    }
   }
  }

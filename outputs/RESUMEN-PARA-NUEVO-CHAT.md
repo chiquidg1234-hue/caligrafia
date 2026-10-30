@@ -93,6 +93,22 @@ Impresas salían casi tres veces más gruesas que un lapicero. Ahora, en modo co
 - Un `[[dibujo]]` más ancho que la columna se achica solo.
 - En pantalla el PDF se ve corrido a la derecha, y es lo correcto: la Trapper tiene el marco a 3 cm (agujeros) en el anverso y el PDF lleva la corrección de 5 mm de la impresora. Para ver cómo cae sobre la hoja, mira los PNG o el PDF «hoja-blanca-con-cuadricula».
 
+## Altura en Trapper: pendiente de calibrar (31/10)
+
+Imprimió el Práctico 5 con `drop: 2.2`:
+- Lo horizontal ya está bien: el título queda a unos 14 cuadritos del marco izquierdo y 2 cuadritos abajo.
+- Pero **ninguna palabra toca el renglón**: la letra sigue quedando alta.
+
+Se le dio `outputs/prueba-altura-trapper/`, generada con `work/calibracion/altura-trapper.mjs`:
+- Las filas A–J van corridas de −1 a +3,5 mm.
+- Debe decir qué fila se apoya en la línea, en el anverso y en el reverso.
+- Nuevo `drop` = 2,2 + el valor de esa fila, y puede ser distinto para cada cara.
+- **Hay que regenerar después** los documentos Trapper.
+
+También se redujo el vaivén vertical de la letra:
+- un renglón entero se mueve ±0,3 mm;
+- cada letra se mueve ±0,25 mm.
+
 ## Lo que falta o hay que mejorar
 
 1. **Revisar la impresión de las tres manos.** Que mande foto con su lapicero al lado y elija una. Si la «normal» queda muy separada o muy chica, ajustar `LETRAS.normal`.
