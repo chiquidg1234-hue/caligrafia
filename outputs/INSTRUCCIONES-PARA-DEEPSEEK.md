@@ -252,11 +252,16 @@ Más detalles:
 
 ## 8. Indicación lista para copiar
 
+La versión más estricta, con un ejemplo completo, está en `outputs/PROMPT-PARA-DEEPSEEK.md`. Úsala primero. El práctico de química de referencia bien hecho está en `outputs/practicos-trapper/fuentes/practico-quimica-soluciones.txt`.
+
+
 > Escribe esta tarea en «formato Trazo», en texto plano, sin negritas ni LaTeX. En el primer renglón va `[[hoja trapper]]` y en el segundo `[[letra normal]]`. Usa `# Título` una sola vez. Cada ejercicio va con `### Ejercicio N.-` y debajo el enunciado tal cual, sin las respuestas «R:». Después: línea vacía, `[[columnas 12]]`, `Datos:` y un dato por línea, `[[|]]`, la resolución paso a paso con una igualdad por línea, el resultado final en una línea que empiece con `!! ` y `[[fin]]`. Las «//» van solo en resultados de ejercicios, nunca en fórmulas de teoría. Fórmulas: `x^2`, `v_0`, `a/b`, `m//s^2`, `raiz(x)`, coma decimal, `·` para multiplicar. Dibujos solo si te los pido, con `[[dibujo ancho alto]]`.
 
 ---
 
 ## 9. Errores que ya se cometieron (no los repitas)
+
+- **DeepSeek, primer intento:** respondió en Markdown con LaTeX (`\frac`, `\boxed`), negritas, tablas, «Tema/Curso/Fórmula/Procedimiento», notas y resúmenes, con subíndices Unicode (H₂SO₄) y sin `[[hoja trapper]]`, `[[columnas]]` ni `!!`. La app no entiende nada de eso. Hay que responder solo con el formato Trazo, dentro de un bloque de código.
 
 - **Usar la corrección del Oficio en la Trapper sin medirla.** La letra quedó entre los renglones.
 - **Calcular márgenes desde capturas de pantalla.** Siempre se mide en la hoja impresa o con la prueba de altura.

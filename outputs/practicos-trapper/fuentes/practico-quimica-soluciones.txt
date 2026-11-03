@@ -1,0 +1,340 @@
+[[hoja trapper]]
+[[letra intermedia]]
+# Práctico de Química
+
+### Ejercicio 1.-
+Calcule el porcentaje en masa de una solución de sulfato de cobre en agua si contiene 90 g de soluto en 600 g de disolución.
+
+[[columnas 12]]
+Datos:
+m_s = 90 g
+m_d = 600 g
+%m//m = ?
+[[|]]
+%m//m = m_s/m_d · 100
+%m//m = 90/600 · 100
+!! %m//m = 15 %
+[[fin]]
+
+### Ejercicio 2.-
+Calcula el porcentaje en masa de soluto de una disolución, obtenida a partir de 40 g de azúcar en 480 gramos de agua.
+
+[[columnas 12]]
+Datos:
+m_s = 40 g
+m_agua = 480 g
+%m//m = ?
+[[|]]
+m_d = 40 + 480 = 520 g
+%m//m = 40/520 · 100
+!! %m//m = 7,69 %
+[[fin]]
+
+### Ejercicio 3.-
+Calcula la masa de sulfato de potasio que se necesita para preparar 900 ml de disolución de concentración 25% en volumen.
+
+[[columnas 12]]
+Datos:
+V_d = 900 ml
+C = 25 %
+m_s = ?
+[[|]]
+25 = m_s/900 · 100
+m_s = (25 · 900)/100
+!! m_s = 225 g
+[[fin]]
+
+### Ejercicio 4.-
+¿Cuántos gramos de disolución al 35% de HCl se necesitan para que contenga 140 gramos de HCl?
+
+[[columnas 12]]
+Datos:
+%m//m = 35 %
+m_s = 140 g
+m_d = ?
+[[|]]
+m_d = (m_s · 100)/(%m//m)
+m_d = (140 · 100)/35
+!! m_d = 400 g
+[[fin]]
+
+### Ejercicio 5.-
+Una lata de Coca-Cola de 500 ml tiene una concentración del 14% m//m. Si la densidad de la Coca-Cola es 1,05 g//ml, ¿qué cantidad de azúcar contiene dicha lata?
+
+[[columnas 12]]
+Datos:
+V = 500 ml
+%m//m = 14 %
+d = 1,05 g//ml
+m_s = ?
+[[|]]
+m_d = d · V = 1,05 · 500
+m_d = 525 g
+m_s = (14 · 525)/100
+!! m_s = 73,5 g
+[[fin]]
+
+### Ejercicio 6.-
+Se preparan 350 ml de disolución de KI al 45% m//v. Si la densidad de la disolución es 1,2 g//ml, calcula la concentración en porcentaje m//m.
+
+[[columnas 12]]
+Datos:
+V_d = 350 ml
+%m//v = 45 %
+d = 1,2 g//ml
+%m//m = ?
+[[|]]
+m_s = (45 · 350)/100 = 157,5 g
+m_d = 1,2 · 350 = 420 g
+%m//m = 157,5/420 · 100
+!! %m//m = 37,5 %
+[[fin]]
+
+### Ejercicio 7.-
+Se preparan 500 gramos de disolución de NaCl al 22% m//m. Calcula: a) La masa de soluto. b) La masa del disolvente.
+
+[[columnas 12]]
+Datos:
+m_d = 500 g
+%m//m = 22 %
+m_s = ?
+m_dv = ?
+[[|]]
+a) m_s = (22 · 500)/100
+!! m_s = 110 g
+b) m_dv = 500 - 110
+!! m_dv = 390 g
+[[fin]]
+
+### Ejercicio 8.-
+Se preparan 500 ml de disolución de H_2SO_4 al 35% m//v. La densidad de la disolución es 1,26 g//ml. Calcula: a) La masa del soluto. b) La concentración en porcentaje m//m.
+
+[[columnas 12]]
+Datos:
+V_d = 500 ml
+%m//v = 35 %
+d = 1,26 g//ml
+m_s = ?
+%m//m = ?
+[[|]]
+a) m_s = (35 · 500)/100
+!! m_s = 175 g
+b) m_d = 1,26 · 500 = 630 g
+%m//m = 175/630 · 100
+!! %m//m = 27,78 %
+[[fin]]
+
+### Ejercicio 9.-
+Se prepara una disolución al mezclar 1250 gramos de cloruro de calcio con 3000 gramos de agua, alcanzando una densidad de 1,5 g//ml. Calcula: a) El porcentaje en peso. b) La masa de soluto por litro de disolvente. c) La masa de soluto por litro de disolución.
+
+[[columnas 12]]
+Datos:
+m_s = 1250 g
+m_dv = 3000 g
+d = 1,5 g//ml
+[[|]]
+a) m_d = 1250 + 3000 = 4250 g
+%m//m = 1250/4250 · 100
+!! %m//m = 29,41 %
+b) 3000 g de agua = 3 L
+C = 1250/3
+!! C = 416,67 g//L
+c) V = 4250/1,5 = 2833,33 ml
+V = 2,833 L
+C = 1250/2,833
+!! C = 441,18 g//L
+[[fin]]
+
+### Ejercicio 10.-
+En una reacción entre el manganeso y oxígeno se obtienen 64 gramos de óxido mangánico. Con 50 gramos de manganeso y 80 gramos de oxígeno, calcula: a) La masa del reactivo excedente. b) La masa del producto teórico. c) El porcentaje de rendimiento de la reacción.
+
+4Mn + 3O_2 -> 2Mn_2O_3
+
+[[columnas 12]]
+Datos:
+m_Mn = 50 g
+m_O_2 = 80 g
+m_real = 64 g
+PM Mn = 55 g//mol
+PM O_2 = 32 g//mol
+PM Mn_2O_3 = 158 g//mol
+[[|]]
+n Mn = 50/55 = 0,909 mol
+n O_2 = 80/32 = 2,5 mol
+O_2 necesario = (0,909 · 3)/4
+O_2 necesario = 0,682 mol
+Limitante: Mn
+Excedente: O_2
+a) m = 0,682 · 32 = 21,82 g
+m sobrante = 80 - 21,82
+!! m sobrante = 58,18 g
+b) m = (50 · 2 · 158)/(4 · 55)
+!! m teórica = 71,82 g
+c) %R = 64/71,82 · 100
+!! %R = 89,11 %
+[[fin]]
+
+### Ejercicio 11.-
+La urea (NH_2)_2CO se utiliza como fertilizante. Se prepara por la reacción del amoniaco con dióxido de carbono y se obtienen 950 gramos de urea. Si dispones de 650 gramos de amoniaco y 1100 gramos de dióxido de carbono, calcula: a) El reactivo limitante y excedente. b) La masa del reactivo excedente. c) La masa del producto teórico. d) El porcentaje de rendimiento de la reacción.
+
+2NH_3 + CO_2 -> (NH_2)_2CO + H_2O
+
+[[columnas 12]]
+Datos:
+m NH_3 = 650 g
+m CO_2 = 1100 g
+m real = 950 g
+PM NH_3 = 17 g//mol
+PM CO_2 = 44 g//mol
+PM urea = 60 g//mol
+[[|]]
+n NH_3 = 650/17 = 38,24 mol
+n CO_2 = 1100/44 = 25 mol
+CO_2 necesario = 38,24/2
+CO_2 necesario = 19,12 mol
+!! a) Limitante: NH_3
+!! Excedente: CO_2
+b) m = 19,12 · 44 = 841,18 g
+m sobrante = 1100 - 841,18
+!! m sobrante = 258,82 g
+c) n urea = 19,12 mol
+m = 19,12 · 60
+!! m teórica = 1147,06 g
+d) %R = 950/1147,06 · 100
+!! %R = 82,82 %
+[[fin]]
+
+### Ejercicio 12.-
+Con 0,30 moles de nitrato plumboso y 0,65 moles de yoduro de sodio, ¿cuántos gramos de yoduro plumboso se obtienen? ¿Qué cantidad de masa sobra? Analiza la ecuación, iguala y resuelve.
+
+Pb(NO_3)_2 + 2NaI -> PbI_2 + 2NaNO_3
+
+[[columnas 12]]
+Datos:
+n Pb(NO_3)_2 = 0,30 mol
+n NaI = 0,65 mol
+PM PbI_2 = 461 g//mol
+PM NaI = 150 g//mol
+[[|]]
+NaI necesario = 0,30 · 2
+NaI necesario = 0,60 mol
+Limitante: Pb(NO_3)_2
+Excedente: NaI
+n PbI_2 = 0,30 mol
+m = 0,30 · 461
+!! m PbI_2 = 138,3 g
+n sobrante = 0,65 - 0,60
+n sobrante = 0,05 mol
+m = 0,05 · 150
+!! m sobrante = 7,5 g
+[[fin]]
+
+### Ejercicio 13.-
+Para obtener aspirina, se hacen reaccionar 2 kg de ácido salicílico con 2,5 kg de anhídrido acético. Calcula: a) La masa del reactivo excedente. b) La masa teórica de aspirina. Iguala la ecuación y resuelve.
+
+C_7H_6O_3 + C_4H_6O_3 -> C_9H_8O_4 + C_2H_4O_2
+
+[[columnas 12]]
+Datos:
+m C_7H_6O_3 = 2000 g
+m C_4H_6O_3 = 2500 g
+PM C_7H_6O_3 = 138 g//mol
+PM C_4H_6O_3 = 102 g//mol
+PM C_9H_8O_4 = 180 g//mol
+[[|]]
+n ácido = 2000/138 = 14,49 mol
+n anhídrido = 2500/102 = 24,51 mol
+Limitante: ácido salicílico
+a) m = 14,49 · 102
+m = 1478,26 g
+m sobrante = 2500 - 1478,26
+!! m sobrante = 1021,74 g
+b) m = 14,49 · 180
+!! m teórica = 2608,70 g
+[[fin]]
+
+### Ejercicio 14.-
+Con 4,54 kg de ácido sulfúrico y 7 kg de fosfato de calcio, calcula: a) La masa del reactivo excedente. b) La masa de sulfato de calcio que se obtiene. c) La masa de ácido fosfórico que se obtiene al 85%.
+
+3H_2SO_4 + Ca_3(PO_4)_2 -> 3CaSO_4 + 2H_3PO_4
+
+[[columnas 12]]
+Datos:
+m H_2SO_4 = 4540 g
+m Ca_3(PO_4)_2 = 7000 g
+PM H_2SO_4 = 98 g//mol
+PM Ca_3(PO_4)_2 = 310 g//mol
+PM CaSO_4 = 136 g//mol
+PM H_3PO_4 = 98 g//mol
+[[|]]
+n H_2SO_4 = 4540/98 = 46,33 mol
+n Ca_3(PO_4)_2 = 7000/310
+n Ca_3(PO_4)_2 = 22,58 mol
+H_2SO_4 necesario = 22,58 · 3
+H_2SO_4 necesario = 67,74 mol
+Limitante: H_2SO_4
+a) n = 46,33/3 = 15,44 mol
+m = 15,44 · 310
+m = 4787,07 g
+m sobrante = 7000 - 4787,07
+!! m sobrante = 2212,93 g
+b) m = 46,33 · 136
+!! m CaSO_4 = 6300,41 g
+c) n = (46,33 · 2)/3 = 30,88 mol
+m = 30,88 · 98 = 3026,67 g
+m = 3026,67 · 0,85
+!! m H_3PO_4 = 2572,67 g
+[[fin]]
+
+### Ejercicio 15.-
+Se disponen de 100 gramos de dióxido de nitrógeno y 20 gramos de agua. Calcula: a) La masa que sobra del reactivo excedente. b) Los moles de ácido nítrico. c) La masa del monóxido de nitrógeno al 95%.
+
+3NO_2 + H_2O -> 2HNO_3 + NO
+
+[[columnas 12]]
+Datos:
+m NO_2 = 100 g
+m H_2O = 20 g
+PM NO_2 = 46 g//mol
+PM H_2O = 18 g//mol
+PM NO = 30 g//mol
+[[|]]
+n NO_2 = 100/46 = 2,174 mol
+n H_2O = 20/18 = 1,111 mol
+H_2O necesario = 2,174/3 = 0,725 mol
+Limitante: NO_2
+a) m = 0,725 · 18 = 13,04 g
+m sobrante = 20 - 13,04
+!! m sobrante = 6,96 g
+b) n = (2,174 · 2)/3
+!! n HNO_3 = 1,449 mol
+c) m = 0,725 · 30 = 21,74 g
+m = 21,74 · 0,95
+!! m NO = 20,65 g
+[[fin]]
+
+### Ejercicio 16.-
+En un laboratorio se obtienen 182 gramos de cloruro de plata. Si se disponen de 156 gramos de cloruro de bario, calcula: a) El porcentaje de rendimiento. b) La masa del nitrato de bario. c) La masa de nitrato de plata.
+
+BaCl_2 + 2AgNO_3 -> 2AgCl + Ba(NO_3)_2
+
+[[columnas 12]]
+Datos:
+m real AgCl = 182 g
+m BaCl_2 = 156 g
+PM BaCl_2 = 208 g//mol
+PM AgCl = 143,5 g//mol
+PM Ba(NO_3)_2 = 261 g//mol
+PM AgNO_3 = 170 g//mol
+[[|]]
+n BaCl_2 = 156/208 = 0,75 mol
+n AgCl = 0,75 · 2 = 1,5 mol
+m teórica = 1,5 · 143,5
+m teórica = 215,25 g
+a) %R = 182/215,25 · 100
+!! %R = 84,55 %
+b) m = 0,75 · 261
+!! m Ba(NO_3)_2 = 195,75 g
+c) m = 1,5 · 170
+!! m AgNO_3 = 255 g
+[[fin]]
