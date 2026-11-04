@@ -4,17 +4,24 @@ const OUT = new URL('../../outputs/practicos-trapper/fuentes/practico-circunfere
 const n = v => String(v).replace('.', ',').replace(/^-/, '-');
 const pt = (x, y) => `(${n(x)},${n(y)})`;
 const sx = (v, s) => v === 0 ? s : v > 0 ? `(${s} - ${n(v)})` : `(${s} + ${n(-v)})`;
+// (x - h)^2 + (y - k)^2 = r2 developed: the line of the squares and the general equation.
+const term = (v, s) => v === 0 ? `${s}^2` : `${s}^2 ${v > 0 ? '-' : '+'} ${Math.abs(2 * v)}${s} + ${v * v}`;
+const signed = (c, s) => c === 0 ? '' : ` ${c > 0 ? '+' : '-'} ${Math.abs(c)}${s}`;
+function general(h, k, r2) {
+  const F = h * h + k * k - r2;
+  return [`${term(h, 'x')} + ${term(k, 'y')} = ${r2}`.replace(/^(.{0,40}?\+ \d+) \+ /, '$1 +\n'), `!! x^2 + y^2${signed(-2 * h, 'x')}${signed(-2 * k, 'y')}${signed(F, '')} = 0`];
+}
 function graph(h, k, r, extra = []) {
   const pts = [[h - r, k - r], [h + r, k + r], ...extra];
   const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
-  const range = [Math.floor(Math.min(0, ...xs) - 1), Math.ceil(Math.max(0, ...xs) + 1), Math.floor(Math.min(0, ...ys) - 1), Math.ceil(Math.max(0, ...ys) + 1)];
+  const range = [Math.floor(Math.min(0, ...xs)), Math.ceil(Math.max(0, ...xs)), Math.floor(Math.min(0, ...ys)), Math.ceil(Math.max(0, ...ys))];
   return range.join(' ');
 }
 function block(title, statement, h, k, r, steps, opts = {}) {
   const extra = opts.points || [];
   return `### ${title}
 ${statement}
-[[columnas 17]]
+[[columnas 14]]
 [[grafica ${graph(h, k, r, extra.map(p => [p[0], p[1]]))}]]
 circulo ${h} ${k} ${r}
 ${(opts.dashes || []).map(d => `trazos ${d.join(' ')}`).join('\n')}
@@ -34,16 +41,16 @@ let s = `[[hoja trapper]]
 `;
 ord.forEach(([h, k, r], i) => {
   s += '\n' + block(`Ejercicio ${i + 1}.-`, `Hallar la ecuación de la circunferencia si C${pt(h, k)} y el r=${r}. Graficar.`, h, k, r, [
-    `Datos: C${pt(h, k)}  r = ${r}`, '(x - h)^2 + (y - k)^2 = r^2', `${sx(h, 'x')}^2 + ${sx(k, 'y')}^2 = ${r}^2`, `!! ${sx(h, 'x')}^2 + ${sx(k, 'y')}^2 = ${r * r}`]);
+    `Datos: C${pt(h, k)}  r = ${r}`, '(x - h)^2 + (y - k)^2 = r^2', `${sx(h, 'x')}^2 + ${sx(k, 'y')}^2 = ${r}^2`, `!! ${sx(h, 'x')}^2 + ${sx(k, 'y')}^2 = ${r * r}`, 'Ecuación general:', ...general(h, k, r * r)]);
 });
 [[4, 'radio igual a 4', null], [7, 'radio igual a 7', null], [6, 'Diámetro igual a 12', 12], [3, 'Diámetro igual a 6', 6]].forEach(([r, txt, D], i) => {
   s += '\n' + block(`Ejercicio ${i + 7}.-`, `Hallar la ecuación de la circunferencia de centro en el origen y ${txt}. Graficar.`, 0, 0, r, [
-    `Datos: C(0,0)  ${D ? `D = ${D}` : `r = ${r}`}`, ...(D ? [`r = D/2 = ${D}/2`, `r = ${r}`] : []), 'x^2 + y^2 = r^2', `x^2 + y^2 = ${r}^2`, `!! x^2 + y^2 = ${r * r}`], {dashes: D ? [[-r, 0, r, 0]] : [[0, 0, r * .7071, r * .7071]]});
+    `Datos: C(0,0)  ${D ? `D = ${D}` : `r = ${r}`}`, ...(D ? [`r = D/2 = ${D}/2`, `r = ${r}`] : []), 'x^2 + y^2 = r^2', `x^2 + y^2 = ${r}^2`, `!! x^2 + y^2 = ${r * r}`, 'Ecuación general:', `!! x^2 + y^2 - ${r * r} = 0`], {dashes: D ? [[-r, 0, r, 0]] : [[0, 0, r * .7071, r * .7071]]});
 });
 s += '\n' + block('Ejercicio 11.-', 'Hallar la ecuación de la circunferencia que pasa por el punto P(5,2) y cuyo centro es C(-1,3). Graf.', -1, 3, Math.sqrt(37), [
-  'r = raiz((x_2 - x_1)^2 + (y_2 - y_1)^2)', 'r = raiz((5 + 1)^2 + (2 - 3)^2)', 'r = raiz(36 + 1) = raiz(37)', 'r^2 = 37', '!! (x + 1)^2 + (y - 3)^2 = 37'], {points: [[5, 2, 'P']], dashes: [[-1, 3, 5, 2]]});
+  'r = raiz((x_2 - x_1)^2 + (y_2 - y_1)^2)', 'r = raiz((5 + 1)^2 + (2 - 3)^2)', 'r = raiz(36 + 1)', '!! r = raiz(37) ≈ 6,08', 'r^2 = 37', '(x - h)^2 + (y - k)^2 = r^2', '!! (x + 1)^2 + (y - 3)^2 = 37', 'Ecuación general:', ...general(-1, 3, 37)], {points: [[5, 2, 'P']], dashes: [[-1, 3, 5, 2]]});
 s += '\n' + block('Ejercicio 12.-', 'Hallar la ecuación de la circunferencia cuyo diámetro son los puntos A(-3,-1) y B(5,5). Graf.', 1, 2, 5, [
-  'h = (-3 + 5)/2 = 1', 'k = (-1 + 5)/2 = 2', 'D = raiz((5 + 3)^2 + (5 + 1)^2)', 'D = raiz(64 + 36) = 10', 'r = 10/2 = 5', '!! (x - 1)^2 + (y - 2)^2 = 25'], {points: [[-3, -1, 'A'], [5, 5, 'B']], dashes: [[-3, -1, 5, 5]]});
+  'h = (-3 + 5)/2 = 1', 'k = (-1 + 5)/2 = 2', '!! C(1,2)', 'D = raiz((5 + 3)^2 + (5 + 1)^2)', 'D = raiz(64 + 36) = 10', 'r = D/2 = 10/2', '!! r = 5', '(x - h)^2 + (y - k)^2 = r^2', '!! (x - 1)^2 + (y - 2)^2 = 25', 'Ecuación general:', ...general(1, 2, 25)], {points: [[-3, -1, 'A'], [5, 5, 'B']], dashes: [[-3, -1, 5, 5]]});
 s += `
 13. La ecuación general de la circunferencia puede ser expresada como:
 [[tamaño 18]]

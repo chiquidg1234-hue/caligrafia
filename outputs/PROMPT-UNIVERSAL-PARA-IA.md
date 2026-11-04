@@ -30,7 +30,7 @@ Eres mi asistente para tareas escolares. Vas a resolver el práctico que te paso
 
 **Ejercicio con gráfica** (gráfica a la izquierda, cuentas a la derecha):
 ```
-[[columnas 17]]
+[[columnas 14]]
 [[grafica xmin xmax ymin ymax]]
 circulo h k r
 recta a b c | etiqueta        (la recta a·x + b·y + c = 0)
@@ -72,6 +72,28 @@ resolución
 - Los renglones de la columna derecha deben ser **cortos**, de 30 caracteres como máximo. Una cuenta larga va en dos renglones.
 - Deja una línea vacía entre ejercicios y nada más.
 
+## Resolución completa (lo que pide el profesor)
+
+- **No te saltes pasos.** Escribe la fórmula, reemplaza los datos y llega al resultado.
+- **Raíces:**
+  - primero escribe la raíz;
+  - después el valor aproximado, como resultado: `!! r = raiz(37) ≈ 6,08`;
+  - en la ecuación usa el valor al cuadrado (`r^2 = 37`), nunca el decimal.
+- **Circunferencia: da todos los resultados.**
+  - el centro y el radio, si se calculan;
+  - la ecuación ordinaria: `!! (x + 2)^2 + (y - 3)^2 = 25`;
+  - después `Ecuación general:`, el desarrollo de los cuadrados y `!! x^2 + y^2 + 4x - 6y - 12 = 0`.
+- **Ecuación general dada:**
+  - completa cuadrados;
+  - llega a la ordinaria;
+  - da `!! C(h,k)` y `!! r = …` en renglones separados.
+- **Gráfica en cada ejercicio que diga «Graficar» o «Graf.»:**
+  - `circulo h k r`;
+  - `punto h k | C(h,k)`;
+  - los puntos que da el enunciado;
+  - `trazos` para el radio o el diámetro.
+- **Copia los datos exactos.** Revisa cada signo y cada número dos veces.
+
 ## Ejemplo exacto
 
 ```
@@ -81,7 +103,7 @@ resolución
 
 ### Ejercicio 1.-
 Hallar la ecuación de la circunferencia si C(-2,3) y el r=5. Graficar.
-[[columnas 17]]
+[[columnas 14]]
 [[grafica -8 4 -3 9]]
 circulo -2 3 5
 punto -2 3 | C(-2,3)
@@ -91,6 +113,10 @@ Datos: C(-2,3)  r = 5
 (x - h)^2 + (y - k)^2 = r^2
 (x + 2)^2 + (y - 3)^2 = 5^2
 !! (x + 2)^2 + (y - 3)^2 = 25
+Ecuación general:
+x^2 + 4x + 4 +
+y^2 - 6y + 9 = 25
+!! x^2 + y^2 + 4x - 6y - 12 = 0
 [[fin]]
 
 ### Ejercicio 2.-

@@ -42,7 +42,9 @@ export const OFICIO_ESPIRAL = Object.freeze({name: 'Oficio espiral', width: 211,
 // Measured on a print of 30/10 (Epson T50): the writing sat 2.2 mm too high
 // (drop) and, with the printer correction, 2 squares from the left frame but
 // only 1.5 from the right one; insetRight 2.7 leaves 2 squares on paper too.
-export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, drop: 2.2, insetRight: 2.7, sides: [
+// Print of 04/11 (Práctico de Circunferencia): with drop 2.2 the baselines sat
+// about 1 mm below the lines on both sides, so the drop is now 1.2 mm.
+export const TRAPPER_TOP = Object.freeze({name: 'Trapper cuadriculada', width: 211, height: 280, grid: 5, drop: 1.2, insetRight: 2.7, sides: [
   {name: 'anverso', left: 30, right: 11, top: 20, bottom: 10},
   {name: 'reverso', left: 12, right: 29, top: 21, bottom: 10},
 ]});
@@ -52,7 +54,7 @@ export const PAPERS = Object.freeze({oficio: OFICIO_ESPIRAL, trapper: TRAPPER_TO
 // uneven gaps, a looser line, lighter pressure) and «intermedia» between.
 export const LETRAS = Object.freeze({
   bonita: {desorden: 0, tracking: 0, trackJitter: 0, escala: 1, grosor: .14},
-  intermedia: {desorden: .4, tracking: .035, trackJitter: .6, escala: .96, grosor: .135},
+  intermedia: {desorden: .6, tracking: .055, trackJitter: .85, escala: .94, grosor: .13},
   normal: {desorden: .8, tracking: .075, trackJitter: 1, escala: .92, grosor: .125},
 });
 // Pens for sketches; «tinta» is the pen of the text.
@@ -187,10 +189,14 @@ export function composeDocument(source, samples, options = {}) {
   }
 
   function graph(block, w, state) {
-    const [xmin, xmax, ymin, ymax] = [Math.min(0, block.range[0]), Math.max(0, block.range[1]), Math.min(0, block.range[2]), Math.max(0, block.range[3])];
-    const fits = k => (xmax - xmin) / k <= Math.floor(w / g) - 2 && (ymax - ymin) / k <= 10;
+    // Every unit falls on a line of the sheet: the range is widened to whole
+    // squares, so the axes, the ticks and the centre sit on the grid.
+    const [x0, x1, y0, y1] = [Math.min(0, block.range[0]), Math.max(0, block.range[1]), Math.min(0, block.range[2]), Math.max(0, block.range[3])];
+    const snap = k => [Math.floor(x0 / k) * k, Math.ceil(x1 / k) * k, Math.floor(y0 / k) * k, Math.ceil(y1 / k) * k];
+    const fits = k => {const [a, b, c, d] = snap(k); return (b - a) / k <= Math.floor(w / g) - 2 && (d - c) / k <= (o.graphRows || 12);};
     const k = [1, 2, 4, 5, 10, 20, 50].find(fits);
     if (!k) throw Error('La gráfica no cabe: reduce el rango.');
+    const [xmin, xmax, ymin, ymax] = snap(k);
     const random = rng(seed++), X = u => g + (u - xmin) / k * g, Y = v => g + (ymax - v) / k * g, items = [], ink = o.text;
     // Axes with open arrow heads and a tick on every square.
     items.push(pen([[X(xmin) - 1.2, Y(0) + between(random, -.15, .15)], [X(xmax) / 2 + X(xmin) / 2, Y(0) + between(random, -.2, .2)], [X(xmax) + 2.6, Y(0) + between(random, -.15, .15)]], ink, random));

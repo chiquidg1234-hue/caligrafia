@@ -1,5 +1,12 @@
 # Resumen para empezar un chat nuevo (Trazo · caligrafía)
 
+> **Lo más reciente (04/11):** lee primero `outputs/INFORME-ACTUALIZACIONES.md`. Hay cambios en:
+> - la altura de la Trapper (`drop` 1,2);
+> - las gráficas, alineadas a la cuadrícula, con `circulo` y `trazos`;
+> - la letra intermedia, más suelta;
+> - el Práctico de Circunferencia completo;
+> - la letra nueva, pendiente de la plantilla.
+
 Pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del repositorio `chiquidg1234-hue/caligrafia`, rama `ccr-6e94865d-c20f7c`». Es la rama más reciente; continúa a `claude/handwriting-review-improve-uj49ll`.
 
 ## Qué es
@@ -10,7 +17,7 @@ Pide: «lee `outputs/RESUMEN-PARA-NUEVO-CHAT.md` del repositorio `chiquidg1234-h
 | --- | --- |
 | `outputs/trazo-android/web` | La app. `dist/` es una copia: después de cada cambio, `cp web/*.mjs dist/`. |
 | `work/practicos/componer.mjs` | Genera los PDF desde la terminal: `node work/practicos/componer.mjs fuente.txt carpeta Nombre [--perfil id] [--ploter]`. |
-| Pruebas | `cd outputs/trazo-android && node --test tests/*.test.mjs` (108 pasan). |
+| Pruebas | `cd outputs/trazo-android && node --test tests/*.test.mjs` (109 pasan). |
 
 ## Letras
 
