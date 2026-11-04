@@ -9,6 +9,8 @@ Todos se regeneraron el 30/10 con tinta real (calibrada con la foto de tu lapice
 | [`Practico-Quimica-2A`](Practico-Quimica-2A) | **Fuente 2A** | Ley de los gases ideales, ejercicios 1 al 10 | 6 (3 hojas) |
 | [`Practico-Fisica-Energia-2Y`](Practico-Fisica-Energia-2Y) | **Fuente 2Y** | Trabajo, potencia y energía, ejercicios 1 al 17 | 6 (3 hojas) |
 | [`Practico-Fisica-6-2Y`](Practico-Fisica-6-2Y) | **Fuente 2Y** | El práctico corto de 4 ejercicios (cubo de aluminio, pistón, prensa hidráulica, empuje) | 2 (1 hoja) |
+| [`Dibujo-Snoopy`](Dibujo-Snoopy) | Mi letra · bonita | «Dibujo libre» (Snoopy en su casa, plano de coordenadas): cara 1 el dibujo, cara 2 los 126 puntos | 2 (1 hoja) |
+| [`Practico-Biologia-2Y`](Practico-Biologia-2Y) | **Fuente 2Y** | Biología: variabilidad genética y mutaciones, 20 preguntas con respuesta (renglón medio) | 7 |
 
 Cada carpeta tiene lo mismo que los prácticos anteriores:
 - `…-1-anversos.pdf` y `…-2-reversos.pdf`

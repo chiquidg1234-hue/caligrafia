@@ -14,6 +14,8 @@
 //   ---                          new page (next side of the sheet)
 //   [[columnas 12]] … [[|]] … [[fin]]   left column 12 squares wide
 //   [[grafica xmin xmax ymin ymax]]
+//     forma x1 y1 x2 y2 …         points joined in order (connect-the-dots)
+//   [[filas-grafica 42]]         lets a graph be taller than 12 squares
 //     recta a b c | etiqueta     the line a·x + b·y + c = 0
 //     punto x y | etiqueta
 //   [[fin]]
@@ -86,7 +88,7 @@ export function parseDocument(source) {
       else if (key === 'grafica' || key === 'gráfica') {
         const range = args.split(/[\s,]+/).map(Number);
         if (range.length !== 4 || range.some(v => !Number.isFinite(v)) || range[0] >= range[1] || range[2] >= range[3]) throw Error(`Escribe [[grafica xmin xmax ymin ymax]] (${at}).`);
-        const block = {type: 'graph', range, lines: [], points: [], circles: [], dashes: []};
+        const block = {type: 'graph', range, lines: [], points: [], circles: [], dashes: [], shapes: []};
         for (n++; n < lines.length && !/^\[\[\s*fin\s*\]\]$/iu.test(lines[n].trim()); n++) {
           const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase(), values = words.slice(1).map(Number);
           if (!spec.trim()) continue;
@@ -94,7 +96,8 @@ export function parseDocument(source) {
           else if (kind === 'punto' && values.length === 2 && values.every(Number.isFinite)) block.points.push({x: values[0], y: values[1], label: label.trim()});
           else if ((kind === 'circulo' || kind === 'círculo') && values.length === 3 && values.every(Number.isFinite) && values[2] > 0) block.circles.push({h: values[0], k: values[1], r: values[2], label: label.trim()});
           else if (kind === 'trazos' && values.length === 4 && values.every(Number.isFinite)) block.dashes.push(values);
-          else throw Error(`Dentro de [[grafica]] usa «recta a b c | etiqueta», «circulo h k r | etiqueta», «trazos x1 y1 x2 y2» o «punto x y | etiqueta» (renglón ${n + 1}).`);
+          else if (kind === 'forma' && values.length >= 4 && values.length % 2 === 0 && values.every(Number.isFinite)) block.shapes.push(Array.from({length: values.length / 2}, (_, i) => [values[2 * i], values[2 * i + 1]]));
+          else throw Error(`Dentro de [[grafica]] usa «recta a b c | etiqueta», «circulo h k r | etiqueta», «trazos x1 y1 x2 y2», «forma x1 y1 x2 y2 …» o «punto x y | etiqueta» (renglón ${n + 1}).`);
         }
         push(block);
       }
@@ -124,6 +127,7 @@ export function parseDocument(source) {
       else if (key === 'titulos' || key === 'títulos') {const how = /mano/i.test(args) ? 'mano' : /impres/i.test(args) ? 'impresos' : ''; if (!how) throw Error(`Escribe [[titulos a mano]] o [[titulos impresos]] (${at}).`); push({type: 'set', key: 'titulos', value: how});}
       else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
       else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
+      else if (key === 'filas-grafica') {const v = Math.round(Number(args)); if (!(v >= 4 && v <= 48)) throw Error(`Escribe [[filas-grafica 4 a 48]] (${at}).`); push({type: 'option', key: 'graphRows', value: v});}
       else if (key === 'graficas-por-hoja' || key === 'gráficas-por-hoja') push({type: 'set', key: 'graphsPerPage', value: Math.max(1, Number(args) || 3)});
       else throw Error(`No conozco [[${name}]] (${at}).`);
       continue;
@@ -253,6 +257,13 @@ export function composeDocument(source, samples, options = {}) {
       const a = [X(x1), Y(y1)], b = [X(x2), Y(y2)], len = Math.hypot(b[0] - a[0], b[1] - a[1]), parts = Math.max(2, Math.round(len / 2.2));
       for (let i = 0; i < parts; i++) {const t0 = i / parts, t1 = t0 + .55 / parts; items.push(pen([[a[0] + (b[0] - a[0]) * t0, a[1] + (b[1] - a[1]) * t0], [a[0] + (b[0] - a[0]) * t1, a[1] + (b[1] - a[1]) * t1]], ink, random, o.pen * .8));}
       segments.push([a, b]);
+    }
+    // «forma»: points joined in order with the pen, as in a connect-the-dots drawing.
+    for (const pts of block.shapes || []) {
+      const path = [];
+      pts.forEach(([u, v], i) => {const c = [X(u) + between(random, -.1, .1), Y(v) + between(random, -.1, .1)]; if (i) {const p = path.at(-1); path.push([(p[0] + c[0]) / 2 + between(random, -.18, .18), (p[1] + c[1]) / 2 + between(random, -.18, .18)]);} path.push(c);});
+      items.push(pen(path, ink, random, o.pen * .9));
+      for (let i = 1; i < path.length; i++) segments.push([path[i - 1], path[i]]);
     }
     for (const p of block.points) {
       if (p.x < xmin || p.x > xmax || p.y < ymin || p.y > ymax) continue;
@@ -390,7 +401,7 @@ export function composeDocument(source, samples, options = {}) {
       if (heading || block.type === 'title') {if (solid) need += chain.reduce((n, b) => n + rows(b), 1); else if (chain[0]) need += Math.min(rows(chain[0]), 4);}
       else if (solid) need += chain.reduce((n, b) => n + rows(b), 1);
       // A question stays with the beginning of its answer.
-      else if (/\?\s*$/.test(block.text) && chain[0]) need += Math.min(rows(chain[0]), 4);
+      else if (/\?\s*$/.test(block.text) && chain[0]) need += rows(chain[0]);
     }
     if (row > o.insetTop && clash(previous, r)) row++;
     // At most N graphs on one side of the sheet (the user's rule: three).

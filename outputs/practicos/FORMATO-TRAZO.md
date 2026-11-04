@@ -57,6 +57,7 @@ punto 9 6 | (9,6)
 [[fin]]
 ```
 
+- `forma x1 y1 x2 y2 …` une los puntos en orden con un solo trazo (dibujos de «une los puntos»). Una gráfica de más de 12 cuadritos de alto necesita `[[filas-grafica 44]]` antes (hasta 48).
 - Los cuatro números son x mínimo, x máximo, y mínimo, y máximo.
 - `recta a b c` dibuja la recta a·x + b·y + c = 0. Con etiqueta sale en rojo (la respuesta); sin etiqueta sale en azul fino (la recta de referencia).
 - Los ejes, las marcas y los números van a mano, apoyados en la cuadrícula.
