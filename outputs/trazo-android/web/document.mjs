@@ -84,13 +84,15 @@ export function parseDocument(source) {
       else if (key === 'grafica' || key === 'gráfica') {
         const range = args.split(/[\s,]+/).map(Number);
         if (range.length !== 4 || range.some(v => !Number.isFinite(v)) || range[0] >= range[1] || range[2] >= range[3]) throw Error(`Escribe [[grafica xmin xmax ymin ymax]] (${at}).`);
-        const block = {type: 'graph', range, lines: [], points: []};
+        const block = {type: 'graph', range, lines: [], points: [], circles: [], dashes: []};
         for (n++; n < lines.length && !/^\[\[\s*fin\s*\]\]$/iu.test(lines[n].trim()); n++) {
           const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase(), values = words.slice(1).map(Number);
           if (!spec.trim()) continue;
           if (kind === 'recta' && values.length === 3 && values.every(Number.isFinite) && (values[0] || values[1])) block.lines.push({a: values[0], b: values[1], c: values[2], label: label.trim()});
           else if (kind === 'punto' && values.length === 2 && values.every(Number.isFinite)) block.points.push({x: values[0], y: values[1], label: label.trim()});
-          else throw Error(`Dentro de [[grafica]] usa «recta a b c | etiqueta» o «punto x y | etiqueta» (renglón ${n + 1}).`);
+          else if ((kind === 'circulo' || kind === 'círculo') && values.length === 3 && values.every(Number.isFinite) && values[2] > 0) block.circles.push({h: values[0], k: values[1], r: values[2], label: label.trim()});
+          else if (kind === 'trazos' && values.length === 4 && values.every(Number.isFinite)) block.dashes.push(values);
+          else throw Error(`Dentro de [[grafica]] usa «recta a b c | etiqueta», «circulo h k r | etiqueta», «trazos x1 y1 x2 y2» o «punto x y | etiqueta» (renglón ${n + 1}).`);
         }
         push(block);
       }
@@ -230,6 +232,21 @@ export function composeDocument(source, samples, options = {}) {
         for (const t of [.85, .15, .7, .3, .5, .95, .05]) {const [x, y] = along(t); spots.push([x, y - 1.6, t > .5 ? 'right' : 'left'], [x, y + 4.2, t > .5 ? 'right' : 'left']);}
         spot(line.label, o.graph, o.smallSize + 1, spots);
       });
+    }
+    // Circles as if drawn with a compass: the radius barely changes, the line
+    // closes a little past its start and the pressure varies along the way.
+    for (const c of block.circles || []) {
+      const R = c.r / k * g, start = between(random, 0, 2 * Math.PI), total = 2 * Math.PI + between(random, .06, .18), p1 = between(random, 0, 6.3);
+      const n = Math.max(40, Math.round(R * 4)), pts = Array.from({length: n + 1}, (_, i) => {const a = start + total * i / n, rr = R * (1 + .006 * Math.sin(a + p1)) + (i / n) * between(random, -.05, .05); return [X(c.h) + Math.cos(a) * rr, Y(c.k) - Math.sin(a) * rr];});
+      items.push(pen(pts, o.graph, random, o.pen * 1.1));
+      for (let i = 0; i < n; i += 2) segments.push([pts[i], pts[i + 2] || pts[n]]);
+      if (c.label) pending.push(() => {const spots = []; for (const t of [.12, .38, .62, .88, .25, .75]) {const a = t * 2 * Math.PI, x = X(c.h) + Math.cos(a) * (R + 1), y = Y(c.k) - Math.sin(a) * (R + 1); spots.push([x, y + (Math.sin(a) > 0 ? -.6 : 3.4), Math.cos(a) >= 0 ? 'left' : 'right']);} spot(c.label, o.graph, o.smallSize + 1, spots);});
+    }
+    // Dashed segments (a radius, a diameter) drawn with the ruler.
+    for (const [x1, y1, x2, y2] of block.dashes || []) {
+      const a = [X(x1), Y(y1)], b = [X(x2), Y(y2)], len = Math.hypot(b[0] - a[0], b[1] - a[1]), parts = Math.max(2, Math.round(len / 2.2));
+      for (let i = 0; i < parts; i++) {const t0 = i / parts, t1 = t0 + .55 / parts; items.push(pen([[a[0] + (b[0] - a[0]) * t0, a[1] + (b[1] - a[1]) * t0], [a[0] + (b[0] - a[0]) * t1, a[1] + (b[1] - a[1]) * t1]], ink, random, o.pen * .8));}
+      segments.push([a, b]);
     }
     for (const p of block.points) {
       if (p.x < xmin || p.x > xmax || p.y < ymin || p.y > ymax) continue;
