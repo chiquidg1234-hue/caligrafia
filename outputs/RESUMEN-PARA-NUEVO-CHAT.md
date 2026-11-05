@@ -149,3 +149,6 @@ También se redujo el vaivén vertical de la letra:
 
 - **Letra normal nueva `personal-normal-v1`** (`work/practicos/letra-normal.mjs`): sale de Natural pero cada muestra se inclina (~0,2), se angosta (~12 %), se estira y se tuerce con una ondulación propia. Úsala con `[[letra normal]]`, `[[desorden 0.85]]` y `--perfil personal-normal-v1`.
 - **Gráficas corridas a la izquierda:** `graphDx: -1.5` (mm) en `DOCUMENT_DEFAULTS`. Medido: en el práctico de circunferencia las gráficas quedaban 1–2 mm a la derecha de los cuadritos; la letra estaba bien. Si siguen corridas, cambiar ese valor.
+
+- **`[[sin graficas]]` / `[[sin resultados]]`:** dejan el lugar en blanco (para que ella los haga a mano). `Practico-Circunferencia-Normal-para-completar`.
+- **Alineación:** `work/practicos/alineacion.mjs` (llamado por `componer.mjs`) se niega a generar si la letra de algún renglón queda a más de 0,5 mm de la cuadrícula. Skill del proyecto: `.claude/skills/trazo-alineacion/SKILL.md`. Prueba para medir la impresora: `outputs/prueba-alineacion-trapper/`. Pendiente: la usuaria dijo que el Práctico de Biología impreso salió «descoordinado» (a veces la letra caía a media altura del renglón de abajo); el archivo estaba a ≤0,4 mm, así que se sospecha la impresión: falta la foto de la prueba.

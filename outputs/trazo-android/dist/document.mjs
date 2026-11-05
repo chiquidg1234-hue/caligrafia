@@ -129,6 +129,7 @@ export function parseDocument(source) {
       else if (key === 'tinta') {const how = args.toLowerCase(); if (how !== 'real' && how !== 'plana') throw Error(`Escribe [[tinta real]] o [[tinta plana]] (${at}).`); push({type: 'set', key: 'tinta', value: how});}
       else if (key === 'titulos' || key === 'títulos') {const how = /mano/i.test(args) ? 'mano' : /impres/i.test(args) ? 'impresos' : ''; if (!how) throw Error(`Escribe [[titulos a mano]] o [[titulos impresos]] (${at}).`); push({type: 'set', key: 'titulos', value: how});}
       else if (key === 'resultados') {const how = args.toLowerCase(); if (how !== 'rojo' && how !== 'azul') throw Error(`Escribe [[resultados rojo]] o [[resultados azul]] (${at}).`); push({type: 'set', key: 'resultados', value: how});}
+      else if (key === 'sin') {const what = args.toLowerCase(); if (what !== 'graficas' && what !== 'gráficas' && what !== 'resultados') throw Error(`Escribe [[sin graficas]] o [[sin resultados]] (${at}).`); push({type: 'option', key: what === 'resultados' ? 'sinResultados' : 'sinGraficas', value: true});}
       else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
       else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
       else if (key === 'filas-grafica') {const v = Math.round(Number(args)); if (!(v >= 4 && v <= 48)) throw Error(`Escribe [[filas-grafica 4 a 48]] (${at}).`); push({type: 'option', key: 'graphRows', value: v});}
@@ -327,7 +328,13 @@ export function composeDocument(source, samples, options = {}) {
   }
 
   // Measure one block at width w. Coordinates are relative to the block top-left.
+  // [[sin graficas]] / [[sin resultados]]: the space stays, the ink does not (to draw them by hand).
   function render(block, w, state) {
+    const r = renderBlock(block, w, state);
+    if ((block.type === 'graph' && o.sinGraficas) || (block.type === 'boxed' && o.sinResultados)) return {...r, items: []};
+    return r;
+  }
+  function renderBlock(block, w, state) {
     switch (block.type) {
       case 'title': {const r = write(block.text, w, state, {size: o.titleSize, color: o.title, lineGap: 0, hyphenate: false}); centre(r.items, w); return {...r, rows: r.rows + 1};}
       case 'heading': return write(block.text, w, state, {size: o.headingSize, color: o.title, lineGap: 0});

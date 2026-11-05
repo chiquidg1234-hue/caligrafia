@@ -14,6 +14,7 @@ Todos se regeneraron el 30/10 con tinta real (calibrada con la foto de tu lapice
 | [`Practico-Biologia-Natural`](Practico-Biologia-Natural) | Mi letra · intermedia | Biología, 20 preguntas (rojo) con respuesta (azul), renglón medio | 7 |
 | [`Practico-Circunferencia-Natural`](Practico-Circunferencia-Natural) | Mi letra · intermedia | Circunferencia 1–12 y ecuación general 1–7: enunciado seguido, resolución más corta con espacios entre pasos, resultados en rojo, 19 gráficas, 3 por cara como máximo | 8 |
 | [`Practico-Circunferencia-Normal`](Practico-Circunferencia-Normal) | **Mi letra normal** (`personal-normal-v1`) | El mismo práctico con una letra «normal» derivada de la tuya pero distinta: inclinada, más angosta y con torceduras propias; gráficas 1,5 mm más a la izquierda | 8 |
+| [`Practico-Circunferencia-Normal-para-completar`](Practico-Circunferencia-Normal-para-completar) | Mi letra normal | El mismo práctico sin gráficas y sin resultados (el lugar queda en blanco) para que lo completes a mano y comparar | 8 |
 
 Cada carpeta tiene lo mismo que los prácticos anteriores:
 - `…-1-anversos.pdf` y `…-2-reversos.pdf`
