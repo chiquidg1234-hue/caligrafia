@@ -15,6 +15,7 @@ Con este formato, cualquier tarea queda escrita con tu letra en la hoja Oficio c
 | `!! P = 125 000 Pa` | Respuesta final, terminada con dos rayitas «//» hechas a mano. Con `[[respuesta recuadro]]` antes, va encerrada en un recuadro; `[[respuesta rayitas]]` vuelve a las rayitas. |
 | `**Datos:**` | Negrita. |
 | `---` | Pasa a la otra cara de la hoja. |
+| `?? 1.- ¿Pregunta?` | Pregunta en rojo (preguntas y títulos rojos, respuestas en azul). Se queda con el comienzo de su respuesta. |
 
 **Fórmulas** (en cualquier línea):
 
@@ -80,6 +81,7 @@ texto 4 3.3 | radio
 
 **Ajustes:**
 - `[[hoja trapper]]` o `[[hoja oficio]]`, en el primer renglón: la hoja en la que se imprime. Si no lo pones, se usa la que elegiste en la app.
+- `[[resultados rojo]]`: los resultados finales (`!!`) y sus rayitas salen en rojo, como en tus tareas. `[[resultados azul]]` los devuelve al azul.
 - `[[tamaño 18]]`: tamaño de la letra.
 - `[[renglon medio]]` y `[[renglon seguido]]`: dejar o no un renglón libre entre líneas.
 - `[[espacio 2]]`: dos renglones libres.

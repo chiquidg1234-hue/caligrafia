@@ -1,0 +1,382 @@
+[[hoja trapper]]
+[[letra intermedia]]
+[[renglon seguido]]
+[[resultados rojo]]
+[[graficas-por-hoja 2]]
+# Práctico de Circunferencia
+
+### Ejercicio 1.-
+Hallar la ecuación de la circunferencia si C(-2,3) y el r=5. Graficar.
+[[columnas 14]]
+[[grafica -7 3 -2 8]]
+circulo -2 3 5
+punto -2 3 | C(-2,3)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(-2,3)  r = 5
+(x - h)^2 + (y - k)^2 = r^2
+(x + 2)^2 + (y - 3)^2 = 5^2
+!! (x + 2)^2 + (y - 3)^2 = 25
+Ecuación general:
+x^2 + 4x + 4 +
+y^2 - 6y + 9 = 25
+!! x^2 + y^2 + 4x - 6y - 12 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 2.-
+Hallar la ecuación de la circunferencia si C(4,6) y el r=6. Graficar.
+[[columnas 14]]
+[[grafica -2 10 0 12]]
+circulo 4 6 6
+punto 4 6 | C(4,6)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(4,6)  r = 6
+(x - h)^2 + (y - k)^2 = r^2
+(x - 4)^2 + (y - 6)^2 = 6^2
+!! (x - 4)^2 + (y - 6)^2 = 36
+Ecuación general:
+x^2 - 8x + 16 +
+y^2 - 12y + 36 = 36
+!! x^2 + y^2 - 8x - 12y + 16 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 3.-
+Hallar la ecuación de la circunferencia si C(2,-1) y el r=4. Graficar.
+[[columnas 14]]
+[[grafica -2 6 -5 3]]
+circulo 2 -1 4
+punto 2 -1 | C(2,-1)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(2,-1)  r = 4
+(x - h)^2 + (y - k)^2 = r^2
+(x - 2)^2 + (y + 1)^2 = 4^2
+!! (x - 2)^2 + (y + 1)^2 = 16
+Ecuación general:
+x^2 - 4x + 4 +
+y^2 + 2y + 1 = 16
+!! x^2 + y^2 - 4x + 2y - 11 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 4.-
+Hallar la ecuación de la circunferencia si C(4,1) y el r=3. Graficar.
+[[columnas 14]]
+[[grafica 0 7 -2 4]]
+circulo 4 1 3
+punto 4 1 | C(4,1)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(4,1)  r = 3
+(x - h)^2 + (y - k)^2 = r^2
+(x - 4)^2 + (y - 1)^2 = 3^2
+!! (x - 4)^2 + (y - 1)^2 = 9
+Ecuación general:
+x^2 - 8x + 16 +
+y^2 - 2y + 1 = 9
+!! x^2 + y^2 - 8x - 2y + 8 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 5.-
+Hallar la ecuación de la circunferencia si C(-3,4) y el r=6. Graficar.
+[[columnas 14]]
+[[grafica -9 3 -2 10]]
+circulo -3 4 6
+punto -3 4 | C(-3,4)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(-3,4)  r = 6
+(x - h)^2 + (y - k)^2 = r^2
+(x + 3)^2 + (y - 4)^2 = 6^2
+!! (x + 3)^2 + (y - 4)^2 = 36
+Ecuación general:
+x^2 + 6x + 9 +
+y^2 - 8y + 16 = 36
+!! x^2 + y^2 + 6x - 8y - 11 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 6.-
+Hallar la ecuación de la circunferencia si C(7,-4) y el r=2. Graficar.
+[[columnas 14]]
+[[grafica 0 9 -6 0]]
+circulo 7 -4 2
+punto 7 -4 | C(7,-4)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(7,-4)  r = 2
+(x - h)^2 + (y - k)^2 = r^2
+(x - 7)^2 + (y + 4)^2 = 2^2
+!! (x - 7)^2 + (y + 4)^2 = 4
+Ecuación general:
+x^2 - 14x + 49 +
+y^2 + 8y + 16 = 4
+!! x^2 + y^2 - 14x + 8y + 61 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 7.-
+Hallar la ecuación de la circunferencia de centro en el origen y radio igual a 4. Graficar.
+[[columnas 14]]
+[[grafica -4 4 -4 4]]
+circulo 0 0 4
+trazos 0 0 2.8284 2.8284
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(0,0)  r = 4
+x^2 + y^2 = r^2
+x^2 + y^2 = 4^2
+!! x^2 + y^2 = 16
+Ecuación general:
+!! x^2 + y^2 - 16 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 8.-
+Hallar la ecuación de la circunferencia de centro en el origen y radio igual a 7. Graficar.
+[[columnas 14]]
+[[grafica -7 7 -7 7]]
+circulo 0 0 7
+trazos 0 0 4.9497 4.9497
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(0,0)  r = 7
+x^2 + y^2 = r^2
+x^2 + y^2 = 7^2
+!! x^2 + y^2 = 49
+Ecuación general:
+!! x^2 + y^2 - 49 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 9.-
+Hallar la ecuación de la circunferencia de centro en el origen y Diámetro igual a 12. Graficar.
+[[columnas 14]]
+[[grafica -6 6 -6 6]]
+circulo 0 0 6
+trazos -6 0 6 0
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(0,0)  D = 12
+r = D/2 = 12/2
+r = 6
+x^2 + y^2 = r^2
+x^2 + y^2 = 6^2
+!! x^2 + y^2 = 36
+Ecuación general:
+!! x^2 + y^2 - 36 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 10.-
+Hallar la ecuación de la circunferencia de centro en el origen y Diámetro igual a 6. Graficar.
+[[columnas 14]]
+[[grafica -3 3 -3 3]]
+circulo 0 0 3
+trazos -3 0 3 0
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Datos: C(0,0)  D = 6
+r = D/2 = 6/2
+r = 3
+x^2 + y^2 = r^2
+x^2 + y^2 = 3^2
+!! x^2 + y^2 = 9
+Ecuación general:
+!! x^2 + y^2 - 9 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 11.-
+Hallar la ecuación de la circunferencia que pasa por el punto P(5,2) y cuyo centro es C(-1,3). Graf.
+[[columnas 14]]
+[[grafica -8 6 -4 10]]
+circulo -1 3 6.082762530298219
+trazos -1 3 5 2
+punto -1 3 | C(-1,3)
+punto 5 2 | P(5,2)
+[[fin]]
+[[|]]
+[[renglon medio]]
+r = raiz((x_2 - x_1)^2 + (y_2 - y_1)^2)
+r = raiz((5 + 1)^2 + (2 - 3)^2)
+r = raiz(36 + 1)
+!! r = raiz(37) ≈ 6,08
+r^2 = 37
+(x - h)^2 + (y - k)^2 = r^2
+!! (x + 1)^2 + (y - 3)^2 = 37
+Ecuación general:
+x^2 + 2x + 1 +
+y^2 - 6y + 9 = 37
+!! x^2 + y^2 + 2x - 6y - 27 = 0
+[[fin]]
+[[renglon seguido]]
+
+### Ejercicio 12.-
+Hallar la ecuación de la circunferencia cuyo diámetro son los puntos A(-3,-1) y B(5,5). Graf.
+[[columnas 14]]
+[[grafica -4 6 -3 7]]
+circulo 1 2 5
+trazos -3 -1 5 5
+punto 1 2 | C(1,2)
+punto -3 -1 | A(-3,-1)
+punto 5 5 | B(5,5)
+[[fin]]
+[[|]]
+[[renglon medio]]
+h = (-3 + 5)/2 = 1
+k = (-1 + 5)/2 = 2
+!! C(1,2)
+D = raiz((5 + 3)^2 + (5 + 1)^2)
+D = raiz(64 + 36) = 10
+r = D/2 = 10/2
+!! r = 5
+(x - h)^2 + (y - k)^2 = r^2
+!! (x - 1)^2 + (y - 2)^2 = 25
+Ecuación general:
+x^2 - 2x + 1 +
+y^2 - 4y + 4 = 25
+!! x^2 + y^2 - 2x - 4y - 20 = 0
+[[fin]]
+
+13. La ecuación general de la circunferencia puede ser expresada como:
+[[tamaño 18]]
+x^2 + y^2 + Dx + Ey + F = 0
+[[tamaño 16]]
+
+### 1.-
+Dada la ecuación de la circunferencia x^2 + y^2 - 6x - 2y - 39 = 0 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -4 10 -6 8]]
+circulo 3 1 7
+trazos 3 1 10 1
+punto 3 1 | C(3,1)
+[[fin]]
+[[|]]
+[[renglon medio]]
+(x^2 - 6x + 9) + (y^2 - 2y + 1)
+= 39 + 9 + 1
+(x - 3)^2 + (y - 1)^2 = 49
+!! C(3,1)
+!! r = 7
+[[fin]]
+[[renglon seguido]]
+
+### 2.-
+Dada la ecuación de la circunferencia x^2 + y^2 + 4x - 2y - 4 = 0 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -5 1 -2 4]]
+circulo -2 1 3
+trazos -2 1 1 1
+punto -2 1 | C(-2,1)
+[[fin]]
+[[|]]
+[[renglon medio]]
+(x^2 + 4x + 4) + (y^2 - 2y + 1)
+= 4 + 4 + 1
+(x + 2)^2 + (y - 1)^2 = 9
+!! C(-2,1)
+!! r = 3
+[[fin]]
+[[renglon seguido]]
+
+### 3.-
+Dada la ecuación de la circunferencia x^2 + y^2 - 4x - 6y - 12 = 0 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -3 7 -2 8]]
+circulo 2 3 5
+trazos 2 3 7 3
+punto 2 3 | C(2,3)
+[[fin]]
+[[|]]
+[[renglon medio]]
+(x^2 - 4x + 4) + (y^2 - 6y + 9)
+= 12 + 4 + 9
+(x - 2)^2 + (y - 3)^2 = 25
+!! C(2,3)
+!! r = 5
+[[fin]]
+[[renglon seguido]]
+
+### 4.-
+Dada la ecuación de la circunferencia x^2 + y^2 - 4x + 10y + 4 = 0 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -3 7 -10 0]]
+circulo 2 -5 5
+trazos 2 -5 7 -5
+punto 2 -5 | C(2,-5)
+[[fin]]
+[[|]]
+[[renglon medio]]
+(x^2 - 4x + 4) + (y^2 + 10y + 25)
+= -4 + 4 + 25
+(x - 2)^2 + (y + 5)^2 = 25
+!! C(2,-5)
+!! r = 5
+[[fin]]
+[[renglon seguido]]
+
+### 5.-
+Dada la ecuación de la circunferencia (x - 2)^2 + (y + 5)^2 = 7 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -1 5 -8 0]]
+circulo 2 -5 2.6457513110645907
+trazos 2 -5 4.645751311064591 -5
+punto 2 -5 | C(2,-5)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Ya está en forma ordinaria.
+!! C(2,-5)
+!! r = raiz(7) ≈ 2,65
+[[fin]]
+[[renglon seguido]]
+
+### 6.-
+Dada la ecuación de la circunferencia x^2 + y^2 = 25 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -5 5 -5 5]]
+circulo 0 0 5
+trazos 0 0 5 0
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+Centro en el origen.
+!! C(0,0)
+!! r = 5
+[[fin]]
+[[renglon seguido]]
+
+### 7.-
+Dada la ecuación de la circunferencia x^2 + y^2 - 36 = 0 ; hallar sus elementos y graficar.
+[[columnas 14]]
+[[grafica -6 6 -6 6]]
+circulo 0 0 6
+trazos 0 0 6 0
+punto 0 0 | C(0,0)
+[[fin]]
+[[|]]
+[[renglon medio]]
+x^2 + y^2 = 36
+!! C(0,0)
+!! r = 6
+[[fin]]

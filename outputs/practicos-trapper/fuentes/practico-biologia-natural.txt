@@ -1,0 +1,79 @@
+[[hoja trapper]]
+[[letra intermedia]]
+[[renglon medio]]
+Rada Ayala David Gael
+
+# Práctico de Biología
+
+"El cielo proclama la gloria de Dios, el firmamento pregona la obra de sus manos" Salmo 18, 2
+
+?? I.- Leer y responder:
+
+?? 1.- Con sus palabras explique qué entendió por variabilidad genética y cuáles son los tres procesos.
+Es la diferencia de genes que hay entre los individuos de una misma población. Se origina por tres procesos: la mutación, la recombinación genética y el flujo génico (migración).
+
+?? 2.- ¿Por qué es importante la variabilidad genética en las poblaciones? Dar ejemplos.
+Porque permite que la población se adapte a los cambios del ambiente y no desaparezca. Ejemplos: bacterias resistentes a un antibiótico, o personas con distinto color de piel, de ojos y de cabello.
+
+?? 3.- ¿Cómo se transmite la herencia, qué son los genes, qué aportan y cómo son considerados?
+Se transmite de padres a hijos por los gametos (óvulo y espermatozoide). Los genes son fragmentos de ADN ubicados en los cromosomas. Aportan la información para formar las características y son la unidad básica de la herencia.
+
+?? 4.- Diferencia entre genotipo, fenotipo, alelo y cómo se representan.
+Genotipo: los genes que tiene un individuo (AA, Aa, aa). Fenotipo: la característica que se ve (flor roja). Alelo: cada forma de un gen. Se representan con letras: mayúscula el dominante y minúscula el recesivo.
+
+?? 5.- ¿Cuándo un individuo es considerado homocigoto y heterocigoto? Dar ejemplos.
+Homocigoto: tiene dos alelos iguales, por ejemplo AA o aa. Heterocigoto: tiene dos alelos distintos, por ejemplo Aa.
+
+?? 6.- Anote las tres leyes de Mendel.
+Primera ley de la uniformidad: al cruzar dos razas puras, todos los hijos (F1) son iguales.
+Segunda ley de la segregación: los alelos se separan al formarse los gametos y en F2 reaparece el rasgo recesivo en proporción 3 a 1.
+Tercera ley de la distribución independiente: los caracteres se heredan unos independientes de otros.
+
+?? 7.- Diferencia entre alelo dominante y alelo recesivo.
+El dominante se manifiesta aunque haya una sola copia (A) y tapa al otro. El recesivo solo se manifiesta cuando hay dos copias (aa).
+
+?? 8.- ¿Existe en la naturaleza un alelo dominante siempre? Dar ejemplos. Lea cuándo las leyes de Mendel no se cumplen.
+No siempre. Las leyes de Mendel no se cumplen en la dominancia incompleta, la codominancia, los alelos múltiples y las interacciones génicas. Ejemplo: la flor dondiego de noche, que sale rosada.
+
+?? 9.- ¿A qué se llama dominancia incompleta? Dar ejemplos de las plantas homocigota y heterocigotas.
+Es cuando ningún alelo domina del todo y el heterocigoto sale intermedio. Ejemplo: planta homocigota roja (RR), homocigota blanca (BB) y heterocigota rosada (RB).
+
+?? 10.- ¿Qué entendió por codominancia y cómo se expresa el fenotipo?
+Es cuando los dos alelos se expresan a la vez, sin mezclarse. El fenotipo muestra las dos características. Ejemplo: el grupo sanguíneo AB, o la vaca con manchas rojas y blancas.
+
+?? 11.- ¿Cuáles son los grupos sanguíneos de los humanos, qué alelos los determinan, cuál es dominante, cuál recesivo y cuál es codominante?
+Los grupos son A, B, AB y O. Los alelos son I_A, I_B e i. I_A e I_B son dominantes sobre i. El alelo i es recesivo. I_A e I_B son codominantes entre sí.
+
+?? 12.- ¿A qué se llama alelos múltiples, qué alelo portan, cómo se originan y grados de dominancia?
+Cuando un gen tiene más de dos formas en la población. Cada individuo porta solo dos alelos. Se originan por mutaciones del mismo gen. Tienen grados de dominancia, por ejemplo el color del pelo del conejo: C > c_ch > c_h > c.
+
+?? 13.- ¿Qué son las interacciones génicas y dónde se manifiestan? Dar ejemplos.
+Es cuando varios genes actúan juntos para formar una sola característica. Se manifiestan en el fenotipo. Ejemplos: el color de la piel, la estatura y el color del pelaje de los ratones.
+
+?? 14.- ¿Dónde se encuentra la base de la vida, qué necesita la descendencia que hereda y cómo se obtiene?
+En el ADN, dentro del núcleo de la célula. La descendencia necesita heredar la información genética de sus padres. Se obtiene por la reproducción: los gametos y la fecundación.
+
+?? 15.- ¿Qué son las mutaciones y cuándo se producen, qué generan y por qué son importantes algunas?
+Son cambios en el ADN. Se producen al copiarse el ADN o por agentes como la radiación y las sustancias químicas. Generan nuevos alelos. Algunas son importantes porque ayudan a adaptarse y a evolucionar.
+
+?? 16.- Anote las cuatro consecuencias de las mutaciones, con sus ejemplos.
+Perjudiciales: la hemofilia. Beneficiosas: la resistencia de las bacterias a los antibióticos. Neutras: no cambian nada visible. Letales: causan la muerte antes de nacer.
+
+?? 17.- ¿Dónde ocurren mutaciones, qué sucede cuando hay división mitótica? Dar el ejemplo de los lunares.
+Ocurren en cualquier célula del cuerpo. Si hay mitosis, la mutación pasa a todas las células hijas. Ejemplo: un lunar es un grupo de células de la piel que mutaron y se multiplicaron.
+
+?? 18.- ¿Las mutaciones ocurren en las células sexuales?
+Sí. Si ocurre en un gameto, la mutación se hereda a los hijos y aparece en todas sus células.
+
+?? 19.- ¿Cuál es el origen de las mutaciones? Son cuatro y anotar los ejemplos.
+Espontáneas: errores al copiar el ADN. Físicas: rayos X y rayos ultravioleta. Químicas: tabaco y pesticidas. Biológicas: algunos virus.
+
+?? 20.- ¿Cuántos tipos de mutaciones se pueden dar y qué consecuencias pueden traer al que lo hereda?
+Tres tipos: génicas (cambia una parte de un gen), cromosómicas (cambia la forma del cromosoma) y genómicas (cambia el número de cromosomas). Pueden causar enfermedades, como el síndrome de Down o la fibrosis quística.
+
+?? Anote en 5 puntos lo que aprendió hoy.
+1.- La variabilidad genética permite que las poblaciones se adapten.
+2.- Los genes son fragmentos de ADN que se heredan de los padres.
+3.- Mendel descubrió tres leyes de la herencia.
+4.- No todos los alelos dominan: hay dominancia incompleta y codominancia.
+5.- Las mutaciones son cambios en el ADN y algunas se heredan.

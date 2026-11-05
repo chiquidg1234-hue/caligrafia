@@ -133,3 +133,12 @@ También se redujo el vaivén vertical de la letra:
 - Nunca publicar la clave privada de `work/trazo-android/signing`.
 - No abrir PR sin que lo pida.
 - Responder en español.
+
+## 05/11: letra mezclada, tamaño por palabra, colores
+
+- **Nueva letra `personal-mixta-v1` «Mi letra + 2A»:** `work/practicos/letra-mixta.mjs` junta las muestras de Natural y 2A (la app turna las versiones, así una palabra mezcla las dos manos). Úsala con `--perfil personal-mixta-v1`. En tinta real, las muestras de Natural van en modo líneas y las de 2A en contorno.
+- **Cambio de tamaño como a mano:** `naturalise` (core.mjs) sube o baja cada palabra hasta ±10 % (según `desorden`) y el cambio se desvanece despacio.
+- **Rojo y azul:** `?? pregunta` sale en rojo; `[[resultados rojo]]` pone los resultados `!!` y sus rayitas en rojo. Títulos y «Ejercicio N.-» ya eran rojos.
+- **Matemáticas espaciosas:** enunciado seguido y resolución con `[[renglon medio]]` justo después de `[[|]]`.
+- Los puntos de 2A y 2Y se agrandaron 1,8 veces (`work/practicos/agrandar-puntos.mjs`).
+- Entregado: `practicos-trapper/Practico-Biologia-Natural`, `Practico-Circunferencia-Mixta`, `investigaciones-trapper/Investigacion-Circunferencia-Mixta`.

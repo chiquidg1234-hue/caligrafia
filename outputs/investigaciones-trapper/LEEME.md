@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | [`Investigacion-Circunferencia-Graficas`](Investigacion-Circunferencia-Graficas) | Copia de tu investigación a mano (fotos del 30/10), en tu letra normal: las 25 preguntas con tus respuestas y las 25 gráficas, dibujadas a mano alzada y con los mismos colores (rojo, verde y morado). | 5 |
 | [`Investigacion-Circunferencia`](Investigacion-Circunferencia) | Las 25 preguntas de la investigación sobre circunferencia, con su respuesta. | 4 (2 hojas) |
+| [`Investigacion-Circunferencia-Mixta`](Investigacion-Circunferencia-Mixta) | Las 25 preguntas (rojo) con su respuesta (azul) y las 25 gráficas, en la letra mezclada «Mi letra + 2A», con renglón medio. | 7 |
 
 - **Hoja:** Trapper cuadriculada, de 211 × 280 mm; es casi del tamaño de una hoja carta.
 - **Letra:** Mi letra Natural, «menos chetada» (`[[desorden 0.7]]`), con tinta real de bolígrafo azul: más fina y de un azul más apagado, medida con la foto de tu lapicero del 29/10. Los subtítulos van en rojo.

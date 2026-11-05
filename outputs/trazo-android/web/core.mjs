@@ -266,10 +266,15 @@ function naturalise(pages,{natural,messy=0,scale,seed,right,left,slack=0}){
    // The last letter never passes the right margin.
    const room=Math.max(0,right-Math.max(...line.map(g=>g.x+Math.max(...g.paths.flat().map(p=>p[0]))*g.scale))),out=Math.min(slack,1.8*natural),centre=Math.max(0,1.3*natural-out);
    let drift=Math.max(-out,Math.min(room,centre+natural*(2.4*random()+(Math.abs(random())>.8?Math.sign(random()):0))));const base=drift;
+   // Size changes as in a real hand: each word is a little bigger or smaller
+   // than the one before, and the change fades slowly (bounded to ±10 %).
+   let word=0,prevRight=null;const amp=.03+.07*messy;
    for(const g of line){
     drift=Math.max(-out,Math.min(room,Math.max(base-.6*wander,Math.min(base+.6*wander,drift+random()*.07*natural*loose))));
     const minX=Math.min(...g.paths.flat().map(p=>p[0])),maxX=Math.max(...g.paths.flat().map(p=>p[0]));
-    const cx=(minX+maxX)/2,size=1+random()*.03*natural*loose,angle=random()*.028*natural*loose;
+    if(prevRight!==null&&g.x+minX*g.scale-prevRight>1.3)word=Math.max(-.1,Math.min(.1,word*.35+random()*amp));
+    prevRight=g.x+maxX*g.scale;
+    const cx=(minX+maxX)/2,size=(1+random()*.03*natural*loose)*(1+word),angle=random()*.028*natural*loose;
     g.paths=transformPaths(g.paths,{angle,scale:size,cx});
     const ink=Math.max(...g.paths.flat().map(p=>p[0]))*g.scale,inkLeft=Math.min(...g.paths.flat().map(p=>p[0]))*g.scale;
     g.x=Math.max(left-out-inkLeft,Math.min(right-ink,g.x+drift));

@@ -8,6 +8,8 @@
 //   ## Subtítulo / ### Ejercicio  left, title colour, one free row above
 //   texto                        paragraph (formulas: x^2, a/b, raiz(x)…)
 //   - viñeta                     «·» with hanging indent
+//   ?? pregunta                  paragraph in the title colour (red)
+//   [[resultados rojo|azul]]     colour of the final answers (!!)
 //   !! respuesta                 answer framed by a hand-drawn box
 //   **negrita** inside any line
 //   (empty line)                 one free row
@@ -125,6 +127,7 @@ export function parseDocument(source) {
       else if (key === 'grosor' || key === 'desorden') {const v = Number(args.replace(',', '.')); if (!(v >= 0) || (key === 'grosor' ? v > 1 : v > 1)) throw Error(`Escribe [[${key} número]] (${at}).`); push({type: 'option', key, value: v});}
       else if (key === 'tinta') {const how = args.toLowerCase(); if (how !== 'real' && how !== 'plana') throw Error(`Escribe [[tinta real]] o [[tinta plana]] (${at}).`); push({type: 'set', key: 'tinta', value: how});}
       else if (key === 'titulos' || key === 'títulos') {const how = /mano/i.test(args) ? 'mano' : /impres/i.test(args) ? 'impresos' : ''; if (!how) throw Error(`Escribe [[titulos a mano]] o [[titulos impresos]] (${at}).`); push({type: 'set', key: 'titulos', value: how});}
+      else if (key === 'resultados') {const how = args.toLowerCase(); if (how !== 'rojo' && how !== 'azul') throw Error(`Escribe [[resultados rojo]] o [[resultados azul]] (${at}).`); push({type: 'set', key: 'resultados', value: how});}
       else if (key === 'respuesta') {const how = args.toLowerCase(); if (how !== 'rayitas' && how !== 'recuadro') throw Error(`Escribe [[respuesta rayitas]] o [[respuesta recuadro]] (${at}).`); push({type: 'set', key: 'answer', value: how});}
       else if (key === 'hoja') {const sheet = args.toLowerCase(); if (!PAPERS[sheet]) throw Error(`Hoja desconocida «${args}» (${at}). Usa: ${Object.keys(PAPERS).join(', ')}.`); if (stack[0].blocks.length) throw Error(`[[hoja]] va en el primer renglón (${at}).`); push({type: 'paper', value: sheet});}
       else if (key === 'filas-grafica') {const v = Math.round(Number(args)); if (!(v >= 4 && v <= 48)) throw Error(`Escribe [[filas-grafica 4 a 48]] (${at}).`); push({type: 'option', key: 'graphRows', value: v});}
@@ -139,6 +142,7 @@ export function parseDocument(source) {
     else if (/^###\s/.test(line)) push({type: 'subheading', text: line.slice(4).trim()});
     else if (/^[-•·]\s/.test(line)) push({type: 'bullet', text: line.slice(2).trim()});
     else if (/^!!\s/.test(line)) push({type: 'boxed', text: line.slice(3).trim()});
+    else if (/^\?\?\s/.test(line)) push({type: 'paragraph', text: line.slice(3).trim(), red: true});
     else push({type: 'paragraph', text: line});
   }
   if (stack.length > 1) throw Error('Falta un [[fin]] para cerrar [[columnas]] o [[grafica]].');
@@ -327,7 +331,7 @@ export function composeDocument(source, samples, options = {}) {
       case 'title': {const r = write(block.text, w, state, {size: o.titleSize, color: o.title, lineGap: 0, hyphenate: false}); centre(r.items, w); return {...r, rows: r.rows + 1};}
       case 'heading': return write(block.text, w, state, {size: o.headingSize, color: o.title, lineGap: 0});
       case 'subheading': return write(block.text, w, state, {size: o.subheadingSize, color: o.title, lineGap: 0});
-      case 'paragraph': return write(block.text, w, state);
+      case 'paragraph': return write(block.text, w, state, block.red ? {color: o.title} : {});
       case 'bullet': {
         const r = write(block.text, w - 1.5 * g, state); for (const it of r.items) it.x += 1.5 * g;
         const dot = write('·', 40, state, {natural: 0, math: false, hyphenate: false, lineGap: 0});
@@ -338,9 +342,9 @@ export function composeDocument(source, samples, options = {}) {
         // The answer ends with the two little slanted lines of her school;
         // the hand-drawn box only with [[respuesta recuadro]].
         if (state.answer !== 'recuadro') {
-          const r = write(block.text, w - 5, state), random = rng(seed++), box = inkBox(r.items);
+          const rc = state.resultados === 'rojo' ? o.title : undefined, r = write(block.text, w - 5, state, rc ? {color: rc} : {}), random = rng(seed++), box = inkBox(r.items);
           const base = Math.max(...r.items.filter(i => i.type === 'glyph').map(i => i.y)), x = box.r + 1.8 + between(random, -.3, .3);
-          const slash = dx => pen([[x + dx, base + .3 + between(random, -.2, .2)], [x + dx + .7, base - 1.4], [x + dx + 1.3 + between(random, -.2, .2), base - 3.1 + between(random, -.2, .2)]], state.text, random);
+          const slash = dx => pen([[x + dx, base + .3 + between(random, -.2, .2)], [x + dx + .7, base - 1.4], [x + dx + 1.3 + between(random, -.2, .2), base - 3.1 + between(random, -.2, .2)]], rc || state.text, random);
           return {...r, items: [...r.items, slash(0), slash(1.25 + between(random, -.15, .15))]};
         }
         const r = write(block.text, w - 2, state); for (const it of r.items) {it.x += 1; it.y += g;}
@@ -401,7 +405,7 @@ export function composeDocument(source, samples, options = {}) {
       if (heading || block.type === 'title') {if (solid) need += chain.reduce((n, b) => n + rows(b), 1); else if (chain[0]) need += Math.min(rows(chain[0]), 4);}
       else if (solid) need += chain.reduce((n, b) => n + rows(b), 1);
       // A question stays with the beginning of its answer.
-      else if (/\?\s*$/.test(block.text) && chain[0]) need += rows(chain[0]);
+      else if ((/\?\s*$/.test(block.text) || block.red) && chain[0]) need += rows(chain[0]);
     }
     if (row > o.insetTop && clash(previous, r)) row++;
     // At most N graphs on one side of the sheet (the user's rule: three).
@@ -416,8 +420,8 @@ export function composeDocument(source, samples, options = {}) {
   }
   if (!pages.at(-1).items.length && pages.length > 1) pages.pop();
   // Ballpoint ink, once for the preview and the PDF.
-  const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null; let n = o.seed * 7919;
-  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: it.type === 'glyph' ? o.natural : 0, messy: it.type === 'glyph' ? o.desorden : 0, widthMm: it.widthMm ?? o.grosor, sample: byId.get(it.sampleId), mode: it.type === 'glyph' ? mode : 'lineas'}));
+  const byId = new Map(samples.map(s => [s.id, s])), real = pages.some(p => p.items.some(it => it.tinta === 'real')), mode = real ? inkMode(samples) : null, mixed = samples.some(x => String(x.id).startsWith('mx-n-')); let n = o.seed * 7919;
+  for (const p of pages) for (const it of p.items) if (it.tinta === 'real') Object.assign(it, ballpoint(it, {kind: PENS[it.pen]?.kind, seed: n++, natural: it.type === 'glyph' ? o.natural : 0, messy: it.type === 'glyph' ? o.desorden : 0, widthMm: it.widthMm ?? o.grosor, sample: byId.get(it.sampleId), mode: it.type !== 'glyph' ? 'lineas' : mixed ? (String(it.sampleId).startsWith('mx-n-') ? 'lineas' : 'contorno') : mode}));
   return {pages, missing: [...missing].sort(), paper, margins: margins(pages, paper, insetRight)};
 }
 
