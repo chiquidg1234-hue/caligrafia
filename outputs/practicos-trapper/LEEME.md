@@ -12,7 +12,7 @@ Todos se regeneraron el 30/10 con tinta real (calibrada con la foto de tu lapice
 | [`Dibujo-Snoopy`](Dibujo-Snoopy) | Mi letra · bonita | «Dibujo libre» (Snoopy en su casa, plano de coordenadas): cara 1 el dibujo, cara 2 los 126 puntos | 2 (1 hoja) |
 | [`Practico-Biologia-2Y`](Practico-Biologia-2Y) | **Fuente 2Y** | Biología: variabilidad genética y mutaciones, 20 preguntas con respuesta (renglón medio) | 7 |
 | [`Practico-Biologia-Natural`](Practico-Biologia-Natural) | Mi letra · intermedia | Biología, 20 preguntas (rojo) con respuesta (azul), renglón medio | 7 |
-| [`Practico-Circunferencia-Mixta`](Practico-Circunferencia-Mixta) | **Mi letra + 2A** (`personal-mixta-v1`) | Circunferencia 1–12 y ecuación general 1–7: enunciado seguido, resolución con renglón medio, resultados en rojo, 19 gráficas | 11 |
+| [`Practico-Circunferencia-Natural`](Practico-Circunferencia-Natural) | Mi letra · intermedia | Circunferencia 1–12 y ecuación general 1–7: enunciado seguido, resolución más corta con espacios entre pasos, resultados en rojo, 19 gráficas, 3 por cara como máximo | 8 |
 
 Cada carpeta tiene lo mismo que los prácticos anteriores:
 - `…-1-anversos.pdf` y `…-2-reversos.pdf`

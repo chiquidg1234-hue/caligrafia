@@ -22,6 +22,7 @@
 //     punto x y | etiqueta
 //   [[fin]]
 //   [[tamaño 18]]  [[renglon medio|seguido]]  [[espacio 2]]  [[color #hex]]  [[lapicero bic-negro]]
+//   [[dibujo ancho alto prolijo]] circles as with a compass, lines as with a ruler (a hint of the hand)
 //   [[dibujo ancho alto]]        a freehand sketch, in squares from its top-left:
 //     circulo x y r · linea x1 y1 x2 y2 · punto x y · texto x y | palabra
 //   [[fin]]
@@ -104,9 +105,9 @@ export function parseDocument(source) {
         push(block);
       }
       else if (key === 'dibujo') {
-        const size = args.split(/[\s,]+/).map(Number);
+        const neat = /prolijo/i.test(args), size = args.replace(/prolijo/i, '').trim().split(/[\s,]+/).map(Number);
         if (size.length !== 2 || size.some(v => !(v > 0))) throw Error(`Escribe [[dibujo ancho alto]] en cuadritos (${at}).`);
-        const block = {type: 'sketch', width: size[0], height: size[1], shapes: []}, need = {circulo: 3, arco: 5, elipse: 4, linea: 4, trazos: 4, punto: 2, sector: 5, segmento: 5, texto: 2, rotulo: 2, grueso: 1};
+        const block = {type: 'sketch', width: size[0], height: size[1], neat, shapes: []}, need = {circulo: 3, arco: 5, elipse: 4, linea: 4, trazos: 4, punto: 2, sector: 5, segmento: 5, texto: 2, rotulo: 2, grueso: 1};
         for (n++; n < lines.length && !/^\[\[\s*fin\s*\]\]$/iu.test(lines[n].trim()); n++) {
           const [spec, label = ''] = lines[n].split('|'), words = spec.trim().split(/\s+/), kind = words[0]?.toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''), values = words.slice(1).map(Number);
           if (!spec.trim()) continue;
@@ -283,17 +284,17 @@ export function composeDocument(source, samples, options = {}) {
   // A freehand sketch: circles that do not quite close, lines a little bowed.
   function sketch(block, w, state) {
     // A sketch wider than the column shrinks to fit: it never crosses the margin.
-    const fit = Math.min(1, w / (block.width * g)), random = rng(seed++), items = [], j = a => between(random, -a, a), deg = Math.PI / 180;
+    const neat = block.neat, fit = Math.min(1, w / (block.width * g)), random = rng(seed++), items = [], j = a => between(random, -a, a), deg = Math.PI / 180;
     let ink = state.text, thick = 1;
     const stroke = points => {const it = pen(points, ink, random); if (thick !== 1) it.widthMm = o.grosor * thick; items.push(it);};
     // An arc or a whole circle drawn in one go: a little out of round, the end
     // stopping short or running past the start.
     const round = (cx, cy, rx, ry, from, sweep, closed) => {
-      const tilt = j(Math.abs(rx - ry) > .5 ? .03 : .25), p1 = between(random, 0, 6.3), p2 = between(random, 0, 6.3), squash = 1 + j(.03), start = closed ? between(random, 0, 2 * Math.PI) : from, total = closed ? 2 * Math.PI + between(random, -.12, .3) : sweep;
-      const n = Math.max(12, Math.round(Math.max(rx, ry) * Math.abs(total) * 1.2)), points = Array.from({length: n + 1}, (_, k) => {const a = start + total * k / n, wob = 1 + .025 * Math.sin(2 * a + p1) + .015 * Math.sin(3 * a + p2), x = Math.cos(a) * rx * wob * squash, y = -Math.sin(a) * ry * wob / squash; return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];});
+      const tilt = neat ? 0 : j(Math.abs(rx - ry) > .5 ? .03 : .25), p1 = between(random, 0, 6.3), p2 = between(random, 0, 6.3), squash = 1 + j(neat ? .004 : .03), start = closed ? between(random, 0, 2 * Math.PI) : from, total = closed ? 2 * Math.PI + (neat ? between(random, .05, .2) : between(random, -.12, .3)) : sweep;
+      const n = Math.max(12, Math.round(Math.max(rx, ry) * Math.abs(total) * 1.2)), points = Array.from({length: n + 1}, (_, k) => {const a = start + total * k / n, wob = 1 + (neat ? .004 : .025) * Math.sin(2 * a + p1) + (neat ? .003 : .015) * Math.sin(3 * a + p2), x = Math.cos(a) * rx * wob * squash, y = -Math.sin(a) * ry * wob / squash; return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];});
       stroke(points);
     };
-    const line = (a, b) => {const mid = [(a[0] + b[0]) / 2 + j(.3), (a[1] + b[1]) / 2 + j(.3)]; stroke([a, mid, b]);};
+    const line = (a, b) => {const mid = [(a[0] + b[0]) / 2 + j(neat ? .06 : .3), (a[1] + b[1]) / 2 + j(neat ? .06 : .3)]; stroke([a, mid, b]);};
     for (const {kind, values = [], label, color} of block.shapes) {
       const v = values.map(x => x * g * fit);
       if (kind === 'color') ink = color || state.text;
@@ -301,7 +302,7 @@ export function composeDocument(source, samples, options = {}) {
       else if (kind === 'circulo') round(v[0], v[1], v[2], v[2], 0, 0, true);
       else if (kind === 'elipse') round(v[0], v[1], v[2], v[3], 0, 0, true);
       else if (kind === 'arco') round(v[0], v[1], v[2], v[2], values[3] * deg, (values[4] - values[3]) * deg, false);
-      else if (kind === 'linea') line([v[0] + j(.25), v[1] + j(.25)], [v[2] + j(.25), v[3] + j(.25)]);
+      else if (kind === 'linea') line([v[0] + j(neat ? .12 : .25), v[1] + j(neat ? .12 : .25)], [v[2] + j(neat ? .12 : .25), v[3] + j(neat ? .12 : .25)]);
       else if (kind === 'trazos') {
         // Dashes of about 1.6 mm with gaps of 1 mm, never quite even.
         const [x1, y1, x2, y2] = v, len = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / len, uy = (y2 - y1) / len;

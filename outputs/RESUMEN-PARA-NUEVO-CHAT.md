@@ -141,4 +141,8 @@ También se redujo el vaivén vertical de la letra:
 - **Rojo y azul:** `?? pregunta` sale en rojo; `[[resultados rojo]]` pone los resultados `!!` y sus rayitas en rojo. Títulos y «Ejercicio N.-» ya eran rojos.
 - **Matemáticas espaciosas:** enunciado seguido y resolución con `[[renglon medio]]` justo después de `[[|]]`.
 - Los puntos de 2A y 2Y se agrandaron 1,8 veces (`work/practicos/agrandar-puntos.mjs`).
-- Entregado: `practicos-trapper/Practico-Biologia-Natural`, `Practico-Circunferencia-Mixta`, `investigaciones-trapper/Investigacion-Circunferencia-Mixta`.
+- **06/11:** la letra mezclada no gustó («muy fea»): se usa solo Mi letra Natural, modo `[[letra intermedia]]`. Los PDF «Mixta» se borraron; el perfil `personal-mixta-v1` queda en el JSON sin usar.
+- **«D» arreglada** (`work/practicos/arreglar-D.mjs`): la original parecía un circulito; ahora es un palo y una barriga redondos. Ojo: una «D» con un quiebre en la esquina se vuelve un punto cuando va chica (en fracciones); las dos versiones nuevas están inclinadas de una pieza para evitarlo.
+- **`[[dibujo ancho alto prolijo]]`:** círculos casi perfectos (compás) y rectas derechas (regla) con un dejo de mano. `work/practicos/investigacion.mjs` genera la investigación con sus 25 gráficas.
+- **Matemáticas:** enunciado seguido; resolución más corta (sin repetir la fórmula general en cada ejercicio), con una fila libre entre pasos; 8 caras en vez de 11.
+- Entregado: `practicos-trapper/Practico-Circunferencia-Natural`, `Practico-Biologia-Natural` (rehecho con la D nueva), `investigaciones-trapper/Investigacion-Circunferencia-Natural`.
