@@ -146,3 +146,6 @@ También se redujo el vaivén vertical de la letra:
 - **`[[dibujo ancho alto prolijo]]`:** círculos casi perfectos (compás) y rectas derechas (regla) con un dejo de mano. `work/practicos/investigacion.mjs` genera la investigación con sus 25 gráficas.
 - **Matemáticas:** enunciado seguido; resolución más corta (sin repetir la fórmula general en cada ejercicio), con una fila libre entre pasos; 8 caras en vez de 11.
 - Entregado: `practicos-trapper/Practico-Circunferencia-Natural`, `Practico-Biologia-Natural` (rehecho con la D nueva), `investigaciones-trapper/Investigacion-Circunferencia-Natural`.
+
+- **Letra normal nueva `personal-normal-v1`** (`work/practicos/letra-normal.mjs`): sale de Natural pero cada muestra se inclina (~0,2), se angosta (~12 %), se estira y se tuerce con una ondulación propia. Úsala con `[[letra normal]]`, `[[desorden 0.85]]` y `--perfil personal-normal-v1`.
+- **Gráficas corridas a la izquierda:** `graphDx: -1.5` (mm) en `DOCUMENT_DEFAULTS`. Medido: en el práctico de circunferencia las gráficas quedaban 1–2 mm a la derecha de los cuadritos; la letra estaba bien. Si siguen corridas, cambiar ese valor.

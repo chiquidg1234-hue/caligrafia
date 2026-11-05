@@ -67,7 +67,7 @@ export const SKETCH_COLORS = Object.freeze({tinta: '', azul: '', rojo: '#b02a33'
 export const DOCUMENT_DEFAULTS = Object.freeze({
   paper: OFICIO_ESPIRAL, start: 0, insetLeft: 1, insetRight: 2, insetTop: 1, insetBottom: 1,
   size: 16, titleSize: 22, headingSize: 17, subheadingSize: 14.5, smallSize: 10,
-  text: '#34405e', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', tinta: 'real', grosor: .14, desorden: 0, tracking: 0, trackJitter: 0, escala: 1, titulos: 'impresos', answer: 'rayitas', natural: .55, seed: 7, lineGap: 0, pen: .27,
+  text: '#34405e', title: '#b02a33', graph: '#b02a33', ink: 'bic-azul', tinta: 'real', grosor: .14, desorden: 0, tracking: 0, trackJitter: 0, escala: 1, titulos: 'impresos', answer: 'rayitas', natural: .55, graphDx: -1.5, seed: 7, lineGap: 0, pen: .27,
   // Epson T50 measured on the first test: 5–6 mm to the left and 1 mm high.
   // With this correction the writing starts two squares inside the frame,
   // which the user prefers (third test print).
@@ -352,7 +352,7 @@ export function composeDocument(source, samples, options = {}) {
         const box = inkBox(r.items), random = rng(seed++);
         return {items: [...r.items, ...handBox(box.l - 1.6, box.t - 1.4, box.r + 1.6, box.b + 1.3, state.text, random).flat()], rows: r.rows + 2};
       }
-      case 'graph': return graph(block, w, state);
+      case 'graph': {const r = graph(block, w, state); for (const it of r.items) shift(it, o.graphDx, 0); return r;}
       case 'sketch': return sketch(block, w, state);
       case 'columns': {
         const left = block.left ? block.left * g : Math.round(w / 2 / g) * g, sides = [flow(block.columns[0], left, {...state}), flow(block.columns[1], w - left - g, {...state})];
