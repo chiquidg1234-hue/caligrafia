@@ -10,3 +10,6 @@ Imprime `Calibracion-Trapper-Letter.pdf` (2 páginas: 1 = anverso, 2 = reverso p
 
 Con eso se calculan desplazamiento, escala e inclinación. Luego viene una ronda 2 con verniers finos alrededor del valor encontrado.
 Se genera con `node work/practicos/calibracion.mjs`.
+
+## Ronda 2 (`Calibracion2-Trapper-Letter.pdf`)
+La ronda 1 no era medible: los círculos tenían 0,8 mm de holgura y los verniers eran difíciles de leer en foto. Ahora son 4 bandas por cara (X-A…X-D, Y-A…Y-D) con marcas cada 0,1 mm y números grandes (décimas de mm). Se lee a ojo sobre el papel: la marca roja que TAPA su línea verde da el valor; se anotan los 8 números por cara. Se genera con `node work/practicos/calibracion2.mjs`.
