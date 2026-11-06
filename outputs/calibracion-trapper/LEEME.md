@@ -18,3 +18,9 @@ La ronda 1 no era medible: los círculos tenían 0,8 mm de holgura y los vernier
 Corrección medida en la ronda 2 (`work/practicos/calibracion-trapper.json`): rotación ≈0,25° más desplazamiento. En esta hoja las franjas finas (−1,0…+1,0 mm) ya están corregidas: si el modelo es bueno, la marca que tapa la línea es la «0» en las 8 franjas. Hay además un parche de 9×6 cuadros (no toda la hoja).
 Comparación: antes de corregir X-A/B = −1,0, X-C/D ≈ 0 a −0,3, Y-A/B = +1,5, Y-C/D = +1,0. Después de corregir, lo leído es el error que queda; la diferencia entre ambas tablas es lo que se arregló.
 La página 2 es el reverso sin corregir (vernier de la ronda 2).
+
+## Resultado de la ronda 4 (medido sobre la foto) y ronda 5
+- X (horizontal): con la corrección quedó un error de ≈ +0,3 mm en las tres franjas visibles (antes +1,0 arriba y +0,1 abajo): el modelo X funciona, falta sumar ≈0,3 mm.
+- Y (vertical): con la corrección quedó −1,9 mm (izq.) y −1,6 mm (der.); sin corregir en la ronda 2 era −1,55 y −1,0. Es decir, la hoja cayó ≈1,7 mm más arriba que en la impresión anterior: **el avance vertical no se repite de una impresión a otra** (X sí, ±0,3 mm).
+- La impresión se cortó hacia y≈239 mm (X-C con las marcas truncadas, X-D, rótulos y cruces C/D no salieron). En la ronda 2 sí llegó a 270 mm.
+- `Calibracion5-Trapper-Letter.pdf`: sin corrección, rango ±2,4 mm, regla de límite de impresión. Imprimir la página 1 DOS veces (dos hojas, cargando como siempre) para medir cuánto varía la Y entre hojas; página 2 = reverso.
