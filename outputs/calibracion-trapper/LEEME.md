@@ -24,3 +24,14 @@ La página 2 es el reverso sin corregir (vernier de la ronda 2).
 - Y (vertical): con la corrección quedó −1,9 mm (izq.) y −1,6 mm (der.); sin corregir en la ronda 2 era −1,55 y −1,0. Es decir, la hoja cayó ≈1,7 mm más arriba que en la impresión anterior: **el avance vertical no se repite de una impresión a otra** (X sí, ±0,3 mm).
 - La impresión se cortó hacia y≈239 mm (X-C con las marcas truncadas, X-D, rótulos y cruces C/D no salieron). En la ronda 2 sí llegó a 270 mm.
 - `Calibracion5-Trapper-Letter.pdf`: sin corrección, rango ±2,4 mm, regla de límite de impresión. Imprimir la página 1 DOS veces (dos hojas, cargando como siempre) para medir cuánto varía la Y entre hojas; página 2 = reverso.
+
+## Resultado de la ronda 5 (2 copias sin corregir) y modelo final
+Medido con código sobre las fotos (E = dónde cae la tinta respecto a la línea, mm):
+| | arriba X | abajo X | izq. Y | der. Y |
+|---|---|---|---|---|
+| ronda 2 | +1,0 | +0,1…0,3 | −1,6 | −1,0 |
+| ronda 5 copia 1 | +1,1 | −0,2…+0,4 | −1,35 | −1,47 |
+| ronda 5 copia 2 | +1,55 | +0,2 | −1,9 | −1,7 |
+Variación entre hojas ≈ ±0,3 mm. La ronda 4 (con corrección) salió 2 mm más arriba y cortada a 239 mm: la hoja entró distinta ese día.
+Modelo: `calibracion-trapper.json` (anverso medido; reverso estimado, −1,0 mm en X respecto al anverso por los offsets históricos).
+Los PDF finales se generan con `componer.mjs … --calibrado`. `Calibracion6-Trapper-Letter.pdf` mide el error que queda (anverso y reverso).

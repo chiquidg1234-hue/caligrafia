@@ -43,3 +43,11 @@ El archivo ya pasó la comprobación, así que lo más probable es la impresión
 - Rojo: títulos, «Ejercicio N.-», preguntas (`?? `) y resultados (`[[resultados rojo]]`). Azul: todo lo demás.
 - Matemáticas: enunciado seguido; resolución corta con una fila libre entre pasos; resultados con «//»; 3 gráficas como máximo por cara.
 - `[[sin graficas]]` y `[[sin resultados]]` dejan el lugar en blanco para que ella los haga a mano.
+
+## Modo calibrado (desde 06/11 noche)
+Los PDF para imprimir en la Mac (página Letter) se generan con `--calibrado`: `node work/practicos/componer.mjs fuente.txt carpeta Nombre [--perfil id] --calibrado`.
+- Usa `work/practicos/calibracion-trapper.json` (modelo medido: la tinta cae en E(x,y) mm respecto a la línea; se dibuja en p−E(p)), sustituye `offsets`/`drop` y pone `graphDx: 0`.
+- Pone cruces de control en las 4 esquinas del marco: si no caen exactamente sobre la esquina, la hoja entró mal → reimprimir (la hoja entra distinta ~±0,3 mm normal, ~2 mm si entra torcida).
+- El reverso del modelo es un ESTIMADO hasta medirlo con `Calibracion6-Trapper-Letter.pdf` (página 2).
+- Para recalibrar: imprime `work/practicos/calibracion6.mjs` (verniers) y mide con foto; ver `outputs/calibracion-trapper/LEEME.md`.
+- La compuerta de alineación ignora las letras de gráficas/dibujos (`free: true`), que no van sobre renglón.

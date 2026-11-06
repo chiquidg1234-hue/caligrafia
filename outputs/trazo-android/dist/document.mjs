@@ -321,7 +321,7 @@ export function composeDocument(source, samples, options = {}) {
         const r = write(label, 70, state, {size: kind === 'rotulo' ? state.size : o.smallSize + 1, color: ink, natural: .4, math: true, hyphenate: false, lineGap: 0});
         if (!r.items.length) continue;
         const box = inkBox(r.items), dx = v[0] - box.l + j(.3), dy = v[1] - r.baselines[0] * g + j(.2);
-        for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy});
+        for (const it of r.items) items.push({...it, x: it.x + dx, y: it.y + dy, free: true});
       }
     }
     return {items, rows: Math.ceil(block.height * fit - 1e-9)};
@@ -359,7 +359,7 @@ export function composeDocument(source, samples, options = {}) {
         const box = inkBox(r.items), random = rng(seed++);
         return {items: [...r.items, ...handBox(box.l - 1.6, box.t - 1.4, box.r + 1.6, box.b + 1.3, state.text, random).flat()], rows: r.rows + 2};
       }
-      case 'graph': {const r = graph(block, w, state); for (const it of r.items) shift(it, o.graphDx, 0); return r;}
+      case 'graph': {const r = graph(block, w, state); for (const it of r.items) {shift(it, o.graphDx, 0); if (it.type === 'glyph') it.free = true;} return r;}
       case 'sketch': return sketch(block, w, state);
       case 'columns': {
         const left = block.left ? block.left * g : Math.round(w / 2 / g) * g, sides = [flow(block.columns[0], left, {...state}), flow(block.columns[1], w - left - g, {...state})];
@@ -486,26 +486,41 @@ export function plotterSVG(page, paper = OFICIO_ESPIRAL) {
 }
 
 /** PDF with only the writing (the sheet already has its grid). */
-export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, select = 'all', grid = false} = {}) {
+// calib (Trapper, página Letter): {pageW, pageH, control, anverso|reverso: {ex0, exRefY, bx, ey0, eyRefX, by}}. Dónde cae la
+// tinta respecto a la cuadrícula es E(x,y) = (ex0 + bx·(y−exRefY), ey0 + by·(x−eyRefX)) mm medido con la hoja de calibración;
+// cada punto se dibuja en p − E(p), así que la tinta cae sobre la línea aunque la impresora corra y gire un poco el papel.
+// Con calib no se usan offsets ni drop. control: marcas en dos esquinas del marco para ver a simple vista si la hoja entró mal.
+export async function documentPDF(result, {offsets = DOCUMENT_DEFAULTS.offsets, select = 'all', grid = false, calib = null} = {}) {
   if (result.missing?.length) throw Error('Faltan muestras: ' + result.missing.join(' '));
-  const paper = result.paper, doc = await PDF.PDFDocument.create(), H = paper.height, rgb = hex => PDF.rgb(...hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255));
+  const paper = result.paper, doc = await PDF.PDFDocument.create(), H = calib ? calib.pageH : paper.height, rgb = hex => PDF.rgb(...hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255));
   doc.setTitle('Trazo · documento'); doc.setCreator('Trazo');
   // select: 'all', a side name ('anverso' / 'reverso') to print each side in one pass.
   const chosen = result.pages.filter(p => select === 'all' || p.side === select);
   for (const p of chosen) {
-    const page = doc.addPage([paper.width * MM, H * MM]), off = offsets?.[p.side] || {x: 0, y: 0}, dx = (Number(off.x) || 0) * MM, dy = -((Number(off.y) || 0) + (grid ? 0 : paper.drop || 0)) * MM;
+    const page = doc.addPage([(calib ? calib.pageW : paper.width) * MM, H * MM]), cal = calib?.[p.side];
+    const E = (x, y) => cal ? [cal.ex0 + cal.bx * (y - cal.exRefY), cal.ey0 + cal.by * (x - cal.eyRefX)] : [0, 0];
+    const off = calib ? {x: 0, y: 0} : offsets?.[p.side] || {x: 0, y: 0}, dx = (Number(off.x) || 0) * MM, dy = -((Number(off.y) || 0) + (grid || calib ? 0 : paper.drop || 0)) * MM;
     if (grid) {
       const side = paper.sides.find(s => s.name === p.side), g = paper.grid, w = paper.width - side.left - side.right, h = H - side.top - side.bottom;
       for (let y = 0; y <= h + 1e-9; y += g) page.drawLine({start: {x: side.left * MM + dx, y: (H - side.top - y) * MM + dy}, end: {x: (side.left + w) * MM + dx, y: (H - side.top - y) * MM + dy}, thickness: .35, color: rgb('#bcd3e4')});
       for (let x = 0; x <= w + 1e-9; x += g) page.drawLine({start: {x: (side.left + x) * MM + dx, y: (H - side.top) * MM + dy}, end: {x: (side.left + x) * MM + dx, y: (H - side.top - h) * MM + dy}, thickness: .35, color: rgb('#bcd3e4')});
     }
     page.pushOperators(PDF.setLineJoin(PDF.LineJoinStyle.Round));
+    const fixPolys = polys => cal ? polys.map(q => q.map(([x, y]) => { const [ex, ey] = E(x, y); return [x - ex, y - ey]; })) : polys;
     for (const it of p.items) {
       const color = rgb(it.color);
       if (it.hand) continue;
-      if (it.layers) for (const l of it.layers) page.drawSvgPath(polyPath(l.polys), {x: dx, y: H * MM + dy, scale: MM, color: rgb(l.color), ...(l.opacity < 1 ? {opacity: l.opacity} : {})});
-      else if (it.type === 'glyph') page.drawSvgPath(glyphPath(it.paths), {x: it.x * MM + dx, y: (H - it.y) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})});
-      else page.drawSvgPath(polyPath(it.polys), {x: dx, y: H * MM + dy, scale: MM, color});
+      if (it.layers) for (const l of it.layers) page.drawSvgPath(polyPath(fixPolys(l.polys)), {x: dx, y: H * MM + dy, scale: MM, color: rgb(l.color), ...(l.opacity < 1 ? {opacity: l.opacity} : {})});
+      else if (it.type === 'glyph') { const [ex, ey] = E(it.x, it.y); page.drawSvgPath(glyphPath(it.paths), {x: (it.x - ex) * MM + dx, y: (H - it.y + ey) * MM + dy, scale: it.scale * MM, color, ...(it.strokeWidth ? {borderColor: color, borderWidth: it.strokeWidth} : {})}); }
+      else page.drawSvgPath(polyPath(fixPolys(it.polys)), {x: dx, y: H * MM + dy, scale: MM, color});
+    }
+    if (cal && calib.control) {
+      const side = paper.sides.find(s => s.name === p.side), g = paper.grid, x1 = side.left + Math.floor((paper.width - side.left - side.right) / g) * g, y1 = side.top + Math.floor((paper.height - side.top - side.bottom) / g) * g;
+      for (const [x, y] of [[side.left, side.top], [x1, side.top], [side.left, y1], [x1, y1]]) {
+        const [ex, ey] = E(x, y), cx = x - ex, cy = y - ey, k = 2.2;
+        page.drawLine({start: {x: (cx - k) * MM, y: (H - cy) * MM}, end: {x: (cx + k) * MM, y: (H - cy) * MM}, thickness: .2 * MM, color: rgb('#b02a33')});
+        page.drawLine({start: {x: cx * MM, y: (H - cy - k) * MM}, end: {x: cx * MM, y: (H - cy + k) * MM}, thickness: .2 * MM, color: rgb('#b02a33')});
+      }
     }
   }
   return doc.save();

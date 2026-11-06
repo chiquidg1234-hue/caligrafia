@@ -14,7 +14,9 @@ const args = process.argv.slice(2), flag = args.indexOf('--perfil'), profile = f
 const [source, out, name = path.basename(source, '.txt')] = args.filter(a => !a.startsWith('--'));
 const samples = JSON.parse(fs.readFileSync(WEB + 'personal-letter.json')).profiles.find(p => p.id === profile).samples;
 import {alineacion} from './alineacion.mjs';
-const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples);
+// --calibrado: página Letter + corrección medida (calibracion-trapper.json) en lugar de offsets/drop; las gráficas ya no necesitan graphDx.
+const calibrado = process.argv.includes('--calibrado'), calib = calibrado ? JSON.parse(fs.readFileSync(new URL('./calibracion-trapper.json', import.meta.url))) : null;
+const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples, calibrado ? {graphDx: 0} : {});
 if (result.missing.length) {console.error('Faltan:', result.missing.join(' ')); process.exit(1);}
 // The ink of every page must stay inside the frame with its free squares.
 const bad = result.margins.filter(m => m.problems.length);
@@ -26,10 +28,10 @@ if (bad.length) {console.error('Márgenes fuera de regla: corrige el texto o el 
 fs.mkdirSync(out, {recursive: true});
 for (const file of fs.readdirSync(out)) if (file.startsWith(`${name}-pagina-`) || file.startsWith(`${name}-ploter-`)) fs.unlinkSync(path.join(out, file));
 if (process.argv.includes('--ploter')) for (const [i, page] of result.pages.entries()) fs.writeFileSync(path.join(out, `${name}-ploter-${i + 1}-${page.side}.svg`), plotterSVG(page, result.paper));
-fs.writeFileSync(path.join(out, `${name}.pdf`), await documentPDF(result));
+fs.writeFileSync(path.join(out, `${name}.pdf`), await documentPDF(result, {calib}));
 if (result.pages.length > 1) {
-  fs.writeFileSync(path.join(out, `${name}-1-anversos.pdf`), await documentPDF(result, {select: 'anverso'}));
-  fs.writeFileSync(path.join(out, `${name}-2-reversos.pdf`), await documentPDF(result, {select: 'reverso'}));
+  fs.writeFileSync(path.join(out, `${name}-1-anversos.pdf`), await documentPDF(result, {select: 'anverso', calib}));
+  fs.writeFileSync(path.join(out, `${name}-2-reversos.pdf`), await documentPDF(result, {select: 'reverso', calib}));
 }
 fs.writeFileSync(path.join(out, `${name}-hoja-blanca-con-cuadricula.pdf`), await documentPDF(result, {grid: true, offsets: {}}));
 if (!process.argv.includes('--sin-png')) {

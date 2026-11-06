@@ -74,7 +74,8 @@ const cone = () => [C(0, 0, .01)].slice(1).concat([
 
 const rows = [[1, 2], [3], [4, 5], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [22, 23], [24], [25]];
 const heights = {1: 11.4, 2: 11.4, 3: 12.6, 4: 11.4, 6: 11.4, 8: 11.4, 10: 11.4, 11: 13, 12: 13, 13: 12, 14: 11.4, 16: 11.4, 18: 11.4, 20: 13, 21: 12.6, 22: 12, 24: 11, 25: 16.6};
-const out = ['[[hoja trapper]]', '[[letra intermedia]]', '[[renglon seguido]]', '# Investigación sobre circunferencia', 'Para 5to de secundaria', ''];
+const normal = process.argv.includes('--normal');   // letra «normal» (la fea): node investigacion.mjs --normal
+const out = ['[[hoja trapper]]', ...(normal ? ['[[letra normal]]', '[[desorden 0.85]]'] : ['[[letra intermedia]]']), '[[renglon seguido]]', '# Investigación sobre circunferencia', 'Para 5to de secundaria', ''];
 preguntas.forEach(([q, a], i) => out.push(`?? ${i + 1}-${q}`, `-${a}`, ''));
 out.push('---', '# Gráficas', '');
 const g3 = () => {
@@ -91,5 +92,5 @@ const row = cells => {
   b.push('[[fin]]'); return b;
 };
 for (const cells of rows) out.push(...row(cells));
-fs.writeFileSync(new URL('../../outputs/investigaciones-trapper/fuentes/investigacion-circunferencia-natural.txt', import.meta.url), out.join('\n') + '\n');
+fs.writeFileSync(new URL(`../../outputs/investigaciones-trapper/fuentes/investigacion-circunferencia-${normal ? 'normal' : 'natural'}.txt`, import.meta.url), out.join('\n') + '\n');
 console.log('listo', rows.length, 'filas');
