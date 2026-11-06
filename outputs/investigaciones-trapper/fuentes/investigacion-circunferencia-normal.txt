@@ -80,387 +80,104 @@ Para 5to de secundaria
 ?? 25-¿Por qué se dice que la circunferencia es un caso particular de cónica?
 -Porque se obtiene al cortar un cono con un plano perpendicular a su eje.
 
----
 # Gráficas
 
-[[dibujo 30 11.4 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 1
-color tinta
-circulo 7.5 6.4 3.4
-punto 7.5 6.4
-texto 6.1 7.6 | O
-color rojo
-rotulo 15.5 1 | Gráfica 2
-color tinta
-circulo 19.2 6.3 2.9
-circulo 26.8 6.3 2.9
-linea 24.07 5.92 26.42 3.57
-linea 24.19 6.78 27.28 3.69
-linea 24.5 7.47 27.97 4
-linea 24.93 8.03 28.53 4.43
-linea 25.46 8.49 28.99 4.96
-linea 26.11 8.83 29.33 5.61
-linea 26.91 9.02 29.52 6.41
-texto 17.8 10.7 | borde
-texto 24.7 10.7 | superficie
+[[columnas 15]]
+## Gráfica 1
+[[espacio 10]]
+[[|]]
+## Gráfica 2
+[[espacio 10]]
 [[fin]]
-[[dibujo 30 12.6 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 3
-color tinta
-circulo 9 6.9 4.4
-linea 4.6 6.9 13.4 6.9
-punto 9 6.9
-texto 9.3 8.1 | O
-color rojo
-linea 9 6.9 12.37 4.07
-color tinta
-color verde
-linea 5.01 8.76 12.99 8.76
-color tinta
-color morado
-grueso 3
-arco 9 6.9 4.4 100 160
-grueso 1
-linea 2.7 3.6 15.3 3.6
-color tinta
-color negro
-linea 13.4 3.5 13.4 10.3
-color tinta
-color rojo
-linea 17 2.7 19.6 2.7
-color tinta
-texto 20.4 3 | radio
-color tinta
-linea 17 4.4 19.6 4.4
-color tinta
-texto 20.4 4.7 | diámetro
-color verde
-linea 17 6.1 19.6 6.1
-color tinta
-texto 20.4 6.4 | cuerda
-color morado
-grueso 3
-linea 17 7.8 19.6 7.8
-grueso 1
-color tinta
-texto 20.4 8.1 | arco
-color morado
-linea 17 9.5 19.6 9.5
-color tinta
-texto 20.4 9.8 | secante
-color negro
-linea 17 11.2 19.6 11.2
-color tinta
-texto 20.4 11.5 | tangente
+
+## Gráfica 3
+[[espacio 12]]
+
+[[columnas 15]]
+## Gráfica 4
+[[espacio 11]]
+[[|]]
+## Gráfica 5
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 4
-color tinta
-circulo 7.5 6.4 3.4
-color rojo
-linea 7.5 6.4 10.29 4.45
-color tinta
-punto 7.5 6.4
-punto 10.29 4.45
-texto 6.1 7.6 | O
-texto 10.79 4.15 | A
-texto 8.7 6.73 | r
-color rojo
-rotulo 15.5 1 | Gráfica 5
-color tinta
-circulo 23 6.4 3.4
-linea 19.6 6.4 26.4 6.4
-punto 19.6 6.4
-punto 26.4 6.4
-punto 23 6.4
-texto 18.4 6.7 | A
-texto 26.9 6.7 | B
-texto 22.7 5.5 | O
-texto 21.6 11.2 | d = 2r
+
+[[columnas 15]]
+## Gráfica 6
+[[espacio 11]]
+[[|]]
+## Gráfica 7
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 6
-color tinta
-circulo 7.5 6.4 3.4
-color verde
-linea 4.42 7.84 10.58 7.84
-color tinta
-punto 4.42 7.84
-punto 10.58 7.84
-texto 3.32 8.64 | A
-texto 11.08 8.64 | B
-color verde
-texto 6.3 7.04 | cuerda
-color tinta
-color rojo
-rotulo 15.5 1 | Gráfica 7
-color tinta
-circulo 23 6.4 3.4
-color morado
-grueso 3
-arco 23 6.4 3.4 30 150
-grueso 1
-color tinta
-punto 25.94 4.7
-punto 20.06 4.7
-texto 26.44 4.4 | B
-texto 18.96 4.4 | A
-color morado
-texto 22.1 2.4 | arco
-color tinta
+
+[[columnas 15]]
+## Gráfica 8
+[[espacio 11]]
+[[|]]
+## Gráfica 9
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 8
-color tinta
-circulo 7.5 6.4 3.4
-linea 4.1 6.4 10.9 6.4
-color morado
-grueso 3
-arco 7.5 6.4 3.4 180 360
-grueso 1
-color tinta
-punto 4.1 6.4
-punto 10.9 6.4
-punto 7.5 6.4
-texto 7.2 5.5 | O
-texto 3.1 11.4 | semicircunferencia
-color rojo
-rotulo 15.5 1 | Gráfica 9
-color tinta
-circulo 23 6.4 3.4
-linea 23 6.4 26.28 5.52
-linea 23 6.4 23.59 3.05
-arco 23 6.4 1.19 15 80
-arco 23 6.4 2.11 15 80
-arco 23 6.4 2.99 15 80
-punto 23 6.4
-texto 21.6 7.6 | O
-texto 19.4 11.4 | sector circular
+
+[[columnas 15]]
+## Gráfica 10
+[[espacio 12]]
+[[|]]
+## Gráfica 11
+[[espacio 12]]
 [[fin]]
-[[dibujo 30 13 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 10
-color tinta
-circulo 7.5 6.4 3.4
-color morado
-linea 4.56 4.7 10.44 4.7
-grueso 3
-arco 7.5 6.4 3.4 30 150
-grueso 1
-color tinta
-linea 5.21 4.15 9.79 4.15
-linea 5.76 3.6 9.24 3.6
-texto 3.7 11.4 | segmento circular
-color rojo
-rotulo 15.5 1 | Gráfica 11
-color tinta
-linea 16.1 10 29.9 10
-linea 29.09 10.39 29.9 10
-linea 29.09 9.61 29.9 10
-linea 16.7 10.6 16.7 2.2
-linea 17.09 3.01 16.7 2.2
-linea 16.31 3.01 16.7 2.2
-texto 29.5 9.4 | x
-texto 17.2 3 | y
-circulo 23.5 6.2 3
-punto 23.5 6.2
-trazos 23.5 6.2 26.5 6.2
-texto 24.7 5.6 | r
-texto 20.1 7.5 | (h, k)
-texto 17 12.2 | (x - h)^2 + (y - k)^2 = r^2
+
+[[columnas 15]]
+## Gráfica 12
+[[espacio 12]]
+[[|]]
+## Gráfica 13
+[[espacio 12]]
 [[fin]]
-[[dibujo 30 13 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 12
-color tinta
-linea 0.6 10 14.4 10
-linea 13.59 10.39 14.4 10
-linea 13.59 9.61 14.4 10
-linea 1.2 10.6 1.2 2.2
-linea 1.59 3.01 1.2 2.2
-linea 0.81 3.01 1.2 2.2
-texto 14 9.4 | x
-texto 1.7 3 | y
-circulo 8 6.2 3
-punto 8 6.2
-color rojo
-linea 8 6.2 10.3 4.27
-color tinta
-texto 8.6 4.6 | r
-texto 4.6 7.5 | (h, k)
-color rojo
-rotulo 15.5 1 | Gráfica 13
-color tinta
-texto 16.3 4.4 | (x - h)^2 + (y - k)^2 = r^2
-linea 20.5 5.6 20.5 8.2
-linea 20.11 7.39 20.5 8.2
-linea 20.89 7.39 20.5 8.2
-texto 21.7 7.3 | desarrollar
-texto 16.3 10.8 | x^2 + y^2 + Dx + Ey + F = 0
+
+[[columnas 15]]
+## Gráfica 14
+[[espacio 11]]
+[[|]]
+## Gráfica 15
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 14
-color tinta
-circulo 5.3 6.3 3.3
-circulo 10 6.3 2.5
-punto 5.3 6.3
-punto 10 6.3
-trazos 5.3 6.3 10 6.3
-texto 4.2 7.9 | O_1
-texto 9 7.9 | O_2
-texto 7.3 5.6 | d
-color rojo
-rotulo 15.5 1 | Gráfica 15
-color tinta
-punto 23 6.4
-punto 23 6.4
-texto 21.6 7.9 | O
-texto 19.9 10.4 | r = 0 (un punto)
+
+[[columnas 15]]
+## Gráfica 16
+[[espacio 11]]
+[[|]]
+## Gráfica 17
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 16
-color tinta
-texto 0.8 4.2 | x^2 + y^2 + Dx + Ey + F = 0
-texto 0.8 7 | coeficientes de x^2 e y^2 iguales
-texto 0.8 9.6 | sin término xy
-color rojo
-rotulo 15.5 1 | Gráfica 17
-color tinta
-texto 16.3 4 | x^2 + y^2 + Dx + Ey + F = 0
-linea 18.5 5 18.5 7.4
-linea 18.11 6.59 18.5 7.4
-linea 18.89 6.59 18.5 7.4
-texto 19.7 6.5 | completar cuadrados
-texto 16.3 10 | (x - h)^2 + (y - k)^2 = r^2
+
+[[columnas 15]]
+## Gráfica 18
+[[espacio 11]]
+[[|]]
+## Gráfica 19
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 18
-color tinta
-arco 7.5 6.4 3.4 0 20
-arco 7.5 6.4 3.4 30 50
-arco 7.5 6.4 3.4 60 80
-arco 7.5 6.4 3.4 90 110
-arco 7.5 6.4 3.4 120 140
-arco 7.5 6.4 3.4 150 170
-arco 7.5 6.4 3.4 180 200
-arco 7.5 6.4 3.4 210 230
-arco 7.5 6.4 3.4 240 260
-arco 7.5 6.4 3.4 270 290
-arco 7.5 6.4 3.4 300 320
-arco 7.5 6.4 3.4 330 350
-color rojo
-linea 6.3 5.2 8.7 7.6
-linea 6.3 7.6 8.7 5.2
-color tinta
-texto 6.3 2.4 | r < 0
-texto 2.7 11.4 | no es circunferencia
-color rojo
-rotulo 15.5 1 | Gráfica 19
-color tinta
-circulo 23 6.4 3.4
-color rojo
-linea 23 6.4 26.08 4.96
-color tinta
-punto 23 6.4
-texto 21.6 7.6 | O
-texto 21.7 2.4 | r > 0
+
+[[columnas 15]]
+## Gráfica 20
+[[espacio 12]]
+[[|]]
+## Gráfica 21
+[[espacio 12]]
 [[fin]]
-[[dibujo 30 13 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 20
-color tinta
-linea 2.7 6.4 12.3 6.4
-linea 11.49 6.79 12.3 6.4
-linea 11.49 6.01 12.3 6.4
-linea 7.5 10.8 7.5 2
-linea 7.89 2.81 7.5 2
-linea 7.11 2.81 7.5 2
-circulo 7.5 6.4 3.4
-color rojo
-linea 7.5 6.4 10.1 4.21
-color tinta
-punto 7.5 6.4
-texto 7.9 7.6 | O
-texto 9 4.8 | r
-texto 5.3 12.3 | x^2 + y^2 = r^2
-color rojo
-rotulo 15.5 1 | Gráfica 21
-color tinta
-circulo 23 6.4 3.4
-linea 23 6.4 25.6 4.21
-color rojo
-linea 23.48 1.68 27.72 6.74
-color tinta
-punto 23 6.4
-punto 25.6 4.21
-texto 21.6 7.6 | O
-texto 26.1 3.61 | P
-texto 27.4 7.01 | tangente
+
+[[columnas 15]]
+## Gráfica 22
+[[espacio 11]]
+[[|]]
+## Gráfica 23
+[[espacio 11]]
 [[fin]]
-[[dibujo 30 12 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 22
-color tinta
-circulo 7.5 6.4 3.4
-linea 7.5 6.4 10.9 6.4
-color rojo
-linea 10.9 3 10.9 9.8
-color tinta
-linea 10.1 6.4 10.1 5.6
-linea 10.1 5.6 10.9 5.6
-punto 7.5 6.4
-punto 10.9 6.4
-texto 6.1 7.6 | O
-texto 8.9 7.7 | r
-texto 11.4 6.7 | P
-texto 8.3 5.2 | 90°
-texto 9.5 2.4 | tangente
-color rojo
-rotulo 15.5 1 | Gráfica 23
-color tinta
-circulo 23 6 3.2
-color morado
-linea 16.9 2.7 26.5 8.5
-color tinta
-color rojo
-linea 18.3 9.2 27.7 9.2
-color tinta
-punto 23 9.2
-texto 16.5 2.2 | secante
-texto 25 11 | tangente
-[[fin]]
-[[dibujo 30 11 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 24
-color tinta
-circulo 3.8 6.3 2.6
-circulo 11.7 6.3 2.3
-punto 3.8 6.3
-punto 11.7 6.3
-color rojo
-linea 3.8 6.3 6.4 6.3
-linea 9.4 6.3 11.7 6.3
-color tinta
-trazos 6.4 6.3 9.4 6.3
-texto 4.7 5.6 | r_1
-texto 9.9 5.6 | r_2
-texto 3.4 7.8 | O_1
-texto 11.3 7.8 | O_2
-texto 7.45 5.4 | d
-texto 2.6 10.8 | d > r_1 + r_2
-[[fin]]
+
+## Gráfica 24
+[[espacio 10]]
+
+## Gráfica 25
 [[dibujo 30 16.6 prolijo]]
-color rojo
-rotulo 0 1 | Gráfica 25
-color tinta
 elipse 15 14.8 7 1.6
 linea 15 1.8 8 14.8
 linea 15 1.8 22 14.8
@@ -479,3 +196,4 @@ linea 18.42 8.13 18.2 9
 linea 19.02 8.63 18.2 9
 texto 20.4 6 | circunferencia
 [[fin]]
+

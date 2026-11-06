@@ -77,7 +77,7 @@ const heights = {1: 11.4, 2: 11.4, 3: 12.6, 4: 11.4, 6: 11.4, 8: 11.4, 10: 11.4,
 const normal = process.argv.includes('--normal');   // letra «normal» (la fea): node investigacion.mjs --normal
 const out = ['[[hoja trapper]]', ...(normal ? ['[[letra normal]]', '[[desorden 0.85]]'] : ['[[letra intermedia]]']), '[[renglon seguido]]', '# Investigación sobre circunferencia', 'Para 5to de secundaria', ''];
 preguntas.forEach(([q, a], i) => out.push(`?? ${i + 1}-${q}`, `-${a}`, ''));
-out.push('---', '# Gráficas', '');
+out.push('# Gráficas', '');   // sin salto de página: las gráficas siguen a la pregunta 25
 const g3 = () => {
   const cx = 9, cy = 6.9, r = 4.4, pr = pt(cx, cy, r, 40), pc1 = pt(cx, cy, r, 205), pc2 = pt(cx, cy, r, 335), L0 = [];
   L0.push(...title(3, 0), C(cx, cy, r), L([cx - r, cy], [cx + r, cy]), D(cx, cy), T(cx + .3, cy + 1.2, 'O'),
@@ -86,10 +86,14 @@ const g3 = () => {
   items.forEach(([c, t], i) => {const y = 3 + i * 1.7; L0.push(...col(c, ...(t === 'arco' ? thick(3, L([17, y - .3], [19.6, y - .3])) : [L([17, y - .3], [19.6, y - .3])])), T(20.4, y, t));});
   return L0;
 };
+// Las gráficas 1-24 las hace ella a mano: solo el subtítulo «Gráfica N» y el espacio en blanco del tamaño de cada una.
+// La 25 (el cono) sí se dibuja, con su subtítulo.
+const blank = (n, H) => [`## Gráfica ${n}`, `[[espacio ${Math.round(H - 1)}]]`];
 const row = cells => {
-  const H = Math.max(...cells.map(n => heights[n] || 12)), b = [`[[dibujo 30 ${H} prolijo]]`];
-  cells.forEach((n, i) => {const ox = cells.length === 1 ? 0 : i * 15.5; b.push(...(n === 3 ? g3() : n === 25 ? [...title(25, 0), ...cone().map(s => s)] : [...title(n, ox), ...G[n](ox)]));});
-  b.push('[[fin]]'); return b;
+  const H = Math.max(...cells.map(n => heights[n] || 12));
+  if (cells[0] === 25) return ['## Gráfica 25', `[[dibujo 30 ${H} prolijo]]`, ...cone(), '[[fin]]', ''];
+  if (cells.length === 1) return [...blank(cells[0], H), ''];
+  return ['[[columnas 15]]', ...blank(cells[0], H), '[[|]]', ...blank(cells[1], H), '[[fin]]', ''];
 };
 for (const cells of rows) out.push(...row(cells));
 fs.writeFileSync(new URL(`../../outputs/investigaciones-trapper/fuentes/investigacion-circunferencia-${normal ? 'normal' : 'natural'}.txt`, import.meta.url), out.join('\n') + '\n');

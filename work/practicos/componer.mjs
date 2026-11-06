@@ -16,7 +16,12 @@ const samples = JSON.parse(fs.readFileSync(WEB + 'personal-letter.json')).profil
 import {alineacion} from './alineacion.mjs';
 // --calibrado: página Letter + corrección medida (calibracion-trapper.json) en lugar de offsets/drop; las gráficas ya no necesitan graphDx.
 const calibrado = process.argv.includes('--calibrado'), calib = calibrado ? JSON.parse(fs.readFileSync(new URL('./calibracion-trapper.json', import.meta.url))) : null;
-const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples, calibrado ? {graphDx: 0} : {});
+// --titulo #hex y --grafica #hex: color de títulos/preguntas y de las gráficas (azul y negro: --titulo '#26262e' --grafica '#26262e'). --control: cruces de control en el marco.
+const flagVal = k => {const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : undefined;};
+const extra = {}; for (let i; (i = args.indexOf('--opt')) >= 0;) {const [k, v] = args.splice(i, 2)[1].split('='); extra[k] = Number.isNaN(Number(v)) ? v : Number(v);}   // --opt headingSize=20
+const colors = Object.fromEntries([['title', flagVal('--titulo')], ['graph', flagVal('--grafica')]].filter(([, v]) => v));
+if (calib) calib.control = process.argv.includes('--control');
+const started = Date.now(), result = composeDocument(fs.readFileSync(source, 'utf8'), samples, {...(calibrado ? {graphDx: 0} : {}), ...colors, ...extra});
 if (result.missing.length) {console.error('Faltan:', result.missing.join(' ')); process.exit(1);}
 // The ink of every page must stay inside the frame with its free squares.
 const bad = result.margins.filter(m => m.problems.length);

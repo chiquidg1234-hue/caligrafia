@@ -51,3 +51,6 @@ Los PDF para imprimir en la Mac (página Letter) se generan con `--calibrado`: `
 - El reverso del modelo es un ESTIMADO hasta medirlo con `Calibracion6-Trapper-Letter.pdf` (página 2).
 - Para recalibrar: imprime `work/practicos/calibracion6.mjs` (verniers) y mide con foto; ver `outputs/calibracion-trapper/LEEME.md`.
 - La compuerta de alineación ignora las letras de gráficas/dibujos (`free: true`), que no van sobre renglón.
+- Colores: los prácticos y trabajos van en **azul (letra) y rojo (títulos, preguntas, gráficas)**. No usar negro (la impresora de ella no tiene tinta negra). Las flags `--titulo`/`--grafica` existen pero no se usan.
+- Las cruces de control del marco solo salen con `--control` (a ella no le gustan en los trabajos finales).
+- Gráficas que ella dibuja a mano: subtítulo `## Gráfica N` + `[[espacio N]]`; nada de rótulos pequeños.
