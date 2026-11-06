@@ -33,8 +33,8 @@ for (const side of TRAPPER_TOP.sides) {
   text('límite: ¿hasta qué número llegó?', x0 + 130, 196, 6);
   for (const [n, x, y] of [['A', 10, 10], ['B', 201, 10], ['C', 10, 268], ['D', 201, 268]]) { line([x - 4, y], [x + 4, y], .15, INK); line([x, y - 4], [x, y + 4], .15, INK); text(n, x + 2, y - 2.5, 6, bold); }
   const x1 = x0 + cols * g, y1 = y0 + rows * g; for (const [x, y] of [[x0, y0], [x1, y0], [x0, y1], [x1, y1]]) { const cx = fx(x, y), cy = fy(x, y); line([cx - 2.2, cy], [cx + 2.2, cy], .2); line([cx, cy - 2.2], [cx, cy + 2.2], .2); }
-  text(`${side.name.toUpperCase()} · prueba 6 (corregida) · Letter`, 30, 5.6, 7, bold);
+  text(`${side.name.toUpperCase()} · prueba (corregida) · Letter`, 30, 5.6, 7, bold);
   text('Marca roja que TAPA su línea en cada franja. Con la corrección bien puesta debe ser la «0» (anverso: pasos de 0,1 mm; reverso: de 0,2 mm). Si ninguna tapa: N y hacia dónde se acerca.', 30, 9, 4.6);
   text('X-A ____ X-B ____ X-C ____ X-D ____', x0 + 92, y0 + 80, 7.5, bold, 'c'); text('Y-A ____ Y-B ____ Y-C ____ Y-D ____', x0 + 92, y0 + 92, 7.5, bold, 'c'); text('límite ____', x0 + 92, y0 + 104, 7.5, bold, 'c');
 }
-fs.writeFileSync(out + 'Calibracion6-Trapper-Letter.pdf', await doc.save()); console.log('ok');
+fs.writeFileSync(out + (process.argv[2] || 'Calibracion6') + '-Trapper-Letter.pdf', await doc.save()); console.log('ok');

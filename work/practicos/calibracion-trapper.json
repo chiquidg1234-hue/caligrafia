@@ -1,6 +1,22 @@
 {
-  "_nota": "Modelo medido (Epson T50, Mac, página Letter, 06/11). E(x,y) = dónde cae la tinta respecto a la línea de la hoja, en mm (+ = derecha/abajo): Ex = ex0 + bx*(y-exRefY); Ey = ey0 + by*(x-eyRefX). Se dibuja en p - E(p). Anverso: promedio de 3 impresiones sin corregir (rondas 2 y 5 x2; la ronda 4 se descartó: la hoja entró distinto). Variación entre hojas ±0,3 mm. Reverso: ESTIMADO (sin medir) = anverso con ex0 -1,0 (los offsets antiguos pedían 1 mm más); se mide en la prueba de mañana.",
-  "pageW": 215.9, "pageH": 279.4, "control": true,
-  "anverso": {"ex0": 1.26, "exRefY": 36.5, "bx": -0.00506, "ey0": -1.61, "eyRefX": 45.5, "by": 0.0017},
-  "reverso": {"ex0": 0.26, "exRefY": 36.5, "bx": -0.00506, "ey0": -1.61, "eyRefX": 45.5, "by": 0.0017, "_estimado": true}
+  "_nota": "Modelo medido (Epson T50, Mac, página Letter, 06/11). E(x,y) = dónde cae la tinta respecto a la línea de la hoja, en mm (+ = derecha/abajo): Ex = ex0 + bx*(y-exRefY); Ey = ey0 + by*(x-eyRefX). Se dibuja en p - E(p). Anverso: promedio de 3 impresiones sin corregir (rondas 2 y 5 x2; la ronda 4 se descartó: la hoja entró distinto). Variación entre hojas ±0,3 mm. Reverso: medido en la ronda 6 (lectura a ojo ±0,2 mm, 4 franjas X y 4 Y coinciden): la corrección estimada se quedó corta +0,65 mm en X y +1,8 mm en Y (el reverso no cae como el anverso en Y). El anverso salió perfecto con este modelo (Snoopy).",
+  "pageW": 215.9,
+  "pageH": 279.4,
+  "control": true,
+  "anverso": {
+    "ex0": 1.26,
+    "exRefY": 36.5,
+    "bx": -0.00506,
+    "ey0": -1.61,
+    "eyRefX": 45.5,
+    "by": 0.0017
+  },
+  "reverso": {
+    "ex0": 0.91,
+    "exRefY": 36.5,
+    "bx": -0.00506,
+    "ey0": 0.19,
+    "eyRefX": 45.5,
+    "by": 0.0017
+  }
 }
