@@ -1,0 +1,4 @@
+{
+  "_nota": "Medido sobre foto de Calibracion2 (anverso, Letter, Epson T50, 06/11). E = donde cae la tinta respecto a la línea de la hoja (mm, + = derecha/abajo). E_x(y)=ex0-theta*(y-ey_ref); E_y(x)=ey0+theta*(x-ex_ref). Para acertar se dibuja en nominal - E.",
+  "anverso": {"ex0": 1.01, "exRefY": 36.5, "ey0": -1.59, "eyRefX": 45.5, "theta": 0.00435}
+}
