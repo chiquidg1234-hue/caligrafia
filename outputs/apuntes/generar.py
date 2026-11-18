@@ -8,7 +8,10 @@ NCOL=34              # columnas completas del recuadro
 MC0,MC1=1,32         # texto solo en columnas 1..32 (un cuadrito libre a izquierda y derecha)
 R0,R1=1,46           # filas 1..46 (una fila libre arriba y abajo)
 CW=float(np.mean(np.diff(XS)))
-CWM=0.45   # ancho de letra en el mapa: ~2 letras por cuadrito
+CWM=0.46   # avance de letra en el mapa (cuadritos)
+MCAP=0.60  # altura de mayuscula en el mapa (fraccion de fila)
+ADV=0.80   # avance de letra en los apuntes (cuadritos)
+NCAP=0.68  # altura de mayuscula en los apuntes
 def X(c): # c puede ser fraccionario
     i=int(math.floor(c)); i=max(0,min(NCOL-1,i)); return XS[i]+(XS[i+1]-XS[i])*(c-i)
 def Y(r):
@@ -36,38 +39,51 @@ class Ink4(Ink):
         x0=xc*SC-g2.size[0]/2+s.rnd.uniform(-jit,jit)*SC
         y0=yb*SC-(base+dy)+s.rnd.uniform(-jit,jit)*SC
         s.m[c].paste(255,(int(x0),int(y0)),g2)
-    def cellline(s,c,txt,row,col0,jit=0.9):
-        """texto de tamaño de cuadrito: una letra por cuadro, base en la línea inferior de la fila"""
+    def cellline(s,c,txt,row,col0,jit=0.8):
+        """texto normal: avance ADV cuadritos por letra, base en la linea inferior de la fila"""
         h=Y(row+1)-Y(row)
         for i,ch in enumerate(txt):
-            col=col0+i
-            assert col<=MC1, ('fuera del margen',txt,col)
-            xc=(X(col)+X(col+1))/2; w=X(col+1)-X(col)
+            col=col0+i*ADV
+            assert col+ADV<=MC1+1.001, ('fuera del margen',txt,col)
+            xc=(X(col)+X(col+ADV))/2; w=X(col+ADV)-X(col)
+            if ch==' ': continue
             if ch=='º':
-                s.put(c,'o',xc-1,Y(row+1)-h*0.42,h*0.88*0.5,w,jit=0.5)
-                s.line(c,(xc-w*0.22,Y(row+1)-h*0.33),(xc+w*0.2,Y(row+1)-h*0.33+s.rnd.uniform(-1,1)),w=2.6,amp=0.3)
-            else: s.put(c,ch,xc,Y(row+1)+s.rnd.uniform(-0.6,0.6),h*0.88,w,jit=jit)
+                s.put(c,'o',xc-1,Y(row+1)-h*0.40,h*NCAP*0.5,w,jit=0.5)
+                s.line(c,(xc-w*0.3,Y(row+1)-h*0.30),(xc+w*0.28,Y(row+1)-h*0.30+s.rnd.uniform(-1,1)),w=2.6,amp=0.3)
+            else: s.put(c,ch,xc,Y(row+1)+s.rnd.uniform(-0.6,0.6),h*NCAP,w*1.12,jit=jit,rot=2.6)
     def halfline(s,c,txt,rowline,col0,jit=0.7,k=None):
         """texto de mapa: k letras por cuadrito; la base va en la línea de cuadrícula 'rowline'"""
         cw=CWM; h=Y(rowline)-Y(rowline-1)
         for i,ch in enumerate(txt):
             col=col0+i*cw; xc=(X(col)+X(col+cw))/2; w=X(col+cw)-X(col)
             if ch==' ': continue
-            s.put(c,ch,xc,Y(rowline)+s.rnd.uniform(-0.5,0.5),h*0.44,w,jit=jit,rot=3)
+            s.put(c,ch,xc,Y(rowline)+s.rnd.uniform(-0.5,0.5),h*MCAP,w*1.12,jit=jit,rot=3)
     # trazos a mano
     def curve(s,c,p0,p1,bend=8,w=3.8):
-        mx=(p0[0]+p1[0])/2; my=(p0[1]+p1[1])/2
-        dx,dy=p1[0]-p0[0],p1[1]-p0[1]; L=math.hypot(dx,dy) or 1
-        b=s.rnd.uniform(-bend,bend); cx,cy=mx-dy/L*b,my+dx/L*b
-        pts=[((1-t)**2*p0[0]+2*(1-t)*t*cx+t*t*p1[0],(1-t)**2*p0[1]+2*(1-t)*t*cy+t*t*p1[1]) for t in np.linspace(0,1,14)]
-        s.stroke(c,pts,w,0.9)
+        r=s.rnd
+        dx,dy=p1[0]-p0[0],p1[1]-p0[1]; L=math.hypot(dx,dy) or 1; nx,ny=-dy/L,dx/L
+        b1=r.uniform(-bend,bend)*1.6; b2=r.uniform(-bend,bend)*1.6
+        c1=(p0[0]+dx*r.uniform(.2,.4)+nx*b1,p0[1]+dy*r.uniform(.2,.4)+ny*b1)
+        c2=(p0[0]+dx*r.uniform(.6,.8)+nx*b2,p0[1]+dy*r.uniform(.6,.8)+ny*b2)
+        p0=(p0[0]+r.uniform(-3,3),p0[1]+r.uniform(-3,3))
+        N=max(8,int(L/9)); ts=np.linspace(0,1,N)
+        pts=[((1-t)**3*p0[0]+3*(1-t)**2*t*c1[0]+3*(1-t)*t*t*c2[0]+t**3*p1[0],(1-t)**3*p0[1]+3*(1-t)**2*t*c1[1]+3*(1-t)*t*t*c2[1]+t**3*p1[1]) for t in ts]
+        # temblor de baja frecuencia + presion variable (trazo en tramos)
+        ph=r.uniform(0,6.28); fr=r.uniform(1.5,3.5); am=r.uniform(1.2,2.6)
+        pts=[(x+nx*am*math.sin(ph+fr*6.28*t),y+ny*am*math.sin(ph+fr*6.28*t)) for (x,y),t in zip(pts,ts)]
+        k=max(2,N//4)
+        for i in range(0,N-1,k):
+            seg=pts[i:i+k+1]
+            if len(seg)>=2: s.stroke(c,seg,w*r.uniform(0.78,1.2),1.0)
         return pts
     def arrow2(s,c,p0,p1,bend=9,w=3.8):
-        pts=s.curve(c,p0,p1,bend,w); a=pts[-2]; b=pts[-1]
+        r=s.rnd
+        pts=s.curve(c,p0,p1,bend,w); a=pts[-3]; b=pts[-1]
         ang=math.atan2(b[1]-a[1],b[0]-a[0])
-        for da in (148,-148):
-            aa=ang+math.radians(da+s.rnd.uniform(-9,9)); L=s.rnd.uniform(15,23)
-            s.stroke(c,[b,(b[0]+L*math.cos(aa),b[1]+L*math.sin(aa))],w,0.4)
+        for da in (r.uniform(138,162),-r.uniform(128,165)):
+            aa=ang+math.radians(da); L=r.uniform(12,24)
+            o=(b[0]+r.uniform(-2.5,2.5),b[1]+r.uniform(-2.5,2.5))
+            s.stroke(c,[o,(o[0]+L*math.cos(aa)*.5+r.uniform(-1,1),o[1]+L*math.sin(aa)*.5),(o[0]+L*math.cos(aa),o[1]+L*math.sin(aa))],w*r.uniform(.85,1.1),0.6)
     def rect(s,c,x0,y0,x1,y1,w=3.8):
         r=s.rnd; ov=lambda:r.uniform(-3,9); j=lambda:r.uniform(-2,2)
         s.stroke(c,[(x0-ov(),y0+j()),(x1+ov(),y0+j())],w,1.0)
@@ -91,20 +107,20 @@ def notes(title,items,seed):
     L=[]
     for kind,s in items:
         if kind=='h':
-            for l in wrapn(s,MC1-MC0+1): L.append(('h',l))
+            for l in wrapn(s,int((MC1-MC0+1)/ADV)): L.append(('h',l))
         elif kind=='b':
-            for l in wrapn(s,MC1-MC0+1): L.append(('b',l))
+            for l in wrapn(s,int((MC1-MC0+1)/ADV)): L.append(('b',l))
         elif kind=='q':   # segmentos: str | ('_',respuesta)
             line=[];x=0;g0=len(L)
             for seg in s:
                 if isinstance(seg,tuple):
                     n=max(8,len(seg[1])+2)
-                    if x+n>MC1-MC0+1 and line: L.append(('q',line)); line=[]; x=0
+                    if x+n>int((MC1-MC0+1)/ADV) and line: L.append(('q',line)); line=[]; x=0
                     line.append(('_',x,seg[1],n)); x+=n+1
                 else:
                     for w in seg.split(' '):
                         if not w: continue
-                        if x+len(w)>MC1-MC0+1 and line: L.append(('q',line)); line=[]; x=0
+                        if x+len(w)>int((MC1-MC0+1)/ADV) and line: L.append(('q',line)); line=[]; x=0
                         line.append(('w',x,w)); x+=len(w)+1
             L.append(('q',line))
             gs=len(L)-g0
@@ -113,21 +129,23 @@ def notes(title,items,seed):
     while i<len(L):
         ink=Ink4(seed+n); ink.cellline('k',NAME,1,MC0)
         tt=title+(f' ({n+1})' if n else ''); ink.cellline('r',tt,3,MC0)
-        ink.underline('r',X(MC0)+2,X(MC0+len(tt)),Y(4)+9)
-        r=5
+        ink.underline('r',X(MC0)+2,X(MC0+len(tt)*ADV),Y(4)+9)
+        r=5; prevh=False
         while i<len(L) and r<=45:
             kind,p=L[i][0],L[i][1]
-            if kind=='q' and len(L[i])>2 and r+2*(L[i][2]-1)>45: break
+            if kind=='q' and len(L[i])>2 and r+(L[i][2]-1)>45: break
+            if kind=='q' and len(L[i])>2 and r>5: r+=1
             if kind=='h':
-                ink.cellline('r',p,r,MC0); ink.underline('r',X(MC0)+2,X(MC0+len(p)),Y(r+1)+9)
+                if r>5 and not prevh: r+=1
+                ink.cellline('r',p,r,MC0); ink.underline('r',X(MC0)+2,X(MC0+len(p)*ADV),Y(r+1)+9)
             elif kind=='b': ink.cellline('k',p,r,MC0)
             else:
                 for op in p:
-                    if op[0]=='w': ink.cellline('k',op[2],r,MC0+op[1])
+                    if op[0]=='w': ink.cellline('k',op[2],r,MC0+op[1]*ADV)
                     else:
-                        c0=MC0+op[1]; ink.cellline('r',op[2],r,c0+1)
-                        ink.line('k',(X(c0)+3,Y(r+1)+5),(X(c0+op[3])-3,Y(r+1)+5+ink.rnd.uniform(-1.5,1.5)),w=3.2,amp=0.8)
-            r+=2; i+=1
+                        c0=MC0+op[1]*ADV; ink.cellline('r',op[2],r,c0+ADV)
+                        ink.line('k',(X(c0)+3,Y(r+1)+5),(X(c0+op[3]*ADV)-3,Y(r+1)+5+ink.rnd.uniform(-1.5,1.5)),w=3.2,amp=0.8)
+            prevh=(kind=='h'); r+=1; i+=1
         pages.append(ink); n+=1
     print(title,len(pages),'hoja(s); última usa hasta fila',r)
     return pages
@@ -190,8 +208,8 @@ def mapa(seed=11):
         for ws in itertools.product(rng,repeat=k):
             if sum(ws)!=tot: continue
             hl=max(len(wrapn(h.upper(),int((w-0.6)/CWM))) for (h,_),w in zip(items,ws))
-            bl=max(len(wrapn(b,int((w-0.6)/CWM))) for (_,b),w in zip(items,ws))
-            if any(max(len(x) for x in h.upper().split(' '))>int((w-0.6)/CWM) or max(len(x) for x in b.split(' '))>int((w-0.6)/CWM) for (h,b),w in zip(items,ws)): continue
+            bl=max(len(wrapn(b,int((w-0.85)/CWM))) for (_,b),w in zip(items,ws))
+            if any(max(len(x) for x in h.upper().split(' '))>int((w-0.6)/CWM) or max(len(x) for x in b.split(" "))>int((w-0.85)/CWM) for (h,b),w in zip(items,ws)): continue
             cost=(hl+bl,max(ws)-min(ws))
             if bestc is None or cost<bestc[0]: bestc=(cost,ws)
         return list(bestc[1])
@@ -210,9 +228,9 @@ def mapa(seed=11):
             ink.arrow2('k',(cx+(cc-(MC0+MC1+1)/2)*CW*0.18,Y(r0+1.28)),(X(cc)+rnd.uniform(-5,5),Y(r0+2.1)),bend=12)
             for i,l in enumerate(hls): ink.halfline('r',l,r0+3+i,cc-len(l)*CWM/2)
             ink.arrow2('k',(X(cc)+rnd.uniform(-4,4),Y(tops+0.22)),(X(cc)+rnd.uniform(-4,4),Y(T-0.1)),bend=5)
-            ls=wrapn(b,int((w-0.6)/CWM))
+            ls=wrapn(b,int((w-0.85)/CWM))
             ink.rect('r',X(c)+10,Y(T),X(c+w)-10,Y(T+len(ls)+1))
-            for i,l in enumerate(ls): ink.halfline('k',l,T+1+i,c+0.4)
+            for i,l in enumerate(ls): ink.halfline('k',l,T+1+i,c+0.5)
             bottoms.append(T+len(ls)+1)
         return max(bottoms)
     b=section(bottom,'SE CARACTERIZAN POR',[('La expresión visual','Comunican ideas, sentimientos y mensajes a través de imágenes, formas, colores y espacios.'),
